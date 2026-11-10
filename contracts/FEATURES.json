@@ -1,0 +1,18 @@
+{
+  "recommendations": {
+    "enabled": false,
+    "implemented": false
+  },
+  "career-roles": {
+    "enabled": false,
+    "implemented": false
+  },
+  "activity-plan": {
+    "enabled": false,
+    "implemented": false
+  },
+  "interview-guide": {
+    "enabled": false,
+    "implemented": false
+  }
+}

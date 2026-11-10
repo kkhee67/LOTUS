@@ -1,0 +1,2 @@
+CONTRACT_VERSION = "4.0-draft"
+DEFAULT_TIMEZONE = "Asia/Seoul"

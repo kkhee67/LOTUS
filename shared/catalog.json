@@ -1,0 +1,13 @@
+{
+  "status": "draft",
+  "opportunity_types": [
+    "contest",
+    "competition",
+    "job",
+    "certification",
+    "event",
+    "training",
+    "project",
+    "notice"
+  ]
+}
