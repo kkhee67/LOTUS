@@ -47,7 +47,9 @@ ApplicationInfo의 각 경계는 *_on(date) 또는 *_at(timestamp) 중 하나만
 정확한 closes_at 시각부터 closed. closes_on만 있으면 다음 날 00:00부터 closed.
 마감 당일에는 시각 확인 주의를 제공한다. 원문 closed 상태는 미래 날짜가 있어도 다시 열지 않는다.
 접수 시작 전은 upcoming. upcoming의 명시된 시작 경계를 지나면 open으로 계산한다.
-상태 unknown은 시작일을 지났다는 이유로 open으로 확정하지 않는다. 끝난 마감은 closed로 계산한다.
+상태 unknown은 시작일 전후 모두 unknown을 보존하며 upcoming/open으로 확정하지 않는다. 끝난 마감은 closed로 계산한다.
+기간 검증에서 날짜만 있는 시작은 Asia/Seoul 당일 00:00으로 계산한다. 정확한 마감은 시작보다 늦어야 한다.
+날짜만 있는 마감은 그날 전체를 포함하므로 시작일과 같은 날이어도 유효하다. 원본 날짜·시각 정밀도는 변경하지 않는다.
 shared.rules.application_state(application, *, now)는 aware now를 요구하며 원본을 수정하거나 현재 시각을 읽지 않는다.
 자격증은 certification.status로 운영 상태를, exam_sessions[].application으로 접수를 표현한다.
 회차가 없어도 active일 수 있으며 한 회차 종료가 자격증 종료를 뜻하지 않는다.

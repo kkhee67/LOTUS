@@ -22,6 +22,8 @@ def application_state(application: ApplicationInfo, *, now: datetime) -> Applica
         return ApplicationState(status='closed', cautions=[])
     if application.closes_on == today:
         cautions.append('마감일 당일입니다. 정확한 마감 시각을 원문에서 확인하세요.')
+    if application.status == 'unknown':
+        return ApplicationState(status='unknown', cautions=cautions)
     if (application.opens_at and now < application.opens_at) or (application.opens_on and today < application.opens_on):
         return ApplicationState(status='upcoming', cautions=cautions)
     status = application.status

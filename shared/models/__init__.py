@@ -1,5 +1,5 @@
 from __future__ import annotations
-from datetime import date
+from datetime import date, datetime, time
 from typing import Annotated, Generic, Literal, TypeVar
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
 
@@ -123,11 +123,13 @@ class ApplicationInfo(StrictModel):
         tz = ZoneInfo('Asia/Seoul')
         if self.opens_on and self.opens_at or self.closes_on and self.closes_at:
             raise ValueError('use either date or timestamp for each boundary')
-        start = self.opens_at.astimezone(tz).date() if self.opens_at else self.opens_on
-        end = self.closes_at.astimezone(tz).date() if self.closes_at else self.closes_on
-        if start and end and start > end:
+        start = (self.opens_at.astimezone(tz) if self.opens_at else
+                 datetime.combine(self.opens_on, time.min, tzinfo=tz) if self.opens_on else None)
+        # A date-only opening begins at midnight; an exact closing is exclusive.
+        # A date-only closing includes the entire day (without adding past date.max).
+        if start and self.closes_on and start.date() > self.closes_on:
             raise ValueError('opening must not follow closing')
-        if self.opens_at and self.closes_at and self.opens_at >= self.closes_at:
+        if start and self.closes_at and start >= self.closes_at:
             raise ValueError('opening timestamp must precede closing')
         return self
 

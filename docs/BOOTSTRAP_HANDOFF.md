@@ -143,3 +143,14 @@ PR 제목·본문은 [PR_DRAFT.md](PR_DRAFT.md)에 준비했다. 이 문서를 �
 - `shared/rules.py`
 - `shared/validation.py`
 - `tests/integration/test_contracts.py`
+
+## 날짜 검토 후 보완
+기준 60f92a2의 AI·통합 자체 점검에서 날짜 처리 문제 두 건을 재현하고 수정했다.
+- 모집 상태 unknown은 시작일 전후에 그대로 유지한다. 확인된 마감 경과만 closed로 계산한다.
+- 날짜만 있는 시작은 서울 당일 00:00으로 비교하여, 정확한 마감이 시작과 같거나 빠르면 거부한다.
+- 같은 날의 날짜 전용 기간과 마감일 전체 포함 정책은 유지하고 원본 정밀도·시간대를 변경하지 않는다.
+공통 필드·함수 서명은 그대로이며 계약 4.1-draft의 검증/정책 오류를 바로잡았다.
+실제 검사: python -m pytest backend/tests tests/integration -q → 62 passed, 기존 경고1.
+python -m scripts.validate_examples, python -m scripts.check_generated, git diff --check 통과.
+건희가 제안한 외부 AI 동의 boolean 강화·405 헤더 보존은 이번 날짜 수정에 포함하지 않았다.
+최신 원격 CI는 PR 체크를 확인한다. 담당자들이 수정 커밋을 다시 검토해야 하며 main 병합은 하지 않는다.
