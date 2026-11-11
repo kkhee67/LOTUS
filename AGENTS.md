@@ -1,14 +1,17 @@
 # LOTUS 협업 지침
-현재 상태는 초기 초안이다. 승인된 팀 기준이 아니다.
-시작 시 README.md, docs/OWNERSHIP.md, docs/GIT_WORKFLOW.md, contracts/CONTRACT.md와 담당 폴더 AGENTS.md를 읽는다.
-- 프론트엔드: 사용자 화면과 화면의 API 연결.
-- 백엔드: 초기 공통 프로젝트, 서버, DB, API 구현.
-- 데이터: 실제 공고·자격증·직무·학교 공지 수집 및 검증.
-- AI(태환): 추천·진로 안내 개발과 전체 통합. 두 작업을 구분한다.
-- 초기 공통 규격은 백엔드가 초안을 만들고 AI·통합 담당 및 영향받는 담당자가 검토한다.
-- API·모델·공통 설정 변경은 AI·통합 담당이 조율하고 별도 PR로 검토한다. 반영 전 자동 공유를 가정하지 않는다.
-- 각 담당은 자신의 기능과 테스트를 책임진다. 타 담당 기능을 임의 재작성하지 않는다.
-- 통합 문제는 원인·재현 절차와 함께 담당자에게 요청한다. 공통 연결 수정도 영향받는 담당자가 검토한다.
-- AI·통합 담당의 변경을 포함해 모든 PR은 다른 팀원이 검토하고 사람이 병합한다.
-- Git 작업은 docs/GIT_WORKFLOW.md를 따른다. 개인정보·비밀키·DB·로그는 커밋하지 않는다.
-- 실패·미실행·미연결은 그대로 보고한다. 공고나 추천 성공을 만들지 않는다.
+현재 계약 4.1-draft는 검토 초안이며 main 승인 전이다.
+작업 전 README.md, docs/PROJECT.md, docs/OWNERSHIP.md, docs/GIT_WORKFLOW.md,
+contracts/CONTRACT.md, contracts/INTERNAL_APIS.md와 담당 폴더 AGENTS.md를 읽는다.
+
+- 건희: backend/의 서버·DB·API. 예원: frontend/ 화면과 API 연결.
+- 시영: data_pipeline/, data/raw/, data/normalized/의 실제 데이터와 검증.
+- 태환: recommender/의 AI 개발 및 별도 승인된 전체 통합.
+- 이번 초기화 보완은 사용자 승인으로 태환이 기존 codex/bootstrap을 이어 맡는다.
+  공통 모델·최소 골격·검사·인계 문서까지만 작성하며 타 담당 본개발은 하지 않는다.
+- 초기화 이후 shared/, contracts/, 루트 의존성·CI 변경은 태환 조율과 건희 및 영향 담당자의 검토를 받는다.
+- 한 브랜치는 한 작업자가 수정한다. main 직접 수정·push, 강제 push, 임의 reset/stash/삭제를 금지한다.
+- 사용자 승인 범위에서만 commit/push/PR 생성한다. 작성자 외 팀원이 검토하고 사람이 병합한다.
+- 프로필 원문·토큰·비밀키·DB·로그는 Git과 오류 응답에 남기지 않는다.
+- 검사는 README의 명령을 사용하고 실패·미실행·미구현을 그대로 보고한다.
+- 이번에는 외부 AI·추천 알고리즘·DB importer·실제 수집기·완성 UI를 구현하지 않는다.
+- 팀원 첫 작업: docs/tasks/initial/{backend,frontend,data,ai}.md.

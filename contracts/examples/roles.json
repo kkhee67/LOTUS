@@ -1,0 +1,21 @@
+[
+  {
+    "id": "synthetic-role",
+    "name": "가상 소프트웨어 직무",
+    "tasks": [
+      "프로그램 구현"
+    ],
+    "fields": [
+      "software"
+    ],
+    "preparation_skills": [
+      "기초 프로그래밍"
+    ],
+    "source_ids": [
+      "synthetic-source"
+    ],
+    "source_url": "https://example.org/roles",
+    "source_kind": "synthetic",
+    "checked_at": "2026-11-01T09:00:00+09:00"
+  }
+]

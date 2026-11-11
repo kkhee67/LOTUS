@@ -1,3 +1,5 @@
+> 아래는 f1997c3 기준 기존 초안의 기록입니다. 현재 보완 상태·검사는 [BOOTSTRAP_HANDOFF.md](BOOTSTRAP_HANDOFF.md)를 우선 확인하세요.
+
 # 백엔드 초기 초안 인계
 기준 SHA: 6fcc1821d5ca2c6662313d00ad974e5e86413cac
 브랜치: codex/bootstrap / 계약: 4.0-draft (태환 검토 전)

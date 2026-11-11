@@ -1,0 +1,17 @@
+{
+  "request": {
+    "profile": {
+      "goal": "개발 직무 알아보기"
+    }
+  },
+  "response": {
+    "steps": [
+      {
+        "title": "기초 학습",
+        "description": "선택 가능한 일반 준비 행동 예시",
+        "kind": "general_preparation"
+      }
+    ],
+    "warnings": []
+  }
+}

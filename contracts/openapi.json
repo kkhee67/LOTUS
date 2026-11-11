@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "LOTUS bootstrap draft",
-    "version": "4.0-draft"
+    "version": "4.1-draft"
   },
   "paths": {
     "/api/v1/health": {
@@ -14,7 +14,107 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/options": {
+      "get": {
+        "summary": "Get Options",
+        "operationId": "get_options_api_v1_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OptionsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -30,9 +130,290 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/Capability"
+                  },
+                  "type": "object",
+                  "title": "Response Capabilities Api V1 Capabilities Get"
+                }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/opportunities": {
+      "get": {
+        "summary": "Opportunities",
+        "operationId": "opportunities_api_v1_opportunities_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_Opportunity_"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/opportunities/{id}": {
+      "get": {
+        "summary": "Opportunity",
+        "operationId": "opportunity_api_v1_opportunities__id__get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Opportunity"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/resource-links": {
+      "get": {
+        "summary": "Resource Links",
+        "operationId": "resource_links_api_v1_resource_links_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_ResourceLink_"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
           }
         }
       }
@@ -56,16 +437,48 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/RecommendationApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           },
           "422": {
-            "description": "Validation Error",
+            "description": "Unprocessable Entity",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -75,14 +488,66 @@
     },
     "/api/v1/career-roles": {
       "post": {
-        "summary": "Career-Roles",
+        "summary": "Career Roles",
         "operationId": "career_roles_api_v1_career_roles_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleAdviceRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/RoleAdviceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -91,14 +556,66 @@
     },
     "/api/v1/activity-plan": {
       "post": {
-        "summary": "Activity-Plan",
+        "summary": "Activity Plan",
         "operationId": "activity_plan_api_v1_activity_plan_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityPlanResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -107,14 +624,66 @@
     },
     "/api/v1/interview-guide": {
       "post": {
-        "summary": "Interview-Guide",
+        "summary": "Interview Guide",
         "operationId": "interview_guide_api_v1_interview_guide_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterviewGuideRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/InterviewGuideResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -124,12 +693,786 @@
   },
   "components": {
     "schemas": {
+      "ActivityPlanRequest": {
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "role_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Role Ids"
+          },
+          "opportunity_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Opportunity Ids"
+          },
+          "allow_external_ai": {
+            "type": "boolean",
+            "title": "Allow External Ai",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "profile"
+        ],
+        "title": "ActivityPlanRequest"
+      },
+      "ActivityPlanResponse": {
+        "properties": {
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/PlanStep"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Steps"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "steps"
+        ],
+        "title": "ActivityPlanResponse"
+      },
+      "AgeRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "age",
+            "title": "Kind"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "eq",
+              "gte",
+              "lte"
+            ],
+            "title": "Operator"
+          },
+          "value": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 0.0,
+            "title": "Value"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "operator",
+          "value"
+        ],
+        "title": "AgeRule"
+      },
+      "AllRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "all",
+            "title": "Kind"
+          },
+          "rules": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/AgeRule"
+                },
+                {
+                  "$ref": "#/components/schemas/TextRule"
+                },
+                {
+                  "$ref": "#/components/schemas/EducationRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AllRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AnyRule"
+                },
+                {
+                  "$ref": "#/components/schemas/ExceptionRule"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "kind",
+                "mapping": {
+                  "age": "#/components/schemas/AgeRule",
+                  "all": "#/components/schemas/AllRule",
+                  "any": "#/components/schemas/AnyRule",
+                  "education": "#/components/schemas/EducationRule",
+                  "exception": "#/components/schemas/ExceptionRule",
+                  "text": "#/components/schemas/TextRule"
+                }
+              }
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Rules"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "rules"
+        ],
+        "title": "AllRule"
+      },
+      "AnyRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "any",
+            "title": "Kind"
+          },
+          "rules": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/AgeRule"
+                },
+                {
+                  "$ref": "#/components/schemas/TextRule"
+                },
+                {
+                  "$ref": "#/components/schemas/EducationRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AllRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AnyRule"
+                },
+                {
+                  "$ref": "#/components/schemas/ExceptionRule"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "kind",
+                "mapping": {
+                  "age": "#/components/schemas/AgeRule",
+                  "all": "#/components/schemas/AllRule",
+                  "any": "#/components/schemas/AnyRule",
+                  "education": "#/components/schemas/EducationRule",
+                  "exception": "#/components/schemas/ExceptionRule",
+                  "text": "#/components/schemas/TextRule"
+                }
+              }
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Rules"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "rules"
+        ],
+        "title": "AnyRule"
+      },
+      "ApplicationInfo": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "upcoming",
+              "closed",
+              "unknown"
+            ],
+            "title": "Status",
+            "default": "unknown"
+          },
+          "opens_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opens On"
+          },
+          "closes_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closes On"
+          },
+          "opens_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opens At"
+          },
+          "closes_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closes At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ApplicationInfo"
+      },
+      "Capability": {
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "implemented": {
+            "type": "boolean",
+            "title": "Implemented"
+          },
+          "unavailable_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unavailable Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "enabled",
+          "implemented"
+        ],
+        "title": "Capability"
+      },
+      "CertificationInfo": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "unknown"
+            ],
+            "title": "Status",
+            "default": "unknown"
+          },
+          "issuer": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Issuer"
+          },
+          "exam_sessions": {
+            "items": {
+              "$ref": "#/components/schemas/ExamSession"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Exam Sessions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "issuer"
+        ],
+        "title": "CertificationInfo"
+      },
+      "EducationRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "education",
+            "title": "Kind"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "in",
+              "not_in"
+            ],
+            "title": "Operator"
+          },
+          "values": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "enrolled",
+                "leave",
+                "graduating",
+                "graduated",
+                "other",
+                "unknown"
+              ]
+            },
+            "type": "array",
+            "maxItems": 7,
+            "minItems": 1,
+            "title": "Values"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "operator",
+          "values"
+        ],
+        "title": "EducationRule"
+      },
+      "EligibilityRule": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Id"
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Summary"
+          },
+          "expression": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AgeRule"
+              },
+              {
+                "$ref": "#/components/schemas/TextRule"
+              },
+              {
+                "$ref": "#/components/schemas/EducationRule"
+              },
+              {
+                "$ref": "#/components/schemas/AllRule"
+              },
+              {
+                "$ref": "#/components/schemas/AnyRule"
+              },
+              {
+                "$ref": "#/components/schemas/ExceptionRule"
+              }
+            ],
+            "title": "Expression",
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "age": "#/components/schemas/AgeRule",
+                "all": "#/components/schemas/AllRule",
+                "any": "#/components/schemas/AnyRule",
+                "education": "#/components/schemas/EducationRule",
+                "exception": "#/components/schemas/ExceptionRule",
+                "text": "#/components/schemas/TextRule"
+              }
+            }
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Evidence Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "summary",
+          "expression",
+          "evidence_ids"
+        ],
+        "title": "EligibilityRule"
+      },
+      "ErrorBody": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Message"
+          },
+          "details": {
+            "items": {
+              "$ref": "#/components/schemas/ErrorDetail"
+            },
+            "type": "array",
+            "title": "Details"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorBody"
+      },
+      "ErrorDetail": {
+        "properties": {
+          "field": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Field"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "field",
+          "message"
+        ],
+        "title": "ErrorDetail"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorBody"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse"
+      },
+      "EventSchedule": {
+        "properties": {
+          "starts_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ends On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "EventSchedule"
+      },
+      "Evidence": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Id"
+          },
+          "field": {
+            "type": "string",
+            "enum": [
+              "fields",
+              "related_majors",
+              "activities",
+              "requirements",
+              "eligibility_rules",
+              "experience_required",
+              "application",
+              "certification",
+              "regions",
+              "event_schedule",
+              "summary"
+            ],
+            "title": "Field"
+          },
+          "fact": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Fact"
+          },
+          "source_url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Source Url"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "field",
+          "fact",
+          "source_url"
+        ],
+        "title": "Evidence"
+      },
+      "ExamSession": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "application": {
+            "$ref": "#/components/schemas/ApplicationInfo"
+          },
+          "exam_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exam On"
+          },
+          "schedule_note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Schedule Note"
+          },
+          "source_url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Source Url"
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Checked At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "application",
+          "source_url",
+          "checked_at"
+        ],
+        "title": "ExamSession"
+      },
+      "ExceptionRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "exception",
+            "title": "Kind"
+          },
+          "base": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AgeRule"
+              },
+              {
+                "$ref": "#/components/schemas/TextRule"
+              },
+              {
+                "$ref": "#/components/schemas/EducationRule"
+              },
+              {
+                "$ref": "#/components/schemas/AllRule"
+              },
+              {
+                "$ref": "#/components/schemas/AnyRule"
+              },
+              {
+                "$ref": "#/components/schemas/ExceptionRule"
+              }
+            ],
+            "title": "Base",
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "age": "#/components/schemas/AgeRule",
+                "all": "#/components/schemas/AllRule",
+                "any": "#/components/schemas/AnyRule",
+                "education": "#/components/schemas/EducationRule",
+                "exception": "#/components/schemas/ExceptionRule",
+                "text": "#/components/schemas/TextRule"
+              }
+            }
+          },
+          "alternatives": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/AgeRule"
+                },
+                {
+                  "$ref": "#/components/schemas/TextRule"
+                },
+                {
+                  "$ref": "#/components/schemas/EducationRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AllRule"
+                },
+                {
+                  "$ref": "#/components/schemas/AnyRule"
+                },
+                {
+                  "$ref": "#/components/schemas/ExceptionRule"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "kind",
+                "mapping": {
+                  "age": "#/components/schemas/AgeRule",
+                  "all": "#/components/schemas/AllRule",
+                  "any": "#/components/schemas/AnyRule",
+                  "education": "#/components/schemas/EducationRule",
+                  "exception": "#/components/schemas/ExceptionRule",
+                  "text": "#/components/schemas/TextRule"
+                }
+              }
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Alternatives"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "base",
+          "alternatives"
+        ],
+        "title": "ExceptionRule"
+      },
       "Experience": {
         "properties": {
           "id": {
             "type": "string",
             "maxLength": 100,
             "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
             "title": "Id"
           },
           "kind": {
@@ -155,7 +1498,8 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2000
+                "maxLength": 4000,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -165,10 +1509,12 @@
           },
           "skills": {
             "items": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
             },
             "type": "array",
-            "maxItems": 30,
+            "maxItems": 50,
             "title": "Skills"
           },
           "start_month": {
@@ -205,28 +1551,795 @@
         ],
         "title": "Experience"
       },
-      "HTTPValidationError": {
+      "FieldOption": {
         "properties": {
-          "detail": {
+          "code": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Code"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "aliases": {
             "items": {
-              "$ref": "#/components/schemas/ValidationError"
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
             },
             "type": "array",
-            "title": "Detail"
+            "maxItems": 50,
+            "title": "Aliases"
           }
         },
+        "additionalProperties": false,
         "type": "object",
-        "title": "HTTPValidationError"
+        "required": [
+          "code",
+          "label"
+        ],
+        "title": "FieldOption"
       },
-      "RecommendationRequest": {
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          },
+          "contract_version": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Contract Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "contract_version"
+        ],
+        "title": "HealthResponse"
+      },
+      "InterviewGuideRequest": {
         "properties": {
           "profile": {
             "$ref": "#/components/schemas/UserProfile"
+          },
+          "role_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Role Ids"
+          },
+          "opportunity_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Opportunity Ids"
           },
           "allow_external_ai": {
             "type": "boolean",
             "title": "Allow External Ai",
             "default": false
+          },
+          "experience_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Experience Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "profile"
+        ],
+        "title": "InterviewGuideRequest"
+      },
+      "InterviewGuideResponse": {
+        "properties": {
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/PracticeQuestion"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Questions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "questions"
+        ],
+        "title": "InterviewGuideResponse"
+      },
+      "Opportunity": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "contest",
+              "competition",
+              "job",
+              "certification",
+              "event",
+              "training",
+              "project",
+              "notice"
+            ],
+            "title": "Type"
+          },
+          "subtype": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subtype"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "organization": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Organization"
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Summary"
+          },
+          "fields": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Fields"
+          },
+          "related_majors": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Related Majors"
+          },
+          "tags": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Tags"
+          },
+          "regions": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Regions"
+          },
+          "work_mode": {
+            "type": "string",
+            "enum": [
+              "onsite",
+              "remote",
+              "hybrid",
+              "unknown"
+            ],
+            "title": "Work Mode",
+            "default": "unknown"
+          },
+          "activities": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Activities"
+          },
+          "requirements": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Requirements"
+          },
+          "eligibility_rules": {
+            "items": {
+              "$ref": "#/components/schemas/EligibilityRule"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Eligibility Rules"
+          },
+          "requirements_coverage": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "partial",
+              "unknown"
+            ],
+            "title": "Requirements Coverage",
+            "default": "unknown"
+          },
+          "unresolved_conditions": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Unresolved Conditions"
+          },
+          "experience_required": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Required"
+          },
+          "application": {
+            "$ref": "#/components/schemas/ApplicationInfo"
+          },
+          "certification": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CertificationInfo"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_schedule": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EventSchedule"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Source Ids"
+          },
+          "source_url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Source Url"
+          },
+          "source_kind": {
+            "type": "string",
+            "enum": [
+              "real",
+              "synthetic"
+            ],
+            "title": "Source Kind"
+          },
+          "published_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published On"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published At"
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Checked At"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Evidence"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "title",
+          "organization",
+          "summary",
+          "source_ids",
+          "source_url",
+          "source_kind",
+          "checked_at"
+        ],
+        "title": "Opportunity"
+      },
+      "OptionsResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "approved"
+            ],
+            "title": "Status"
+          },
+          "opportunity_types": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "contest",
+                "competition",
+                "job",
+                "certification",
+                "event",
+                "training",
+                "project",
+                "notice"
+              ]
+            },
+            "type": "array",
+            "title": "Opportunity Types"
+          },
+          "education_statuses": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "enrolled",
+                "leave",
+                "graduating",
+                "graduated",
+                "other",
+                "unknown"
+              ]
+            },
+            "type": "array",
+            "title": "Education Statuses"
+          },
+          "experience_statuses": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "none",
+                "provided",
+                "unknown"
+              ]
+            },
+            "type": "array",
+            "title": "Experience Statuses"
+          },
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/FieldOption"
+            },
+            "type": "array",
+            "title": "Fields"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "opportunity_types",
+          "education_statuses",
+          "experience_statuses",
+          "fields"
+        ],
+        "title": "OptionsResponse"
+      },
+      "Page_Opportunity_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Offset"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "Page[Opportunity]"
+      },
+      "Page_ResourceLink_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceLink"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Offset"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "Page[ResourceLink]"
+      },
+      "PlanStep": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Description"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "general_preparation",
+              "opportunity"
+            ],
+            "title": "Kind"
+          },
+          "opportunity_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opportunity Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "title",
+          "description",
+          "kind"
+        ],
+        "title": "PlanStep"
+      },
+      "PracticeQuestion": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Question"
+          },
+          "preparation_tip": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Preparation Tip"
+          },
+          "experience_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Experience Ids"
+          },
+          "kind": {
+            "type": "string",
+            "const": "practice",
+            "title": "Kind",
+            "default": "practice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question",
+          "preparation_tip"
+        ],
+        "title": "PracticeQuestion"
+      },
+      "RecommendationApiItem": {
+        "properties": {
+          "recommendation": {
+            "$ref": "#/components/schemas/RecommendationItem"
+          },
+          "opportunity": {
+            "$ref": "#/components/schemas/Opportunity"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "recommendation",
+          "opportunity"
+        ],
+        "title": "RecommendationApiItem"
+      },
+      "RecommendationApiResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RecommendationApiItem"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Items"
+          },
+          "candidate_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Candidate Count"
+          },
+          "engine": {
+            "type": "string",
+            "enum": [
+              "rules",
+              "rules+llm"
+            ],
+            "title": "Engine"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "candidate_count",
+          "engine"
+        ],
+        "title": "RecommendationApiResponse"
+      },
+      "RecommendationItem": {
+        "properties": {
+          "opportunity_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Opportunity Id"
+          },
+          "relevance_score": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Relevance Score"
+          },
+          "eligibility": {
+            "type": "string",
+            "enum": [
+              "eligible",
+              "ineligible",
+              "unknown"
+            ],
+            "title": "Eligibility"
+          },
+          "reasons": {
+            "items": {
+              "$ref": "#/components/schemas/RecommendationReason"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Reasons"
+          },
+          "cautions": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Cautions"
+          },
+          "explanation_source": {
+            "type": "string",
+            "enum": [
+              "template",
+              "llm"
+            ],
+            "title": "Explanation Source"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "opportunity_id",
+          "relevance_score",
+          "eligibility",
+          "reasons",
+          "explanation_source"
+        ],
+        "title": "RecommendationItem"
+      },
+      "RecommendationReason": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Evidence Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "evidence_ids"
+        ],
+        "title": "RecommendationReason"
+      },
+      "RecommendationRequest": {
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/UserProfile"
           },
           "types": {
             "items": {
@@ -243,6 +2356,7 @@
               ]
             },
             "type": "array",
+            "maxItems": 8,
             "title": "Types"
           },
           "limit": {
@@ -251,6 +2365,11 @@
             "minimum": 1.0,
             "title": "Limit",
             "default": 8
+          },
+          "allow_external_ai": {
+            "type": "boolean",
+            "title": "Allow External Ai",
+            "default": false
           }
         },
         "additionalProperties": false,
@@ -259,6 +2378,219 @@
           "profile"
         ],
         "title": "RecommendationRequest"
+      },
+      "ResourceLink": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "official_site",
+              "job_board",
+              "mentoring_program"
+            ],
+            "title": "Kind"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Description"
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Url"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Source Ids"
+          },
+          "source_kind": {
+            "type": "string",
+            "enum": [
+              "real",
+              "synthetic"
+            ],
+            "title": "Source Kind"
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Checked At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "description",
+          "url",
+          "source_ids",
+          "source_kind",
+          "checked_at"
+        ],
+        "title": "ResourceLink"
+      },
+      "RoleAdviceItem": {
+        "properties": {
+          "role_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Role Id"
+          },
+          "explanation": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Explanation"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Source Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "role_id",
+          "explanation",
+          "source_ids"
+        ],
+        "title": "RoleAdviceItem"
+      },
+      "RoleAdviceRequest": {
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Limit",
+            "default": 5
+          },
+          "allow_external_ai": {
+            "type": "boolean",
+            "title": "Allow External Ai",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "profile"
+        ],
+        "title": "RoleAdviceRequest"
+      },
+      "RoleAdviceResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RoleAdviceItem"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Items"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "RoleAdviceResponse"
+      },
+      "TextRule": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "text",
+            "title": "Kind"
+          },
+          "field": {
+            "type": "string",
+            "enum": [
+              "school_id",
+              "major",
+              "residence_region"
+            ],
+            "title": "Field"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "in",
+              "not_in"
+            ],
+            "title": "Operator"
+          },
+          "values": {
+            "items": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "minItems": 1,
+            "title": "Values"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "field",
+          "operator",
+          "values"
+        ],
+        "title": "TextRule"
       },
       "UserProfile": {
         "properties": {
@@ -279,7 +2611,9 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
               },
               {
                 "type": "null"
@@ -291,7 +2625,8 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 200
+                "maxLength": 200,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -329,7 +2664,8 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 200
+                "maxLength": 200,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -339,17 +2675,20 @@
           },
           "interests": {
             "items": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
             },
             "type": "array",
-            "maxItems": 30,
+            "maxItems": 50,
             "title": "Interests"
           },
           "residence_region": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 100
+                "maxLength": 200,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -377,25 +2716,30 @@
           },
           "preferred_job_fields": {
             "items": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
             },
             "type": "array",
-            "maxItems": 30,
+            "maxItems": 50,
             "title": "Preferred Job Fields"
           },
           "preferred_job_regions": {
             "items": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
             },
             "type": "array",
-            "maxItems": 30,
+            "maxItems": 50,
             "title": "Preferred Job Regions"
           },
           "goal": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2000
+                "maxLength": 4000,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -407,46 +2751,6 @@
         "additionalProperties": false,
         "type": "object",
         "title": "UserProfile"
-      },
-      "ValidationError": {
-        "properties": {
-          "loc": {
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "type": "array",
-            "title": "Location"
-          },
-          "msg": {
-            "type": "string",
-            "title": "Message"
-          },
-          "type": {
-            "type": "string",
-            "title": "Error Type"
-          },
-          "input": {
-            "title": "Input"
-          },
-          "ctx": {
-            "type": "object",
-            "title": "Context"
-          }
-        },
-        "type": "object",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
-        "title": "ValidationError"
       }
     }
   }

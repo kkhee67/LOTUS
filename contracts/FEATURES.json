@@ -1,18 +1,32 @@
 {
   "recommendations": {
     "enabled": false,
-    "implemented": false
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
   },
   "career-roles": {
     "enabled": false,
-    "implemented": false
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
   },
   "activity-plan": {
     "enabled": false,
-    "implemented": false
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
   },
   "interview-guide": {
     "enabled": false,
-    "implemented": false
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
+  },
+  "opportunities": {
+    "enabled": false,
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
+  },
+  "resource-links": {
+    "enabled": false,
+    "implemented": false,
+    "unavailable_reason": "초기화 골격: 미구현"
   }
 }

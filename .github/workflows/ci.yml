@@ -3,25 +3,29 @@ on: [pull_request, push]
 permissions:
   contents: read
 jobs:
-  python:
+  contracts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - run: pip install -r requirements.txt
-      - run: python -m pytest backend/tests
-      - run: python -m scripts.export_openapi
-      - run: git diff --exit-code -- contracts/openapi.json
-  frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+          python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
+      - run: pip install -r requirements.txt
+      - run: pip check
+      - run: python -m pytest backend/tests tests/integration -q
+      - run: python -m scripts.validate_examples
+      - run: python -m scripts.check_generated
       - run: npm ci
+        working-directory: frontend
+      - run: npm run check:generated
+        working-directory: frontend
+      - run: npm run typecheck
+        working-directory: frontend
+      - run: npm test
         working-directory: frontend
       - run: npm run build
         working-directory: frontend
+      - run: python -m scripts.smoke_servers

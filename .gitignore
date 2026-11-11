@@ -10,3 +10,16 @@ runtime/*
 !runtime/.gitkeep
 *.log
 *.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+profiles/
+profile_dumps/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/

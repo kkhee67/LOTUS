@@ -1,3 +1,5 @@
+> 아래는 f1997c3 기준 기존 초안의 기록입니다. 현재 보완 상태·검사는 [BOOTSTRAP_HANDOFF.md](BOOTSTRAP_HANDOFF.md)를 우선 확인하세요.
+
 # 태환에게 전달할 초안
 백엔드 초기 틀을 준비했어. 기술은 프롬프트의 React·TypeScript·Vite / FastAPI·Pydantic / SQLite 기준이야.
 전체 통합은 네 담당이고 나는 초기 프로젝트·서버·DB·API를 맡도록 문서를 정정했어.
