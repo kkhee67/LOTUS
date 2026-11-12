@@ -1,3 +1,12 @@
+# 현재 백엔드 작업 — SQLite importer
+
+최신 실행 방법·구현 범위·검사 결과는 [importer 인계](handoffs/import-validation/MAIN_VALIDATION.md)를 확인하세요.
+기준 main cd8c0ca / 브랜치 backend/sqlite-importer / 계약 4.1-draft.
+로컬 전용31개·백엔드/통합125개 통과. 자료 입력은 구현됐고 조회 API·추천 연결은 다음 작업입니다.
+사용자가 importer 브랜치 커밋·push를 승인했습니다. PR 생성과 main 병합은 별도 단계입니다.
+
+---
+
 > 아래는 f1997c3 기준 기존 초안의 기록입니다. 현재 보완 상태·검사는 [BOOTSTRAP_HANDOFF.md](BOOTSTRAP_HANDOFF.md)를 우선 확인하세요.
 
 # 백엔드 초기 초안 인계
