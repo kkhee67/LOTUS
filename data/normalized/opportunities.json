@@ -1,0 +1,191 @@
+[
+  {
+    "id": "dankook-recruitment-186370",
+    "type": "job",
+    "subtype": "contract",
+    "title": "[단국C-앵커사업단] 프로젝트 계약직(연구원) 채용 공고",
+    "organization": "단국대학교",
+    "summary": "천안캠퍼스에서 충남 앵커사업의 행정과 사업 운영을 지원하는 프로젝트 계약직 연구원을 모집한다.",
+    "fields": [],
+    "regions": [
+      "충남 천안"
+    ],
+    "activities": [
+      "충남 앵커사업 운영을 위한 행정 및 사업 지원"
+    ],
+    "requirements": [
+      "학사학위 이상 소지 또는 학사학위 취득 예정",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함",
+      "남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함"
+    ],
+    "requirements_coverage": "partial",
+    "unresolved_conditions": [
+      "학사학위 이상 소지 또는 학사학위 취득 예정",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함",
+      "남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함"
+    ],
+    "experience_required": null,
+    "application": {
+      "status": "open"
+    },
+    "source_ids": [
+      "dankook-recruitment"
+    ],
+    "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186370&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome",
+    "source_kind": "real",
+    "published_on": "2026-11-05",
+    "checked_at": "2026-11-12T21:00:39+09:00",
+    "evidence": [
+      {
+        "id": "duties",
+        "field": "activities",
+        "fact": "충남 앵커사업 운영을 위한 행정 및 사업 지원",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186370&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "conditions",
+        "field": "requirements",
+        "fact": "학사학위 이상 소지 또는 학사학위 취득 예정 / 교육공무원 임용 결격사유에 해당하지 않아야 함 / 남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186370&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "application",
+        "field": "application",
+        "fact": "원문에 상시모집 및 이메일 접수가 명시되어 있다. 접수 시작일과 마감일은 기재되어 있지 않다.",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186370&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "experience",
+        "field": "experience_required",
+        "fact": "국책사업 행정·지원 또는 산학협력단 과제 관리 경력은 우대 조건이다.",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186370&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      }
+    ]
+  },
+  {
+    "id": "dankook-recruitment-186367",
+    "type": "job",
+    "subtype": "contract",
+    "title": "울트라앵커사업단(초광역 성장엔진 인재육성사업) 프로젝트 계약직 채용 공고(~11.18까지 접수)",
+    "organization": "단국대학교",
+    "summary": "단국대학교 천안캠퍼스에서 초광역 성장엔진 인재육성 사업을 지원할 프로젝트 계약직을 모집한다.",
+    "fields": [],
+    "regions": [
+      "충남 천안"
+    ],
+    "activities": [
+      "초광역 성장엔진 인재육성 사업의 행정 및 운영 지원"
+    ],
+    "requirements": [
+      "학사학위 이상 소지",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함",
+      "남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함"
+    ],
+    "requirements_coverage": "partial",
+    "unresolved_conditions": [
+      "학사학위 이상 소지",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함",
+      "남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함"
+    ],
+    "experience_required": null,
+    "application": {
+      "status": "open",
+      "closes_at": "2026-11-18T23:59:00+09:00"
+    },
+    "source_ids": [
+      "dankook-recruitment"
+    ],
+    "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186367&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome",
+    "source_kind": "real",
+    "published_on": "2026-11-05",
+    "checked_at": "2026-11-12T20:48:39+09:00",
+    "evidence": [
+      {
+        "id": "duties",
+        "field": "activities",
+        "fact": "초광역 성장엔진 인재육성 사업의 행정 및 운영 지원",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186367&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "conditions",
+        "field": "requirements",
+        "fact": "학사학위 이상 소지 / 교육공무원 임용 결격사유에 해당하지 않아야 함 / 남성 지원자는 병역 이행 또는 면제 요건을 충족해야 함",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186367&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "application",
+        "field": "application",
+        "fact": "이메일 접수 마감은 2026년 11월 18일 23시 59분이다. 접수 시작일은 원문에 기재되어 있지 않다.",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186367&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "experience",
+        "field": "experience_required",
+        "fact": "국책사업의 행정 또는 지원 업무 경력은 우대 조건이다.",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186367&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      }
+    ]
+  },
+  {
+    "id": "dankook-recruitment-186322",
+    "type": "job",
+    "subtype": null,
+    "title": "[채용]의과대학 학사조교 채용 공고(12월 1일자 임용)",
+    "organization": "단국대학교",
+    "summary": "단국대학교 의과대학 의학과의 행정을 지원하는 학사조교를 모집한 공고다.",
+    "fields": [],
+    "regions": [
+      "충남 천안"
+    ],
+    "activities": [
+      "의과대학 의학과 학사 행정 지원"
+    ],
+    "requirements": [
+      "4년제 대학 졸업 및 학사학위 소지",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함"
+    ],
+    "requirements_coverage": "partial",
+    "unresolved_conditions": [
+      "4년제 대학 졸업 및 학사학위 소지",
+      "교육공무원 임용 결격사유에 해당하지 않아야 함"
+    ],
+    "experience_required": null,
+    "application": {
+      "status": "closed",
+      "closes_at": "2026-11-11T11:00:00+09:00"
+    },
+    "source_ids": [
+      "dankook-recruitment"
+    ],
+    "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186322&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome",
+    "source_kind": "real",
+    "published_on": "2026-10-20",
+    "checked_at": "2026-11-12T21:00:39+09:00",
+    "evidence": [
+      {
+        "id": "duties",
+        "field": "activities",
+        "fact": "의과대학 의학과 학사 행정 지원",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186322&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "conditions",
+        "field": "requirements",
+        "fact": "4년제 대학 졸업 및 학사학위 소지 / 교육공무원 임용 결격사유에 해당하지 않아야 함",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186322&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "application",
+        "field": "application",
+        "fact": "이메일 또는 방문 접수의 제출 기한은 2026년 11월 11일 오전 11시였다. 접수 시작일은 원문에 기재되어 있지 않다.",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186322&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome"
+      },
+      {
+        "id": "location",
+        "field": "regions",
+        "fact": "충남 천안",
+        "source_url": "https://cms.dankook.ac.kr/ko/web/kor/-512"
+      }
+    ]
+  }
+]

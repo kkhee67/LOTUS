@@ -15,7 +15,8 @@ jobs:
           node-version: '24'
       - run: pip install -r requirements.txt
       - run: pip check
-      - run: python -m pytest backend/tests tests/integration -q
+      - run: python -m pytest data_pipeline/tests backend/tests tests/integration -q
+      - run: python -m data_pipeline.normalize --validate-only
       - run: python -m scripts.validate_examples
       - run: python -m scripts.check_generated
       - run: npm ci
