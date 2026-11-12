@@ -39,4 +39,5 @@ $lotusCheck = Join-Path runtime ('verify-data-' + [guid]::NewGuid().ToString('N'
 
 원문 열람과 기록은 수동이다. 실제 배치는 `data/normalized/`에 저장한다.
 합성 계약 예시는 `contracts/examples/`에서 별도로 검사한다.
-검토 기준, 원문 링크, 건희·태환 인계 사항은 [데이터 인계와 PR 초안](HANDOFF.md)을 참고한다.
+정규화 JSON은 Windows에서도 LF 줄바꿈을 유지해 새로 체크아웃한 파일과 재생성한 파일을 그대로 비교할 수 있다.
+검토 기준, 원문 링크, 건희·태환 인계 사항은 [데이터 인계](HANDOFF.md)를 참고한다.
