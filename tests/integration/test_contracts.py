@@ -169,7 +169,7 @@ def test_env_file_and_validation(tmp_path):
 
 
 @pytest.mark.parametrize('fn,request_model,args', [
-    (recommend,RecommendationRequest,([],)),(suggest_roles,RoleAdviceRequest,([],)),
+    (suggest_roles,RoleAdviceRequest,([],)),
     (make_plan,ActivityPlanRequest,([],[])),(make_interview_guide,InterviewGuideRequest,([],[]))])
 def test_internal_functions_explicitly_unavailable(fn, request_model, args):
     req = request_model(profile={'goal':'준비'})
@@ -185,3 +185,17 @@ def test_server_error_hides_exception():
     response = asyncio.run(server_error(None, RuntimeError('private-value')))
     assert response.status_code == 500
     assert b'private-value' not in response.body
+
+
+def test_basic_recommendation_internal_contract_and_http_remains_unavailable():
+    req = RecommendationRequest(profile={'interests': ['개발']})
+    before = req.model_dump()
+    result = recommend(req, validate_examples()['opportunities'], now=NOW)
+    assert result.engine == 'rules'
+    assert result.candidate_count == 1
+    assert result.items[0].opportunity_id == 'synthetic-job'
+    assert result.items[0].eligibility == 'unknown'
+    assert req.model_dump() == before
+    response = client.post('/api/v1/recommendations', json=req.model_dump(mode='json'))
+    assert response.status_code == 503
+    assert response.json()['error']['code'] == 'FEATURE_UNAVAILABLE'
