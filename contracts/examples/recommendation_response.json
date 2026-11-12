@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "opportunity_id": "synthetic-job",
+      "relevance_score": 70,
+      "eligibility": "unknown",
+      "reasons": [
+        {
+          "text": "가상 관심 분야와 공고의 개발 활동을 연결한 형식 예시",
+          "evidence_ids": [
+            "ev-activity"
+          ]
+        }
+      ],
+      "cautions": [
+        "합성 응답이며 실제 추천 계산 결과가 아닙니다."
+      ],
+      "explanation_source": "template"
+    }
+  ],
+  "candidate_count": 1,
+  "engine": "rules",
+  "warnings": []
+}

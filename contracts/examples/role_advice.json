@@ -1,0 +1,19 @@
+{
+  "request": {
+    "profile": {
+      "goal": "개발 직무 알아보기"
+    }
+  },
+  "response": {
+    "items": [
+      {
+        "role_id": "synthetic-role",
+        "explanation": "형식 검증용 설명",
+        "source_ids": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

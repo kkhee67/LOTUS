@@ -1,1 +1,78 @@
-# LOTUS
+# LOTUS — 청년 진로·취업 안내
+경험이 부족한 청년이 자신의 관심과 상황을 입력하면 관련 기회, 지원 전 확인 사항,
+직무와 준비 활동을 안내하는 서비스입니다. 현재는 **초기 공통 기반 검토 초안**입니다.
+실제 공고나 추천 결과를 제공하는 완성 서비스가 아닙니다.
+
+## 기술과 환경
+React 19 + TypeScript 5 + Vite 8 / Python 3.12 + FastAPI + Pydantic / SQLite(예약, 미구현).
+검증 환경: Python 3.12.7, Node 24.18.0, npm 11.16.0. CI도 Python 3.12 / Node 24를 사용합니다.
+Python은 venv + pip, 프론트는 npm으로 통일합니다. requirements.txt는 실제 가상환경의 pip freeze,
+frontend/package-lock.json은 실제 npm으로 생성했습니다. 설치는 고정된 파일을 사용합니다.
+TypeScript 7.0.2는 openapi-typescript 7.13.0의 peer 범위(^5.x)와 충돌하여 5 계열로 변경했습니다.
+강제 설치나 legacy-peer-deps는 사용하지 않습니다.
+
+## 설치·실행 (Windows PowerShell, 저장소 루트)
+```powershell
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+Copy-Item frontend/.env.example frontend/.env.local
+npm --prefix frontend ci
+.venv\Scripts\python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --no-access-log
+```
+환경 파일 복사는 최초 한 번만 하며 기존 사용자 설정을 덮어쓰지 않습니다.
+별도 터미널에서 `npm --prefix frontend run dev`를 실행합니다. 종료는 각 터미널 Ctrl+C입니다.
+프론트: http://localhost:5173 / 서버: http://localhost:8000 / API 문서: http://localhost:8000/docs.
+Linux/macOS에서는 `.venv/Scripts/python` 대신 `.venv/bin/python`을 사용합니다.
+
+## 환경변수
+backend/settings.py가 저장소 루트 .env를 읽으며 실제 환경변수가 우선합니다.
+- CORS_ORIGINS: 쉼표로 구분한 프론트 origin. 기본 http://localhost:5173.
+- DATABASE_URL: 기본 sqlite:///runtime/lotus.db. 설정 골격만 있으며 DB 생성·접속 없음.
+- DATA_MODE: demo 또는 real. 후속 importer의 자료 분리용이며 현재 자동 로딩 없음.
+- frontend/.env.local의 VITE_API_BASE_URL: 서버 주소만, 기본 http://localhost:8000.
+  /api/v1을 붙이면 오류로 거부합니다. VITE_*는 공개되므로 비밀키를 넣지 않습니다.
+외부 AI와 비밀키는 필요하지 않습니다. 프로필 저장 기능도 없습니다.
+
+## 검사·명세 생성
+```powershell
+.venv\Scripts\python -m pip check
+.venv\Scripts\python -m pytest backend/tests tests/integration -q
+.venv\Scripts\python -m scripts.validate_examples
+.venv\Scripts\python -m scripts.export_openapi
+.venv\Scripts\python -m scripts.export_contracts
+npm --prefix frontend run generate:types
+.venv\Scripts\python -m scripts.check_generated
+npm --prefix frontend run check:generated
+npm --prefix frontend run typecheck
+npm --prefix frontend test
+npm --prefix frontend run build
+.venv\Scripts\python -m scripts.smoke_servers
+```
+명세는 실제 모델·라우트에서 생성하고 프론트 타입은 그 OpenAPI에서 생성합니다.
+생성 파일을 직접 편집하지 않습니다. smoke_servers는 임시 포트에서 실제 서버 프로세스를 실행하고 종료합니다.
+브라우저 렌더링 검사와 실제 서비스 통합 테스트는 별도입니다.
+
+## 현재 구현 상태
+health, options, capabilities, CORS, .env 로딩, 공통 오류 응답, 최소 프론트 상태 화면,
+공통 모델·검증·날짜 계산·합성 예시·명세/타입 생성이 구현되어 있습니다.
+공고 목록/상세, 링크, 추천·직무·활동·면접 API는 503 FEATURE_UNAVAILABLE입니다.
+유효하지 않은 입력은 422, 알 수 없는 라우트는 404입니다.
+미구현을 성공한 빈 목록으로 반환하지 않습니다. 내부 AI 함수도 FeatureUnavailableError를 발생시킵니다.
+DB, importer, 실제 수집, 추천 알고리즘, 완성 UI, 외부 AI, 배포는 미구현입니다.
+
+## 폴더와 협업
+| 폴더 | 담당/용도 |
+|---|---|
+| frontend | 예원: 화면·API client |
+| backend | 건희: 서버·DB·API |
+| recommender | 태환: 추천·진로 안내 |
+| data_pipeline, data/raw, data/normalized | 시영: 실제 자료 |
+| shared, contracts | 공동 모델·규칙·계약·예시 |
+| tests/integration | 태환 조율: 연결 검사 |
+| runtime | 로컬 DB·로그, Git 제외 |
+| docs | 기획·역할·검토·인계 |
+
+[기획](docs/PROJECT.md) · [소유권](docs/OWNERSHIP.md) · [Git 절차](docs/GIT_WORKFLOW.md) ·
+[계약](contracts/CONTRACT.md) · [인계·검증 결과](docs/BOOTSTRAP_HANDOFF.md).
+팀원은 main 검토·반영 후 docs/tasks/initial의 자기 역할 문서로 시작합니다.

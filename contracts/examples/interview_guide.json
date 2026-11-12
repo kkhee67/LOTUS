@@ -1,0 +1,18 @@
+{
+  "request": {
+    "profile": {
+      "goal": "개발 직무 알아보기"
+    }
+  },
+  "response": {
+    "questions": [
+      {
+        "question": "관심 분야를 선택한 이유는 무엇인가요?",
+        "preparation_tip": "실제 생각을 바탕으로 답하세요.",
+        "experience_ids": [],
+        "kind": "practice"
+      }
+    ],
+    "warnings": []
+  }
+}

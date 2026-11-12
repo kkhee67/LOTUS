@@ -1,0 +1,10 @@
+[
+  {
+    "id": "synthetic-source",
+    "name": "가상 예시 기관",
+    "url": "https://example.org/",
+    "kind": "official",
+    "source_kind": "synthetic",
+    "checked_at": "2026-11-01T09:00:00+09:00"
+  }
+]

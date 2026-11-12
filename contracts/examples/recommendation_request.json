@@ -1,0 +1,17 @@
+{
+  "source_kind": "synthetic",
+  "request": {
+    "profile": {
+      "major": "소프트웨어",
+      "interests": [
+        "클라우드"
+      ],
+      "experience_status": "none"
+    },
+    "allow_external_ai": false,
+    "types": [
+      "job"
+    ],
+    "limit": 8
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "synthetic-link",
+    "name": "가상 멘토링 안내",
+    "kind": "mentoring_program",
+    "description": "실제 매칭이 아닌 링크 구조 예시",
+    "url": "https://example.org/mentoring",
+    "source_ids": [
+      "synthetic-source"
+    ],
+    "source_kind": "synthetic",
+    "checked_at": "2026-11-01T09:00:00+09:00"
+  }
+]

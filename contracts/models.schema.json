@@ -1,0 +1,2213 @@
+{
+  "$defs": {
+    "ActivityPlanRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/UserProfile"
+        },
+        "role_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Role Ids",
+          "type": "array"
+        },
+        "opportunity_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Opportunity Ids",
+          "type": "array"
+        },
+        "allow_external_ai": {
+          "default": false,
+          "title": "Allow External Ai",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "ActivityPlanRequest",
+      "type": "object"
+    },
+    "ActivityPlanResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/PlanStep"
+          },
+          "maxItems": 20,
+          "title": "Steps",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "steps"
+      ],
+      "title": "ActivityPlanResponse",
+      "type": "object"
+    },
+    "AgeRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "age",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "gte",
+            "lte"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "value": {
+          "maximum": 120,
+          "minimum": 0,
+          "title": "Value",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "operator",
+        "value"
+      ],
+      "title": "AgeRule",
+      "type": "object"
+    },
+    "AllRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "all",
+          "title": "Kind",
+          "type": "string"
+        },
+        "rules": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "age": "#/$defs/AgeRule",
+                "all": "#/$defs/AllRule",
+                "any": "#/$defs/AnyRule",
+                "education": "#/$defs/EducationRule",
+                "exception": "#/$defs/ExceptionRule",
+                "text": "#/$defs/TextRule"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AgeRule"
+              },
+              {
+                "$ref": "#/$defs/TextRule"
+              },
+              {
+                "$ref": "#/$defs/EducationRule"
+              },
+              {
+                "$ref": "#/$defs/AllRule"
+              },
+              {
+                "$ref": "#/$defs/AnyRule"
+              },
+              {
+                "$ref": "#/$defs/ExceptionRule"
+              }
+            ]
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "rules"
+      ],
+      "title": "AllRule",
+      "type": "object"
+    },
+    "AnyRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "any",
+          "title": "Kind",
+          "type": "string"
+        },
+        "rules": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "age": "#/$defs/AgeRule",
+                "all": "#/$defs/AllRule",
+                "any": "#/$defs/AnyRule",
+                "education": "#/$defs/EducationRule",
+                "exception": "#/$defs/ExceptionRule",
+                "text": "#/$defs/TextRule"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AgeRule"
+              },
+              {
+                "$ref": "#/$defs/TextRule"
+              },
+              {
+                "$ref": "#/$defs/EducationRule"
+              },
+              {
+                "$ref": "#/$defs/AllRule"
+              },
+              {
+                "$ref": "#/$defs/AnyRule"
+              },
+              {
+                "$ref": "#/$defs/ExceptionRule"
+              }
+            ]
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "rules"
+      ],
+      "title": "AnyRule",
+      "type": "object"
+    },
+    "ApplicationInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "open",
+            "upcoming",
+            "closed",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "opens_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opens On"
+        },
+        "closes_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Closes On"
+        },
+        "opens_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opens At"
+        },
+        "closes_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Closes At"
+        }
+      },
+      "title": "ApplicationInfo",
+      "type": "object"
+    },
+    "Capability": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "implemented": {
+          "title": "Implemented",
+          "type": "boolean"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unavailable Reason"
+        }
+      },
+      "required": [
+        "enabled",
+        "implemented"
+      ],
+      "title": "Capability",
+      "type": "object"
+    },
+    "CertificationInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "active",
+            "inactive",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "issuer": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Issuer",
+          "type": "string"
+        },
+        "exam_sessions": {
+          "items": {
+            "$ref": "#/$defs/ExamSession"
+          },
+          "maxItems": 100,
+          "title": "Exam Sessions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "issuer"
+      ],
+      "title": "CertificationInfo",
+      "type": "object"
+    },
+    "EducationRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "education",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "in",
+            "not_in"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "enum": [
+              "enrolled",
+              "leave",
+              "graduating",
+              "graduated",
+              "other",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 1,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "operator",
+        "values"
+      ],
+      "title": "EducationRule",
+      "type": "object"
+    },
+    "EligibilityRule": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "age": "#/$defs/AgeRule",
+              "all": "#/$defs/AllRule",
+              "any": "#/$defs/AnyRule",
+              "education": "#/$defs/EducationRule",
+              "exception": "#/$defs/ExceptionRule",
+              "text": "#/$defs/TextRule"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/AgeRule"
+            },
+            {
+              "$ref": "#/$defs/TextRule"
+            },
+            {
+              "$ref": "#/$defs/EducationRule"
+            },
+            {
+              "$ref": "#/$defs/AllRule"
+            },
+            {
+              "$ref": "#/$defs/AnyRule"
+            },
+            {
+              "$ref": "#/$defs/ExceptionRule"
+            }
+          ],
+          "title": "Expression"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "summary",
+        "expression",
+        "evidence_ids"
+      ],
+      "title": "EligibilityRule",
+      "type": "object"
+    },
+    "ErrorBody": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/$defs/ErrorDetail"
+          },
+          "title": "Details",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ErrorBody",
+      "type": "object"
+    },
+    "ErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Field",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "message"
+      ],
+      "title": "ErrorDetail",
+      "type": "object"
+    },
+    "ErrorResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "$ref": "#/$defs/ErrorBody"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "title": "ErrorResponse",
+      "type": "object"
+    },
+    "EventSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Starts On"
+        },
+        "ends_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ends On"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "title": "EventSchedule",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "fields",
+            "related_majors",
+            "activities",
+            "requirements",
+            "eligibility_rules",
+            "experience_required",
+            "application",
+            "certification",
+            "regions",
+            "event_schedule",
+            "summary"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "fact": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Fact",
+          "type": "string"
+        },
+        "source_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "field",
+        "fact",
+        "source_url"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "ExamSession": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "application": {
+          "$ref": "#/$defs/ApplicationInfo"
+        },
+        "exam_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exam On"
+        },
+        "schedule_note": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schedule Note"
+        },
+        "source_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "application",
+        "source_url",
+        "checked_at"
+      ],
+      "title": "ExamSession",
+      "type": "object"
+    },
+    "ExceptionRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "exception",
+          "title": "Kind",
+          "type": "string"
+        },
+        "base": {
+          "discriminator": {
+            "mapping": {
+              "age": "#/$defs/AgeRule",
+              "all": "#/$defs/AllRule",
+              "any": "#/$defs/AnyRule",
+              "education": "#/$defs/EducationRule",
+              "exception": "#/$defs/ExceptionRule",
+              "text": "#/$defs/TextRule"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/AgeRule"
+            },
+            {
+              "$ref": "#/$defs/TextRule"
+            },
+            {
+              "$ref": "#/$defs/EducationRule"
+            },
+            {
+              "$ref": "#/$defs/AllRule"
+            },
+            {
+              "$ref": "#/$defs/AnyRule"
+            },
+            {
+              "$ref": "#/$defs/ExceptionRule"
+            }
+          ],
+          "title": "Base"
+        },
+        "alternatives": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "age": "#/$defs/AgeRule",
+                "all": "#/$defs/AllRule",
+                "any": "#/$defs/AnyRule",
+                "education": "#/$defs/EducationRule",
+                "exception": "#/$defs/ExceptionRule",
+                "text": "#/$defs/TextRule"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AgeRule"
+              },
+              {
+                "$ref": "#/$defs/TextRule"
+              },
+              {
+                "$ref": "#/$defs/EducationRule"
+              },
+              {
+                "$ref": "#/$defs/AllRule"
+              },
+              {
+                "$ref": "#/$defs/AnyRule"
+              },
+              {
+                "$ref": "#/$defs/ExceptionRule"
+              }
+            ]
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "base",
+        "alternatives"
+      ],
+      "title": "ExceptionRule",
+      "type": "object"
+    },
+    "Experience": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "course_project",
+            "contest",
+            "club",
+            "volunteer",
+            "internship",
+            "employment",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "skills": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Skills",
+          "type": "array"
+        },
+        "start_month": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Month"
+        },
+        "end_month": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Month"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "title"
+      ],
+      "title": "Experience",
+      "type": "object"
+    },
+    "FieldOption": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Code",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "aliases": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Aliases",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "label"
+      ],
+      "title": "FieldOption",
+      "type": "object"
+    },
+    "HealthResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "ok",
+          "title": "Status",
+          "type": "string"
+        },
+        "contract_version": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Contract Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "contract_version"
+      ],
+      "title": "HealthResponse",
+      "type": "object"
+    },
+    "InterviewGuideRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/UserProfile"
+        },
+        "role_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Role Ids",
+          "type": "array"
+        },
+        "opportunity_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Opportunity Ids",
+          "type": "array"
+        },
+        "allow_external_ai": {
+          "default": false,
+          "title": "Allow External Ai",
+          "type": "boolean"
+        },
+        "experience_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Experience Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "InterviewGuideRequest",
+      "type": "object"
+    },
+    "InterviewGuideResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "items": {
+            "$ref": "#/$defs/PracticeQuestion"
+          },
+          "maxItems": 20,
+          "title": "Questions",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "questions"
+      ],
+      "title": "InterviewGuideResponse",
+      "type": "object"
+    },
+    "Opportunity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "contest",
+            "competition",
+            "job",
+            "certification",
+            "event",
+            "training",
+            "project",
+            "notice"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "subtype": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subtype"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "organization": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Organization",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "fields": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Fields",
+          "type": "array"
+        },
+        "related_majors": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Related Majors",
+          "type": "array"
+        },
+        "tags": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Tags",
+          "type": "array"
+        },
+        "regions": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Regions",
+          "type": "array"
+        },
+        "work_mode": {
+          "default": "unknown",
+          "enum": [
+            "onsite",
+            "remote",
+            "hybrid",
+            "unknown"
+          ],
+          "title": "Work Mode",
+          "type": "string"
+        },
+        "activities": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Activities",
+          "type": "array"
+        },
+        "requirements": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "eligibility_rules": {
+          "items": {
+            "$ref": "#/$defs/EligibilityRule"
+          },
+          "maxItems": 50,
+          "title": "Eligibility Rules",
+          "type": "array"
+        },
+        "requirements_coverage": {
+          "default": "unknown",
+          "enum": [
+            "complete",
+            "partial",
+            "unknown"
+          ],
+          "title": "Requirements Coverage",
+          "type": "string"
+        },
+        "unresolved_conditions": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Unresolved Conditions",
+          "type": "array"
+        },
+        "experience_required": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Experience Required"
+        },
+        "application": {
+          "$ref": "#/$defs/ApplicationInfo"
+        },
+        "certification": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CertificationInfo"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "event_schedule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EventSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "source_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "real",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "published_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published On"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published At"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 100,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "title",
+        "organization",
+        "summary",
+        "source_ids",
+        "source_url",
+        "source_kind",
+        "checked_at"
+      ],
+      "title": "Opportunity",
+      "type": "object"
+    },
+    "OptionsResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "approved"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "opportunity_types": {
+          "items": {
+            "enum": [
+              "contest",
+              "competition",
+              "job",
+              "certification",
+              "event",
+              "training",
+              "project",
+              "notice"
+            ],
+            "type": "string"
+          },
+          "title": "Opportunity Types",
+          "type": "array"
+        },
+        "education_statuses": {
+          "items": {
+            "enum": [
+              "enrolled",
+              "leave",
+              "graduating",
+              "graduated",
+              "other",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "title": "Education Statuses",
+          "type": "array"
+        },
+        "experience_statuses": {
+          "items": {
+            "enum": [
+              "none",
+              "provided",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "title": "Experience Statuses",
+          "type": "array"
+        },
+        "fields": {
+          "items": {
+            "$ref": "#/$defs/FieldOption"
+          },
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "opportunity_types",
+        "education_statuses",
+        "experience_statuses",
+        "fields"
+      ],
+      "title": "OptionsResponse",
+      "type": "object"
+    },
+    "PlanStep": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "general_preparation",
+            "opportunity"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "opportunity_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opportunity Id"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "kind"
+      ],
+      "title": "PlanStep",
+      "type": "object"
+    },
+    "PracticeQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "preparation_tip": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Preparation Tip",
+          "type": "string"
+        },
+        "experience_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Experience Ids",
+          "type": "array"
+        },
+        "kind": {
+          "const": "practice",
+          "default": "practice",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question",
+        "preparation_tip"
+      ],
+      "title": "PracticeQuestion",
+      "type": "object"
+    },
+    "RecommendationApiItem": {
+      "additionalProperties": false,
+      "properties": {
+        "recommendation": {
+          "$ref": "#/$defs/RecommendationItem"
+        },
+        "opportunity": {
+          "$ref": "#/$defs/Opportunity"
+        }
+      },
+      "required": [
+        "recommendation",
+        "opportunity"
+      ],
+      "title": "RecommendationApiItem",
+      "type": "object"
+    },
+    "RecommendationApiResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RecommendationApiItem"
+          },
+          "maxItems": 20,
+          "title": "Items",
+          "type": "array"
+        },
+        "candidate_count": {
+          "minimum": 0,
+          "title": "Candidate Count",
+          "type": "integer"
+        },
+        "engine": {
+          "enum": [
+            "rules",
+            "rules+llm"
+          ],
+          "title": "Engine",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items",
+        "candidate_count",
+        "engine"
+      ],
+      "title": "RecommendationApiResponse",
+      "type": "object"
+    },
+    "RecommendationItem": {
+      "additionalProperties": false,
+      "properties": {
+        "opportunity_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Opportunity Id",
+          "type": "string"
+        },
+        "relevance_score": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Relevance Score",
+          "type": "integer"
+        },
+        "eligibility": {
+          "enum": [
+            "eligible",
+            "ineligible",
+            "unknown"
+          ],
+          "title": "Eligibility",
+          "type": "string"
+        },
+        "reasons": {
+          "items": {
+            "$ref": "#/$defs/RecommendationReason"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Reasons",
+          "type": "array"
+        },
+        "cautions": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Cautions",
+          "type": "array"
+        },
+        "explanation_source": {
+          "enum": [
+            "template",
+            "llm"
+          ],
+          "title": "Explanation Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "opportunity_id",
+        "relevance_score",
+        "eligibility",
+        "reasons",
+        "explanation_source"
+      ],
+      "title": "RecommendationItem",
+      "type": "object"
+    },
+    "RecommendationReason": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "evidence_ids"
+      ],
+      "title": "RecommendationReason",
+      "type": "object"
+    },
+    "RecommendationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/UserProfile"
+        },
+        "types": {
+          "items": {
+            "enum": [
+              "contest",
+              "competition",
+              "job",
+              "certification",
+              "event",
+              "training",
+              "project",
+              "notice"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Types",
+          "type": "array"
+        },
+        "limit": {
+          "default": 8,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "allow_external_ai": {
+          "default": false,
+          "title": "Allow External Ai",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "RecommendationRequest",
+      "type": "object"
+    },
+    "RecommendationResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RecommendationItem"
+          },
+          "maxItems": 20,
+          "title": "Items",
+          "type": "array"
+        },
+        "candidate_count": {
+          "minimum": 0,
+          "title": "Candidate Count",
+          "type": "integer"
+        },
+        "engine": {
+          "enum": [
+            "rules",
+            "rules+llm"
+          ],
+          "title": "Engine",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items",
+        "candidate_count",
+        "engine"
+      ],
+      "title": "RecommendationResponse",
+      "type": "object"
+    },
+    "ResourceLink": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "official_site",
+            "job_board",
+            "mentoring_program"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "source_kind": {
+          "enum": [
+            "real",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "description",
+        "url",
+        "source_ids",
+        "source_kind",
+        "checked_at"
+      ],
+      "title": "ResourceLink",
+      "type": "object"
+    },
+    "RoleAdviceItem": {
+      "additionalProperties": false,
+      "properties": {
+        "role_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Role Id",
+          "type": "string"
+        },
+        "explanation": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "role_id",
+        "explanation",
+        "source_ids"
+      ],
+      "title": "RoleAdviceItem",
+      "type": "object"
+    },
+    "RoleAdviceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/UserProfile"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "allow_external_ai": {
+          "default": false,
+          "title": "Allow External Ai",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "RoleAdviceRequest",
+      "type": "object"
+    },
+    "RoleAdviceResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RoleAdviceItem"
+          },
+          "maxItems": 20,
+          "title": "Items",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "RoleAdviceResponse",
+      "type": "object"
+    },
+    "RoleProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "tasks": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Tasks",
+          "type": "array"
+        },
+        "fields": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Fields",
+          "type": "array"
+        },
+        "preparation_skills": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Preparation Skills",
+          "type": "array"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "source_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "real",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "tasks",
+        "fields",
+        "preparation_skills",
+        "source_ids",
+        "source_url",
+        "source_kind",
+        "checked_at"
+      ],
+      "title": "RoleProfile",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "official",
+            "school",
+            "aggregator",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "real",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "url",
+        "kind",
+        "source_kind",
+        "checked_at"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "TextRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "text",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "school_id",
+            "major",
+            "residence_region"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "in",
+            "not_in"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "minItems": 1,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "field",
+        "operator",
+        "values"
+      ],
+      "title": "TextRule",
+      "type": "object"
+    },
+    "UserProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "age": {
+          "anyOf": [
+            {
+              "maximum": 120,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Age"
+        },
+        "school_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "School Id"
+        },
+        "school_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "School Name"
+        },
+        "education_status": {
+          "default": "unknown",
+          "enum": [
+            "enrolled",
+            "leave",
+            "graduating",
+            "graduated",
+            "other",
+            "unknown"
+          ],
+          "title": "Education Status",
+          "type": "string"
+        },
+        "academic_year": {
+          "anyOf": [
+            {
+              "maximum": 8,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Academic Year"
+        },
+        "major": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Major"
+        },
+        "interests": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Interests",
+          "type": "array"
+        },
+        "residence_region": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Residence Region"
+        },
+        "experience_status": {
+          "default": "unknown",
+          "enum": [
+            "none",
+            "provided",
+            "unknown"
+          ],
+          "title": "Experience Status",
+          "type": "string"
+        },
+        "experiences": {
+          "items": {
+            "$ref": "#/$defs/Experience"
+          },
+          "maxItems": 30,
+          "title": "Experiences",
+          "type": "array"
+        },
+        "preferred_job_fields": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Preferred Job Fields",
+          "type": "array"
+        },
+        "preferred_job_regions": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Preferred Job Regions",
+          "type": "array"
+        },
+        "goal": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goal"
+        }
+      },
+      "title": "UserProfile",
+      "type": "object"
+    }
+  },
+  "title": "LOTUS 4.1-draft"
+}
