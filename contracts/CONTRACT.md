@@ -78,8 +78,8 @@ engine=rules와 template, 실제 LLM 사용 시에만 rules+llm/llm. 합성 응�
 | GET | /health | HealthResponse | 구현 |
 | GET | /options | OptionsResponse | 구현 |
 | GET | /capabilities | 이름별 Capability | 구현 |
-| GET | /opportunities | Page[Opportunity] | 503 |
-| GET | /opportunities/{id} | Opportunity | 503 |
+| GET | /opportunities | Page[Opportunity] | DB 조회 구현 |
+| GET | /opportunities/{id} | Opportunity | DB 조회 구현 |
 | GET | /resource-links | Page[ResourceLink] | 503 |
 | POST | /recommendations | RecommendationApiResponse | 503 |
 | POST | /career-roles | RoleAdviceResponse | 503 |
@@ -87,9 +87,9 @@ engine=rules와 template, 실제 LLM 사용 시에만 rules+llm/llm. 합성 응�
 | POST | /interview-guide | InterviewGuideResponse | 503 |
 목록 limit 기본20/1~100, offset 기본0/0 이상. 응답 items,total,limit,offset.
 개인화 입력은 POST 본문만 사용한다. 후속 구현에서 개별 항목 미존재는 404이다.
-현재 저장소 미구현 상태에서 상세 조회는 404로 거짓 단정하지 않고 503을 반환한다.
+정상 DB의 없는 공고는404, 빈 목록은200 빈 배열이다. DB 누락·잠금·손상·스키마/모드 불일치는503 FEATURE_UNAVAILABLE로 반환하며 실패를 빈 성공으로 바꾸지 않는다.
 capabilities는 사용자 기능 여섯 개를 표시하며 health/options/capabilities 자체는 기반 API이다.
-FEATURES.json은 모든 해당 기능을 enabled=false/implemented=false로 기록하며 서버는 모순 설정을 거부한다.
+FEATURES.json에서 opportunities만 enabled=true/implemented=true이며 나머지 기능은 false/false다. 서버는 코드의 구현 registry와 설정 일치를 검사한다. 구현된 기능을 끌 때에는 implemented=true를 유지하고 enabled=false 및 이유를 지정한다. 미구현 기능의 활성화는 거부한다.
 오류는 {error:{code,message,details:[]}}. 404 NOT_FOUND, 422 VALIDATION_ERROR,
 500 INTERNAL_ERROR, 503 FEATURE_UNAVAILABLE. 검증 오류에도 사용자 입력 원문을 반환하지 않는다.
 잘못된 요청은 기능 미구현 여부보다 먼저 422로 거부할 수 있다.
@@ -98,7 +98,7 @@ OpenAPI는 실제 라우트·모델에서 생성한다. docs의 성공 스키마
 ## 데이터와 DB 인계
 출력은 UTF-8 배열: data/normalized/opportunities.json, sources.json, roles.json, resource_links.json.
 합성 예시는 contracts/examples에만 둔다. 실제 normalized 파일은 아직 제공하지 않는다.
-데이터 담당은 DB를 직접 수정하지 않는다. importer는 건희의 후속 작업이다.
+데이터 담당은 DB를 직접 수정하지 않는다. backend.importer가 검증 후 입력하고 backend.opportunity_query가 읽기 전용 snapshot에서 목록·상세를 조회한다. 조회 결과는 ID 오름차순이며 원본 날짜·근거·URL을 보존한다. 검색 파라미터는 추가하지 않았다.
 전체 파일·ID 참조 검증 후 트랜잭션 반영, ID upsert, 반복 중복 방지, 오류 시 DB 보존,
 입력에서 빠졌다고 자동 삭제 금지, real/synthetic 분리가 필수이다.
 DB 구조 변경 시 마이그레이션·복구를 준비하며 DB 삭제로 해결하지 않는다.

@@ -41,7 +41,10 @@ def main():
         base = f'http://127.0.0.1:{backend_port}/api/v1'
         assert json.loads(wait_for(base+'/health', backend))['status'] == 'ok'
         assert json.loads(wait_for(base+'/options', backend))['opportunity_types']
-        assert not any(x['implemented'] for x in json.loads(wait_for(base+'/capabilities', backend)).values())
+        caps = json.loads(wait_for(base+'/capabilities', backend))
+        assert caps['opportunities']['implemented'] and caps['opportunities']['enabled']
+        assert all(not flag['implemented'] and not flag['enabled']
+                   for name, flag in caps.items() if name != 'opportunities')
         frontend = subprocess.Popen(['node', 'node_modules/vite/bin/vite.js', '--host', '127.0.0.1',
                                      '--port', str(frontend_port), '--strictPort'],
                                     cwd=ROOT/'frontend', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

@@ -136,7 +136,7 @@ def test_unknown_rule_and_evidence_are_rejected():
 
 
 @pytest.mark.parametrize('path', ['/opportunities','/opportunities/absent','/resource-links'])
-def test_unimplemented_gets(path):
+def test_unavailable_catalog_or_unimplemented_links(path):
     response = client.get('/api/v1'+path)
     assert response.status_code == 503
     assert response.json()['error']['code'] == 'FEATURE_UNAVAILABLE'
@@ -146,7 +146,8 @@ def test_options_capabilities_openapi_cors():
     assert client.get('/api/v1/options').json() == json.loads(Path('shared/catalog.json').read_text(encoding='utf-8'))
     caps = client.get('/api/v1/capabilities').json()
     assert set(caps) == {'recommendations','career-roles','activity-plan','interview-guide','opportunities','resource-links'}
-    assert all(not x['enabled'] and not x['implemented'] for x in caps.values())
+    assert caps['opportunities']['enabled'] and caps['opportunities']['implemented']
+    assert all(not x['enabled'] and not x['implemented'] for name, x in caps.items() if name != 'opportunities')
     schema = app.openapi()
     for path in ['recommendations','career-roles','activity-plan','interview-guide']:
         route = schema['paths']['/api/v1/'+path]['post']

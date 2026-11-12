@@ -20,9 +20,9 @@
     "unavailable_reason": "초기화 골격: 미구현"
   },
   "opportunities": {
-    "enabled": false,
-    "implemented": false,
-    "unavailable_reason": "초기화 골격: 미구현"
+    "enabled": true,
+    "implemented": true,
+    "unavailable_reason": null
   },
   "resource-links": {
     "enabled": false,

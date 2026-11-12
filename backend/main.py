@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 from pydantic import TypeAdapter
 from backend.settings import ROOT, Settings
+from backend.opportunity_query import create_opportunity_router
 from shared.models import (
     ActivityPlanRequest, ActivityPlanResponse, Capability, ErrorBody, ErrorResponse,
     HealthResponse, InterviewGuideRequest, InterviewGuideResponse, Opportunity,
@@ -16,12 +17,23 @@ from shared.models import (
 from shared.rules import CONTRACT_VERSION
 
 FEATURES = ('recommendations', 'career-roles', 'activity-plan', 'interview-guide')
-UNIMPLEMENTED = (*FEATURES, 'opportunities', 'resource-links')
+CAPABILITY_NAMES = (*FEATURES, 'opportunities', 'resource-links')
+IMPLEMENTED_FEATURES = {'opportunities'}
 settings = Settings()
 options = OptionsResponse.model_validate_json((ROOT / 'shared/catalog.json').read_text(encoding='utf-8'))
 capability_flags = TypeAdapter(dict[str, Capability]).validate_json((ROOT / 'contracts/FEATURES.json').read_text(encoding='utf-8'))
-if set(capability_flags) != set(UNIMPLEMENTED) or any(x.enabled or x.implemented for x in capability_flags.values()):
-    raise RuntimeError('Bootstrap capabilities must match unavailable implementations')
+def validate_capability_flags(flags):
+    if set(flags) != set(CAPABILITY_NAMES):
+        raise RuntimeError('Capability names must match supported features')
+    for name, flag in flags.items():
+        if flag.implemented != (name in IMPLEMENTED_FEATURES):
+            raise RuntimeError('Capability implementation must match server code')
+        if flag.enabled and (not flag.implemented or flag.unavailable_reason is not None):
+            raise RuntimeError('Enabled capabilities must be implemented and available')
+        if not flag.enabled and not flag.unavailable_reason:
+            raise RuntimeError('Disabled capabilities need an unavailable reason')
+
+validate_capability_flags(capability_flags)
 
 ERRORS = {code: {'model': ErrorResponse} for code in (404, 422, 500, 503)}
 app = FastAPI(title='LOTUS bootstrap draft', version=CONTRACT_VERSION, responses=ERRORS)
@@ -58,13 +70,11 @@ def get_options():
 def capabilities():
     return capability_flags
 
-@app.get('/api/v1/opportunities', response_model=Page[Opportunity])
-def opportunities(limit: Annotated[int, Query(ge=1, le=100)] = 20, offset: Annotated[int, Query(ge=0)] = 0):
-    return unavailable()
-
-@app.get('/api/v1/opportunities/{id}', response_model=Opportunity)
-def opportunity(id: str):
-    return unavailable()
+app.include_router(create_opportunity_router(
+    settings,
+    enabled=lambda: capability_flags['opportunities'].enabled
+                    and capability_flags['opportunities'].implemented,
+))
 
 @app.get('/api/v1/resource-links', response_model=Page[ResourceLink])
 def resource_links(limit: Annotated[int, Query(ge=1, le=100)] = 20, offset: Annotated[int, Query(ge=0)] = 0):
