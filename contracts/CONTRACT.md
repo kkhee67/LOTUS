@@ -43,6 +43,8 @@ requirements_coverage=complete/partial/unknown으로 전체 파악 여부를 별
 
 ## 날짜
 Asia/Seoul 기준. timestamp는 시간대 필수이며 원문 오프셋을 보존한다.
+*_on은 YYYY-MM-DD 문자열 또는 Python date만 허용한다. 시각이 있는 문자열·datetime·숫자 timestamp는 날짜 변환 전에 거부한다.
+정확한 시각은 해당 *_at 필드에 넣고 날짜로 잘라내지 않는다. exam_on과 행사 날짜도 같은 규칙을 따른다.
 ApplicationInfo의 각 경계는 *_on(date) 또는 *_at(timestamp) 중 하나만 사용한다.
 정확한 closes_at 시각부터 closed. closes_on만 있으면 다음 날 00:00부터 closed.
 마감 당일에는 시각 확인 주의를 제공한다. 원문 closed 상태는 미래 날짜가 있어도 다시 열지 않는다.

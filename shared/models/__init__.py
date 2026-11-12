@@ -1,7 +1,19 @@
 from __future__ import annotations
 from datetime import date, datetime, time
+import re
 from typing import Annotated, Generic, Literal, TypeVar
-from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
+from pydantic import AwareDatetime, BeforeValidator, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
+
+def validate_date_only(value: object) -> date | str:
+    # datetime inherits date: explicitly exclude it before Pydantic can truncate it.
+    if isinstance(value, date) and not isinstance(value, datetime):
+        return value
+    if isinstance(value, str) and re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', value):
+        return value
+    raise ValueError('date fields require YYYY-MM-DD without a time or numeric timestamp')
+
+
+DateOnly = Annotated[date, BeforeValidator(validate_date_only)]
 
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
 LongText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=4000)]
@@ -112,8 +124,8 @@ class EligibilityRule(StrictModel):
 
 class ApplicationInfo(StrictModel):
     status: Literal['open', 'upcoming', 'closed', 'unknown'] = 'unknown'
-    opens_on: date | None = None
-    closes_on: date | None = None
+    opens_on: DateOnly | None = None
+    closes_on: DateOnly | None = None
     opens_at: AwareDatetime | None = None
     closes_at: AwareDatetime | None = None
 
@@ -137,7 +149,7 @@ class ExamSession(StrictModel):
     id: Id
     name: Text
     application: ApplicationInfo
-    exam_on: date | None = None
+    exam_on: DateOnly | None = None
     schedule_note: LongText | None = None
     source_url: HttpUrl
     checked_at: AwareDatetime
@@ -154,8 +166,8 @@ class CertificationInfo(StrictModel):
         return self
 
 class EventSchedule(StrictModel):
-    starts_on: date | None = None
-    ends_on: date | None = None
+    starts_on: DateOnly | None = None
+    ends_on: DateOnly | None = None
     note: LongText | None = None
 
     @model_validator(mode='after')
@@ -188,7 +200,7 @@ class Opportunity(StrictModel):
     source_ids: list[Id] = Field(min_length=1, max_length=100)
     source_url: HttpUrl
     source_kind: SourceKind
-    published_on: date | None = None
+    published_on: DateOnly | None = None
     published_at: AwareDatetime | None = None
     checked_at: AwareDatetime
     evidence: list[Evidence] = Field(default_factory=list, max_length=100)

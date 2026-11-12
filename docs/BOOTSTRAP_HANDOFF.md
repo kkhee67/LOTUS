@@ -154,3 +154,17 @@ PR 제목·본문은 [PR_DRAFT.md](PR_DRAFT.md)에 준비했다. 이 문서를 �
 python -m scripts.validate_examples, python -m scripts.check_generated, git diff --check 통과.
 건희가 제안한 외부 AI 동의 boolean 강화·405 헤더 보존은 이번 날짜 수정에 포함하지 않았다.
 최신 원격 CI는 PR 체크를 확인한다. 담당자들이 수정 커밋을 다시 검토해야 하며 main 병합은 하지 않는다.
+
+
+## 날짜 전용 입력의 시각 유실 수정
+c2b031c 기준 데이터 검토에서 자정 timestamp가 closes_on/published_on 등 날짜 필드에서
+날짜로 자동 변환되어 정확한 마감 시각이 유실되는 문제가 보고되었다.
+공통 DateOnly 검증을 opens_on, closes_on, exam_on, starts_on, ends_on, published_on에 적용했다.
+YYYY-MM-DD와 Python date는 유지하고 timestamp 문자열, datetime 및 숫자는 변환 전에 거부한다.
+정확한 시각은 *_at에 입력해야 한다. 필드·JSON Schema·계약 4.1-draft는 그대로다.
+추가 회귀 검사 32건은 수정 전 실패를 확인했고 수정 후 통과했다.
+Python 3.12.7: backend/tests + tests/integration 94 passed, 기존 AnyIO 경고 1개.
+합성 예시·참조 검사, 생성 계약 검사, git diff --check 통과.
+실제 공고 원문 재수집·importer·브라우저 검사는 이번 수정 범위에서 수행하지 않았다.
+건희와 시영이 변경 검증을 다시 확인해야 하며 기존 검토를 새 커밋 승인으로 간주하지 않는다.
+기존 importer 전달물은 이전 공통 기반 기준이므로 새 기준에서 별도 적용 검증이 필요하다.

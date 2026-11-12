@@ -48,3 +48,41 @@ def test_date_opening_requires_a_later_exact_closing(close):
 ])
 def test_valid_mixed_precision_and_date_only_windows_remain_supported(boundaries):
     assert ApplicationInfo(**boundaries)
+
+
+@pytest.mark.parametrize('field', ['opens_on', 'closes_on', 'exam_on', 'starts_on', 'ends_on', 'published_on'])
+@pytest.mark.parametrize('value', ['2026-11-11T00:00:00+09:00', '2026-11-11T00:00:00Z', '2026-11-11 00:00:00', 0, '0'])
+def test_date_fields_reject_time_and_epoch_before_coercion(field, value):
+    import json
+    from pydantic import create_model
+    from shared.models import ApplicationInfo, ExamSession, EventSchedule, Opportunity
+    owner = next(model for model in (ApplicationInfo, ExamSession, EventSchedule, Opportunity) if field in model.model_fields)
+    # Use the real field definition, including its validators, in both input paths.
+    probe = create_model('DateFieldProbe', **{field: (owner.model_fields[field].annotation, owner.model_fields[field])})
+    with pytest.raises(ValidationError):
+        probe.model_validate({field: value})
+    with pytest.raises(ValidationError):
+        probe.model_validate_json(json.dumps({field: value}))
+
+
+def test_python_datetime_is_not_silently_truncated_and_dates_round_trip():
+    from datetime import date
+    for value in (datetime(2026, 11, 11), NOW):
+        with pytest.raises(ValidationError):
+            ApplicationInfo(closes_on=value)
+    for value in ('2026-11-11', date(2026, 11, 11), None):
+        application = ApplicationInfo(closes_on=value)
+        assert ApplicationInfo.model_validate_json(application.model_dump_json()) == application
+    with pytest.raises(ValidationError):
+        ApplicationInfo(closes_on='2026-02-30')
+
+
+def test_midnight_deadline_keeps_exact_time_and_date_only_stays_inclusive():
+    with pytest.raises(ValidationError):
+        ApplicationInfo.model_validate_json('{"status":"open","closes_on":"2026-11-11T00:00:00+09:00"}')
+    exact = ApplicationInfo.model_validate_json('{"status":"open","closes_at":"2026-11-11T00:00:00+09:00"}')
+    midnight = datetime.fromisoformat('2026-11-11T00:00:00+09:00')
+    assert application_state(exact, now=midnight).status == 'closed'
+    assert application_state(exact, now=NOW).status == 'closed'
+    date_only = ApplicationInfo(status='open', closes_on='2026-11-11')
+    assert application_state(date_only, now=NOW).status == 'open'
