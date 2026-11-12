@@ -33,14 +33,14 @@ def test_main_real_list_detail_and_404(server):
     assert db.read_bytes() == before
 
 
-def test_only_opportunities_are_available(server):
+def test_opportunities_and_recommendations_are_available(server):
     client, _ = server
     caps = client.get('/api/v1/capabilities').json()
     assert caps['opportunities'] == {'enabled': True, 'implemented': True, 'unavailable_reason': None}
-    assert all(not flag['enabled'] and not flag['implemented']
+    assert all(flag['enabled'] == (name == 'recommendations') and flag['implemented'] == (name in {'recommendations', 'resource-links'})
                for name, flag in caps.items() if name != 'opportunities')
     assert client.get('/api/v1/resource-links').status_code == 503
-    for name in main.FEATURES:
+    for name in (item for item in main.FEATURES if item != 'recommendations'):
         assert client.post('/api/v1/' + name, json={'profile': {'goal': 'test'}}).status_code == 503
 
 
@@ -78,7 +78,7 @@ def test_startup_flags_reject_unsupported_or_inconsistent_config(damage):
     elif damage == 'reason':
         flags['opportunities'] = Capability(enabled=True, implemented=True, unavailable_reason='contradiction')
     else:
-        flags['recommendations'] = Capability(enabled=True, implemented=True)
+        flags['career-roles'] = Capability(enabled=True, implemented=True)
     with pytest.raises(RuntimeError):
         main.validate_capability_flags(flags)
 

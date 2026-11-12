@@ -81,7 +81,7 @@ engine=rules와 template, 실제 LLM 사용 시에만 rules+llm/llm. 합성 응�
 | GET | /opportunities | Page[Opportunity] | DB 조회 구현 |
 | GET | /opportunities/{id} | Opportunity | DB 조회 구현 |
 | GET | /resource-links | Page[ResourceLink] | 503 |
-| POST | /recommendations | RecommendationApiResponse | 503 |
+| POST | /recommendations | RecommendationApiResponse | DB·규칙 엔진 연결 구현 |
 | POST | /career-roles | RoleAdviceResponse | 503 |
 | POST | /activity-plan | ActivityPlanResponse | 503 |
 | POST | /interview-guide | InterviewGuideResponse | 503 |
@@ -89,7 +89,7 @@ engine=rules와 template, 실제 LLM 사용 시에만 rules+llm/llm. 합성 응�
 개인화 입력은 POST 본문만 사용한다. 후속 구현에서 개별 항목 미존재는 404이다.
 정상 DB의 없는 공고는404, 빈 목록은200 빈 배열이다. DB 누락·잠금·손상·스키마/모드 불일치는503 FEATURE_UNAVAILABLE로 반환하며 실패를 빈 성공으로 바꾸지 않는다.
 capabilities는 사용자 기능 여섯 개를 표시하며 health/options/capabilities 자체는 기반 API이다.
-FEATURES.json에서 opportunities만 enabled=true/implemented=true이며 나머지 기능은 false/false다. 서버는 코드의 구현 registry와 설정 일치를 검사한다. 구현된 기능을 끌 때에는 implemented=true를 유지하고 enabled=false 및 이유를 지정한다. 미구현 기능의 활성화는 거부한다.
+FEATURES.json에서 opportunities와 recommendations는 enabled=true/implemented=true다. resource-links는 implemented=true/enabled=false로 활성화 검토 대기다. 직무·활동·면접은 false/false다. 서버는 코드의 구현 registry와 설정 일치를 검사한다. 구현된 기능을 끌 때에는 implemented=true를 유지하고 enabled=false 및 이유를 지정한다. 미구현 기능의 활성화는 거부한다.
 오류는 {error:{code,message,details:[]}}. 404 NOT_FOUND, 422 VALIDATION_ERROR,
 500 INTERNAL_ERROR, 503 FEATURE_UNAVAILABLE. 검증 오류에도 사용자 입력 원문을 반환하지 않는다.
 잘못된 요청은 기능 미구현 여부보다 먼저 422로 거부할 수 있다.
@@ -103,3 +103,11 @@ OpenAPI는 실제 라우트·모델에서 생성한다. docs의 성공 스키마
 입력에서 빠졌다고 자동 삭제 금지, real/synthetic 분리가 필수이다.
 DB 구조 변경 시 마이그레이션·복구를 준비하며 DB 삭제로 해결하지 않는다.
 수집은 추천 요청 중 실행하지 않으며 스케줄러가 검증되지 않았으므로 자동 갱신을 주장하지 않는다.
+
+## 추천 HTTP 연결 후 상태
+기존 모델/요청 필드/정렬 규칙은 유지한다. 요청의 profile과 DB snapshot의 공고 복사본, aware now를 기존 recommend()에 전달한다.
+내부 결과는 재검증하고 ID/근거/허용유형/정렬/limit/candidate_count를 확인해 원본과 결합한다.
+candidate_count는 반환 수 이상이면서 허용 유형 공고 수 이하이고 반환 수는 min(limit,candidate_count)여야 한다.
+정상 빈 결과200, DB 조회 불가503, 내부 함수 실패 또는 잘못된 내부 결과500으로 구분한다.
+실제 자료3건으로 소프트웨어 추천0건을 관찰했으며 성공한 관련 추천이 있음을 의미하지 않는다.
+부가 기능의 함수 구현·활성화와 서버 검색 필드는 별도 검토 대상이다.

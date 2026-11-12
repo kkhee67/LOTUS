@@ -16,7 +16,7 @@ class CatalogUnavailable(ValueError):
     """Public-safe failure; never contains DB paths or stored payloads."""
 
 
-def read_opportunities(settings: Settings) -> list[Opportunity]:
+def read_catalog(settings: Settings) -> dict:
     """Read and validate one consistent importer snapshot without creating a DB."""
     try:
         path = database_path(settings.database_url).resolve()
@@ -45,9 +45,14 @@ def read_opportunities(settings: Settings) -> list[Opportunity]:
                         raise CatalogUnavailable('공고 자료를 조회할 수 없습니다.')
                 dataset[table] = items
             validate_dataset(**dataset)
-            return sorted(dataset['opportunities'], key=lambda item: item.id)
+            return {table: sorted(items, key=lambda item: item.id)
+                    for table, items in dataset.items()}
     except (OSError, sqlite3.Error, ValueError) as exc:
         raise CatalogUnavailable('공고 자료를 조회할 수 없습니다.') from exc
+
+
+def read_opportunities(settings: Settings) -> list[Opportunity]:
+    return read_catalog(settings)['opportunities']
 
 
 def query_error(status: int, code: str, message: str) -> JSONResponse:

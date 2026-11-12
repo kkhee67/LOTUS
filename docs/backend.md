@@ -1,3 +1,81 @@
+# 추천 HTTP 연결·기능 활성화 검증 — 2026-11-13
+
+## 기준과 구현
+기준: 공고 조회 PR #7의8c831f2e49b092674ff3813319efee5759937b48. main7fc193f는 변경하지 않았다.
+사용자가 전달한 태환의 조건부 승인을 따라 DB→추천→화면을 검증한 뒤 recommendations를 true/true로 전환했다.
+opportunities와 recommendations만 ON. resource-links는 DB 조회 구현(implemented=true) 후 OFF로 검토 대기다.
+직무·활동·면접은 함수 미구현이므로 false/false다. 기존 AI 알고리즘과 프론트 기능은 수정하지 않았다.
+
+## 코드가 하는 일과 막는 오류
+1. read_catalog: importer가 만든 SQLite를 읽기 전용 snapshot으로 검증한다. 파일 생성·DB 쓰기를 하지 않는다.
+   스키마·mode·ID·출처 관계·모델이 틀리면503. real/synthetic 혼합과 손상 자료의 정상 응답을 막는다.
+2. assemble_recommendations: 공고와 프로필 복사본, aware now를 기존 recommend에 넘긴다.
+   결과 모델을 재검증하고 ID·근거·허용 유형·중복·정렬·limit·candidate_count를 확인한다.
+   DB 원본을 ID로 결합하므로 엔진이 복사본의 제목을 바꿔도 화면 원본은 변하지 않는다.
+   동의 없는 LLM 표시를 거부하며 기존 rules 엔진은 외부 호출을 하지 않는다.
+3. create_service_router: 정상 추천/빈 결과200, DB·미구현 오류503, 잘못된 내부 결과/함수 실패500으로 구분한다.
+   예외 원문을 응답하거나 기록하지 않는다. 개인정보가 URL이나 DB에 저장되는 경로를 추가하지 않았다.
+4. validate_guidance: 직무 출처/ID, 계획 공고ID, 면접 경험ID를 확인한다. 실제 AI 함수 미구현을 대체하지 않는다.
+5. FEATURES/registry: 구현 사실과 노출 상태를 구분한다. 미구현 기능을 켜면 기동을 거부한다.
+
+## 실제 검사
+환경: 기존 Python3.12.7 고정 의존성 가상환경, Node24.18/npm11.16.
+```powershell
+# 이 검토 폴더에서 사용한 실제 Python 경로
+../importer-review/.venv/Scripts/python.exe -m pytest data_pipeline/tests backend/tests tests/integration -q --basetemp <이번 실행의 임시 경로> -o cache_dir=<이번 실행의 캐시 경로>
+../importer-review/.venv/Scripts/python.exe -m scripts.validate_examples
+../importer-review/.venv/Scripts/python.exe -m data_pipeline.normalize --validate-only
+../importer-review/.venv/Scripts/python.exe -m scripts.export_openapi
+../importer-review/.venv/Scripts/python.exe -m scripts.export_contracts
+../importer-review/.venv/Scripts/python.exe -m scripts.check_generated
+../importer-review/.venv/Scripts/python.exe -m pip check
+npm --prefix frontend ci --cache ../npm-cache --no-audit --no-fund
+npm --prefix frontend run generate:types
+npm --prefix frontend run check:generated
+npm --prefix frontend run typecheck
+npm --prefix frontend test
+npm --prefix frontend run build
+../importer-review/.venv/Scripts/python.exe -m scripts.smoke_servers
+git diff --check
+```
+최종 Python268 passed/기존AnyIO 경고1/18.34s, 신규adapter42건 포함. 프론트24 passed, 나머지 명령 모두 통과.
+초기 pytest의 상대 cache 경로가 환경에서 거부돼 절대 경로로 재실행했다. 코드 실패가 아닌 실행환경 문제였다.
+첫 보조 UI 스크립트는 httpx 없는 전역Python을 선택해 실패했고 기존venv로 실행해 정상화했다.
+원본/생성 OpenAPI의 components.schemas와 경로 집합이 같은 것을 비교했다. 라우터 등록에 따른 순서·오류 설명 변경은 재생성했다.
+
+신규 검사는 정상/빈 추천, 실제 DB0건, 잠금·누락·mode·손상, 기능OFF 전DB비접근,
+없는ID·근거·유형·개수·순서·중복·부적격·동의없는LLM·엔진 예외 거부, 원본 불변,
+정확한 마감 직전/정각과 날짜 마감, 미확인 자격의 '확인 필요', 관련 링크 페이지,
+후속 함수 미구현503·잘못된참조500·없는요청참조404·실패 독립성 등을 확인한다.
+테스트 더블은 잘못된 엔진 출력/미래 함수 참조 검사에만 사용했다. 정상 추천은 실제 recommend 함수다.
+
+## 실제 화면과 HTTP
+preview=1이나 API응답 대체를 쓰지 않았다. 임시DB2개와 로컬 API/Vite 프로세스를 별도로 실행했다.
+- real: normalized3건 입력, 소프트웨어 관심으로 실제 POST200/추천0건과 화면 빈 안내 확인.
+- demo: contracts/examples를 별도 DB에 입력, 실제 POST200/추천1건/40점/추가확인필요/합성표시 확인.
+- 화면 확인 시에만 임시 서버 프로세스의 추천 플래그를 ON으로 두었고 검증 성공 후 저장소 플래그를 ON으로 바꿨다.
+- 기능 활성화 후 전체Python검사와 실제 서버 기동 smoke를 다시 통과했다.
+- 프로필은 합성 관심 분야만 입력했다. 운영 DB나 실제 개인정보로 실험하지 않았다.
+- 생성한 서버는 모두 종료했다. 화면 증거는 outputs의 recommendation-real-empty-ui.jpg와 recommendation-synthetic-success-ui.jpg다.
+
+## 완료와 미완료
+기본 backend1차: 공통기반, importer, 목록·상세, 기본추천HTTP와 원본결합, 오류/기능게이트 검사와 인계 완료.
+긍정적인 실제 공고 추천 한 건은 미완료다. real3건은 분야·전공 근거가 부족해 소프트웨어 추천0건이며 자료 보강이 필요하다.
+직무·활동·면접의 backend adapter는 준비했지만 태환의 실제 함수와 real 직무자료가 없어 기능완료가 아니다.
+서버검색은 docs/changes/backend-next-steps.md의 별도 검토안이다. q/types 파라미터를 미리 추가하지 않았다.
+대량성능/운영DB/외부배포/외부원문 최신성/네명 초대 수락은 미검증이다. 매 요청 전체catalog 검증 비용도 남아 있다.
+공고 조회 PR #7은 원격CI success를 확인했다. 이번 신규 PR의 CI는 업로드 후 따로 확인한다.
+작성자 외 검토·사람의 병합은 남았다. 다른 팀원의 작업/회의/승인을 새로 만들어 기록하지 않았다.
+
+## 협업 피드백
+태환: 부가 함수3개 구현 일정·정상 빈 결과 기준, 실제 관련 추천이 가능한 근거 자료를 협의한다.
+시영: 실제 fields/활동 근거·직무/관련링크 자료를 보강하되 원문에 없는 내용을 만들지 않는다.
+예원: 실제 추천0건 안내와503의 '기능 준비 중' 문구를 기능 미구현/장애로 나눌지 검토한다.
+PR #7을 먼저 병합하고 후속 추천 PR을 검토한다. main 직접 push·강제 push·자동 병합은 하지 않는다.
+
+---
+## 아래는 이전 시점의 검증 기록
+
 # 공고 조회 API 활성화·화면 연결 검증 — 2026-11-13
 
 ## 기준과 범위
