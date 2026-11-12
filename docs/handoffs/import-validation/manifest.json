@@ -1,0 +1,254 @@
+{
+  "bundle_id": "B1-handoff-20261111-v2",
+  "base_commit": "60f92a2a9c677628319a7af0bb9785369f6a4c2e",
+  "contract_version": "4.1-draft",
+  "delivery_commit": null,
+  "status": "uncommitted_patch_delivery",
+  "dependency": {
+    "pr": "https://github.com/kkhee67/LOTUS/pull/1",
+    "state": "OPEN",
+    "merged_at": null,
+    "main": "6fcc1821d5ca2c6662313d00ad974e5e86413cac"
+  },
+  "hash_policy": "sha256 UTF-8 bytes, CRLF normalized to LF; self hash omitted",
+  "categories": {
+    "A": {
+      "purpose": "importer code/tests/feature handoff",
+      "reviewers": [
+        "건희",
+        "시영"
+      ],
+      "required_for_importer": true
+    },
+    "B": {
+      "purpose": "common workflow/roles/status documents; separate review",
+      "reviewers": [
+        "태환",
+        "건희",
+        "예원",
+        "시영"
+      ],
+      "required_for_importer": false
+    },
+    "C": {
+      "purpose": "already shared bootstrap and AI preparation; not repackaged",
+      "changed_files": []
+    },
+    "D": {
+      "purpose": "excluded local runtime/env/DB/log/cache/Git metadata",
+      "included_files": []
+    }
+  },
+  "deleted": [],
+  "renamed": [],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "380c6fe98663248403ad01816003c6fb39c8ac7ff962bdd5443a6c9da91c75e4",
+      "after_sha256_lf": "1f59520fa8827b3aa6a6459d7572dbb35c84654b5c08dbf57a9234da4c504403"
+    },
+    {
+      "path": "README.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "d416408fd07731ae0439390bc05a073dd6eda495652e493deeba513415d86594",
+      "after_sha256_lf": "37a5fc495f453e96abb8439b97aaea9ff35151359aec2cad4162aa5af34beef9"
+    },
+    {
+      "path": "backend/AGENTS.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "107a645017a4455af23de5384cce7d37c3123e89ce1a7f30940f61b7ba9723ce",
+      "after_sha256_lf": "157b71d1e92491abbd9cf83e762b6c5b6a625ed17be39a18c4c360d02c4aac79"
+    },
+    {
+      "path": "backend/importer.py",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "5546bde7775de0fa3ed3f26009e3bd51ae4c75d6054dd16532cee6eed3ebd39d"
+    },
+    {
+      "path": "backend/tests/test_importer.py",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "f11879b15a63e97b64e9bde2da25c3544c58aeae19bfe3c1f7fe2cdf6cf349c9"
+    },
+    {
+      "path": "contracts/CONTRACT.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "011ddc58b84ca617519fbf87bc05cd3dfb8b419e9e19a92433eaef1db5e7c412",
+      "after_sha256_lf": "093307c6191c17ea5ff4d40b784704a063e19cca99a72fbe8c4524f32073c9d4"
+    },
+    {
+      "path": "data_pipeline/AGENTS.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "e3d2c2a322341bfe3b5722290be494f2bcdb077131bb49208fb6249fad1ce8f8",
+      "after_sha256_lf": "899ea768184393ab035d132b2828060be1a16f3c0656cb6fb0d8c517d3a72446"
+    },
+    {
+      "path": "docs/GIT_WORKFLOW.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "ab5d3967aeb69a1ace0922ba5a600a73b615c313d76e96e8f5de71f8463bf364",
+      "after_sha256_lf": "c711e9e9651515d4ccd2dcd64a852630af917624c27123276d8a0821de8b9448"
+    },
+    {
+      "path": "docs/HANDOFF_INDEX.md",
+      "category": "B",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "f02b507e1271d8522d544cd2d6c1d13f41e5ce431aace0039d21ce06bef1b6bf"
+    },
+    {
+      "path": "docs/OWNERSHIP.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "3b057d613cc50d8dc9eb2240fb8a15b2a1d3e5e8ae147530cc67b31c6c34b00b",
+      "after_sha256_lf": "e9c2b223a394cacb1ab7aeea3c154613b5ed7b62d74eefdba6ede7ca065273bb"
+    },
+    {
+      "path": "docs/PROGRESS.md",
+      "category": "B",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "fb29cd9fe3d8561998a843c9c648d39a28657d548ca63e2b2770c1bbc488613a"
+    },
+    {
+      "path": "docs/PROJECT.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "220e576ab895ae6465b7bc9c2f3642e84e2811486e0bd07dc88b12303f7c01cd",
+      "after_sha256_lf": "689c9cdb48b97a3b89b355c2bda27cfe66b1b5aeb9134f7bd7d659b10c3e3dd4"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "b2abfef3c7a867c581ac52d36e603e1635881dc9b4cad5b67cbb4eb0a55d560f",
+      "after_sha256_lf": "d25a27bb3aee7bbf5efbb00b3f2774174788f40d6d8652d1af6e522f8c044913"
+    },
+    {
+      "path": "docs/TEST_REPORT.md",
+      "category": "B",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "69c7f9b76d31138ceca05d4aac36eec478d19ec8f3b198281a6ebedf19058eae"
+    },
+    {
+      "path": "docs/backend.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "8b9a657f712489b59009f89b314a2b9f2a11245b9fb5d1d6045b5ac1050bcfb4",
+      "after_sha256_lf": "890d9276f1b651a1446fac83f1775f1dee8541299a7ae98616623f2b58b18a86"
+    },
+    {
+      "path": "docs/handoffs/import-validation/APPLY_WITH_CODEX.txt",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "5491937c919b032b07ee5fb62562d8b59011b04759fdba564025f87f75ce8722"
+    },
+    {
+      "path": "docs/handoffs/import-validation/HANDOFF.md",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "692fed599c538ebe233451604586f304e392a6b4000cfa991b7697c93aea8fb4"
+    },
+    {
+      "path": "docs/handoffs/import-validation/PR_BODY.md",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "0d68723e18205645f8a7e7c8d336a4ddf0f96f91ff0cc3878d1b9ea45adff75f"
+    },
+    {
+      "path": "docs/handoffs/import-validation/VERIFY.md",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": "c40dc4c5470df2118ed7ba12fc72bae667288363a7edfa47a9b5df04be378652"
+    },
+    {
+      "path": "docs/handoffs/import-validation/manifest.json",
+      "category": "A",
+      "change": "A",
+      "mode": "100644",
+      "before_sha256_lf": null,
+      "after_sha256_lf": null
+    },
+    {
+      "path": "docs/tasks/initial/ai.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "26315294672746444af60de91cea29cc80a82f5fa08fdbddc18e2631bdcfee4e",
+      "after_sha256_lf": "39583b4c861716154d98f8e2514c8b2331b156f11084e4157205dd46453cfa1d"
+    },
+    {
+      "path": "docs/tasks/initial/backend.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "f3a2cfe8430338be71ee490a40a28e93281fe1776814a2bce40ff2fc92a80b41",
+      "after_sha256_lf": "48583b3ff02fb3cce77a919b612bb3b9f489292cbedb8ebcb6ec228bf3627e45"
+    },
+    {
+      "path": "docs/tasks/initial/data.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "fa2bb355ab448a2a787ca41c9391fcf7582568fa7ed78cd24f4e3527ca1e57d0",
+      "after_sha256_lf": "7607dd9b83d4dda9399ee1f8a717e959c5ed5e2332eab7f5138ef730fd0f31b4"
+    },
+    {
+      "path": "docs/tasks/initial/frontend.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "01220dc09a86bad3102c4c4e82272a81655f418ea9e20b090b0c85d70ac1b995",
+      "after_sha256_lf": "79331675026e8e6c3d39c37c9a59eda582000093531314f3a6965c88e924aa7e"
+    },
+    {
+      "path": "frontend/AGENTS.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "8c5b2990a310088e097de216eb9686f44a6db7297ecbb1ffa04de58a0e85ef7e",
+      "after_sha256_lf": "9cd82e32785d125564e085850541f0c9b0a1cf55cef369dd5419169084961823"
+    },
+    {
+      "path": "recommender/AGENTS.md",
+      "category": "B",
+      "change": "M",
+      "mode": "100644",
+      "before_sha256_lf": "0187922ce64fa5926e7c286dd3801b3ee64fe0b83bade03cdf87d026d151a0c2",
+      "after_sha256_lf": "413fb4753de9b6317925ddd91938c12c81cc0950fd07da22c46fcf5641d1032c"
+    }
+  ]
+}
