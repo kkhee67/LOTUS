@@ -7,6 +7,7 @@ from urllib.parse import urlencode
 
 from pydantic import AwareDatetime, BeforeValidator, Field, HttpUrl, StringConstraints, TypeAdapter, field_validator
 
+from data_pipeline.json_input import read_unique_json
 from shared.models import ApplicationInfo, Evidence, LongText, Opportunity, Source, StrictModel, Text
 
 
@@ -114,7 +115,7 @@ class RecruitmentNotice(StrictModel):
 
 def load_dankook_batch(path: Path) -> tuple[Source, list[Opportunity]]:
     batch_type = Annotated[list[RecruitmentNotice], Field(min_length=1)]
-    notices = TypeAdapter(batch_type).validate_json(path.read_text(encoding="utf-8"))
+    notices = TypeAdapter(batch_type).validate_python(read_unique_json(path))
     source = Source(
         id=SOURCE_ID,
         name="단국대학교 채용공지",

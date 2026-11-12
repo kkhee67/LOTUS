@@ -9,6 +9,7 @@ from tempfile import TemporaryDirectory
 from pydantic import TypeAdapter
 
 from data_pipeline.dankook import load_dankook_batch
+from data_pipeline.json_input import read_unique_json
 from shared.models import Opportunity, ResourceLink, RoleProfile, Source
 from shared.rules import application_state
 from shared.validation import validate_dataset
@@ -34,7 +35,7 @@ def read_dataset(directory: Path, *, allow_missing: bool = False):
     for name, model in MODELS.items():
         path = directory / f"{name}.json"
         try:
-            dataset[name] = TypeAdapter(list[model]).validate_json(path.read_text(encoding="utf-8"))
+            dataset[name] = TypeAdapter(list[model]).validate_python(read_unique_json(path))
         except FileNotFoundError:
             if not allow_missing:
                 raise

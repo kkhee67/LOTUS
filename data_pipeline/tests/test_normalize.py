@@ -30,6 +30,15 @@ def write_json(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
+def snapshot_outputs(directory):
+    if not directory.exists():
+        return {}
+    return {
+        path.name: (path.read_bytes(), path.stat().st_mtime_ns)
+        for path in directory.iterdir()
+    }
+
+
 def test_newer_capture_updates_one_stable_id_and_preserves_other_arrays(tmp_path, capture):
     input_file = tmp_path / "capture.json"
     output = tmp_path / "output"
@@ -93,6 +102,74 @@ def test_invalid_capture_leaves_all_outputs_untouched(tmp_path, capture, failure
     with pytest.raises((FileNotFoundError, ValueError)):
         normalize(input_file, output)
     assert {name: (output / f"{name}.json").read_bytes() for name in MODELS} == before
+
+
+@pytest.mark.parametrize("existing_batch", [False, True])
+def test_duplicate_nested_capture_key_leaves_output_untouched(tmp_path, capture, existing_batch):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    if existing_batch:
+        write_json(input_file, [capture])
+        normalize(input_file, output)
+    before = snapshot_outputs(output)
+
+    updated = {**capture, "checked_at": "2026-11-12T12:00:00+09:00"}
+    text = json.dumps([updated], ensure_ascii=False)
+    input_file.write_text(
+        text.replace('"status": "unknown"', '"status": "closed", "status": "open"', 1),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match=r"capture\.json: duplicate JSON key 'status'"):
+        normalize(input_file, output)
+
+    assert snapshot_outputs(output) == before
+    assert output.exists() == existing_batch
+
+
+@pytest.mark.parametrize("name", MODELS)
+def test_duplicate_normalized_key_is_rejected_without_writing(tmp_path, capture, name):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    write_json(input_file, [capture])
+    normalize(input_file, output)
+    path = output / f"{name}.json"
+    if name in ("roles", "resource_links"):
+        record = {
+            "id": "test-entry",
+            "name": "테스트용 항목",
+            "source_ids": ["dankook-recruitment"],
+            "source_kind": "real",
+            "checked_at": capture["checked_at"],
+        }
+        if name == "roles":
+            record.update(tasks=[], fields=[], preparation_skills=[], source_url="https://example.org/role")
+        else:
+            record.update(kind="official_site", description="테스트 설명", url="https://example.org/link")
+        write_json(path, [record])
+    read_dataset(output)
+
+    text = path.read_text(encoding="utf-8")
+    if name == "opportunities":
+        key = "status"
+        text = text.replace('"status": "unknown"', '"status": "closed", "status": "open"', 1)
+    else:
+        key = "name"
+        text = text.replace('"name":', '"name": "이전 이름", "name":', 1)
+    path.write_text(text, encoding="utf-8")
+    message = rf"{name}\.json: duplicate JSON key '{key}'"
+    before = snapshot_outputs(output)
+    with pytest.raises(ValueError, match=message):
+        read_dataset(output)
+    assert snapshot_outputs(output) == before
+
+    missing = output / ("resource_links.json" if name == "roles" else "roles.json")
+    missing.unlink()
+    before = snapshot_outputs(output)
+    with pytest.raises(ValueError, match=message):
+        normalize(input_file, output)
+    assert snapshot_outputs(output) == before
+    assert not missing.exists()
 
 
 def test_exact_deadline_survives_normalization(tmp_path, capture):

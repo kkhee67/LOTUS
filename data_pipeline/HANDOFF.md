@@ -32,7 +32,7 @@
 
 의과대학 학사조교 공고는 접수가 끝난 사례로 포함했다. ID는 `dankook-recruitment-186322`이고, 학사 행정 지원 업무와 학사학위·임용 조건을 기록했다. 게시일은 2026년 10월 20일, 마감은 `2026-11-11T11:00:00+09:00`이다. 접수 시작일과 필수 경력 요건은 원문에 명시되어 있지 않다. `2026-11-12T21:00:39+09:00`에 확인했으며, `closed`로 저장했다. [단국대 공식 원문](https://cms.dankook.ac.kr/ko/web/kor/apply_noti?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186322&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome) · [천안캠퍼스 위치 근거](https://cms.dankook.ac.kr/ko/web/kor/-512)
 
-## 변경과 검증
+## 최초 제출의 변경과 검증
 
 - `data/raw/dankook_recruitment.json`은 수동 확인 기록이다. `data_pipeline/dankook.py`에서 게시판 전용 변환을 하고, `data_pipeline/normalize.py`에서 네 배열의 스키마 및 참조를 검증한다.
 - 동일 ID는 더 최근 확인 건으로 갱신한다. 기존 자료·확인 시각을 보존하고 입력 누락·중복·스키마 오류가 있으면 배열 교체 전에 중단한다.
@@ -44,6 +44,30 @@
 - `python -m pytest data_pipeline/tests backend/tests tests/integration -q`는 데이터 테스트 19건을 포함해 113건 통과했다. 기존 Starlette의 AnyIO 별칭 사용 중단 경고가 1건 있었다.
 - `python -m scripts.validate_examples`로 합성 계약 예시와 참조를 검증했다.
 - 자동 갱신, DB importer 및 실제 추천 연동은 이번 작업 범위 밖이다.
+
+## PR #3 검토 반영과 로컬 검사
+
+검토 기준 HEAD는 `507404858f18377cd277eb0e785cb3a00040b370`이다. 검토 당시
+건희의 importer로 실제 배치의 출처 1건과 공고 3건을 입력했고, 같은 배치를 다시 넣었을
+때 모두 `unchanged`였다. 이 결과와 최초 제출의 테스트 113건은 이전 검사 기록이다.
+
+원본 수동 기록과 정규화 배열 네 파일에서 중첩 객체의 중복 키를 모델 검증 전에 거부한다.
+검토 기준 코드에서는 `application.status`가 두 번 나오면 마지막 값이 채택되는 것을
+재현했다. 이번 변경은 어느 파일의 어떤 키가 중복됐는지 알려주고 출력에 쓰기 전에 중단한다.
+
+공통 CI의 기존 pytest 명령에 `data_pipeline/tests`를 추가하고
+`python -m data_pipeline.normalize --validate-only`를 별도 단계로 실행한다. 이 단계는
+저장소에 제출된 네 배열을 읽어 검증하므로 원문 사이트 접속이 필요 없다. 기존 백엔드·통합
+테스트와 합성 예시 검사는 계속 실행한다. **공통 CI 변경 검토 담당은 태환·건희다.**
+
+- Python 3.13.12에서 `python -m pytest data_pipeline/tests backend/tests tests/integration -q`
+  **119건 통과**. 데이터 테스트 25건과 기존 AnyIO 경고 1건이 포함됐다.
+  중복 키로 실패했을 때 기존 파일의 내용과 수정 시각이 유지되고 누락 파일이 생성되지 않는 것을 검사했다.
+- `python -m data_pipeline.normalize --validate-only`는 실제 배치 출처 1건, 공고 3건,
+  직무·링크 각 0건을 검증했다. `python -m scripts.validate_examples`는 합성 예시와 참조를 검증했다.
+- 원본으로 다시 만든 네 파일의 LF 바이트가 제출 파일 및 새 Windows 체크아웃과 일치했다.
+  같은 입력으로 재실행했을 때 내용과 수정 시각도 유지됐다. `git diff --check`를 통과했다.
+- 이 변경의 GitHub Actions 실행, importer 재검사, 원문 사실관계 재확인은 이번 로컬 검증에 포함하지 않았다.
 
 ## 건희 인계
 
