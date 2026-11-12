@@ -4,6 +4,7 @@ import type { Opportunity, RecommendationResponse } from '../../api';
 import type { SavedOpportunities } from '../opportunities/saved';
 import {showSource} from '../../preview';
 import {applicationStatus, closesToday, sourceHref} from './presentation';
+import {useApplicationClock} from './useApplicationClock';
 import {certificationRequirements, inCategory, languageRequirements, recommendationCategories, researchRequirements, type RecommendationCategory} from './categories';
 
 type Item = RecommendationResponse['items'][number];
@@ -35,7 +36,8 @@ export function TextList({items}: {items: string[]}) {
   return <ul>{items.map((text, index) => <li key={index}>{text}</li>)}</ul>;
 }
 
-function ApplicationDates({application, now}: {application?: Application; now: Date}) {
+function ApplicationDates({application}: {application?: Application}) {
+  const now = useApplicationClock(application);
   if (!application) return <p>접수 상태 미확인</p>;
   const start = displayDate(application.opens_on, application.opens_at);
   const end = displayDate(application.closes_on, application.closes_at);
@@ -63,8 +65,8 @@ export function SaveOpportunity({opportunity, saved}: {opportunity: Opportunity;
     onClick={() => saved.toggle(opportunity.id)}>관심 공고 저장</button>;
 }
 
-function RecommendationCard({item, now, saved, category}: {
-  item: Item; now: Date; saved: SavedOpportunities; category: RecommendationCategory;
+function RecommendationCard({item, saved, category}: {
+  item: Item; saved: SavedOpportunities; category: RecommendationCategory;
 }) {
   const {recommendation, opportunity} = item;
   const cautions = [...new Set([...(recommendation.cautions ?? []), ...(opportunity.unresolved_conditions ?? [])])];
@@ -108,12 +110,12 @@ function RecommendationCard({item, now, saved, category}: {
         <TextList items={research} />
       </>}
       <SaveOpportunity opportunity={opportunity} saved={saved} />
-      <OpportunityDetails opportunity={opportunity} now={now} />
+      <OpportunityDetails opportunity={opportunity} />
     </li>
   );
 }
 
-export function OpportunityDetails({opportunity, now}: {opportunity: Opportunity; now: Date}) {
+export function OpportunityDetails({opportunity}: {opportunity: Opportunity}) {
   const {certification, event_schedule: event} = opportunity;
   const url = opportunity.source_kind === 'real' ? sourceHref(opportunity.source_url) : undefined;
   const published = displayDate(opportunity.published_on, opportunity.published_at);
@@ -139,7 +141,7 @@ export function OpportunityDetails({opportunity, now}: {opportunity: Opportunity
                 <ul className="exam-sessions">{certification.exam_sessions.map(session => (
                   <li key={session.id}>
                     <strong>{session.name}</strong>
-                    <ApplicationDates application={session.application} now={now} />
+                    <ApplicationDates application={session.application} />
                     {session.exam_on && <p>시험일 · {session.exam_on}</p>}
                     {session.schedule_note && <p>{session.schedule_note}</p>}
                   </li>
@@ -148,7 +150,7 @@ export function OpportunityDetails({opportunity, now}: {opportunity: Opportunity
             </>
           ) : <p>자격증 운영 정보와 시험 회차를 확인할 수 없어요.</p>
         ) : (
-          <><h4>접수 일정</h4><ApplicationDates application={opportunity.application} now={now} /></>
+          <><h4>접수 일정</h4><ApplicationDates application={opportunity.application} /></>
         )}
         {event && (
           <>
@@ -172,7 +174,6 @@ export function RecommendationResults({response, saved, children}: {
   children: ReactNode;
 }) {
   const [category, setCategory] = useState<RecommendationCategory>('all');
-  const now = new Date();
   const items = response?.items;
   const categories = Object.keys(recommendationCategories) as RecommendationCategory[];
   const visible = items?.filter(item => inCategory(item.opportunity, category));
@@ -196,7 +197,7 @@ export function RecommendationResults({response, saved, children}: {
         : `${recommendationCategories[category]}에 해당하는 추천이 없어요.`}</p>}
       {Boolean(response?.warnings?.length) && <TextList items={response?.warnings ?? []} />}
       {Boolean(visible?.length) && <ul className="result-list">
-        {visible?.map(item => <RecommendationCard key={item.opportunity.id} item={item} now={now}
+        {visible?.map(item => <RecommendationCard key={item.opportunity.id} item={item}
           saved={saved} category={category} />)}
       </ul>}
     </section>

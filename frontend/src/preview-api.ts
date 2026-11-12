@@ -64,7 +64,12 @@ const options: Options = {
   opportunity_types: ['job', 'certification', 'contest', 'competition', 'event', 'training', 'project', 'notice'],
   education_statuses: ['unknown', 'enrolled', 'leave', 'graduating', 'graduated', 'other'],
   experience_statuses: ['none', 'provided', 'unknown'],
-  fields: [{code: 'software', label: '소프트웨어'}, {code: 'design', label: '디자인'}],
+  fields: [
+    {code: 'software', label: '소프트웨어', aliases: ['소프트웨어', '개발', '프로그래밍']},
+    {code: 'design', label: '디자인', aliases: ['디자인']},
+    {code: 'business', label: '경영·사업', aliases: ['경영', '사업']},
+    {code: 'data', label: '데이터', aliases: ['데이터', '데이터 분석']},
+  ],
 };
 
 const capabilities: Capabilities = Object.fromEntries(

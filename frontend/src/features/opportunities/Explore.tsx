@@ -12,7 +12,7 @@ function OpportunityCard({opportunity, saved}: {opportunity: Opportunity; saved:
     <h3>{opportunity.title}</h3>
     {opportunity.source_kind === 'synthetic' && <p className="availability">테스트용 공고</p>}
     <SaveOpportunity opportunity={opportunity} saved={saved} />
-    <OpportunityDetails opportunity={opportunity} now={new Date()} />
+    <OpportunityDetails opportunity={opportunity} />
   </article>;
 }
 

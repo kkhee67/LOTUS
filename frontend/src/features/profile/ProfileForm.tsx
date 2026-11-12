@@ -6,7 +6,7 @@ import {Explore, Resources} from '../opportunities/Explore';
 import {useSavedOpportunities} from '../opportunities/saved';
 import {Guidance} from '../guidance/Guidance';
 import {isPreview} from '../../preview';
-import {interestExamples, jobExamples, workRegions} from './choices';
+import {workRegions} from './choices';
 import {
   buildRequest, experiencePrefixes, hasAcademicYear, maxExperiences, removeExperience, splitEntries, updateExperience,
   type EducationChoice, type EmptyExperienceStatus, type ExperienceInput,
@@ -84,7 +84,6 @@ export function ProfileForm() {
   const loading = submission?.kind === 'loading';
   const educationChoices: EducationChoice[] = (options.data?.education_statuses ?? ['unknown', 'enrolled', 'leave', 'graduating', 'graduated', 'other'])
     .flatMap((status): EducationChoice[] => status === 'graduated' ? [status, 'high_school_graduated'] : [status]);
-  const interests = [...new Set([...interestExamples, ...(options.data?.fields.map(field => field.label) ?? [])])];
   const emptyExperienceChoices = (options.data?.experience_statuses ?? ['unknown', 'none'])
     .filter(status => status === 'unknown' || status === 'none');
 
@@ -202,9 +201,12 @@ export function ProfileForm() {
                 전공
                 <input name="major" maxLength={200} placeholder="예: 산업디자인" />
               </label>
-              <ExampleField name="interests" label="관심 분야" placeholder="예: 디자인, 데이터" choices={interests} />
-              <ExampleField name="preferred_job_fields" label="희망 직무·취업 분야" placeholder="예: UX 디자이너" choices={jobExamples} />
-              <p id="entry-hint" className="field-hint">목록에서 고르거나 직접 적을 수 있어요. 여러 항목은 쉼표로 나눠 주세요.</p>
+              <ExampleField name="interests" label="관심 분야" placeholder="예: 디자인, 데이터" choices={options.data?.fields} />
+              <ExampleField name="preferred_job_fields" label="희망 직무·취업 분야" placeholder="직접 입력 예: 웹 개발자" choices={options.data?.fields} />
+              <p id="entry-hint" className="field-hint">
+                목록에는 추천 서버에 등록된 분야 이름과 별칭이 나와요. 목록에 없는 직무명도 직접 입력할 수 있지만,
+                현재 추천에서 인식하지 못할 수 있어요. 여러 항목은 쉼표로 나눠 주세요.
+              </p>
               <label className="wide">
                 자유 목표
                 <textarea name="goal" maxLength={4000} rows={3} placeholder="예: 다음 학기 전에 첫 포트폴리오를 만들고 싶어요." />
@@ -327,27 +329,25 @@ function ExampleField({name, label, placeholder, choices}: {
   name: string;
   label: string;
   placeholder: string;
-  choices: string[] | Record<string, string[]>;
+  choices?: Options['fields'];
 }) {
   const [value, setValue] = useState('');
   const entries = splitEntries(value);
-  const renderOptions = (items: string[]) => items.map(choice =>
-    <option key={choice} value={choice} disabled={entries.includes(choice)}>{choice}</option>,
-  );
   return (
     <div className="choice-field">
       <label>{label}
         <input name={name} value={value} onChange={event => setValue(event.target.value)}
           placeholder={placeholder} aria-describedby="entry-hint" />
       </label>
-      <select aria-label={`${label} 예시 선택`} value="" onChange={event => {
-        setValue([...entries, event.target.value].join(', '));
-      }}>
-        <option value="" disabled>예시에서 선택</option>
-        {Array.isArray(choices) ? renderOptions(choices) : Object.entries(choices).map(([group, items]) =>
-          <optgroup key={group} label={group}>{renderOptions(items)}</optgroup>,
-        )}
-      </select>
+      {Boolean(choices?.length) && <select aria-label={`${label} 등록 표현 선택`} aria-describedby="entry-hint"
+        value="" onChange={event => setValue([...entries, event.target.value].join(', '))}>
+        <option value="" disabled>등록된 추천 표현 선택</option>
+        {choices?.map(field => <optgroup key={field.code} label={field.label}>
+          {[...new Set([field.label, ...(field.aliases ?? [])])].map(choice =>
+            <option key={choice} value={choice} disabled={entries.includes(choice)}>{choice}</option>,
+          )}
+        </optgroup>)}
+      </select>}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {applicationStatus, closesToday, sourceHref} from '../src/features/recommendations/presentation.ts';
+import {applicationStatus, closesToday, nextApplicationBoundary, sourceHref} from '../src/features/recommendations/presentation.ts';
 import {certificationRequirements, inCategory, languageRequirements, researchRequirements} from '../src/features/recommendations/categories.ts';
 
 test('research and graduate school category includes opportunities and preserves degree requirements', () => {
@@ -59,6 +59,20 @@ test('status changes at exact start and end instants, preserving an explicit clo
   assert.equal(applicationStatus(application, new Date('2026-11-12T03:00:00Z')), 'open');
   assert.equal(applicationStatus(application, new Date('2026-11-12T04:00:00Z')), 'closed');
   assert.equal(applicationStatus({...application, status: 'closed'}, before), 'closed');
+});
+
+test('next boundary follows exact times and both Seoul midnights for a date-only deadline', () => {
+  const exact = {status: 'open', closes_at: '2026-11-12T22:10:00+09:00'} as const;
+  const deadline = new Date(exact.closes_at);
+  assert.equal(nextApplicationBoundary(exact, new Date(deadline.getTime() - 1)), deadline.getTime());
+  assert.equal(nextApplicationBoundary(exact, deadline), undefined);
+
+  const dateOnly = {status: 'unknown', closes_on: '2026-11-12', opens_on: '2026-11-11'} as const;
+  const startOfDeadline = new Date('2026-11-12T00:00:00+09:00');
+  const endOfDeadline = new Date('2026-11-13T00:00:00+09:00');
+  assert.equal(nextApplicationBoundary(dateOnly, new Date('2026-11-10T00:00:00+09:00')), startOfDeadline.getTime());
+  assert.equal(nextApplicationBoundary(dateOnly, startOfDeadline), endOfDeadline.getTime());
+  assert.equal(nextApplicationBoundary(dateOnly, endOfDeadline), undefined);
 });
 
 test('source links must be absolute HTTP(S) URLs without credentials', () => {
