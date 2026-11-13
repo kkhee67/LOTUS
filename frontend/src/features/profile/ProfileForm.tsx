@@ -291,6 +291,12 @@ export function ProfileForm() {
             <h1 ref={screenHeading} tabIndex={-1}>{screens[screen]}</h1>
             <button className="secondary" type="button" onClick={() => setStage('profile')}>입력 수정</button>
           </div>
+          {screen !== 'recommendations' && !capabilities.data && (
+            capabilities.error ? <div className="feature-panel">
+              <p className="error" role="alert">기능 상태를 확인하지 못했어요. {capabilities.error}</p>
+              <button type="button" className="secondary" onClick={retryConnection}>연결 다시 확인</button>
+            </div> : <p className="availability" role="status">기능 상태를 확인하고 있어요.</p>
+          )}
           <div hidden={screen !== 'recommendations'}>
             {confirmed && <RecommendationProfile profile={confirmed.profile} />}
             <RecommendationResults response={submission?.kind === 'results' ? submission.response : undefined} saved={saved}>
@@ -309,15 +315,15 @@ export function ProfileForm() {
               </button>}
             </RecommendationResults>
           </div>
-          <div hidden={screen !== 'explore'}>
+          <div hidden={screen !== 'explore' || !capabilities.data}>
             <Explore capability={capabilities.data?.opportunities} types={options.data?.opportunity_types} saved={saved}
               recommendations={recommendedItems} />
           </div>
-          <div hidden={screen !== 'guidance'}>
+          <div hidden={screen !== 'guidance' || !capabilities.data}>
             <Guidance key={confirmed ? 'confirmed' : 'editing'} capabilities={capabilities.data} profile={confirmed?.profile}
               opportunities={recommendedItems} />
           </div>
-          <div hidden={screen !== 'resources'}>
+          <div hidden={screen !== 'resources' || !capabilities.data}>
             <Resources capability={capabilities.data?.['resource-links']} />
           </div>
       </main>

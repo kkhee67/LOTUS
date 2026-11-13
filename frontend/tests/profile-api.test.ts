@@ -32,13 +32,23 @@ test('enabled recommendations send a JSON body and never put profile data in the
 test('options and recommendations distinguish HTTP and network failures', async context => {
   const fetch = context.mock.method(globalThis, 'fetch', async () => new Response(null, {status: 500}));
   await assert.rejects(getApi('/options', signal), {kind: 'server'});
-  for (const [status, kind] of [[422, 'validation'], [503, 'unavailable'], [500, 'server']] as const) {
+  for (const [status, kind] of [[422, 'validation'], [503, 'temporary'], [500, 'server']] as const) {
     fetch.mock.mockImplementation(async () => new Response(null, {status}));
     await assert.rejects(recommend(ready, body, signal), {kind});
   }
   fetch.mock.mockImplementation(async () => {throw new TypeError('network');});
   await assert.rejects(getApi('/options', signal), {kind: 'network'});
   await assert.rejects(recommend(ready, body, signal), ApiError);
+});
+
+test('enabled catalog requests report a retryable 503 with the shared unavailable error code', async context => {
+  const fetch = context.mock.method(globalThis, 'fetch', async () =>
+    Response.json({error: {code: 'FEATURE_UNAVAILABLE', message: '공고 자료를 조회할 수 없습니다.'}}, {status: 503}));
+  await assert.rejects(getList('opportunities', ready, 0, signal), {
+    kind: 'temporary',
+    message: '일시적으로 불러오지 못했어요. 다시 시도해 주세요.',
+  });
+  assert.equal(fetch.mock.callCount(), 1);
 });
 
 test('catalogue, saved detail and career tools never call disabled APIs', async context => {
