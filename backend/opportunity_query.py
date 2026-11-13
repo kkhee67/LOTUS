@@ -6,7 +6,9 @@ import sqlite3
 from fastapi import APIRouter, Query
 from fastapi.responses import JSONResponse
 
-from backend.importer import MODELS, MODE_KIND, SCHEMA_VERSION, _validate_schema, database_path
+from backend.importer import (
+    MODELS, MODE_KIND, SCHEMA_VERSION, _validate_schema, database_path, validate_stored_payload,
+)
 from backend.settings import Settings
 from shared.models import ErrorBody, ErrorResponse, Opportunity, Page
 from shared.validation import validate_dataset
@@ -33,7 +35,7 @@ def read_catalog(settings: Settings) -> dict:
             dataset = {}
             for table, model in MODELS.items():
                 rows = db.execute(f'SELECT id, source_kind, payload FROM {table}').fetchall()
-                items = [model.model_validate_json(payload) for _, _, payload in rows]
+                items = [validate_stored_payload(model, payload) for _, _, payload in rows]
                 if any(key != item.id or kind != MODE_KIND[settings.data_mode]
                        or item.source_kind != kind
                        for (key, kind, _), item in zip(rows, items)):

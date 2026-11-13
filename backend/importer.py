@@ -32,6 +32,15 @@ def _unique_object(pairs):
     return result
 
 
+def validate_stored_payload(model, payload: str):
+    """Use the same duplicate-key check for stored rows as for input files."""
+    try:
+        value = json.loads(payload, object_pairs_hook=_unique_object)
+    except RecursionError as exc:
+        raise ImportFailure('기존 DB 자료의 JSON 구조를 확인해 주세요.') from exc
+    return model.model_validate(value)
+
+
 def load_dataset(directory: Path, *, mode: str) -> dict:
     if mode not in MODE_KIND:
         raise ImportFailure('mode는 demo 또는 real이어야 합니다.')
@@ -109,6 +118,7 @@ def import_directory(directory: Path, database: Path, *, mode: Literal['demo', '
 
     Each batch includes every source it references. Omitted DB items remain.
     Existing and incoming data are checked together before any upsert.
+    Older records are ignored and counted as unchanged. Equal timestamps allow corrections.
     """
     dataset = load_dataset(Path(directory), mode=mode)
     database = Path(database)
@@ -119,14 +129,15 @@ def import_directory(directory: Path, database: Path, *, mode: Literal['demo', '
         connection.execute('PRAGMA foreign_keys = ON')
         connection.execute('BEGIN IMMEDIATE')
         _schema(connection, mode)
-        existing = {}
+        counts = {}
         merged = {}
+        writes = {}
         for table, model in MODELS.items():
             stored = list(connection.execute(f'SELECT id, source_kind, payload FROM {table}'))
-            existing[table] = {key: payload for key, kind, payload in stored}
+            existing = {key: payload for key, kind, payload in stored}
             if any(kind != MODE_KIND[mode] for key, kind, payload in stored):
                 raise ImportFailure('기존 DB 자료 종류 열과 mode가 일치하지 않습니다.')
-            parsed = {key: model.model_validate_json(value) for key, value in existing[table].items()}
+            parsed = {key: validate_stored_payload(model, value) for key, value in existing.items()}
             if any(key != item.id or item.source_kind != MODE_KIND[mode] for key, item in parsed.items()):
                 raise ImportFailure('기존 DB 자료와 ID 또는 mode가 일치하지 않습니다.')
             if table != 'sources':
@@ -135,19 +146,24 @@ def import_directory(directory: Path, database: Path, *, mode: Literal['demo', '
                 actual_links = set(connection.execute(f'SELECT item_id, source_id FROM {table}_sources'))
                 if actual_links != expected_links:
                     raise ImportFailure('기존 DB의 출처 연결과 원본이 일치하지 않습니다. 복구 검토가 필요합니다.')
-            parsed.update({item.id: item for item in dataset[table]})
+            stats = counts[table] = {'inserted': 0, 'updated': 0, 'unchanged': 0}
+            writes[table] = []
+            for item in dataset[table]:
+                previous = parsed.get(item.id)
+                if previous is not None and item.checked_at < previous.checked_at:
+                    stats['unchanged'] += 1
+                    continue
+                payload = _canonical(item)
+                if payload == existing.get(item.id):
+                    stats['unchanged'] += 1
+                    continue
+                stats['inserted' if previous is None else 'updated'] += 1
+                parsed[item.id] = item
+                writes[table].append((item, payload))
             merged[table] = list(parsed.values())
         validate_dataset(**merged)
-        counts = {}
-        for table, rows in dataset.items():
-            counts[table] = {'inserted': 0, 'updated': 0, 'unchanged': 0}
-            for item in rows:
-                payload = _canonical(item)
-                previous = existing[table].get(item.id)
-                action = 'inserted' if previous is None else ('unchanged' if previous == payload else 'updated')
-                counts[table][action] += 1
-                if action == 'unchanged':
-                    continue
+        for table, rows in writes.items():
+            for item, payload in rows:
                 connection.execute(f'''INSERT INTO {table} (id, source_kind, payload) VALUES (?, ?, ?)
                     ON CONFLICT(id) DO UPDATE SET source_kind=excluded.source_kind, payload=excluded.payload''',
                                    (item.id, item.source_kind, payload))
