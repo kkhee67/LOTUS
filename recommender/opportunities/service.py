@@ -1,6 +1,7 @@
 """Deterministic recommendations using supplied models and time only."""
 from datetime import datetime
 from pathlib import Path
+from .policy import INTEREST_WEIGHT, JOB_WEIGHT, GOAL_WEIGHT, MAJOR_WEIGHT, MIN_SCORE, MAX_SCORE
 from .text import normalized, positive_mentions, field_matches, NEGATIVE
 from shared.models import (Opportunity, OptionsResponse, RecommendationItem, RecommendationReason,
                            RecommendationRequest, RecommendationResponse, RuleExpression, UserProfile)
@@ -54,9 +55,9 @@ def score(opportunity: Opportunity, profile: UserProfile) -> tuple[int, list[Rec
     reasons = []
     points = 0
     for label, entries, weight, free_text in (
-        ('관심 분야', profile.interests, 40, False),
-        ('희망 직무', profile.preferred_job_fields, 40, False),
-        ('목표', [profile.goal] if profile.goal else [], 20, True),
+        ('관심 분야', profile.interests, INTEREST_WEIGHT, False),
+        ('희망 직무', profile.preferred_job_fields, JOB_WEIGHT, False),
+        ('목표', [profile.goal] if profile.goal else [], GOAL_WEIGHT, True),
     ):
         matched = []
         for field in CATALOG.fields:
@@ -78,10 +79,10 @@ def score(opportunity: Opportunity, profile: UserProfile) -> tuple[int, list[Rec
         ids = sorted(e.id for e in opportunity.evidence if e.field == 'related_majors'
                      and positive_mentions(e.fact, [profile.major]))
         if ids:
-            points += 15
+            points += MAJOR_WEIGHT
             reasons.append(RecommendationReason(text='전공이 공고의 관련 전공과 일치합니다. 지원 자격 보장은 아닙니다.',
                                                 evidence_ids=ids))
-    return min(100, points), reasons
+    return min(MAX_SCORE, points), reasons
 
 
 def recommend(request: RecommendationRequest, opportunities: list[Opportunity], *, now: datetime) -> RecommendationResponse:
@@ -123,7 +124,7 @@ def recommend(request: RecommendationRequest, opportunities: list[Opportunity], 
         if status == 'ineligible':
             continue
         points, reasons = score(opportunity, request.profile)
-        if points < 15 or not reasons:
+        if points < MIN_SCORE or not reasons:
             continue
         if status == 'unknown':
             cautions.append('필수 조건 또는 입력 정보가 충분하지 않아 지원 자격을 확인해야 합니다.')

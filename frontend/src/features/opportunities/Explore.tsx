@@ -1,3 +1,4 @@
+import {usePaginatedList} from './usePaginatedList';
 import {useState} from 'react';
 import {canRecommend, getList, getOpportunity, type Capability, type Opportunity, type Options} from '../../api';
 import {displayDate, OpportunityDetails, opportunityLabels, opportunityType, SaveOpportunity} from '../recommendations/RecommendationResults';
@@ -38,7 +39,6 @@ function SavedCard({id, cached, capability, saved}: {
 
 const views = {all: '전체 공고', notices: '학교·기관 공지', events: '설명회·박람회', saved: '관심 공고'} as const;
 type View = keyof typeof views;
-type Pages<T> = {items: T[]; total: number; next: number};
 
 export function Explore({capability, types, saved, recommendations}: {
   capability?: Capability;
@@ -49,7 +49,7 @@ export function Explore({capability, types, saved, recommendations}: {
   const [view, setView] = useState<View>('all');
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<Opportunity['type'] | ''>('');
-  const task = useApiTask<Pages<Opportunity>>();
+  const task = usePaginatedList<Opportunity>((offset, signal) => getList('opportunities', capability, offset, signal));
   const available = canRecommend(capability);
   const pages = task.data;
   const actual = pages?.items.filter(showSource) ?? [];
@@ -63,17 +63,6 @@ export function Explore({capability, types, saved, recommendations}: {
   });
   const cached = new Map([...actual, ...(recommendations ?? []).filter(showSource)].map(item => [item.id, item]));
   const typesToShow = types ?? Object.keys(opportunityLabels) as Opportunity['type'][];
-
-  function load() {
-    void task.run(async signal => {
-      const result = await getList('opportunities', capability, pages?.next ?? 0, signal);
-      return {
-        items: [...new Map([...(pages?.items ?? []), ...result.items].map(item => [item.id, item])).values()],
-        total: result.total,
-        next: result.offset + (result.items.length || result.limit),
-      };
-    });
-  }
 
   return <section id="explore" className="feature-panel" aria-label="공고 목록">
     <div className="section-switch" aria-label="공고 화면">
@@ -105,7 +94,7 @@ export function Explore({capability, types, saved, recommendations}: {
         {pages && !visible.length && <p>불러온 목록에서 조건에 맞는 공고가 없어요.</p>}
         <div className="result-list">{visible.map(item => <OpportunityCard key={item.id} opportunity={item} saved={saved} />)}</div>
         {available && (!pages || pages.next < pages.total || task.error) &&
-          <button type="button" className="secondary" onClick={load} disabled={task.loading}>
+          <button type="button" className="secondary" onClick={() => void task.load()} disabled={task.loading}>
             {task.loading ? '불러오는 중…' : task.error ? '다시 시도' : pages ? '공고 더 불러오기' : '공고 불러오기'}
           </button>}
       </>
@@ -117,7 +106,7 @@ const resourceLabels = {official_site: '공식 사이트', job_board: '취업 �
 type Resource = Awaited<ReturnType<typeof getList<'resource-links'>>>['items'][number];
 
 export function Resources({capability}: {capability?: Capability}) {
-  const task = useApiTask<Pages<Resource>>();
+  const task = usePaginatedList<Resource>((offset, signal) => getList('resource-links', capability, offset, signal));
   const pages = task.data;
   const actual = pages?.items.filter(showSource) ?? [];
   const available = canRecommend(capability);
@@ -137,11 +126,7 @@ export function Resources({capability}: {capability?: Capability}) {
       </li>;
     })}</ul>}
     {available && (!pages || pages.next < pages.total || task.error) && <button className="secondary" type="button"
-      disabled={task.loading} onClick={() => void task.run(async signal => {
-        const result = await getList('resource-links', capability, pages?.next ?? 0, signal);
-        return {items: [...new Map([...(pages?.items ?? []), ...result.items].map(item => [item.id, item])).values()],
-          total: result.total, next: result.offset + (result.items.length || result.limit)};
-      })}>
+      disabled={task.loading} onClick={() => void task.load()}>
       {task.loading ? '불러오는 중…' : task.error ? '다시 시도' : pages ? '사이트 더 불러오기' : '사이트 불러오기'}
     </button>}
   </section>;

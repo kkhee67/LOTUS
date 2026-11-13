@@ -1,4 +1,4 @@
-// Run against dedicated local real-data servers; never substitutes API responses.
+// Deterministic regression: use python -m scripts.check_browser. No response substitution.
 // PLAYWRIGHT_MODULE may point at an installed playwright index.mjs.
 import assert from 'node:assert/strict';
 import {mkdir, writeFile} from 'node:fs/promises';
@@ -6,7 +6,9 @@ const {chromium} = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const url = process.env.LOTUS_TEST_URL || 'http://127.0.0.1:5183';
 assert(['localhost', '127.0.0.1'].includes(new URL(url).hostname), 'Use a dedicated local test server');
 assert(!new URL(url).search, 'Preview mode is not an integration test');
-const output = 'runtime/v3-validation';
+const fixedTime = process.env.LOTUS_TEST_TIME;
+assert(fixedTime, 'Use the fixed-time test server via scripts.check_browser');
+const output = process.env.LOTUS_TEST_OUTPUT || 'runtime/browser-validation';
 await mkdir(output, {recursive: true});
 const browser = await chromium.launch({headless: true,
   ...(process.env.CHROMIUM_PATH ? {executablePath: process.env.CHROMIUM_PATH} : {})});
@@ -19,6 +21,7 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   const recommendation = () => page.waitForResponse(r => new URL(r.url()).pathname === '/api/v1/recommendations'
     && r.request().method() === 'POST');
+  await page.clock.install({time: new Date(fixedTime)});
   await page.goto(url);
   await page.locator('input[name="interests"]').waitFor({state: 'visible'});
   await page.getByRole('combobox', {name: '관심 분야 등록 표현 선택'}).selectOption('사업');
@@ -27,6 +30,7 @@ try {
   await page.getByRole('button', {name: '다음', exact: true}).click();
   const response = await responsePromise;
   assert.equal(response.status(), 200);
+  assert.equal(response.headers()['x-lotus-test-time'], fixedTime, 'Regression requires the test-only clock');
   const data = await response.json();
   assert.equal(data.items.length, 2, 'Reviewed real batch must still have two matching open notices');
   assert.equal(data.candidate_count, 2);

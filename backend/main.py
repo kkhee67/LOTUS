@@ -1,13 +1,13 @@
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError, ResponseValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from backend.responses import error_response as error
 from starlette.exceptions import HTTPException
 from pydantic import TypeAdapter
 from backend.settings import ROOT, Settings
 from backend.opportunity_query import create_opportunity_router
 from backend.service_adapters import create_service_router
-from shared.models import Capability, ErrorBody, ErrorResponse, HealthResponse, OptionsResponse
+from shared.models import Capability, ErrorResponse, HealthResponse, OptionsResponse
 from shared.rules import CONTRACT_VERSION
 
 FEATURES = ('recommendations', 'career-roles', 'activity-plan', 'interview-guide')
@@ -32,10 +32,6 @@ validate_capability_flags(capability_flags)
 ERRORS = {code: {'model': ErrorResponse} for code in (404, 422, 500, 503)}
 app = FastAPI(title='LOTUS bootstrap draft', version=CONTRACT_VERSION, responses=ERRORS)
 app.add_middleware(CORSMiddleware, allow_origins=settings.allowed_origins, allow_methods=['GET', 'POST'], allow_headers=['Content-Type'])
-
-def error(status: int, code: str, message: str):
-    payload = ErrorResponse(error=ErrorBody(code=code, message=message))
-    return JSONResponse(status_code=status, content=payload.model_dump(mode='json'))
 
 @app.exception_handler(RequestValidationError)
 async def invalid(request: Request, exc: RequestValidationError):

@@ -1,7 +1,7 @@
 """Read-only catalog preflight for local startup and deployment scripts."""
 import json
 
-from backend.opportunity_query import CatalogUnavailable, read_catalog
+from backend.catalog_store import CatalogUnavailable, read_catalog
 from backend.settings import Settings
 
 

@@ -5,30 +5,20 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from backend import main, service_adapters
-from backend.importer import import_directory
+from backend import main
 from backend.opportunity_query import read_opportunities
 from backend.service_adapters import assemble_recommendations
 from shared.models import RecommendationApiResponse, RecommendationRequest
 from datetime import datetime
+from tests.support import RECOMMENDATION_TIME
 
 
 @pytest.fixture
-def real_server(tmp_path, monkeypatch):
-    db = tmp_path / 'real.db'
-    import_directory('data/normalized', db, mode='real')
-    monkeypatch.setattr(main.settings, 'database_url', 'sqlite:///' + str(db))
-    monkeypatch.setattr(main.settings, 'data_mode', 'real')
-    clock = [datetime.fromisoformat('2026-11-13T12:00:00+09:00')]
-
-    class FixedDatetime(datetime):
-        @classmethod
-        def now(cls, tz=None):
-            assert tz is not None
-            return clock[0].astimezone(tz)
-
-    # Keep the production app, router, DB and engine; fix only the server clock.
-    monkeypatch.setattr(service_adapters, 'datetime', FixedDatetime)
+def real_server(real_catalog, recommendation_clock, monkeypatch):
+    db, settings = real_catalog
+    monkeypatch.setattr(main.settings, 'database_url', settings.database_url)
+    monkeypatch.setattr(main.settings, 'data_mode', settings.data_mode)
+    clock = recommendation_clock
     with TestClient(main.app) as client:
         yield client, db, clock
 
@@ -70,7 +60,7 @@ def test_batch_replay_with_explicit_aware_time(real_server):
     # Replay at the same aware instant independently of the wall clock.
     result = assemble_recommendations(
         RecommendationRequest(profile={'interests': ['경영·사업']}), read_opportunities(main.settings),
-        now=datetime.fromisoformat('2026-11-13T12:00:00+09:00'))
+        now=RECOMMENDATION_TIME)
     assert result.candidate_count == 2
     assert [item.opportunity.id for item in result.items] == [
         'dankook-recruitment-186367', 'dankook-recruitment-186370']
