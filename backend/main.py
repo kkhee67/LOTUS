@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.exceptions import RequestValidationError
+from fastapi.exceptions import RequestValidationError, ResponseValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
@@ -46,6 +46,7 @@ async def http_error(request: Request, exc: HTTPException):
     return error(exc.status_code, 'NOT_FOUND' if exc.status_code == 404 else 'HTTP_ERROR', '요청을 처리할 수 없습니다')
 
 @app.exception_handler(Exception)
+@app.exception_handler(ResponseValidationError)
 async def server_error(request: Request, exc: Exception):
     return error(500, 'INTERNAL_ERROR', '서버 오류가 발생했습니다')
 
