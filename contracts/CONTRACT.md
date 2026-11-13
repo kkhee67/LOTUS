@@ -78,7 +78,7 @@ engine=rules와 template, 실제 LLM 사용 시에만 rules+llm/llm. 합성 응�
 | GET | /health | HealthResponse | 구현 |
 | GET | /options | OptionsResponse | 구현 |
 | GET | /capabilities | 이름별 Capability | 구현 |
-| GET | /opportunities | Page[Opportunity] | DB 조회 구현 |
+| GET | /opportunities | Page[Opportunity] | DB 조회·검색 구현 |
 | GET | /opportunities/{id} | Opportunity | DB 조회 구현 |
 | GET | /resource-links | Page[ResourceLink] | 503 |
 | POST | /recommendations | RecommendationApiResponse | DB·규칙 엔진 연결 구현 |
@@ -98,7 +98,7 @@ OpenAPI는 실제 라우트·모델에서 생성한다. docs의 성공 스키마
 ## 데이터와 DB 인계
 출력은 UTF-8 배열: data/normalized/opportunities.json, sources.json, roles.json, resource_links.json.
 합성 예시는 contracts/examples에만 둔다. 실제 normalized 파일은 아직 제공하지 않는다.
-데이터 담당은 DB를 직접 수정하지 않는다. backend.importer가 검증 후 입력하고 backend.opportunity_query가 읽기 전용 snapshot에서 목록·상세를 조회한다. 조회 결과는 ID 오름차순이며 원본 날짜·근거·URL을 보존한다. 검색 파라미터는 추가하지 않았다.
+데이터 담당은 DB를 직접 수정하지 않는다. backend.importer가 검증 후 입력하고 backend.opportunity_query가 읽기 전용 snapshot에서 목록·상세를 조회한다. 조회 결과는 ID 오름차순이며 원본 날짜·근거·URL을 보존한다. 선택 검색어 q와 반복 types는 아래 검색 절을 따른다.
 전체 파일·ID 참조 검증 후 트랜잭션 반영, ID upsert, 반복 중복 방지, 오류 시 DB 보존,
 입력에서 빠졌다고 자동 삭제 금지, real/synthetic 분리가 필수이다.
 DB 구조 변경 시 마이그레이션·복구를 준비하며 DB 삭제로 해결하지 않는다.
@@ -111,3 +111,10 @@ candidate_count는 반환 수 이상이면서 허용 유형 공고 수 이하이
 정상 빈 결과200, DB 조회 불가503, 내부 함수 실패 또는 잘못된 내부 결과500으로 구분한다.
 실제 자료3건으로 소프트웨어 추천0건을 관찰했으며 성공한 관련 추천이 있음을 의미하지 않는다.
 부가 기능의 함수 구현·활성화와 서버 검색 필드는 별도 검토 대상이다.
+
+## 공고 검색 — 이번 로컬 변경
+GET /opportunities는 선택 q(원문 최대200자)와반복types를받는다. q의NFKC/casefold복사본을공백으로나눠단어AND부분검색하고types는공통OpportunityType의OR다.
+대상은제목/기관/요약/태그이며필터→ID정렬→total→페이지순서다. 응답모델과기존limit/offset제한은유지한다.
+q생략/빈값/공백만이면조건없음,types생략은전체,빈/잘못된유형과q초과는422다. %, _는리터럴이며SQL검색을사용하지않는다.
+상세API·마감공고포함·추천정책·DB검증을유지한다. 인코딩/오류/상세예시는 docs/opportunity-search-handoff.md.
+이규격은사용자의현재검색요청에따른로컬구현기준이다. #16병합과별도검색PR검토전에팀main반영완료로간주하지않는다.

@@ -4,7 +4,8 @@ from fastapi import APIRouter, Query
 from backend.settings import Settings
 from backend.catalog_store import CatalogUnavailable, read_catalog, read_opportunities
 from backend.responses import error_response as query_error
-from shared.models import Opportunity, Page
+from backend.opportunity_search import filter_opportunities
+from shared.models import Opportunity, OpportunityType, Page
 
 
 def create_opportunity_router(
@@ -15,13 +16,16 @@ def create_opportunity_router(
 
     @router.get('/opportunities', response_model=Page[Opportunity])
     def opportunities(limit: int = Query(default=20, ge=1, le=100),
-                      offset: int = Query(default=0, ge=0)):
+                      offset: int = Query(default=0, ge=0),
+                      q: str | None = Query(default=None, max_length=200),
+                      types: list[OpportunityType] | None = Query(default=None)):
         if not enabled():
             return query_error(503, 'FEATURE_UNAVAILABLE', '공고 조회 기능이 비활성 상태입니다.')
         try:
-            items = read_opportunities(settings)
+            snapshot = read_catalog(settings)
         except CatalogUnavailable:
             return query_error(503, 'FEATURE_UNAVAILABLE', '공고 자료를 조회할 수 없습니다.')
+        items = filter_opportunities(snapshot['opportunities'], q=q, types=types)
         return Page[Opportunity](items=items[offset:offset + limit], total=len(items),
                                  limit=limit, offset=offset)
 

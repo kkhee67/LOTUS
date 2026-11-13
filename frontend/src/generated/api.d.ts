@@ -945,6 +945,8 @@ export interface operations {
             query?: {
                 limit?: number;
                 offset?: number;
+                q?: string | null;
+                types?: ("contest" | "competition" | "job" | "certification" | "event" | "training" | "project" | "notice")[] | null;
             };
             header?: never;
             path?: never;
