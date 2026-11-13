@@ -104,3 +104,16 @@ $env:DATA_MODE = "real"
 외부 AI 동의 여부와 관계없이 현재 엔진은 rules이며 외부 API를 호출하지 않습니다.
 직무·활동·면접 알고리즘은 태환 담당으로 미구현이며 backend/service_adapters.py의 연결 준비를 성공 구현으로 간주하지 않습니다.
 검색 검토안과 담당별 남은 일은 docs/changes/backend-next-steps.md, 인계와 검사는 docs/backend.md를 봅니다.
+
+## 서버 실행 전 DB 점검
+자료 입력 후 서버를 켜기 전에 같은 DATABASE_URL/DATA_MODE 환경에서 실행합니다.
+```powershell
+.venv\Scripts\python -m backend.check_catalog
+if ($LASTEXITCODE -ne 0) { throw "DB 점검 실패: 위의 상태 코드와 DB 설정을 확인하세요." }
+```
+정상이면 status=ok, data_mode와 sources/opportunities/roles/resource_links 개수를 JSON으로 출력합니다.
+정상 빈 DB도 ok이며 개수0입니다. 이것이 추천 결과 존재·공고 최신성·전체 서비스 준비 완료를 보장하지는 않습니다.
+종료 코드0=정상,1=DB 조회/자료 검증 실패,2=환경 설정 오류,3=예상하지 못한 점검 오류입니다.
+실패 시 서버 시작을 멈추는 위 예시는 선택적으로 사용하며 서버의 기존 기동 방식은 바꾸지 않았습니다.
+DB 누락·잠금·미지원 스키마·실제/합성 mode 불일치·손상 자료를 검사합니다. DB를 생성·수정하거나 자동 복구하지 않습니다.
+오류에는 DB 경로나 자료 원문·환경변수 원문을 출력하지 않습니다. 자세한 정보는 docs/catalog-preflight.md를 봅니다.
