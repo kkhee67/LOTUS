@@ -195,6 +195,8 @@ export function RecommendationResults({response, saved, children}: {
         ? '조건에 맞는 추천이 없어요. 관심 분야나 목표를 바꿔 다시 시도해 보세요.'
         : visible.length ? `추천 ${visible.length}건을 찾았어요.`
         : `${recommendationCategories[category]}에 해당하는 추천이 없어요.`}</p>}
+      {response && response.candidate_count > response.items.length &&
+        <p>전체 추천 후보 {response.candidate_count}건 중 {response.items.length}건을 받았어요.</p>}
       {Boolean(response?.warnings?.length) && <TextList items={response?.warnings ?? []} />}
       {Boolean(visible?.length) && <ul className="result-list">
         {visible?.map(item => <RecommendationCard key={item.opportunity.id} item={item}

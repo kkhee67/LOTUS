@@ -15,12 +15,13 @@ export type GuidanceResponse<T extends GuidanceFeature> =
   GuidanceOperation<T>['responses'][200]['content']['application/json'];
 type GuidanceBody<T extends GuidanceFeature> = GuidanceOperation<T>['requestBody']['content']['application/json'];
 
-type ApiErrorKind = 'configuration' | 'validation' | 'unavailable' | 'network' | 'server' | 'not-found';
+type ApiErrorKind = 'configuration' | 'validation' | 'unavailable' | 'temporary' | 'network' | 'server' | 'not-found';
 
 const errorMessages: Record<ApiErrorKind, string> = {
   configuration: '서버 주소 설정을 확인해 주세요.',
   validation: '서버에서 입력 형식을 확인하지 못했어요. 입력 내용을 확인해 주세요.',
-  unavailable: '이 기능을 준비 중이에요. 잠시 후 다시 시도해 주세요.',
+  unavailable: '이 기능을 준비 중이에요.',
+  temporary: '일시적으로 불러오지 못했어요. 다시 시도해 주세요.',
   'not-found': '현재 이 공고를 찾을 수 없어요.',
   network: '서버에 연결할 수 없어요. 연결을 확인하고 다시 시도해 주세요.',
   server: '서버에서 요청을 처리하지 못했어요. 잠시 후 다시 시도해 주세요.',
@@ -49,7 +50,9 @@ async function request<T>(path: string, init: RequestInit): Promise<T> {
   }
 
   if (response.status === 422) throw new ApiError('validation');
-  if (response.status === 503) throw new ApiError('unavailable');
+  // Disabled capabilities are handled before calling the API. A 503 can also
+  // mean a transient failure, and the server code is shared by both cases.
+  if (response.status === 503) throw new ApiError('temporary');
   if (response.status === 404) throw new ApiError('not-found');
   if (!response.ok) throw new ApiError('server');
   try {
