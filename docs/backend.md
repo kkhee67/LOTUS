@@ -1,3 +1,51 @@
+# 실제 공고 추천 재현 확인 — 2026-11-13
+
+기준0138da6(PR #8), 별도 로컬 브랜치 backend/real-recommendation-check.
+PR #7과 #8은 확인 시 OPEN/미병합이었다. 기존 변경과 두 PR을 수정하지 않았다.
+
+## 확인 결과와 정정
+소프트웨어 입력에서0건인 사실을 전체 분야의 추천 불가로 일반화하면 안 된다.
+저장소의 기존 real 자료3건을 임시 realDB에 importer로 넣고 같은 API/엔진으로 검사했다.
+- 소프트웨어:HTTP200/0건.
+- 디자인:HTTP200/0건.
+- 데이터:HTTP200/0건.
+- 경영·사업:HTTP200/1건/40점/지원자격unknown(추가확인필요).
+공고ID:dankook-recruitment-186370, 제목:[단국C-앵커사업단] 프로젝트 계약직(연구원) 채용 공고.
+근거ID:duties. 공고 활동과 근거에 포함된 '사업 지원'이 기존 business분야 별칭과 일치한다.
+fields가 비어 있어도 기존 엔진은 activities 근거를 사용한다. 데이터를 새로 채우거나 점수/알고리즘을 바꾸지 않았다.
+이 결과는 해당 관심 입력에 대한 기존 엔진 동작 확인이며 추천 적합성 평가·지원 자격 보증은 아니다.
+외부 원문의 최신 모집 여부는 이번에 재확인하지 않았다.2026-11-12 checked_at의 저장된 자료 검증이다.
+
+## 코드와 막는 오류
+새 backend/tests/test_real_recommendation.py만 실행 코드로 추가했다. 서비스·공통모델·자료·AI·프론트 구현은 유지했다.
+1. 임시 real DB에 기존 공개 자료를 입력하고 실제 main.app의 API를 호출한다.
+2. business/경영·사업/경영/사업 네 입력을 각각 검사해40점·동일공고·실제원본·근거duties·자격unknown을 확인한다.
+3. 추천 원본과 상세 API가 같은지 비교한다. 추천 함수가 다른 공고 내용을 붙이는 회귀를 막는다.
+4. DB 바이트가 조회 전후 같은지 확인한다. 읽기 API의 의도치 않은 쓰기를 검사한다.
+5. 관련 없는 소프트웨어·디자인·데이터 입력은0건을 유지한다. 결과를 억지로 생성하는 회귀를 막는다.
+6. aware now를 고정한 재현도 검사한다. 원본 자료·추천 함수를 mock하지 않는다.
+
+## 실제 검사
+신규8 passed. 전체 data_pipeline/tests backend/tests tests/integration:276 passed/기존AnyIO 경고1/28.09s.
+사용한 Python:../importer-review/.venv/Scripts/python.exe(Python3.12.7).
+실제 명령:python -m pytest data_pipeline/tests backend/tests tests/integration -q --basetemp <실행별 새 임시 경로> -o cache_dir=<실행별 새 캐시 경로>.
+코드 공백과 전체 patch 역적용 가능 여부도 검사했다. 프론트는 이번에 수정하지 않았으며 프론트24건은 이전 PR #8에서 검사한 결과다.
+
+## 화면
+로컬 실제 FastAPI/Vite와 임시 realDB로 일반URL을 열었다. preview모드/API응답대체는 쓰지 않았다.
+관심분야 '경영·사업'만 입력→확인→다음→실제 공고1건/40점/추가확인필요 표시를 확인했다.
+화면 증거:outputs/real-business-recommendation-ui.jpg. 생성 서버는 종료했다.
+
+## 남은 일
+'실제 공고 추천 한 건 확인'은 기존 저장 자료 기준으로 완료했다. 소프트웨어/보안/클라우드 관련 실제 추천에는 적합한 자료 보강이 여전히 필요하다.
+검색은 API규격 협의가 선행이며 docs/changes/backend-next-steps.md에 검토안이 있다.
+직무·활동·면접은 태환의 실제 함수와 시영의 직무 자료 준비 후 연결 검증한다.
+미병합 PR #7→#8의 팀 검토/최신CI/사람 병합과 병합main 통합 검사는 남았다.
+이 문서는 로컬 구현·검증 시점의 기록이다. 이후 GitHub 반영·CI·검토 상태는 해당 PR에서 확인한다. 병합은 사람이 진행한다.
+
+---
+## 이전 시점 기록
+
 # 추천 HTTP 연결·기능 활성화 검증 — 2026-11-13
 
 ## 기준과 구현
