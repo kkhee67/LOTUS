@@ -1,0 +1,1939 @@
+[
+  {
+    "id": "hana-finance-2026",
+    "type": "contest",
+    "organization": "하나증권",
+    "title": "제1회 하나증권 청년 금융 아이디어 공모전",
+    "source_url": "https://www.hanaw.com/contest/contest.html",
+    "summary": "금융 고객의 편의나 안전을 개선하는 서비스를 제안하는 공모전.",
+    "activities": [
+      "금융 서비스 사업 아이디어 기획"
+    ],
+    "requirements": [
+      "만 19세 이상이며 고등학교 졸업 이상의 학력이 필요함",
+      "개인 참가, 1인 1개 아이디어"
+    ],
+    "fields": [
+      "business"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_at": "2026-11-30T17:00:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "kspo-regulation-64358",
+    "type": "contest",
+    "organization": "국민체육진흥공단",
+    "title": "2026년 규제개선 대국민 아이디어 공모전",
+    "source_url": "https://www.kspo.or.kr/kspo/bbs/B0000027/view.do?menuNo=200149&nttId=64358",
+    "summary": "체육 관련 규제와 공단 업무 및 대국민 서비스를 개선할 아이디어를 모집한다.",
+    "activities": [
+      "체육 진흥 사업 관련 규제나 서비스 개선 제안"
+    ],
+    "requirements": [
+      "대한민국 국민이 개인으로 응모"
+    ],
+    "fields": [
+      "business"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-11-22"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-10-21"
+  },
+  {
+    "id": "ksponco-data-85684",
+    "type": "competition",
+    "organization": "한국체육산업개발",
+    "title": "2026년 한국체육산업개발 공공데이터 활용 경진대회",
+    "source_url": "https://www.ksponco.or.kr/sports/board.es?act=view&bid=0001&list_no=85684&mid=a50301000000",
+    "summary": "기관이 개방한 공공데이터를 활용하는 서비스나 콘텐츠 사례를 모집한다.",
+    "activities": [
+      "공공 데이터 활용 기획, 웹 또는 앱 개발, 실감형 콘텐츠 사례 제안"
+    ],
+    "requirements": [
+      "개인 또는 단체로 참여 가능",
+      "한국체육산업개발 공개 데이터 최소 1종 활용",
+      "다른 대회에서 수상한 동일·유사 작품은 출품 불가"
+    ],
+    "fields": [
+      "data",
+      "software"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_at": "2026-12-01T18:00:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-11-02"
+  },
+  {
+    "id": "tu-character-428766",
+    "type": "contest",
+    "organization": "동명대학교",
+    "title": "건학 50주년 기념 동명대학교 캐릭터 공모전",
+    "source_url": "https://pl.tu.ac.kr/tuhome/sub07_01_11.do?articleNo=428766&mode=view",
+    "summary": "대학 홍보에 활용할 황소 캐릭터를 공모한다.",
+    "activities": [
+      "황소 캐릭터 디자인, 기본형과 응용형 이미지 및 작품 설명 제출"
+    ],
+    "requirements": [
+      "만 14세 이상",
+      "개인 또는 4명 이하 팀"
+    ],
+    "fields": [
+      "design"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-09",
+      "closes_on": "2026-11-27"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-11-05"
+  },
+  {
+    "id": "hongcheon-shorts-220978",
+    "type": "contest",
+    "organization": "한림성심대학교 앵커사업단",
+    "title": "2026년 홍천군 지역 홍보 유튜브 공모전",
+    "source_url": "https://anchor.hsc.ac.kr/rise/community/notice.do?articleNo=220978&mode=view",
+    "summary": "홍천군의 전통시장이나 관광·문화 자원을 소개하는 숏폼 영상 공모전.",
+    "activities": [
+      "30초에서 1분 이내 지역 홍보 영상 제작"
+    ],
+    "requirements": [
+      "홍천 홍보와 지역 활성화에 관심 있는 사람"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-11-16"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-11-05"
+  },
+  {
+    "id": "dge-shorts-2221085",
+    "type": "contest",
+    "organization": "대구광역시교육청",
+    "title": "2026년 대구교육 정책홍보 숏폼영상 공모전",
+    "source_url": "https://www.dge.go.kr/main/na/ntt/selectNttInfo.do?bbsId=1045&mi=5053&nttSn=2221085",
+    "summary": "대구교육 정책 경험이나 산하 기관 이용 후기를 짧은 영상으로 공모한다.",
+    "activities": [
+      "1분 이내 정책 홍보 또는 기관 체험 영상 제작"
+    ],
+    "requirements": [
+      "중·고등학생, 학부모, 교직원, 일반 시민 등이 참여 대상",
+      "개인 또는 5인 이하 단체"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-21",
+      "closes_on": "2026-11-15"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-11-02"
+  },
+  {
+    "id": "kaeri-essay-13142",
+    "type": "contest",
+    "organization": "한국원자력연구원",
+    "title": "내가 만난 원자력 연구원 방문·체험수기 공모전",
+    "source_url": "https://kaeri.re.kr/board/view?linkId=13142&menuId=MENU00332",
+    "summary": "연구원 방문이나 프로그램 체험을 통해 달라진 인식을 수기로 공모한다.",
+    "activities": [
+      "원자력에 대한 체험 전후 생각을 담은 수기 작성"
+    ],
+    "requirements": [
+      "연구원 방문 또는 연구원이 운영한 프로그램·콘텐츠 체험 경험이 있는 국민"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-15",
+      "closes_on": "2026-11-30"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-10-12"
+  },
+  {
+    "id": "kdca-rare-310326",
+    "type": "contest",
+    "organization": "질병관리청",
+    "title": "2026년 희귀질환 극복수기·사진 공모전",
+    "source_url": "https://www.kdca.go.kr/bbs/kdca/42/310326/download.do",
+    "summary": "희귀질환 환자와 가족의 경험을 수기나 사진으로 공모한다.",
+    "activities": [
+      "극복 수기 작성 또는 일상 사진과 설명 제출"
+    ],
+    "requirements": [
+      "국가관리대상 희귀질환 환자 또는 가족",
+      "부문별 1인 1작품"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-19",
+      "closes_on": "2026-11-18"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "sesac-dobong-6498",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "도봉캠퍼스 SW 4기·DX 6기 교육생 모집",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6498",
+    "summary": "도봉캠퍼스에서 취업 연계 디지털 교육과정 6개의 교육생을 모집한다.",
+    "activities": [
+      "소프트웨어와 디지털 직무 실무 교육",
+      "데이터 분석 실무 프로젝트 과정 포함"
+    ],
+    "requirements": [
+      "만 15세 이상 서울 거주 구직자 등",
+      "과정별 상세 지원 조건 확인 필요"
+    ],
+    "fields": [
+      "data",
+      "software"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_at": "2026-11-29T23:59:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "itle-visit-15138",
+    "type": "event",
+    "organization": "인천인재평생교육진흥원",
+    "title": "2026년 제1회 인천 미래리더 대학생 기업 탐방",
+    "source_url": "https://itle.or.kr/user/board/view.do?bbs_id=bbs_1&sq=15138",
+    "summary": "인천국제공항공사 운영시설을 견학하고 직무 관련 질의응답에 참여하는 프로그램. 주최 측이 모집을 조기 마감했다.",
+    "activities": [
+      "공항 통합운영센터와 홍보관 견학",
+      "공사 관계자와 직무 질의응답"
+    ],
+    "requirements": [
+      "인천국제공항공사에 관심 있는 대학생 및 청년"
+    ],
+    "fields": [],
+    "application": {
+      "status": "closed",
+      "opens_at": "2026-11-11T10:00:00+09:00",
+      "closes_at": "2026-11-20T17:00:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:04:04+09:00",
+    "published_on": "2026-11-09"
+  },
+  {
+    "id": "sesac-6623",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "영등포캠퍼스 헬스케어 데이터 분석 취업과정",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6623",
+    "summary": "헬스케어 분야 데이터 분석 실무와 취업 준비 교육",
+    "activities": [
+      "헬스케어 분야 데이터 분석 실무와 취업 준비 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "data"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-22"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-11-12"
+  },
+  {
+    "id": "sesac-6547",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "성동캠퍼스 AI융합 7기 데이터 분석 교육",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6547",
+    "summary": "AI를 활용한 데이터 분석 실무 교육",
+    "activities": [
+      "AI를 활용한 데이터 분석 실무 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "data"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-12-01",
+      "opens_on": "2026-11-04"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-11-05"
+  },
+  {
+    "id": "sesac-6546",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "강북캠퍼스 AI핵심 웹·AI 교육",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6546",
+    "summary": "웹 개발 및 인공지능 과정 교육생 모집",
+    "activities": [
+      "웹 개발 및 인공지능 과정 교육생 모집"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "software"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-28",
+      "opens_on": "2026-11-02"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-11-05"
+  },
+  {
+    "id": "sesac-6521",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "중랑캠퍼스 AI융합 3기 교육",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6521",
+    "summary": "서비스 기획과 영업·디지털 마케팅 실무 교육",
+    "activities": [
+      "서비스 기획과 영업·디지털 마케팅 실무 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "business"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-12-01",
+      "opens_on": "2026-11-04"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-11-04"
+  },
+  {
+    "id": "sesac-6507",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "구로캠퍼스 AI융합 3기 교육",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6507",
+    "summary": "AI를 활용한 데이터 분석과 디지털 마케팅 교육",
+    "activities": [
+      "AI를 활용한 데이터 분석과 디지털 마케팅 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "data",
+      "business"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-29"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-11-02"
+  },
+  {
+    "id": "sesac-6494",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "금천캠퍼스 AI핵심 6기 업스테이지 과정",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6494",
+    "summary": "기업의 AI 전환 진단과 검증을 수행하는 컨설턴트 양성 교육",
+    "activities": [
+      "기업의 AI 전환 진단과 검증을 수행하는 컨설턴트 양성 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-26",
+      "opens_on": "2026-10-30"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-10-29"
+  },
+  {
+    "id": "sesac-6488",
+    "type": "training",
+    "organization": "청년취업사관학교 새싹",
+    "title": "양천캠퍼스 AI융합 3기 교육",
+    "source_url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6488",
+    "summary": "데이터 분석, 디지털 마케팅과 콘텐츠 디자인 교육",
+    "activities": [
+      "데이터 분석, 디지털 마케팅과 콘텐츠 디자인 교육"
+    ],
+    "requirements": [
+      "분야 기초지식을 갖춘 만 15세 이상 서울 거주자 또는 서울 거소자 중 수료 후 취업·창업 희망자",
+      "서울 소재 대학 재학·졸업 또는 기업 근무 관련 별도 예외와 한도는 공고 확인"
+    ],
+    "fields": [
+      "data",
+      "business",
+      "design"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-27",
+      "opens_on": "2026-10-28"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-10-28"
+  },
+  {
+    "id": "cau-afpk-3667",
+    "type": "contest",
+    "organization": "한국재무설계협회·한국FP학회",
+    "title": "AFPK 영 플래너 챌린지 2026",
+    "source_url": "https://ai.cau.ac.kr/sub07/sub0701.php?category=&keyword=&no=3667&search=title&view=detail",
+    "summary": "AI를 활용해 재무설계 사례를 작성하고 활용 과정과 결과 검증을 설명한다.",
+    "activities": [
+      "AI를 활용해 재무설계 사례를 작성하고 활용 과정과 결과 검증을 설명한다."
+    ],
+    "requirements": [
+      "전국 대학 재학생 또는 휴학생",
+      "개인 또는 최대 4인 팀으로 한 작품 제출"
+    ],
+    "fields": [],
+    "application": {
+      "status": "open",
+      "closes_at": "2026-11-16T23:59:00+09:00",
+      "opens_on": "2026-09-01"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-10-07"
+  },
+  {
+    "id": "semyung-crepet-486052",
+    "type": "contest",
+    "organization": "에이아이아트",
+    "title": "CREPET AWARDS 2026 반려용품 디자인 공모전",
+    "source_url": "https://www.semyung.ac.kr/cop/bbs/BBSMSTR_000000001521/selectBoardArticle.do?nttId=486052",
+    "summary": "반려동물과 보호자의 일상 문제를 해결하는 제품 디자인을 제안한다.",
+    "activities": [
+      "반려동물과 보호자의 일상 문제를 해결하는 제품 디자인을 제안한다."
+    ],
+    "requirements": [
+      "개인 또는 2인 팀",
+      "국적·전공·관련 경력 제한 없음"
+    ],
+    "fields": [
+      "design"
+    ],
+    "application": {
+      "status": "open",
+      "closes_at": "2026-12-10T11:59:00+09:00",
+      "opens_on": "2026-11-01"
+    },
+    "checked_at": "2026-11-13T18:10:41+09:00",
+    "published_on": "2026-10-06"
+  },
+  {
+    "id": "samsung-galaxy-supporters-7",
+    "type": "project",
+    "subtype": "supporters",
+    "organization": "삼성전자",
+    "title": "갤럭시 대학생 서포터즈 7기 모집",
+    "source_url": "https://www.samsungebiz.com/event/galaxycampus/gcsPromotion/galaxysupporters7/",
+    "summary": "갤럭시 제품과 서비스 마케팅을 직접 기획하고 콘텐츠를 제작하는 대학생 활동이다. 활동은 2027년 1~12월 예정이다.",
+    "activities": [
+      "마케팅 기획과 홍보 콘텐츠 제작",
+      "관심 분야별 팀 프로젝트",
+      "브랜드 행사 참여"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-09",
+      "closes_on": "2026-11-30"
+    },
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "국내 대학 재학생 대상이며 휴학·졸업 예정자도 지원할 수 있음",
+      "2027년 활동 기간 중 군 복무 또는 교환학생 일정이 있는 경우 지원 불가",
+      "지원서와 개인 포트폴리오 제출 필요"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "chungcheong2027-uni-crew-3",
+    "type": "project",
+    "subtype": "supporters",
+    "organization": "2027 충청권 하계세계대학경기대회 조직위원회",
+    "title": "제3기 2027유니크루 대학생 서포터즈 모집",
+    "source_url": "https://teachers.ewha.ac.kr/teachers/board/notice.do?articleNo=768419&attachNo=494308&mode=download",
+    "summary": "대학스포츠 국제대회를 알리는 홍보 콘텐츠 제작 활동이다. 2026년 2월부터 2027년 1월까지 운영하는 기수로 접수는 마감됐다.",
+    "activities": [
+      "카드뉴스·웹툰 등 이미지 또는 영상 제작",
+      "대회 소셜미디어 홍보"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2025-12-26",
+      "closes_at": "2026-01-19T00:00:00+09:00"
+    },
+    "publisher": "이화여자대학교",
+    "source_type": "school",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "스포츠와 국제스포츠 대회에 관심 있는 전국 대학 재·휴학생 또는 외국인 유학생(학·석·박사)",
+      "홍보에 대한 관심과 경험 및 콘텐츠 기획·제작 역량",
+      "유학생은 TOPIK 4급 이상 또는 한국어 의사소통 가능"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "coex-aw-2027-reporters-1",
+    "type": "project",
+    "subtype": "student_reporters",
+    "organization": "코엑스 AW 사무국",
+    "title": "AW 2027 대학생 기자단 1기 모집",
+    "source_url": "https://ycms.yonsei.ac.kr/eic/board/job_career.do?article.offset=0&articleLimit=10&articleNo=77207&mode=view",
+    "summary": "제조·자동화 전시회 취재와 홍보를 경험하는 대학생 기자단 모집 이력이다. 원문에 활동 종료 연도가 상충해 활동 종료일은 비워 뒀다.",
+    "activities": [
+      "전시회 홍보와 참관객 이벤트 콘텐츠 기획",
+      "참가 기업 인터뷰와 SNS 콘텐츠 제작"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-09-16",
+      "closes_on": "2026-10-12"
+    },
+    "publisher": "연세대학교",
+    "source_type": "school",
+    "published_on": "2026-09-22",
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "국내 대학 재학생 또는 휴학생이며 졸업예정자도 지원 가능",
+      "선발 시 2026년 10월 26일 발대식 참석 필수"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dge-science-volunteer-2216004",
+    "type": "project",
+    "subtype": "volunteering",
+    "organization": "대구창의융합교육원",
+    "title": "2026년 11월 대구학생과학관 대학생 교육봉사자 모집",
+    "source_url": "https://www.dge.go.kr/dicce/na/ntt/selectNttInfo.do?mi=3375&nttSn=2216004",
+    "summary": "과학 전시를 설명하고 학생 체험 교육을 보조하는 자원봉사 모집이다. 안내에 미달 시 접수 연장이 가능하다고 적혀 있으며 별도 연장은 확인되지 않았다.",
+    "activities": [
+      "과학 전시 해설",
+      "학생 체험활동 운영 및 안전교육 지원"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-10-02",
+      "closes_on": "2026-10-20"
+    },
+    "published_on": "2026-10-01",
+    "requirements": [
+      "대학·대학원 재학생 또는 휴학생"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-01",
+      "ends_on": "2026-11-30",
+      "note": "활동 기간 중 토·일요일, 대구학생과학관"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "skku-hafs-camp-140572",
+    "type": "project",
+    "subtype": "education_mentoring",
+    "organization": "용인한국외대부설고등학교",
+    "title": "제32회 외대부고캠프 대학생 멘토 모집",
+    "source_url": "https://www.skku.edu/skku/campus/skk_comm/notice01.do?article.offset=10&articleLimit=10&articleNo=140572&mode=view",
+    "summary": "캠프에서 학생 수업과 생활을 지원하는 멘토 모집이다. 캠퍼스별 일정과 분야별 자격을 원문에 안내한다.",
+    "activities": [
+      "디베이트·에세이 수업 멘토링, 학생 생활 지도 또는 운영 지원",
+      "지원 분야에 따라 시강 또는 촬영 포트폴리오 제출"
+    ],
+    "application": {
+      "status": "closed",
+      "closes_at": "2026-11-02T18:00:00+09:00"
+    },
+    "publisher": "성균관대학교",
+    "source_type": "school",
+    "requirements": [
+      "대학생·대학원생 대상이며 휴학생과 대학 졸업자도 지원 가능",
+      "대학 입학 예정자 및 재학 이력 없이 휴학한 경우 지원 불가",
+      "1·2지망을 선택하고 분야별 필수 서류 제출"
+    ],
+    "event_schedule": {
+      "starts_on": "2027-01-08",
+      "ends_on": "2027-02-05",
+      "note": "외대부고는 1월 8~29일, 한국외대는 1월 15일~2월 5일 예정"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "yapp-club-29",
+    "type": "project",
+    "subtype": "club",
+    "organization": "YAPP",
+    "title": "IT 연합 동아리 YAPP 29기 신규 회원 모집",
+    "source_url": "https://yapp-web.vercel.app/recruit",
+    "summary": "기획·디자인·개발 등 서로 다른 직군이 약 4개월 동안 팀으로 서비스를 만들고 데모데이에서 발표하는 활동이다.",
+    "activities": [
+      "팀 서비스 기획과 구현",
+      "프로토타입 리뷰와 사용성 테스트",
+      "데모데이 발표"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-10-16",
+      "closes_on": "2026-10-25"
+    },
+    "fields": [
+      "software",
+      "design",
+      "business"
+    ],
+    "requirements": [
+      "매주 토요일 정규 세션 참여 가능",
+      "한 직군만 지원 가능",
+      "지원 분야의 기본 역량과 포트폴리오 확인",
+      "공고의 인재상에 타 직군 협업 경험을 언급하나 FAQ는 개인 프로젝트 경험만으로도 지원 가능하다고 안내"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-14",
+      "ends_on": "2027-03-06",
+      "note": "OT부터 회고데이까지의 공개 일정이며 운영 상황에 따라 조정 가능"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "chungnam-work-experience-782",
+    "type": "project",
+    "subtype": "work_experience",
+    "organization": "한국능률협회",
+    "title": "2026 미래내일 일경험 기업 실무 프로젝트 참여자 모집",
+    "source_url": "https://youth.chungnam.go.kr/web/main/bbs/cnyouth_notice/782?baCommSelec=false&baNotice=false&baOpenDay=false&baUse=true&bcId=cnyouth_notice&cp=1&sortDirection=DESC&sortOrder=BA_REGDATE&sv=2026",
+    "summary": "기업의 과제를 8주 동안 수행하며 현직자 코칭을 받고 포트폴리오를 만드는 청년 일경험 프로그램이다.",
+    "activities": [
+      "AI 서비스·게임 프로토타입 개발",
+      "브랜드 디자인·홍보 콘텐츠 기획",
+      "기업 현직자의 팀별 피드백"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-10-22",
+      "closes_on": "2026-11-10"
+    },
+    "publisher": "충남청년포털",
+    "published_on": "2026-10-28",
+    "fields": [
+      "software",
+      "design",
+      "business"
+    ],
+    "requirements": [
+      "만 15~34세 미취업 청년",
+      "개인 또는 팀 신청 가능"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-23",
+      "ends_on": "2027-01-17",
+      "note": "프로젝트 수행 기간이며 사전 직무교육은 11월 19~20일"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "cheonan-job-mentoring-186345",
+    "type": "event",
+    "subtype": "mentoring",
+    "organization": "천안시",
+    "title": "2026 대학과 함께하는 취업멘토링 페스타",
+    "source_url": "https://summer.dankook.ac.kr/web/kor/-390?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186345&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fweb%2Fkor%2Fhome",
+    "summary": "단국대 등 5개 대학이 참여하며 현직자에게 직무와 취업 준비 경험을 들을 수 있는 행사다. 학교 원문에서 신청 링크를 확인했으며 신청 마감은 확인되지 않았다.",
+    "activities": [
+      "현직자 소그룹 멘토링",
+      "이력서·자기소개서 특강 및 질의응답"
+    ],
+    "application": {
+      "status": "unknown"
+    },
+    "publisher": "단국대학교",
+    "source_type": "school",
+    "published_on": "2026-10-29",
+    "requirements": [
+      "대학생 및 지역청년 대상"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-19",
+      "ends_on": "2026-11-19",
+      "note": "14:00 시작, 천안시청 대회의실"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "seoul-global-job-fair-2026",
+    "type": "event",
+    "subtype": "job_fair",
+    "organization": "서울특별시",
+    "title": "2026 서울 외국인 취업채용박람회",
+    "source_url": "https://news.seoul.go.kr/welfare/archives/584379?listPage=1",
+    "summary": "외국인 구직자를 위한 서울시 채용박람회다. 공식 행사 사이트에 사전등록 신청 화면이 열려 있었다.",
+    "activities": [
+      "기업 채용상담과 현장면접",
+      "취업컨설팅과 비자·법률 상담"
+    ],
+    "application": {
+      "status": "open"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-18",
+      "ends_on": "2026-11-18",
+      "note": "10:00~17:00, SETEC 제1전시실"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kita-trade-job-fair-2026",
+    "type": "event",
+    "subtype": "job_fair",
+    "organization": "한국무역협회",
+    "title": "2026 무역의 날 기념 KITA 채용박람회 입사지원",
+    "source_url": "https://jobfair.kita.net/2026/sub/sub10_01_view.do?idx=18",
+    "summary": "박람회 참가 기업 공고에 입사지원하고 서류 합격 시 행사 당일 면접하는 기회다. 접수 상태는 기업 입사지원 기준이다.",
+    "activities": [
+      "무역·해외영업 등 참가 기업 공고 지원",
+      "서류 합격자 행사 당일 면접"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-10-21",
+      "closes_on": "2026-11-08"
+    },
+    "published_on": "2026-10-02",
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "무역협회 홈페이지 개인회원 가입 및 구직자 참가 신청",
+      "현장 면접은 참가 기업의 서류 합격자 대상"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "blaybus-manufacturing-ax-1148",
+    "type": "competition",
+    "subtype": "hackathon",
+    "organization": "중소벤처기업진흥공단·충청남도·천안시·아산시·충남테크노파크",
+    "title": "2026 현장문제 AX 업무혁신 아이디어 해커톤",
+    "source_url": "https://www.blaybus.com/program/1148/landing",
+    "summary": "KAIST 주관으로 제조 현장 문제를 분석하고 AI를 활용한 개선안을 설계해 발표하는 해커톤이다.",
+    "activities": [
+      "제조 업무 문제 정의와 개선안 기획",
+      "전문가 멘토링 및 팀 발표"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-30",
+      "closes_at": "2026-11-17T23:59:00+09:00"
+    },
+    "fields": [
+      "data",
+      "business"
+    ],
+    "requirements": [
+      "11월 27~28일 천안 본선 전 일정 참여 가능",
+      "개인 신청을 기본으로 하며 본인을 포함해 최대 3명까지 동반 신청 가능"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-27",
+      "ends_on": "2026-11-28",
+      "note": "충남지식산업센터, 본선 무박 2일"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "skhynix-ai-hackathon-2026",
+    "type": "competition",
+    "subtype": "hackathon",
+    "organization": "SK하이닉스",
+    "title": "SK하이닉스 AI 해커톤 2026",
+    "source_url": "https://skhynix-hackathon.com/ai-2026",
+    "summary": "AI 활용 역량을 온라인 예선에서 확인하고 반도체 현장 과제를 본선에서 해결하는 대회다. 주최 측은 우수자에게 채용 전형 우대 혜택을 안내했다.",
+    "activities": [
+      "AI 활용 온라인 예선",
+      "반도체 현장 문제를 해결하는 본선 과제"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-09-21",
+      "closes_at": "2026-09-28T17:00:00+09:00"
+    },
+    "fields": [
+      "software",
+      "data"
+    ],
+    "requirements": [
+      "만 18세 이상 또는 2027년 3월 이내 고등학교 졸업·졸업 예정",
+      "개인 참가 및 포트폴리오 제출",
+      "온라인 예선과 오프라인 본선 참석 가능"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-11",
+      "ends_on": "2026-11-11",
+      "note": "코엑스 오프라인 본선"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "block-ai-2026",
+    "type": "competition",
+    "subtype": "hackathon",
+    "organization": "교육부·한국연구재단·COSS",
+    "title": "2026 Web3 시대의 블록체인·AI 융합 해커톤",
+    "source_url": "https://blockhack.kr/",
+    "summary": "블록체인과 AI를 접목한 프로젝트를 팀으로 준비하고 멘토링을 거쳐 본선에서 시연하는 대회다.",
+    "activities": [
+      "블록체인·AI 융합 프로젝트 제작",
+      "전문가 멘토링 및 데모 발표"
+    ],
+    "application": {
+      "status": "closed",
+      "closes_at": "2026-09-14T18:00:00+09:00"
+    },
+    "fields": [
+      "software"
+    ],
+    "requirements": [
+      "국내 대학 재학생·휴학생·수료생",
+      "2~4인 팀 또는 개인 신청 후 팀 매칭 가능",
+      "팀당 1인 이상 온라인 OT 참석 및 본선 전 일정 참석"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-06",
+      "ends_on": "2026-11-07",
+      "note": "서울 오프라인 본선"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "inu-uniculture-makerthon-432046",
+    "type": "competition",
+    "subtype": "makerthon",
+    "organization": "인천대학교 창업지원단",
+    "title": "제2회 유니컬쳐 아이디어 챌린지 및 제1회 ART X AI 메이커톤",
+    "source_url": "https://www.inu.ac.kr/bbs/inu/2611/432046/artclView.do",
+    "summary": "굿즈·캐릭터, 패션·잡화, 게임 등 창작 아이디어를 구체화하는 프로그램이다. 입상 팀에 시제품 제작비와 지식재산권 출원·등록비 지원을 안내했다.",
+    "activities": [
+      "창작 굿즈·캐릭터·패션 또는 게임 아이디어 제안",
+      "입상 팀 시제품 제작 및 전문가 멘토링"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-22"
+    },
+    "publisher": "인천대학교 창업지원단",
+    "source_type": "school",
+    "published_on": "2026-10-20",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "본인이 창작한 작품 또는 디자인으로 참여",
+      "트랙별 상세 요건은 공고 첨부 확인 필요"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "pnu-ai-agent-1511804",
+    "type": "contest",
+    "subtype": "ai_portfolio",
+    "organization": "부산대학교 교육혁신본부 에듀테크센터",
+    "title": "PNU AI Agent Challenge",
+    "source_url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511804&mgr_seq=3&mode=view&page=1",
+    "summary": "부산대 학생이 교육·연구·대학생활 문제를 해결하는 AI 에이전트를 제작한다. 접수 기간은 필수 사전 참여 신청 기준이며 작품 제출은 별도다.",
+    "activities": [
+      "Gemini Enterprise로 AI 에이전트 제작",
+      "작품 설명서와 실행 자료 제출, 심사에 따라 시연"
+    ],
+    "application": {
+      "status": "open",
+      "opens_at": "2026-10-28T16:00:00+09:00",
+      "closes_at": "2026-11-27T18:00:00+09:00"
+    },
+    "publisher": "부산대학교",
+    "source_type": "school",
+    "published_on": "2026-10-28",
+    "fields": [
+      "software"
+    ],
+    "requirements": [
+      "부산대 학부·대학원 재학생만 참여 가능",
+      "팀원 전원이 11월 27일 18시까지 개인별 참여 신청 필요",
+      "개인·팀은 한 작품만 출품할 수 있으며 학교 Google 계정 필요"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-12-01",
+      "ends_on": "2027-01-08",
+      "note": "작품 제출 기간. 2027년 1월 8일 18:00까지"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "pnu-lab-safety-1511763",
+    "type": "contest",
+    "subtype": "content_creation",
+    "organization": "부산대학교 연구실안전관리센터",
+    "title": "2026 연구실 안전문화 캠페인 공모전",
+    "source_url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511763&mCode=MN095&mgr_seq=3&mode=view",
+    "summary": "연구실 안전사고나 금속화재 예방·대응 메시지를 콘텐츠로 제작하는 공모전이다.",
+    "activities": [
+      "카드뉴스·포스터·영상 중 한 형식으로 안전 캠페인 콘텐츠 제작"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-12-04"
+    },
+    "publisher": "부산대학교",
+    "source_type": "school",
+    "published_on": "2026-10-26",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "부산대학교 학부·대학원 재학생"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "katis-fta-214974",
+    "type": "competition",
+    "subtype": "business_case",
+    "organization": "한국통상정보학회",
+    "title": "2026 전국 대학생 FTA 활용 비즈니스 경진대회",
+    "source_url": "https://globalcommerce.dongguk.edu/article/notice/detail/214974?pageIndex=1",
+    "summary": "FTA 또는 개발협력을 활용한 글로벌 비즈니스 아이디어를 기획하고 발표하는 대회다.",
+    "activities": [
+      "통상환경 문제를 조사하고 FTA·ODA 활용 사업 아이디어를 기획",
+      "본선에서 기획안 발표"
+    ],
+    "application": {
+      "status": "closed",
+      "closes_on": "2026-10-31"
+    },
+    "publisher": "동국대학교",
+    "source_type": "school",
+    "published_on": "2026-09-15",
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "전국 대학생 대상",
+      "개인 또는 3인 이내 팀"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-28",
+      "ends_on": "2026-11-28",
+      "note": "경진대회 본선 및 시상, 덕성여자대학교 종로캠퍼스"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "loreal-korea-internship-2027-h1",
+    "type": "job",
+    "subtype": "internship",
+    "organization": "로레알코리아",
+    "title": "2027 상반기 로레알코리아 채용 전제형 인턴십",
+    "source_url": "https://lo-recruit.com/",
+    "summary": "로레알코리아의 2027년 상반기 채용 전제형 인턴십으로 재무, 공급망, 마케팅, 전자상거래 등의 직무를 모집한다.",
+    "activities": [
+      "직무별 전일제 인턴십",
+      "근무 예정 기간은 2027년 1월 11일~6월 18일"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-04",
+      "closes_at": "2026-11-15T23:59:00+09:00"
+    },
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "인턴십 기간 전일제 근무 가능",
+      "영문 이력서 필수, 포트폴리오 선택"
+    ],
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kcci-computer-literacy",
+    "type": "certification",
+    "subtype": "national_technical",
+    "organization": "대한상공회의소",
+    "title": "컴퓨터활용능력",
+    "source_url": "https://license.korcham.net/co/examguide.do?cd=0103&mm=21",
+    "summary": "사무 업무에서 스프레드시트와 데이터베이스를 다루는 능력을 평가하는 국가기술자격이다.",
+    "activities": [
+      "스프레드시트·데이터베이스 활용 능력 검정"
+    ],
+    "requirements": [
+      "필기 응시 제한 없음",
+      "실기는 필기 합격 후 2년 이내 응시 가능"
+    ],
+    "fields": [
+      "data"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "대한상공회의소"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kcci-business-intelligence",
+    "type": "certification",
+    "subtype": "national_technical",
+    "organization": "대한상공회의소",
+    "title": "경영정보시각화능력",
+    "source_url": "https://license.korcham.net/co/examguide.do?cd=0108&mm=28",
+    "summary": "기업 정보를 시각화해 의사결정에 필요한 내용을 전달하는 능력을 평가하는 국가기술자격이다.",
+    "activities": [
+      "경영정보 분석과 데이터 시각화 활용 능력 검정"
+    ],
+    "requirements": [
+      "필기 응시 제한 없음",
+      "실기는 필기 합격 후 2년 이내 응시 가능"
+    ],
+    "fields": [
+      "data",
+      "business"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "대한상공회의소",
+      "exam_sessions": [
+        {
+          "id": "2026-8-practical",
+          "name": "2026년 제8회 실기",
+          "application": {
+            "status": "closed"
+          },
+          "exam_on": "2026-11-07",
+          "schedule_note": "이미 시행일이 지났다. 공식 공고상 접수 일정과 시험 개설 여부는 지역 시험장마다 다르며 실기 응시에는 유효한 필기 합격이 필요하다.",
+          "source_url": "https://license.korcham.net/customer/noticeview.do?num=257986&pg=1&search=&word=",
+          "checked_at": "2026-11-13T18:24:09+09:00"
+        }
+      ]
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "qnet-information-processing-1320",
+    "type": "certification",
+    "subtype": "national_technical",
+    "organization": "한국산업인력공단",
+    "title": "정보처리기사",
+    "source_url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320",
+    "summary": "과학기술정보통신부 소관으로 한국산업인력공단이 시행하는 국가기술자격이다. 응시 전 큐넷에서 종목별 일정과 응시자격을 확인할 수 있다.",
+    "activities": [
+      "정보처리기사 필기·실기 검정 준비"
+    ],
+    "fields": [
+      "software"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "한국산업인력공단"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dankook-coop-187766-winter",
+    "type": "project",
+    "subtype": "field_placement",
+    "organization": "단국대학교 현장실습지원센터",
+    "title": "단국대학교 2026학년도 동계 단기 현장실습",
+    "source_url": "https://swcu.dankook.ac.kr/-26?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=187766&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fhome",
+    "source_type": "school",
+    "publisher": "단국대학교 SW중심대학사업단",
+    "summary": "학생·기업·대학의 협약에 따라 산업체에서 1~2개월 실습하고 해당 과목의 학점을 이수하는 프로그램이다.",
+    "activities": [
+      "실습기관 매칭과 사전교육",
+      "1개월 또는 2개월 동안 산업체 현장실습 및 종합보고서 작성"
+    ],
+    "requirements": [
+      "단국대에서 4학기 이상 이수한 재적생이며 편입생은 2학기 이상",
+      "수업연한 초과자·정규학위 외 과정 학생·같은 기간의 실습 교과목 이수자는 제한",
+      "졸업예정자는 동계 산업체현장실습 수강 불가. 계절학기 또는 차기 휴학 관련 학점 조건은 공고 확인"
+    ],
+    "application": {
+      "status": "upcoming",
+      "opens_on": "2026-11-16",
+      "closes_on": "2026-12-11"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-23",
+      "ends_on": "2027-02-28",
+      "note": "첫 회차는 2027년 1월 24일 종료. 회차별 기간은 원문 확인"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dankook-sebang-internship-186376",
+    "type": "job",
+    "subtype": "internship",
+    "organization": "세방",
+    "title": "2026년 세방 동계 인턴십 현장실습",
+    "source_url": "https://labor.dankook.ac.kr/ko/web/kor/-390?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186376&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome",
+    "source_type": "school",
+    "publisher": "단국대학교",
+    "summary": "단국대와 세방의 협약에 따른 8주간 물류 분야 현장실습이다. 원문에 수도권과 여러 지역 항만이 근무처로 안내돼 있다.",
+    "activities": [
+      "수도권 물류 거점 또는 지역 항만 현장실습",
+      "2027년 1월 4일~2월 26일 운영"
+    ],
+    "requirements": [
+      "단국대 졸업자·졸업예정자 또는 4학년 1학기 이상 재학생",
+      "근무처 두 곳 이상 선택. 서울과 경기 의왕 ICD는 한 곳으로 계산",
+      "지정 교과목 담당 교수를 거쳐 지원서와 성적증명서 등 제출"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-10",
+      "closes_at": "2026-12-08T11:00:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "work24-youth-work-experience-2110444",
+    "type": "project",
+    "subtype": "work_experience",
+    "organization": "경기도사회적경제원",
+    "publisher": "고용24",
+    "title": "경기도 사회연대경제 청년 일경험 11월 참여청년 모집(4차)",
+    "source_url": "https://m.work24.go.kr/wk/n/a/0200/selectGvspJbHrplDtalInfo.do?rcitPbanId=2110444",
+    "summary": "경기도 사회연대경제 기업에서 실무 과제를 수행하는 청년 일경험이다. 기업별 참여 기간과 직무가 다르다.",
+    "activities": [
+      "기업 실무 또는 소규모 팀 단위의 신규 직무 프로젝트",
+      "참여자 상담과 사업 운영 지원 역할도 모집"
+    ],
+    "requirements": [
+      "공고일 기준 경기도 거주 만 19~39세 미취업 청년",
+      "주 40시간 근무 가능",
+      "사업 참여 중 다른 일경험 또는 취업지원사업에 중복 참여 불가"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-27"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "gangseo-festival-volunteer-21803",
+    "type": "project",
+    "subtype": "volunteering",
+    "organization": "서울서부하나센터 외 2개 복지관",
+    "publisher": "강서대학교",
+    "source_type": "school",
+    "title": "강서구 동행축제 대학생 봉사자 모집",
+    "source_url": "https://www.gangseo.ac.kr/kcua/boardView?boardNum=21803&menuCode=BC0701&thisPage=1",
+    "summary": "강서구 지역축제의 행사 운영과 주민 체험부스를 지원하는 봉사다. 모집 마감과 잔여 자리는 원문에서 확인되지 않았다.",
+    "activities": [
+      "지역축제 진행 보조 및 체험부스 운영"
+    ],
+    "requirements": [
+      "20세 이상 성인"
+    ],
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-14",
+      "ends_on": "2026-11-14",
+      "note": "09:00~16:00, 방화근린공원"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "seoul-employment-suit-service",
+    "type": "notice",
+    "subtype": "interview_support",
+    "organization": "서울특별시",
+    "title": "서울시 취업날개 면접 정장 대여",
+    "source_url": "https://job.seoul.go.kr/hmpg/spct/ewif/ewifInfo.do",
+    "summary": "서울시가 취업 면접을 앞둔 청년에게 정장 등을 예약제로 무료 대여하는 서비스다.",
+    "activities": [
+      "면접용 정장 및 소품 대여"
+    ],
+    "requirements": [
+      "서울 거주 구직자로 고교 졸업예정자부터 만 39세까지. 제대군인은 복무기간에 따라 최대 3년 연장",
+      "취업 목적 면접을 증명할 자료와 서울 거주 증빙 필요",
+      "원문에 명시된 온라인·인턴 면접 및 계약학과 예외 등은 신청 전 확인"
+    ],
+    "application": {
+      "status": "unknown"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "syu-2026-nov-ncs-prep",
+    "type": "training",
+    "subtype": "job_preparation",
+    "organization": "삼육대학교 대학일자리본부",
+    "source_type": "school",
+    "title": "삼육대학교 11월 공기업 NCS 직업기초능력평가 온라인 강의",
+    "source_url": "https://www.syu.ac.kr/blog/%EC%9D%BC%EC%A0%95%ED%91%9C2026%EB%85%84-11%EC%9B%94-%EC%A7%84%EB%A1%9C-%EB%B0%8F-%EC%B7%A8%EC%97%85%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%95%9C%EB%B2%88%EC%97%90-%EB%B3%B4%EA%B8%B0/?c=&k=%EC%B7%A8%EC%97%85&pageds=1&t=",
+    "summary": "삼육대학교의 11월 취업 프로그램 일정표에 포함된 온라인 공기업 NCS 대비 강의다. 안내에 운영기간이 표시되며 접수 기간과 교외 지원 가능 여부는 확인되지 않았다.",
+    "activities": [
+      "공기업 NCS 직업기초능력평가 온라인 강의 수강"
+    ],
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-02",
+      "ends_on": "2026-11-20",
+      "note": "학교 E-class 운영 기간"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "gstar-cup-2026-overwatch",
+    "type": "competition",
+    "subtype": "esports",
+    "organization": "지스타컵 2026 오버워치 운영사무국",
+    "title": "지스타컵 2026 오버워치 학생 대회",
+    "source_url": "https://gstarcup2026.co.kr/",
+    "summary": "학생들이 학교 단위로 팀을 만들어 온라인 예선과 부산 지스타 오프라인 결승에 도전하는 e스포츠 대회다.",
+    "activities": [
+      "팀 전술과 경기 수행",
+      "온라인 예선과 오프라인 결승"
+    ],
+    "requirements": [
+      "동일 학교 중학생·고등학생·대학생으로 구성된 팀"
+    ],
+    "application": {
+      "status": "closed",
+      "opens_on": "2026-10-28",
+      "closes_at": "2026-11-05T18:00:00+09:00"
+    },
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "wolkok-ttotoring-1588220",
+    "type": "project",
+    "subtype": "education_mentoring",
+    "organization": "월곡청소년센터",
+    "title": "또토링 대학생 멘토 모집",
+    "source_url": "https://edu.korea.ac.kr/edu/board/notice.do?articleNo=1588220&mode=view",
+    "summary": "또래관계에 어려움을 겪는 청소년의 사회성 프로그램을 기획하고 운영하는 활동이다. 활동 기간은 2027년 1~6월이다.",
+    "activities": [
+      "11~16세 청소년 멘토링",
+      "사회성 프로그램 기획과 운영, 교육 및 회의"
+    ],
+    "related_majors": [
+      "청소년학",
+      "아동학",
+      "심리학",
+      "사회복지학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-30",
+      "closes_on": "2026-11-25"
+    },
+    "source_type": "school",
+    "publisher": "고려대학교",
+    "requirements": [
+      "20~24세의 관련 학과 학부 재학생",
+      "관련 학과 예시로 청소년학·아동학·심리학·사회복지학을 안내"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kiha-youth-work-experience-5",
+    "type": "project",
+    "subtype": "work_experience",
+    "organization": "대한산업보건협회",
+    "title": "대한산업보건협회 청년 일경험 프로그램 5기",
+    "source_url": "https://ot.konyang.ac.kr/cop/bbs/BBSMSTR_000000001381/selectBoardArticle.do?nttId=296040",
+    "summary": "고용노동부 사업으로 대한산업보건협회에서 산업보건 관련 일경험을 하는 프로그램이다.",
+    "activities": [
+      "산업보건 기관에서 청년 일경험",
+      "프로그램 수료 시 수료증 발급 안내"
+    ],
+    "related_majors": [
+      "간호학",
+      "임상병리학",
+      "보건학"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-18"
+    },
+    "source_type": "school",
+    "publisher": "건양대학교",
+    "requirements": [
+      "만 15~34세 미취업 청년",
+      "간호·임상병리·산업위생 관련 자격증 보유자 우대"
+    ],
+    "event_schedule": {
+      "starts_on": "2026-11-30",
+      "ends_on": "2027-01-22",
+      "note": "프로그램 운영 기간"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "donga-teaching-practice-8583761",
+    "type": "contest",
+    "subtype": "education_essay",
+    "organization": "동아대학교 학사관리과",
+    "title": "2026 예비교사 학교현장실습 수기 공모전",
+    "source_url": "https://donga.ac.kr/article/bbs-64/8583761?from=%2Fcommunity%2Fevents",
+    "summary": "예비교사가 학교현장실습 경험을 돌아보고 수기로 정리하는 공모전이다.",
+    "activities": [
+      "학교현장실습 경험과 교육 활동에 대한 수기 작성"
+    ],
+    "related_majors": [
+      "교육학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-09",
+      "closes_at": "2026-11-23T17:00:00+09:00"
+    },
+    "source_type": "school",
+    "publisher": "동아대학교",
+    "published_on": "2026-11-05",
+    "requirements": [
+      "동아대 교직과정 이수 예정자 중 2026학년도 학교현장실습 참여자. 교육대학원 재학생도 가능하다고 안내",
+      "실습 중도 포기자 및 휴학생은 신청 불가"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "seoul-forms-2000785",
+    "type": "contest",
+    "subtype": "public_policy",
+    "organization": "서울특별시",
+    "title": "서울특별시 행정서식 개선 아이디어 공모전",
+    "source_url": "https://mediahub.seoul.go.kr/gongmo/2000785",
+    "summary": "시민이 쓰는 서울시 행정서식을 이해하고 작성하기 쉽게 바꾸는 아이디어를 모집한다.",
+    "activities": [
+      "행정서식 사용 과정의 문제를 찾아 개선안을 제안"
+    ],
+    "related_majors": [
+      "행정학",
+      "정책학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_at": "2026-10-13T09:00:00+09:00",
+      "closes_at": "2026-11-20T23:59:00+09:00"
+    },
+    "requirements": [
+      "행정서식을 이용해 본 국민",
+      "개인 응모"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "gnu-human-rights-9051104",
+    "type": "contest",
+    "subtype": "public_policy",
+    "organization": "경상국립대학교 인권센터",
+    "title": "2026 경상국립대학교 인권·성평등 공모전",
+    "source_url": "https://new.gnu.ac.kr/main/na/ntt/selectNttInfo.do?mi=1126&nttSn=9051104",
+    "summary": "대학의 인권 존중 문화를 위한 정책, 비교과 활동, 영상과 굿즈를 공모한다.",
+    "activities": [
+      "인권침해 예방 정책 또는 비교과 프로그램 기획",
+      "인권·성평등 숏폼 영상이나 굿즈 디자인 제작"
+    ],
+    "related_majors": [
+      "사회복지학",
+      "행정학",
+      "미디어커뮤니케이션학",
+      "디자인학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-21",
+      "closes_on": "2026-11-30"
+    },
+    "source_type": "school",
+    "publisher": "경상국립대학교",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "부산·울산·경남 지역 대학 학생 또는 교직원",
+      "개인 또는 팀 참여 가능"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "knu-local-issues-11567",
+    "type": "contest",
+    "subtype": "regional_project",
+    "organization": "강원대학교 교수학습개발원",
+    "title": "2026학년도 지역문제 기반 프로젝트 공모전",
+    "source_url": "https://www.kangwon.ac.kr/ko/bbs/504/detail.do?pstSn=11567",
+    "summary": "강원 지역의 현안을 조사하고 분석해 실행 가능한 해결안을 제시하는 공모전이다.",
+    "activities": [
+      "지역 현안과 수요 분석",
+      "지역문제 해결 프로젝트 기획 또는 수행 결과 정리"
+    ],
+    "related_majors": [
+      "행정학",
+      "지역개발학",
+      "도시계획학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-20",
+      "closes_at": "2026-11-23T23:59:00+09:00"
+    },
+    "source_type": "school",
+    "publisher": "강원대학교",
+    "requirements": [
+      "강원대 춘천·삼척·도계 캠퍼스 소속 재학생",
+      "개인 또는 팀 참여 가능"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "cb-carbon-picture-book-428859",
+    "type": "contest",
+    "subtype": "illustration",
+    "organization": "충청북도탄소중립지원센터",
+    "title": "2026년 충청북도 탄소중립 창작 그림책 공모전",
+    "source_url": "https://sns.tu.ac.kr/tuhome/sub07_01_11.do?articleNo=428859&mode=view",
+    "summary": "어린이가 기후변화와 탄소중립을 이해할 수 있도록 글과 그림을 함께 구성하는 공모전이다.",
+    "activities": [
+      "5~10세 어린이 대상 환경교육용 창작 그림책 제작"
+    ],
+    "related_majors": [
+      "환경학",
+      "유아교육학",
+      "문예창작학",
+      "시각디자인학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-09",
+      "closes_on": "2026-11-25"
+    },
+    "source_type": "school",
+    "publisher": "동명대학교",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "전 국민 개인·팀 참가 가능. 전문작가는 제외",
+      "표지를 포함해 10쪽 이상, 글과 그림을 함께 구성"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "sff-character-2026",
+    "type": "contest",
+    "subtype": "character_design",
+    "organization": "서울미래인재재단",
+    "title": "서울미래인재재단 대표 캐릭터 공모전",
+    "source_url": "https://sffcharacter.kr/guide.html",
+    "summary": "재단의 대표 캐릭터를 디자인하고 이야기와 실제 활용 방법을 함께 제안하는 공모전이다.",
+    "activities": [
+      "캐릭터 시각 디자인",
+      "캐릭터 스토리텔링과 홍보물·굿즈 활용 기획"
+    ],
+    "related_majors": [
+      "디자인학",
+      "시각디자인학",
+      "문예창작학"
+    ],
+    "application": {
+      "status": "upcoming",
+      "opens_on": "2026-11-16",
+      "closes_on": "2026-11-30"
+    },
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "지역 제한 없이 개인 또는 4인 이하 팀",
+      "개인 또는 팀당 1개 작품. 생성형 AI 사용 시 활용과 제작 과정 자료 제출"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "seoul-jamsil-media-art-2",
+    "type": "contest",
+    "subtype": "media_art",
+    "organization": "서울시설공단",
+    "title": "제2회 잠실 미디어아트 공모전",
+    "source_url": "https://sco.skku.edu/sco/community/notice.do?articleNo=228416&mode=view",
+    "summary": "잠실의 역사와 공간을 1~3분 영상으로 표현하는 공모전이다. 수상작은 잠실역 지하도상가 전광판 등에서 전시될 예정이다.",
+    "activities": [
+      "잠실 역사·문화·공간을 주제로 미디어아트 영상 기획 및 제작"
+    ],
+    "related_majors": [
+      "미디어커뮤니케이션학",
+      "영상학",
+      "시각디자인학",
+      "역사학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-11-27"
+    },
+    "source_type": "school",
+    "publisher": "성균관대학교",
+    "fields": [
+      "design"
+    ],
+    "requirements": [
+      "전국 전문대·대학 재학생 및 일반 시민",
+      "생성형 AI 활용. 지하도상가 및 관광 또는 역사를 작품 키워드로 사용",
+      "MP4 영상 1~3분"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "nts-benefits-short-video-1355638",
+    "type": "contest",
+    "subtype": "public_communication",
+    "organization": "국세청",
+    "title": "근로·자녀장려금 숏폼 영상 공모전",
+    "source_url": "https://b.nts.go.kr/namdaegu/na/ntt/selectNttInfo.do?bbsId=1028&mi=2201&nttSn=1355638",
+    "summary": "근로·자녀장려금 제도를 대중에게 설명하는 짧은 홍보 영상을 모집한다.",
+    "activities": [
+      "제도 개편, 수혜 경험, 자유주제 중 하나를 선택해 숏폼 기획 및 제작"
+    ],
+    "related_majors": [
+      "광고홍보학",
+      "영상학",
+      "세무학",
+      "행정학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-21",
+      "closes_on": "2026-11-23"
+    },
+    "published_on": "2026-10-21",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "bto-content-tourism-1274",
+    "type": "competition",
+    "subtype": "tourism_marketing",
+    "organization": "부산관광공사",
+    "title": "2026 K-콘텐츠 관광마케팅 기초 아카데미 공모전",
+    "source_url": "https://tourbiz.bto.or.kr/kor/CMS/Board/Board.do?board_seq=1274&mCode=MN032&mgr_seq=6&mode=view",
+    "summary": "부산의 해양·미식·웰니스·뷰티·e스포츠·K-문화 중 한 분야에서 관광 콘텐츠를 기획한다. 교육과 멘토링, 실증사업화 기회가 안내됐다.",
+    "activities": [
+      "관광마케팅 기획과 콘텐츠 고도화",
+      "팀별 아이디어 발표 및 전문가 멘토링"
+    ],
+    "related_majors": [
+      "관광학",
+      "호텔관광학",
+      "식품영양학",
+      "경영학",
+      "광고홍보학"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-06",
+      "closes_at": "2026-11-25T17:00:00+09:00"
+    },
+    "fields": [
+      "business"
+    ],
+    "requirements": [
+      "만 18~39세 부산 거주 미취업 청년 또는 부산 소재 대학·대학원 재학생·휴학생·졸업생",
+      "팀당 최대 3명, 회차별 팀원 1명 이상 프로그램 참여"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kto-souvenir-fair-2026",
+    "type": "event",
+    "subtype": "industry_fair",
+    "organization": "문화체육관광부·한국관광공사",
+    "title": "2026 대한민국 관광기념품 박람회 관람 사전등록",
+    "source_url": "https://kto.visitkorea.or.kr/kor/souvenir/exhb/exhbViewGuide.kto",
+    "summary": "지역 관광기념품과 굿즈 사례를 살펴볼 수 있는 산업 행사다. 접수 마감은 관람 사전등록 기준이다.",
+    "activities": [
+      "관광기념품과 지역 굿즈 전시 관람",
+      "기념품·관광 상품 기획 사례 조사"
+    ],
+    "related_majors": [
+      "관광학",
+      "산업디자인학",
+      "시각디자인학"
+    ],
+    "application": {
+      "status": "open",
+      "closes_at": "2026-11-18T18:00:00+09:00"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-20",
+      "ends_on": "2026-11-22",
+      "note": "서울 동대문디자인플라자"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "qnet-social-worker-1",
+    "type": "certification",
+    "subtype": "national_professional",
+    "organization": "한국산업인력공단",
+    "title": "사회복지사 1급",
+    "source_url": "https://www.q-net.or.kr/man004.do?ARTL_SEQ=5279324&BOARD_ID=Q001&gId=52&gSite=L&id=man00402",
+    "summary": "사회복지 분야 국가자격으로 제25회 시험 시행계획이 공고됐다.",
+    "activities": [
+      "사회복지 분야 1급 국가시험 준비"
+    ],
+    "related_majors": [
+      "사회복지학"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "한국산업인력공단",
+      "exam_sessions": [
+        {
+          "id": "2027-25-regular",
+          "name": "2027년 제25회 정기 접수",
+          "exam_on": "2027-01-16",
+          "application": {
+            "status": "upcoming",
+            "opens_at": "2026-12-07T09:00:00+09:00",
+            "closes_at": "2026-12-11T18:00:00+09:00"
+          },
+          "source_url": "https://www.ggsw.kr/board/bbs61/3788",
+          "schedule_note": "응시자격과 증빙 서류는 큐넷 시행계획을 확인",
+          "checked_at": "2026-11-13T23:13:42+09:00"
+        }
+      ]
+    },
+    "requirements": [
+      "학력·교과목 이수 또는 자격·경력에 따른 응시 경로와 서류 요건은 시행계획에서 확인"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "nijk-history-proficiency",
+    "type": "certification",
+    "subtype": "proficiency_exam",
+    "organization": "국사편찬위원회",
+    "title": "한국사능력검정시험",
+    "source_url": "https://www.historyexam.go.kr/pst/view.do?bbs=noti&pst_sno=1000030163",
+    "summary": "한국사 이해를 평가하는 검정시험으로, 2027년 제82회는 심화 시험으로 공고됐다.",
+    "activities": [
+      "한국사 심화 검정 준비"
+    ],
+    "related_majors": [
+      "역사학",
+      "사학",
+      "역사교육학"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "국사편찬위원회",
+      "exam_sessions": [
+        {
+          "id": "2027-82-regular",
+          "name": "2027년 제82회 심화 정기 접수",
+          "exam_on": "2027-02-13",
+          "application": {
+            "status": "upcoming",
+            "opens_at": "2027-01-12T10:00:00+09:00",
+            "closes_at": "2027-01-19T17:00:00+09:00"
+          },
+          "source_url": "https://www.historyexam.go.kr/pst/view.do?bbs=noti&pst_sno=1000030163",
+          "checked_at": "2026-11-13T23:13:42+09:00"
+        }
+      ]
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "ybm-toeic-lr",
+    "type": "certification",
+    "subtype": "language_exam",
+    "organization": "한국TOEIC위원회",
+    "title": "TOEIC Listening & Reading",
+    "source_url": "https://exam.toeic.co.kr/receipt/examSchList.php",
+    "summary": "영어 듣기와 읽기 능력을 평가하는 시험이다. 공식 일정에서 접수 중인 세 회차를 확인했다.",
+    "activities": [
+      "영어 듣기와 읽기 능력 평가"
+    ],
+    "related_majors": [
+      "영어영문학",
+      "영어교육학",
+      "무역학",
+      "국제통상학"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "한국TOEIC위원회",
+      "exam_sessions": [
+        {
+          "id": "2026-584-regular",
+          "name": "제584회 정기 접수",
+          "exam_on": "2026-11-29",
+          "application": {
+            "status": "open",
+            "opens_at": "2026-10-12T10:00:00+09:00",
+            "closes_at": "2026-11-16T10:00:00+09:00"
+          },
+          "source_url": "https://exam.toeic.co.kr/receipt/examSchList.php",
+          "checked_at": "2026-11-13T23:13:42+09:00"
+        },
+        {
+          "id": "2026-585-regular",
+          "name": "제585회 정기 접수",
+          "exam_on": "2026-12-13",
+          "application": {
+            "status": "open",
+            "opens_at": "2026-10-26T10:00:00+09:00",
+            "closes_at": "2026-11-30T10:00:00+09:00"
+          },
+          "source_url": "https://exam.toeic.co.kr/receipt/examSchList.php",
+          "checked_at": "2026-11-13T23:13:42+09:00"
+        },
+        {
+          "id": "2026-586-regular",
+          "name": "제586회 정기 접수",
+          "exam_on": "2026-12-27",
+          "application": {
+            "status": "open",
+            "opens_at": "2026-11-09T10:00:00+09:00",
+            "closes_at": "2026-12-14T10:00:00+09:00"
+          },
+          "source_url": "https://exam.toeic.co.kr/receipt/examSchList.php",
+          "checked_at": "2026-11-13T23:13:42+09:00"
+        }
+      ]
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kuksiwon-care-worker",
+    "type": "certification",
+    "subtype": "national_healthcare",
+    "organization": "한국보건의료인국가시험원",
+    "title": "요양보호사",
+    "source_url": "https://www.kuksiwon.or.kr/ss/subcnt/c_8015/1/view.do?itm_seq=35&seq=7",
+    "summary": "돌봄이 필요한 사람의 일상생활을 지원하는 요양보호사 자격이다. 상시시험 일정은 시험센터별로 확인한다.",
+    "activities": [
+      "노인 돌봄 및 일상생활 지원 관련 시험 준비"
+    ],
+    "related_majors": [
+      "사회복지학",
+      "보건학"
+    ],
+    "certification": {
+      "status": "active",
+      "issuer": "한국보건의료인국가시험원",
+      "exam_sessions": []
+    },
+    "requirements": [
+      "요양보호사 양성 교육기관에서 정해진 교육과정을 이수해야 함"
+    ],
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kentech-winter-research-933",
+    "type": "project",
+    "subtype": "research_internship",
+    "organization": "한국에너지공과대학교",
+    "title": "2026년 KENTECH 대학원 동계 인턴 모집 안내",
+    "source_url": "https://gs.kentech.ac.kr/notice/view/933",
+    "source_type": "school",
+    "summary": "다른 대학의 학부생이 에너지 분야 대학원 연구실에서 연구 인턴 활동을 하는 동계 프로그램이다.",
+    "activities": [
+      "지원 연구실을 선택해 연구계획서를 작성하고 연구 활동에 참여"
+    ],
+    "tags": [
+      "연구 인턴"
+    ],
+    "related_majors": [
+      "에너지공학"
+    ],
+    "requirements": [
+      "타 대학 학부 3~4학년 재학생 중 내국인",
+      "휴학생·수료생·졸업생·재직자·타 기관 과제 참여자 및 본교 학부생은 지원 불가",
+      "지원서, 자기소개서·연구계획서, 성적증명서 제출 및 참여 연구실 1지망 필수"
+    ],
+    "published_on": "2026-10-29",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-05",
+      "closes_at": "2026-11-25T23:59:00+09:00"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-28",
+      "ends_on": "2027-02-12",
+      "note": "동계 연구 인턴 활동 기간"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "geumjeong-urban-forum-983767",
+    "type": "event",
+    "subtype": "urban_planning_forum",
+    "organization": "부산광역시 금정구",
+    "title": "2026 금정 도시활력 포럼 참석자 모집",
+    "source_url": "https://www.geumjeong.go.kr/gslib/board/view.geumj?boardId=BBS_0000004&dataSid=983767&paging=ok&startPage=1",
+    "summary": "금샘로 개통과 연계한 지역 도시활력 방안을 다루는 공개 포럼이다. 마감일은 사전등록 기준이며 원문은 현장등록도 안내한다.",
+    "activities": [
+      "도로 개통과 지역 활성화 관련 주제발표·토론 청취 및 질의응답"
+    ],
+    "related_majors": [
+      "도시계획학",
+      "교통공학",
+      "행정학"
+    ],
+    "requirements": [
+      "금정구민 및 금샘로 개통에 관심 있는 시민"
+    ],
+    "published_on": "2026-10-27",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-27",
+      "closes_on": "2026-11-18"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-21",
+      "ends_on": "2026-11-21",
+      "note": "10:00~12:00, 금정구청 대강당"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "incheon-dreamnarae-1256",
+    "type": "notice",
+    "subtype": "interview_support",
+    "organization": "인천광역시·인천테크노파크",
+    "publisher": "부평복지ON",
+    "title": "인천 드림나래 면접 정장 대여 및 컨설팅 안내",
+    "source_url": "https://www.icbp.go.kr/bokjion/program/programInfoDetail.do?pgno=29&prgm_seq=1256",
+    "summary": "인천 구직 청년을 대상으로 면접 정장과 구두를 빌려주고 이미지 분석과 면접 자세 코칭을 제공한다. 예산 소진 시 조기 종료될 수 있다.",
+    "activities": [
+      "면접 정장 대여",
+      "이미지 분석 및 면접 자세 컨설팅"
+    ],
+    "requirements": [
+      "인천 거주 또는 인천 소재 대학 재·휴학생",
+      "정장 대여는 면접 예정자, 컨설팅은 구직 중인 사람도 가능",
+      "본문의 연령 안내는 고교 졸업예정자부터 39세까지. 상단 연령 표기와 달라 신청 전 확인 필요"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-12-11"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "chungcheong2027-lumi-volunteers",
+    "type": "project",
+    "subtype": "volunteering",
+    "organization": "2027 충청권 하계세계대학경기대회 조직위원회",
+    "title": "2027 충청 유니버시아드대회 루미 자원봉사자 모집",
+    "source_url": "https://volunteer.2027chungcheong.com/kor/contents/20",
+    "summary": "국제 대학스포츠 대회의 운영, 의료, 영어 안내와 미디어 지원 등에 참여하는 자원봉사자 모집이다.",
+    "activities": [
+      "경기 진행 및 운영 지원",
+      "영어 안내, 의료 지원, 방송·취재 지원 등 배정 분야 활동"
+    ],
+    "related_majors": [
+      "체육학",
+      "스포츠경영학",
+      "영어영문학",
+      "간호학",
+      "미디어커뮤니케이션학"
+    ],
+    "requirements": [
+      "소양·직무·현장교육 참여 가능",
+      "해외동포 및 외국인은 일상 한국어 회화 가능",
+      "타 시·도·해외 거주자는 활동 중 교통·체재비 등 본인 부담 가능",
+      "온라인 신청 시 1365 자원봉사포털 회원가입 필요"
+    ],
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-01",
+      "closes_on": "2026-12-31"
+    },
+    "event_schedule": {
+      "starts_on": "2027-08-01",
+      "ends_on": "2027-08-12",
+      "note": "대회 기간. 개인별 활동 일정은 배정 시 확인"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kookmin-kosaf-volunteer-12615",
+    "type": "project",
+    "subtype": "volunteering",
+    "organization": "한국장학재단·국민대학교",
+    "publisher": "국민대학교",
+    "source_type": "school",
+    "title": "국민대 제34기 동계 대학생 재능봉사 캠프 멘토 모집",
+    "source_url": "https://cieek.kookmin.ac.kr/community/kookmin/social_service/12615?pn=34rss",
+    "summary": "국민대 학부생 팀이 초·중·고교생을 대상으로 동계방학 멘토링 캠프를 준비하고 진행한다.",
+    "activities": [
+      "학습지도, 진로상담, 예체능 창의활동 기획 및 진행",
+      "2027년 1~2월 중 연속 4~5일, 최소 30시간 활동"
+    ],
+    "related_majors": [
+      "교육학",
+      "사회복지학",
+      "청소년학"
+    ],
+    "requirements": [
+      "국민대 학부생 5명 이상으로 팀 구성. 휴학생 참여 가능",
+      "프로그램 계획서 제출 및 지정 사전교육과 한국장학재단 온라인 교육 이수"
+    ],
+    "application": {
+      "status": "open",
+      "closes_on": "2026-11-25"
+    },
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  }
+]
