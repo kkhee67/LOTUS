@@ -1,22 +1,13 @@
 """Deterministic recommendations using supplied models and time only."""
 from datetime import datetime
 from pathlib import Path
-import re
-import unicodedata
+from .text import normalized, positive_mentions, field_matches, NEGATIVE
 from shared.models import (Opportunity, OptionsResponse, RecommendationItem, RecommendationReason,
                            RecommendationRequest, RecommendationResponse, RuleExpression, UserProfile)
 from shared.rules import application_state
 
 CATALOG = OptionsResponse.model_validate_json(
     (Path(__file__).resolve().parents[2] / 'shared/catalog.json').read_text(encoding='utf-8'))
-
-
-def normalized(value: str) -> str:
-    return ' '.join(unicodedata.normalize('NFKC', value).casefold().split())
-
-
-def contains_phrase(text: str, phrase: str) -> bool:
-    return re.search(r'(?<!\w)' + re.escape(normalized(phrase)) + r'(?!\w)', normalized(text)) is not None
 
 
 def evaluate(expression: RuleExpression, profile: UserProfile) -> bool | None:
@@ -70,15 +61,14 @@ def score(opportunity: Opportunity, profile: UserProfile) -> tuple[int, list[Rec
         matched = []
         for field in CATALOG.fields:
             aliases = [field.code, field.label, *field.aliases]
-            if not any(contains_phrase(entry, alias) if free_text else normalized(entry) == normalized(alias)
-                       for entry in entries for alias in aliases):
+            if not field_matches(entries, field.code, aliases, free_text=free_text):
                 continue
             for evidence in opportunity.evidence:
                 if ((evidence.field == 'fields' and field.code in opportunity.fields
-                         and any(contains_phrase(evidence.fact, alias) for alias in aliases))
+                         and positive_mentions(evidence.fact, aliases))
                         or (evidence.field == 'activities'
-                            and any(contains_phrase(evidence.fact, alias) for alias in aliases)
-                            and any(contains_phrase(activity, alias) for activity in opportunity.activities for alias in aliases))):
+                            and positive_mentions(evidence.fact, aliases)
+                            and any(positive_mentions(activity, aliases) for activity in opportunity.activities))):
                     matched.append(evidence.id)
         if matched:
             points += weight
@@ -86,7 +76,7 @@ def score(opportunity: Opportunity, profile: UserProfile) -> tuple[int, list[Rec
                                                 evidence_ids=sorted(set(matched))))
     if profile.major and normalized(profile.major) in {normalized(x) for x in opportunity.related_majors}:
         ids = sorted(e.id for e in opportunity.evidence if e.field == 'related_majors'
-                     and contains_phrase(e.fact, profile.major))
+                     and positive_mentions(e.fact, [profile.major]))
         if ids:
             points += 15
             reasons.append(RecommendationReason(text='전공이 공고의 관련 전공과 일치합니다. 지원 자격 보장은 아닙니다.',
@@ -108,6 +98,8 @@ def recommend(request: RecommendationRequest, opportunities: list[Opportunity], 
         if request.types and opportunity.type not in request.types:
             continue
         cautions = []
+        if request.profile.goal and NEGATIVE.search(normalized(request.profile.goal)):
+            cautions.append('목표의 부정·제외 표현은 해당 구절의 점수 가산을 보류합니다. 다른 입력으로 추천될 수 있으니 희망 분야를 확인하세요.')
         if opportunity.certification:
             if opportunity.certification.status != 'active':
                 continue
@@ -123,6 +115,10 @@ def recommend(request: RecommendationRequest, opportunities: list[Opportunity], 
             if state.status != 'open':
                 continue
             cautions.extend(state.cautions)
+            if opportunity.application.closes_at is None and opportunity.application.closes_on is None:
+                cautions.append(
+                    '마감일이 기재되지 않은 공고입니다. 마지막 자료 확인 시각 '
+                    f'{opportunity.checked_at.isoformat()} 이후 모집이 끝났을 수 있으니 원문을 다시 확인하세요.')
         status = eligibility(opportunity, request.profile)
         if status == 'ineligible':
             continue

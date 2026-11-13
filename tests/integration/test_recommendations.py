@@ -28,7 +28,7 @@ def run(items=None, **profile):
 
 @pytest.mark.parametrize('profile,points', [({'interests': ['개발']}, 40),
     ({'preferred_job_fields': ['software']}, 40), ({'goal': '개발 프로젝트 참여'}, 20),
-    ({'major': '컴퓨터공학'}, 15), ({'interests': ['미지분야']}, 0), ({'goal': '개발자'}, 0),
+    ({'major': '컴퓨터공학'}, 15), ({'interests': ['미지분야']}, 0), ({'goal': '개발자'}, 20),
     ({'interests': ['개발', '개발']}, 40),
     ({'interests': ['개발'], 'preferred_job_fields': ['개발'], 'goal': '개발', 'major': '컴퓨터공학'}, 100)])
 def test_minimal_inputs_weights_and_unknowns(profile, points):
@@ -178,3 +178,67 @@ def test_unresolved_conditions_and_activity_states_never_prove_experience():
     for profile in ({'experience_status': 'none'}, {'experience_status': 'unknown'},
                     {'experience_status': 'provided', 'experiences': [{'id': 'synthetic-exp', 'kind': 'course_project', 'title': '가상 수업'}]}):
         assert run([item], interests=['개발'], **profile).items[0].eligibility == 'unknown'
+
+
+@pytest.mark.parametrize('goal,expected', [
+    ('개발을 배우고 싶어요', 20), ('개발자로 취업하고 싶어요', 20),
+    ('백엔드 개발자가 목표', 20), ('프로그래머가 되고 싶다', 20),
+    ('ＳＯＦＴＷＡＲＥ 배우기', 20), ('재개발 사업 참여', 0), ('개발도상국 연구', 0),
+    ('개발은 원하지 않음', 0), ('개발 안 하고 싶다', 0), ('개발에 관심 없음', 0),
+    ('개발을 싫어한다', 0), ('not software', 0), ('개발을 싫어하지 않아요', 0),
+    ('개발 경험이 없지만 배우고 싶다', 0), ('개발 말고 디자인', 0),
+    ('개발보다는 디자인', 0), ('개발 대신 디자인', 0), ('디자인 대신 개발', 20), ('디자인 말고 개발', 20),
+    ('개발은 싫다. 하지만 프로그래밍을 배우고 싶다', 20),
+])
+def test_v2_goal_language_and_conservative_negation(goal, expected):
+    result = run(goal=goal)
+    assert (result.items[0].relevance_score if result.items else 0) == expected
+
+
+@pytest.mark.parametrize('entry,expected', [('백엔드 개발자', 40), ('프로그래머', 40),
+    (' BACKEND ', 40), ('게임 기획자', 0), ('개발자는 싫음', 0)])
+def test_v2_role_aliases_are_explicit(entry, expected):
+    result = run(preferred_job_fields=[entry])
+    assert (result.items[0].relevance_score if result.items else 0) == expected
+
+
+def test_v2_negative_goal_does_not_override_separate_interest_and_is_explained():
+    result = run(interests=['개발'], goal='개발은 원하지 않음')
+    assert result.items[0].relevance_score == 40
+    assert any('부정·제외' in caution for caution in result.items[0].cautions)
+    assert not any('목표와' in reason.text for reason in result.items[0].reasons)
+
+
+def test_v2_mixed_goal_keeps_positive_field_only():
+    design = opportunity(id='design', fields=['design'], experience_required=None,
+        evidence=[{'id': 'd', 'field': 'fields', 'fact': '디자인을 배웁니다', 'source_url': 'https://example.org'}])
+    result = run([opportunity(), design], goal='개발 말고 디자이너로 취업')
+    assert [(x.opportunity_id, x.relevance_score) for x in result.items] == [('design', 20)]
+
+
+@pytest.mark.parametrize('fact,expected', [('소프트웨어를 개발합니다', 40),
+    ('소프트웨어 개발 아님', 0), ('소프트웨어는 제외', 0), ('재개발 사업', 0)])
+def test_v2_evidence_particles_and_negative_claims(fact, expected):
+    item = opportunity(experience_required=None, evidence=[
+        {'id': 'f', 'field': 'fields', 'fact': fact, 'source_url': 'https://example.org'}])
+    result = run([item], interests=['개발'])
+    assert (result.items[0].relevance_score if result.items else 0) == expected
+
+
+def test_v2_aliases_do_not_change_eligibility_major_matching():
+    item = ruled({'kind': 'text', 'field': 'major', 'operator': 'in', 'values': ['소프트웨어']})
+    assert not run([item], interests=['개발'], major='개발자').items
+
+
+@pytest.mark.parametrize('entry', ['웹 개발자', '앱 개발자'])
+def test_v2_direct_frontend_job_input_maps_to_software(entry):
+    assert run(preferred_job_fields=[entry]).items[0].relevance_score == 40
+
+
+@pytest.mark.parametrize('fact,expected', [('사업의 행정 지원', 40), ('사업 지원', 40),
+    ('사업의 행정 지원은 제외', 0), ('사업의견 조사', 0), ('사업자 등록', 0)])
+def test_v2_business_particle_boundary_requires_positive_evidence(fact, expected):
+    item = opportunity(fields=[], activities=[fact], experience_required=None,
+        evidence=[{'id': 'duties', 'field': 'activities', 'fact': fact, 'source_url': 'https://example.org'}])
+    result = run([item], interests=['사업'])
+    assert (result.items[0].relevance_score if result.items else 0) == expected
