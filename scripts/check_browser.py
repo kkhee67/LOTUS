@@ -1,4 +1,5 @@
 """Start isolated real-data servers and run the deterministic browser regression."""
+from contextlib import ExitStack
 import os
 from pathlib import Path
 import socket
@@ -9,6 +10,7 @@ import time
 from urllib.request import urlopen
 
 from backend.importer import import_directory
+from scripts.processes import managed_process
 from tests.support import REAL_BATCH, RECOMMENDATION_TIME
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,7 +37,6 @@ def wait_ready(url, process):
 
 
 def main():
-    processes = []
     with tempfile.TemporaryDirectory(prefix='lotus-browser-') as directory:
         db = Path(directory) / 'real.db'
         import_directory(REAL_BATCH, db, mode='real')
@@ -47,30 +48,26 @@ def main():
         env = {**os.environ, 'DATABASE_URL': 'sqlite:///' + str(db), 'DATA_MODE': 'real',
                'CORS_ORIGINS': ui, 'VITE_API_BASE_URL': api, 'LOTUS_TEST_URL': ui,
                'LOTUS_TEST_TIME': RECOMMENDATION_TIME.isoformat(), 'LOTUS_TEST_DB': str(db)}
-        # Logs stay in the temporary directory; no user profiles are printed.
-        with (Path(directory) / 'servers.log').open('w') as log:
-            try:
-                server = subprocess.Popen([sys.executable, '-m', 'uvicorn', 'tests.browser_server:app',
-                    '--host', '127.0.0.1', '--port', str(api_port), '--no-access-log'],
-                    cwd=ROOT, env=env, stdout=log, stderr=log)
-                processes.append(server)
-                ui_server = subprocess.Popen(['node', str(ROOT / 'frontend/node_modules/vite/bin/vite.js'),
-                    '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
-                    cwd=ROOT / 'frontend', env=env, stdout=log, stderr=log)
-                processes.append(ui_server)
-                wait_ready(api + '/api/v1/health', server)
-                wait_ready(ui, ui_server)
-                for script in ('recommendation_browser.mjs', 'service_feedback_browser.mjs'):
-                    subprocess.run(['node', 'tests/integration/' + script],
-                                   cwd=ROOT, env=env, check=True, timeout=120)
-            finally:
-                for process in reversed(processes):
-                    process.terminate()
-                    try:
-                        process.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        process.kill()
-                        process.wait()
+        # Do not pass temporary file handles to servers or their descendants.
+        # Vite/esbuild can retain inherited handles after the parent exits on Windows.
+        # ExitStack stops every owned tree before TemporaryDirectory removes the DB.
+        with ExitStack() as stack:
+            server = stack.enter_context(managed_process(
+                [sys.executable, '-m', 'uvicorn', 'tests.browser_server:app',
+                 '--host', '127.0.0.1', '--port', str(api_port), '--no-access-log'],
+                cwd=ROOT, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
+            ui_server = stack.enter_context(managed_process(
+                ['node', str(ROOT / 'frontend/node_modules/vite/bin/vite.js'),
+                 '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
+                cwd=ROOT / 'frontend', env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
+            wait_ready(api + '/api/v1/health', server)
+            wait_ready(ui, ui_server)
+            for script in ('recommendation_browser.mjs', 'service_feedback_browser.mjs'):
+                args = ['node', 'tests/integration/' + script]
+                with managed_process(args, cwd=ROOT, env=env) as browser:
+                    code = browser.wait(timeout=120)
+                    if code:
+                        raise subprocess.CalledProcessError(code, args)
 
 
 if __name__ == '__main__':
