@@ -7,7 +7,7 @@ from data_pipeline.normalize import ROOT, read_dataset
 from shared.models import Opportunity, RecommendationApiItem, RecommendationApiResponse, RecommendationRequest
 from recommender.opportunities.service import recommend
 
-NOW = datetime.fromisoformat('2026-11-13T00:00:00+09:00')
+from tests.support import RECOMMENDATION_TIME as NOW
 
 
 def test_real_batch_round_trip_recommendation_and_api_contract(tmp_path):

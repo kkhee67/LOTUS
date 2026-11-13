@@ -6,20 +6,16 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.testclient import TestClient
 
-from backend.importer import import_directory
 from backend.main import invalid
 from backend.opportunity_query import create_opportunity_router
 from backend.service_adapters import create_service_router
-from backend.settings import Settings
 from shared.models import RecommendationApiResponse
 
 
 @pytest.fixture
-def real_flow(tmp_path):
-    db = tmp_path / 'real.db'
-    import_directory('data/normalized', db, mode='real')
-    settings = Settings(_env_file=None, database_url='sqlite:///' + str(db), data_mode='real')
-    time = [datetime.fromisoformat('2026-11-13T00:00:00+09:00')]
+def real_flow(real_catalog, recommendation_clock):
+    db, settings = real_catalog
+    time = recommendation_clock
     app = FastAPI()
     app.add_exception_handler(RequestValidationError, invalid)
     app.include_router(create_opportunity_router(settings, enabled=lambda: True))

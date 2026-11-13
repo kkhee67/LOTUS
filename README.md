@@ -117,3 +117,9 @@ if ($LASTEXITCODE -ne 0) { throw "DB 점검 실패: 위의 상태 코드와 DB �
 실패 시 서버 시작을 멈추는 위 예시는 선택적으로 사용하며 서버의 기존 기동 방식은 바꾸지 않았습니다.
 DB 누락·잠금·미지원 스키마·실제/합성 mode 불일치·손상 자료를 검사합니다. DB를 생성·수정하거나 자동 복구하지 않습니다.
 오류에는 DB 경로나 자료 원문·환경변수 원문을 출력하지 않습니다. 자세한 정보는 docs/catalog-preflight.md를 봅니다.
+
+## 유지보수·통합 회귀 검사
+고정 시각의 실제 배치 브라우저 검사는 `python -m scripts.check_browser`로 실행합니다.
+이 명령은 테스트 전용 서버·임시 DB를 만들고 종료 시 정리합니다. Playwright/Chromium 설치가 필요합니다.
+현재 시각의 별도 로컬 서버는 `python -m scripts.smoke_recommendations --url http://127.0.0.1:8000`으로 점검합니다.
+구조 변경, 선행 PR, 재실행 명령과 성능 측정 한계는 [리팩터링 인계](docs/refactoring.md)를 참고하세요.

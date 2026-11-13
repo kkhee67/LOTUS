@@ -4,7 +4,8 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, Query
 
-from backend.opportunity_query import CatalogUnavailable, query_error, read_catalog
+from backend.catalog_store import CatalogUnavailable, read_catalog
+from backend.responses import error_response as query_error
 from backend.settings import Settings
 from recommender.errors import FeatureUnavailableError
 from recommender.opportunities import service as opportunity_engine

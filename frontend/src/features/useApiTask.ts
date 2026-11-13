@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {apiErrorMessage} from '../api';
 
 export function useApiTask<T>() {
@@ -9,7 +9,7 @@ export function useApiTask<T>() {
 
   useEffect(() => () => current.current?.abort(), []);
 
-  async function run(load: (signal: AbortSignal) => Promise<T>) {
+  const run = useCallback(async (load: (signal: AbortSignal) => Promise<T>) => {
     current.current?.abort();
     const controller = new AbortController();
     current.current = controller;
@@ -23,7 +23,15 @@ export function useApiTask<T>() {
     } finally {
       if (!controller.signal.aborted) setLoading(false);
     }
-  }
+  }, []);
 
-  return {data, error, loading, run};
+  const reset = useCallback(() => {
+    current.current?.abort();
+    current.current = null;
+    setData(undefined);
+    setError(undefined);
+    setLoading(false);
+  }, []);
+
+  return {data, error, loading, run, reset};
 }
