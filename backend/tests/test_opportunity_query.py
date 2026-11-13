@@ -102,6 +102,23 @@ def test_bad_database_is_not_exposed_or_modified(catalog, damage):
     assert catalog.read_bytes() == before
 
 
+def test_duplicate_nested_key_in_stored_payload_returns_safe_503(catalog):
+    with sqlite3.connect(catalog) as db:
+        payload, = db.execute("SELECT payload FROM opportunities WHERE id='synthetic-job'").fetchone()
+        corrupted = payload.replace('"status":"open"', '"status":"closed","status":"open"', 1)
+        assert corrupted != payload
+        db.execute("UPDATE opportunities SET payload=? WHERE id='synthetic-job'", (corrupted,))
+    before = catalog.read_bytes(), catalog.stat().st_mtime_ns
+    client = make_client(catalog)
+
+    for path in ['/api/v1/opportunities', '/api/v1/opportunities/synthetic-job']:
+        response = client.get(path)
+        assert response.status_code == 503
+        assert response.json()['error']['code'] == 'FEATURE_UNAVAILABLE'
+        assert str(catalog) not in response.text and payload not in response.text
+    assert (catalog.read_bytes(), catalog.stat().st_mtime_ns) == before
+
+
 def test_real_mode_cannot_read_demo(catalog):
     assert make_client(catalog, mode='real').get('/api/v1/opportunities').status_code == 503
 
