@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from backend import main
+from backend import main, service_adapters
 from backend.importer import import_directory
 from backend.opportunity_query import read_opportunities
 from backend.service_adapters import assemble_recommendations
@@ -19,20 +19,32 @@ def real_server(tmp_path, monkeypatch):
     import_directory('data/normalized', db, mode='real')
     monkeypatch.setattr(main.settings, 'database_url', 'sqlite:///' + str(db))
     monkeypatch.setattr(main.settings, 'data_mode', 'real')
-    return TestClient(main.app), db
+    clock = [datetime.fromisoformat('2026-11-13T12:00:00+09:00')]
+
+    class FixedDatetime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            assert tz is not None
+            return clock[0].astimezone(tz)
+
+    # Keep the production app, router, DB and engine; fix only the server clock.
+    monkeypatch.setattr(service_adapters, 'datetime', FixedDatetime)
+    with TestClient(main.app) as client:
+        yield client, db, clock
 
 
 @pytest.mark.parametrize('interest', ['business', '경영·사업', '경영', '사업'])
 def test_actual_business_recommendation_preserves_original_and_evidence(real_server, interest):
-    client, db = real_server
+    client, db, _ = real_server
     before = db.read_bytes()
     response = client.post('/api/v1/recommendations', json={
         'profile': {'interests': [interest]}, 'types': ['job'], 'limit': 1})
     assert response.status_code == 200
     result = RecommendationApiResponse.model_validate(response.json())
-    assert len(result.items) == result.candidate_count == 1 and result.engine == 'rules'
+    assert len(result.items) == 1 and result.candidate_count == 2
+    assert result.engine == 'rules'
     item = result.items[0]
-    assert item.opportunity.id == 'dankook-recruitment-186370'
+    assert item.opportunity.id == 'dankook-recruitment-186367'
     assert item.opportunity.source_kind == 'real'
     original = next(row for row in json.loads(Path('data/normalized/opportunities.json').read_text(encoding='utf-8'))
                     if row['id'] == item.opportunity.id)
@@ -55,8 +67,29 @@ def test_unrelated_real_batch_stays_empty(real_server, interest):
 
 
 def test_batch_replay_with_explicit_aware_time(real_server):
-    # Pin the dataset verification date for reproducibility; no clock or network mocks.
+    # Replay at the same aware instant independently of the wall clock.
     result = assemble_recommendations(
         RecommendationRequest(profile={'interests': ['경영·사업']}), read_opportunities(main.settings),
         now=datetime.fromisoformat('2026-11-13T12:00:00+09:00'))
-    assert [item.opportunity.id for item in result.items] == ['dankook-recruitment-186370']
+    assert result.candidate_count == 2
+    assert [item.opportunity.id for item in result.items] == [
+        'dankook-recruitment-186367', 'dankook-recruitment-186370']
+
+
+@pytest.mark.parametrize('instant,expected', [
+    ('2026-11-18T23:58:59+09:00', ['dankook-recruitment-186367', 'dankook-recruitment-186370']),
+    ('2026-11-18T23:59:00+09:00', ['dankook-recruitment-186370']),
+    ('2026-11-18T23:59:01+09:00', ['dankook-recruitment-186370']),
+])
+def test_real_main_http_deadline_preserves_remaining_candidate(real_server, instant, expected):
+    client, db, clock = real_server
+    before = db.read_bytes()
+    clock[0] = datetime.fromisoformat(instant)
+    response = client.post('/api/v1/recommendations', json={'profile': {'interests': ['사업']}})
+    assert response.status_code == 200
+    result = RecommendationApiResponse.model_validate(response.json())
+    assert result.candidate_count == len(expected)
+    assert [item.opportunity.id for item in result.items] == expected
+    assert all(item.recommendation.relevance_score == 40 for item in result.items)
+    assert all(item.recommendation.eligibility == 'unknown' for item in result.items)
+    assert db.read_bytes() == before
