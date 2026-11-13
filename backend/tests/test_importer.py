@@ -52,6 +52,45 @@ def test_insert_idempotent_update_and_no_deletion(batch, tmp_path):
         assert connection.execute('PRAGMA foreign_key_check').fetchall() == []
 
 
+def test_replaying_older_batch_preserves_newer_source_and_closed_job(batch, tmp_path):
+    old = tmp_path / 'old'
+    shutil.copytree(batch, old)
+    db = tmp_path / 'freshness.db'
+    import_directory(old, db, mode='demo')
+    # Compare instants across offsets. In local clock time the job looks earlier.
+    rechecked = '2026-11-11T04:00:00+00:00'
+    edit(batch, 'sources', lambda rows: rows[0].update(checked_at=rechecked))
+    edit(batch, 'opportunities', lambda rows: rows[0].update(
+        checked_at=rechecked, application={'status': 'closed'}))
+    updated = import_directory(batch, db, mode='demo')['counts']
+    assert updated['sources']['updated'] == updated['opportunities']['updated'] == 1
+    before = db.read_bytes(), db.stat().st_mtime_ns
+
+    replay = import_directory(old, db, mode='demo')['counts']
+    assert replay['sources'] == {'inserted': 0, 'updated': 0, 'unchanged': 1}
+    assert replay['opportunities'] == {'inserted': 0, 'updated': 0, 'unchanged': 3}
+    assert (db.read_bytes(), db.stat().st_mtime_ns) == before
+    with sqlite3.connect(db) as connection:
+        payload, = connection.execute("SELECT payload FROM opportunities WHERE id='synthetic-job'").fetchone()
+        assert json.loads(payload)['application']['status'] == 'closed'
+
+
+def test_duplicate_key_in_stored_payload_prevents_any_import(batch, tmp_path):
+    db = tmp_path / 'duplicate-key.db'
+    import_directory(batch, db, mode='demo')
+    with sqlite3.connect(db) as connection:
+        payload, = connection.execute("SELECT payload FROM opportunities WHERE id='synthetic-job'").fetchone()
+        corrupted = payload.replace('"status":"open"', '"status":"closed","status":"open"', 1)
+        assert corrupted != payload
+        connection.execute("UPDATE opportunities SET payload=? WHERE id='synthetic-job'", (corrupted,))
+    before = db.read_bytes(), db.stat().st_mtime_ns
+    edit(batch, 'sources', lambda rows: rows[0].update(name='Source update must not be applied'))
+
+    with pytest.raises(ImportFailure, match='중복 키'):
+        import_directory(batch, db, mode='demo')
+    assert (db.read_bytes(), db.stat().st_mtime_ns) == before
+
+
 @pytest.mark.parametrize('problem', ['duplicate', 'missing_source', 'unknown_field', 'extra_field',
     'mixed', 'missing_file', 'malformed', 'duplicate_key', 'not_array', 'invalid_utf8'])
 def test_invalid_batch_preserves_db_and_does_not_create_new(batch, tmp_path, problem):

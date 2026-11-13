@@ -4,7 +4,7 @@
 실제 공고나 추천 결과를 제공하는 완성 서비스가 아닙니다.
 
 ## 기술과 환경
-React 19 + TypeScript 5 + Vite 8 / Python 3.12 + FastAPI + Pydantic / SQLite(예약, 미구현).
+React 19 + TypeScript 5 + Vite 8 / Python 3.12 + FastAPI + Pydantic / SQLite.
 검증 환경: Python 3.12.7, Node 24.18.0, npm 11.16.0. CI도 Python 3.12 / Node 24를 사용합니다.
 Python은 venv + pip, 프론트는 npm으로 통일합니다. requirements.txt는 실제 가상환경의 pip freeze,
 frontend/package-lock.json은 실제 npm으로 생성했습니다. 설치는 고정된 파일을 사용합니다.
@@ -28,8 +28,8 @@ Linux/macOS에서는 `.venv/Scripts/python` 대신 `.venv/bin/python`을 사용�
 ## 환경변수
 backend/settings.py가 저장소 루트 .env를 읽으며 실제 환경변수가 우선합니다.
 - CORS_ORIGINS: 쉼표로 구분한 프론트 origin. 기본 http://localhost:5173.
-- DATABASE_URL: 기본 sqlite:///runtime/lotus.db. 설정 골격만 있으며 DB 생성·접속 없음.
-- DATA_MODE: demo 또는 real. 후속 importer의 자료 분리용이며 현재 자동 로딩 없음.
+- DATABASE_URL: 기본 sqlite:///runtime/lotus.db. importer와 조회 API가 사용합니다.
+- DATA_MODE: demo 또는 real. importer와 조회의 실제·합성 자료 분리용입니다. 공고는 DB에서만 읽으며 요청 중 수집하지 않습니다.
 - frontend/.env.local의 VITE_API_BASE_URL: 서버 주소만, 기본 http://localhost:8000.
   /api/v1을 붙이면 오류로 거부합니다. VITE_*는 공개되므로 비밀키를 넣지 않습니다.
 외부 AI와 비밀키는 필요하지 않습니다. 프로필 저장 기능도 없습니다.
@@ -56,10 +56,10 @@ npm --prefix frontend run build
 ## 현재 구현 상태
 health, options, capabilities, CORS, .env 로딩, 공통 오류 응답, 최소 프론트 상태 화면,
 공통 모델·검증·날짜 계산·합성 예시·명세/타입 생성이 구현되어 있습니다.
-공고 목록/상세, 링크, 추천·직무·활동·면접 API는 503 FEATURE_UNAVAILABLE입니다.
+공고 목록·상세는 DB 조회가 구현됐습니다. 관련 링크·추천·직무·활동·면접 HTTP API는 503 FEATURE_UNAVAILABLE입니다.
 유효하지 않은 입력은 422, 알 수 없는 라우트는 404입니다.
 미구현을 성공한 빈 목록으로 반환하지 않습니다. 내부 AI 함수도 FeatureUnavailableError를 발생시킵니다.
-DB, importer, 실제 수집, 추천 알고리즘, 완성 UI, 외부 AI, 배포는 미구현입니다.
+SQLite importer·공고 조회·데이터 배치·추천 내부 함수·화면은 구현됐지만 추천 HTTP adapter와 부가 HTTP 연결·배포는 아직 미구현/미검증입니다.
 
 ## 폴더와 협업
 | 폴더 | 담당/용도 |
@@ -76,3 +76,21 @@ DB, importer, 실제 수집, 추천 알고리즘, 완성 UI, 외부 AI, 배포�
 [기획](docs/PROJECT.md) · [소유권](docs/OWNERSHIP.md) · [Git 절차](docs/GIT_WORKFLOW.md) ·
 [계약](contracts/CONTRACT.md) · [인계·검증 결과](docs/BOOTSTRAP_HANDOFF.md).
 팀원은 main 검토·반영 후 docs/tasks/initial의 자기 역할 문서로 시작합니다.
+
+## 실제 공고 DB 준비와 조회
+저장소 루트에서 Python3.12 가상환경을 준비한 뒤 다음을 실행합니다.
+기존 DB는 지우지 않습니다. 실제 자료 DB와 합성 자료 DB를 같은 파일로 사용하지 않습니다.
+```powershell
+$env:DATABASE_URL = "sqlite:///runtime/real.db"
+$env:DATA_MODE = "real"
+.venv\Scripts\python -m backend.importer --input-dir data/normalized
+.venv\Scripts\python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --no-access-log
+```
+예원 화면을 일반 주소에서 실행합니다. `?preview=1`을 붙이면 별도 예시 응답을 쓰므로 실제 연결 검사가 아닙니다.
+화면 입력 확인 → 다음 → 공고 탐색 → 공고 불러오기로 목록을 확인합니다.
+관심 공고 저장 후 새로고침하고 관심 공고에서 다시 불러오면 상세 API를 호출합니다.
+`opportunities`만 활성화돼 있으며 다른 기능은 OFF입니다. DB가 없으면503을 반환하고 자동 생성하지 않습니다.
+정상 빈 DB는200 빈 배열, 없는ID는404, 잘못된페이지는422입니다.
+목록은 ID 오름차순으로 정렬하고 limit 기본20(1~100), offset 기본0(0 이상)을 사용합니다.
+검색·유형 필터는 현재 화면에서 불러온 자료에만 적용됩니다. 서버 검색 파라미터는 없습니다.
+실제 자료의 원문·최신성 재확인은 별도이며, DB 조회 성공이 해당 공고의 현재 모집 상태를 보증하지 않습니다.

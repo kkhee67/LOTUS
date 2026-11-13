@@ -10,7 +10,9 @@ client = TestClient(app)
 
 def test_health_and_capabilities():
     assert client.get("/api/v1/health").json()["status"] == "ok"
-    assert all(not x["enabled"] and not x["implemented"] for x in client.get("/api/v1/capabilities").json().values())
+    caps = client.get("/api/v1/capabilities").json()
+    assert caps['opportunities']['enabled'] and caps['opportunities']['implemented']
+    assert all(not x['enabled'] and not x['implemented'] for name, x in caps.items() if name != 'opportunities')
 
 @pytest.mark.parametrize("feature", FEATURES)
 def test_unimplemented(feature):
