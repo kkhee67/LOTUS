@@ -147,7 +147,7 @@ def test_options_capabilities_openapi_cors():
     caps = client.get('/api/v1/capabilities').json()
     assert set(caps) == {'recommendations','career-roles','activity-plan','interview-guide','opportunities','resource-links'}
     assert caps['opportunities']['enabled'] and caps['opportunities']['implemented']
-    assert all(not x['enabled'] and not x['implemented'] for name, x in caps.items() if name != 'opportunities')
+    assert all(x['enabled'] == (name == 'recommendations') and x['implemented'] == (name in {'recommendations', 'resource-links'}) for name, x in caps.items() if name != 'opportunities')
     schema = app.openapi()
     for path in ['recommendations','career-roles','activity-plan','interview-guide']:
         route = schema['paths']['/api/v1/'+path]['post']
@@ -188,7 +188,7 @@ def test_server_error_hides_exception():
     assert b'private-value' not in response.body
 
 
-def test_basic_recommendation_internal_contract_and_http_remains_unavailable():
+def test_basic_recommendation_internal_contract_and_missing_database_503():
     req = RecommendationRequest(profile={'interests': ['개발']})
     before = req.model_dump()
     result = recommend(req, validate_examples()['opportunities'], now=NOW)

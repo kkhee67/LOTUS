@@ -12,9 +12,9 @@ def test_health_and_capabilities():
     assert client.get("/api/v1/health").json()["status"] == "ok"
     caps = client.get("/api/v1/capabilities").json()
     assert caps['opportunities']['enabled'] and caps['opportunities']['implemented']
-    assert all(not x['enabled'] and not x['implemented'] for name, x in caps.items() if name != 'opportunities')
+    assert all(x['enabled'] == (name == 'recommendations') and x['implemented'] == (name in {'recommendations', 'resource-links'}) for name, x in caps.items() if name != 'opportunities')
 
-@pytest.mark.parametrize("feature", FEATURES)
+@pytest.mark.parametrize("feature", [name for name in FEATURES if name != "recommendations"])
 def test_unimplemented(feature):
     r = client.post(f"/api/v1/{feature}", json={"profile":{"major":"소프트웨어"}})
     assert r.status_code == 503

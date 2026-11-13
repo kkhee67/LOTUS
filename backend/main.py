@@ -1,6 +1,4 @@
-import json
-from typing import Annotated
-from fastapi import FastAPI, Query, Request
+from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -8,17 +6,13 @@ from starlette.exceptions import HTTPException
 from pydantic import TypeAdapter
 from backend.settings import ROOT, Settings
 from backend.opportunity_query import create_opportunity_router
-from shared.models import (
-    ActivityPlanRequest, ActivityPlanResponse, Capability, ErrorBody, ErrorResponse,
-    HealthResponse, InterviewGuideRequest, InterviewGuideResponse, Opportunity,
-    OptionsResponse, Page, RecommendationApiResponse, RecommendationRequest,
-    ResourceLink, RoleAdviceRequest, RoleAdviceResponse,
-)
+from backend.service_adapters import create_service_router
+from shared.models import Capability, ErrorBody, ErrorResponse, HealthResponse, OptionsResponse
 from shared.rules import CONTRACT_VERSION
 
 FEATURES = ('recommendations', 'career-roles', 'activity-plan', 'interview-guide')
 CAPABILITY_NAMES = (*FEATURES, 'opportunities', 'resource-links')
-IMPLEMENTED_FEATURES = {'opportunities'}
+IMPLEMENTED_FEATURES = {'opportunities', 'recommendations', 'resource-links'}
 settings = Settings()
 options = OptionsResponse.model_validate_json((ROOT / 'shared/catalog.json').read_text(encoding='utf-8'))
 capability_flags = TypeAdapter(dict[str, Capability]).validate_json((ROOT / 'contracts/FEATURES.json').read_text(encoding='utf-8'))
@@ -55,9 +49,6 @@ async def http_error(request: Request, exc: HTTPException):
 async def server_error(request: Request, exc: Exception):
     return error(500, 'INTERNAL_ERROR', '서버 오류가 발생했습니다')
 
-def unavailable():
-    return error(503, 'FEATURE_UNAVAILABLE', '아직 구현되지 않은 기능입니다')
-
 @app.get('/api/v1/health', response_model=HealthResponse)
 def health():
     return HealthResponse(status='ok', contract_version=CONTRACT_VERSION)
@@ -76,22 +67,7 @@ app.include_router(create_opportunity_router(
                     and capability_flags['opportunities'].implemented,
 ))
 
-@app.get('/api/v1/resource-links', response_model=Page[ResourceLink])
-def resource_links(limit: Annotated[int, Query(ge=1, le=100)] = 20, offset: Annotated[int, Query(ge=0)] = 0):
-    return unavailable()
-
-@app.post('/api/v1/recommendations', response_model=RecommendationApiResponse)
-def recommendations(request: RecommendationRequest):
-    return unavailable()
-
-@app.post('/api/v1/career-roles', response_model=RoleAdviceResponse)
-def career_roles(request: RoleAdviceRequest):
-    return unavailable()
-
-@app.post('/api/v1/activity-plan', response_model=ActivityPlanResponse)
-def activity_plan(request: ActivityPlanRequest):
-    return unavailable()
-
-@app.post('/api/v1/interview-guide', response_model=InterviewGuideResponse)
-def interview_guide(request: InterviewGuideRequest):
-    return unavailable()
+app.include_router(create_service_router(
+    settings,
+    enabled=lambda name: capability_flags[name].enabled and capability_flags[name].implemented,
+))

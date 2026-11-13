@@ -43,7 +43,7 @@ def main():
         assert json.loads(wait_for(base+'/options', backend))['opportunity_types']
         caps = json.loads(wait_for(base+'/capabilities', backend))
         assert caps['opportunities']['implemented'] and caps['opportunities']['enabled']
-        assert all(not flag['implemented'] and not flag['enabled']
+        assert all(flag['enabled'] == (name == 'recommendations') and flag['implemented'] == (name in {'recommendations', 'resource-links'})
                    for name, flag in caps.items() if name != 'opportunities')
         frontend = subprocess.Popen(['node', 'node_modules/vite/bin/vite.js', '--host', '127.0.0.1',
                                      '--port', str(frontend_port), '--strictPort'],

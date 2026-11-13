@@ -1,8 +1,8 @@
 {
   "recommendations": {
-    "enabled": false,
-    "implemented": false,
-    "unavailable_reason": "초기화 골격: 미구현"
+    "enabled": true,
+    "implemented": true,
+    "unavailable_reason": null
   },
   "career-roles": {
     "enabled": false,
@@ -26,7 +26,7 @@
   },
   "resource-links": {
     "enabled": false,
-    "implemented": false,
-    "unavailable_reason": "초기화 골격: 미구현"
+    "implemented": true,
+    "unavailable_reason": "접속 구현 완료: 활성화 검토 대기"
   }
 }
