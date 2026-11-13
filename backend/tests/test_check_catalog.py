@@ -56,7 +56,6 @@ def test_damaged_or_unavailable_database_fails_safely(tmp_path, damage):
         mode = 'real'
     elif damage == 'locked':
         lock = sqlite3.connect(db)
-        lock.execute('BEGIN EXCLUSIVE')
     else:
         with sqlite3.connect(db) as connection:
             if damage == 'schema':
@@ -66,14 +65,18 @@ def test_damaged_or_unavailable_database_fails_safely(tmp_path, damage):
             else:
                 connection.execute('DELETE FROM opportunities_sources')
     before = db.read_bytes()
+    # On POSIX, closing another descriptor for this file can release process locks.
+    # Read bytes before acquiring the lock and after releasing it, never in between.
+    if lock:
+        lock.execute('BEGIN EXCLUSIVE')
     try:
         code, data = run_check(db, mode=mode)
         assert code == 1 and data['code'] == 'CATALOG_UNAVAILABLE'
-        assert db.read_bytes() == before
     finally:
         if lock:
             lock.rollback()
             lock.close()
+    assert db.read_bytes() == before
 
 
 @pytest.mark.parametrize('overrides', [
