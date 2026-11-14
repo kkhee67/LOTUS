@@ -411,7 +411,7 @@ button:disabled { cursor: default; opacity: .65; }
 .calendar-day:focus-visible { outline-offset: -3px; }
 .calendar-day[aria-current="date"] .calendar-number { border-radius: 50%; color: white; background: #2455cf; }
 .calendar-number { min-width: 24px; text-align: center; }
-.calendar-event { display: block; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; background: #e7eeff; color: #294b98; border-radius: 4px; padding-inline: 4px; font-size: .78rem; }
+.calendar-event { display: block; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; background: #ffebeb; color: #992831; border-inline-start: 3px solid #c43741; border-radius: 4px; padding-inline: 4px; font-size: .78rem; }
 .calendar-entry { border-top: 1px solid var(--border); padding: 12px 0; }
 .calendar-entry h4 { margin: 3px 0; }
 .calendar-date { font-size: .9rem; color: var(--muted); }

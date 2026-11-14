@@ -13,7 +13,7 @@ import {useRecommendationRequest} from '../recommendations/useRecommendationRequ
 
 const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', calendar: '내 일정', guidance: '진로 준비'} as const;
 type Screen = keyof typeof screens;
-const welcomeDuration = 4000;
+const welcomeDuration = 2000;
 
 export function ProfileForm() {
   const [stage, setStage] = useState<'welcome' | 'profile' | 'workspace'>('welcome');
