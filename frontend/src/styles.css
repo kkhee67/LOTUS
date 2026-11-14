@@ -324,9 +324,8 @@ button:disabled { cursor: default; opacity: .65; }
 .recommendation-card > .result-meta { margin-top: 0; }
 .recommendation-card > .result-details { clear: both; }
 .op-poster { box-sizing: border-box; width: 100%; aspect-ratio: 5 / 7; border-radius: 6px; overflow: hidden; }
-.op-poster.official { display: grid; grid-template-rows: minmax(0, 1fr) auto; background: #efeee9; color: #203531; text-align: center; font-size: .77rem; }
-.op-poster.official img { width: 100%; height: 100%; object-fit: contain; }
-.op-poster.official span { padding: 5px 2px; background: #f1f4ef; }
+.op-poster.official { background: #efeee9; }
+.op-poster.official img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .op-poster.cover { --cover-color: #244f54; display: flex; flex-direction: column; align-items: start; gap: 5px; padding: clamp(8px, 1.6vw, 15px); color: white; background: linear-gradient(145deg, transparent 63%, #ffffff12 63% 77%, transparent 77%), var(--cover-color); }
 .cover-contest, .cover-competition { --cover-color: #65364f !important; }
 .cover-certification { --cover-color: #364980 !important; }
