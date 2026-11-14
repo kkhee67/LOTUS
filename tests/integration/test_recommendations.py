@@ -202,6 +202,19 @@ def test_v2_role_aliases_are_explicit(entry, expected):
     assert (result.items[0].relevance_score if result.items else 0) == expected
 
 
+def test_game_development_and_ai_profiles_score_only_supported_topics():
+    ai = opportunity(id='ai', fields=[], title='AI 실무 교육', summary='인공지능 실습',
+        evidence=[{'id': 'syllabus', 'field': 'summary', 'fact': 'AI 실습 과정',
+                   'source_url': 'https://example.org'}], experience_required=None)
+    unrelated = ai.model_copy(update={'id': 'unrelated', 'summary': '일반 교육', 'title': '일반 교육'})
+    result = run([ai, unrelated, opportunity()], interests=['게임 개발', 'ai관련 직무'],
+                 preferred_job_fields=['게임 개발자', 'AI 엔지니어'], goal='ai 관련 직무를 희망합니다.')
+    assert [item.relevance_score for item in result.items] == [100, 80]
+    assert result.items[0].opportunity_id == 'ai'
+    assert all(reason.evidence_ids == ['syllabus'] for reason in result.items[0].reasons)
+    assert not run([ai], goal='AI 관련 직무는 제외').items
+
+
 def test_v2_negative_goal_does_not_override_separate_interest_and_is_explained():
     result = run(interests=['개발'], goal='개발은 원하지 않음')
     assert result.items[0].relevance_score == 40

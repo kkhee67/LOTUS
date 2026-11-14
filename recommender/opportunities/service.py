@@ -1,5 +1,6 @@
 """Deterministic recommendations using supplied models and time only."""
 from datetime import datetime
+import json
 from pathlib import Path
 from .policy import INTEREST_WEIGHT, JOB_WEIGHT, GOAL_WEIGHT, MAJOR_WEIGHT, MIN_SCORE, MAX_SCORE
 from .text import normalized, positive_mentions, field_matches, NEGATIVE
@@ -9,6 +10,14 @@ from shared.rules import application_state
 
 CATALOG = OptionsResponse.model_validate_json(
     (Path(__file__).resolve().parents[2] / 'shared/catalog.json').read_text(encoding='utf-8'))
+
+# Extra topic names are used for text evidence only, never as contract field codes.
+TOPICS = {field.code: [field.code, field.label, *field.aliases] for field in CATALOG.fields}
+for terms in json.loads((Path(__file__).resolve().parents[2] / 'shared/search_topics.json').read_text(encoding='utf-8')):
+    if terms[0] not in TOPICS:
+        TOPICS['ai' if 'AI' in terms else terms[0]] = terms
+
+ProfileCriteria = list[tuple[str, int, list[str]]]
 
 
 def evaluate(expression: RuleExpression, profile: UserProfile) -> bool | None:
@@ -51,29 +60,45 @@ def eligibility(opportunity: Opportunity, profile: UserProfile) -> str:
     return 'eligible'
 
 
-def score(opportunity: Opportunity, profile: UserProfile) -> tuple[int, list[RecommendationReason]]:
-    reasons = []
-    points = 0
+def profile_topics(profile: UserProfile) -> ProfileCriteria:
+    criteria = []
     for label, entries, weight, free_text in (
         ('관심 분야', profile.interests, INTEREST_WEIGHT, False),
         ('희망 직무', profile.preferred_job_fields, JOB_WEIGHT, False),
         ('목표', [profile.goal] if profile.goal else [], GOAL_WEIGHT, True),
     ):
+        if not free_text:
+            entries = [part for entry in entries if not NEGATIVE.search(normalized(entry))
+                       for part in {entry, *entry.split('·')} if part]
+        topics = [code for code, aliases in TOPICS.items()
+                  if field_matches(entries, code, aliases, free_text=free_text)]
+        if topics:
+            criteria.append((label, weight, topics))
+    return criteria
+
+
+def score(opportunity: Opportunity, profile: UserProfile,
+          criteria: ProfileCriteria | None = None) -> tuple[int, list[RecommendationReason]]:
+    reasons = []
+    points = 0
+    if criteria is None:
+        criteria = profile_topics(profile)
+    for label, weight, topics in criteria:
         matched = []
-        for field in CATALOG.fields:
-            aliases = [field.code, field.label, *field.aliases]
-            if not field_matches(entries, field.code, aliases, free_text=free_text):
-                continue
+        for code in topics:
+            aliases = TOPICS[code]
             for evidence in opportunity.evidence:
-                if ((evidence.field == 'fields' and field.code in opportunity.fields
-                         and positive_mentions(evidence.fact, aliases))
-                        or (evidence.field == 'activities'
-                            and positive_mentions(evidence.fact, aliases)
-                            and any(positive_mentions(activity, aliases) for activity in opportunity.activities))):
+                if evidence.field not in ('fields', 'activities', 'summary') or not positive_mentions(evidence.fact, aliases):
+                    continue
+                if ((evidence.field == 'fields' and code in opportunity.fields)
+                        or (evidence.field == 'activities' and any(positive_mentions(activity, aliases)
+                                                                  for activity in opportunity.activities))
+                        or (evidence.field == 'summary' and any(positive_mentions(value, aliases)
+                                                               for value in (opportunity.title, opportunity.summary)))):
                     matched.append(evidence.id)
         if matched:
             points += weight
-            reasons.append(RecommendationReason(text=f'{label}와 공고의 분야·활동 근거가 일치합니다.',
+            reasons.append(RecommendationReason(text=f'{label}와 관련된 내용을 공고에서 확인했습니다.',
                                                 evidence_ids=sorted(set(matched))))
     if profile.major and normalized(profile.major) in {normalized(x) for x in opportunity.related_majors}:
         ids = sorted(e.id for e in opportunity.evidence if e.field == 'related_majors'
@@ -95,6 +120,7 @@ def recommend(request: RecommendationRequest, opportunities: list[Opportunity], 
     if any(not set(item.fields) <= {field.code for field in CATALOG.fields} for item in opportunities):
         raise ValueError('unknown catalog field code')
     items = []
+    criteria = profile_topics(request.profile)
     for opportunity in opportunities:
         if request.types and opportunity.type not in request.types:
             continue
@@ -123,7 +149,7 @@ def recommend(request: RecommendationRequest, opportunities: list[Opportunity], 
         status = eligibility(opportunity, request.profile)
         if status == 'ineligible':
             continue
-        points, reasons = score(opportunity, request.profile)
+        points, reasons = score(opportunity, request.profile, criteria)
         if points < MIN_SCORE or not reasons:
             continue
         if status == 'unknown':
