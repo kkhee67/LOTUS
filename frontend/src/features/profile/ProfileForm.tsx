@@ -109,7 +109,7 @@ export function ProfileForm() {
               {screen === 'calendar' && <p className="hero-description">별표로 저장한 공고의 접수·행사·시험 일정을 확인하세요.</p>}
             </div>
             {screen === 'recommendations' && <label className="recommendation-search">추천 목록에서 찾기
-              <input type="search" value={recommendationQuery} placeholder="제목·기관·태그 검색"
+              <input type="search" value={recommendationQuery} placeholder="제목·기관·관련 분야 검색"
                 onChange={event => setRecommendationQuery(event.target.value)} />
             </label>}
           </div>

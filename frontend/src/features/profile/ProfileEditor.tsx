@@ -69,7 +69,7 @@ export function ProfileEditor({visible, headingRef, options, confirmed, onConfir
               <ExampleField name="interests" label="관심 분야" placeholder="예: 디자인, 데이터" choices={options.data?.fields} />
               <ExampleField name="preferred_job_fields" label="희망 직무·취업 분야" placeholder="직접 입력 예: 웹 개발자" choices={options.data?.fields} />
               <p id="entry-hint" className="field-hint">
-                등록 표현과 입력 예시를 선택하거나 직접 입력할 수 있어요. 일부 예시는
+                카테고리에서 추천 표현을 선택하거나 직접 입력할 수 있어요. 일부 예시는
                 추천 점수에 반영되지 않을 수 있어요. 여러 항목은 쉼표로 나눠 주세요.
               </p>
               <label className="wide">

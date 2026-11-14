@@ -1,11 +1,15 @@
 import {useState} from 'react';
 import type {Options} from '../../api';
-import {interestExamples, jobExamples, workRegions} from './choices';
+import {interestGroups, jobExamples, workRegions} from './choices';
 import {splitEntries, experiencePrefixes, type ExperienceInput} from './profile';
 
 const experienceLabels: Record<ExperienceInput['kind'], string> = {
   course_project: '수업 프로젝트', contest: '공모전·대회', club: '동아리', volunteer: '봉사',
   internship: '인턴', employment: '직장 경력', certificate: '자격증', english_test: '영어시험', other: '기타',
+};
+
+const jobGroupsByField: Record<string, keyof typeof jobExamples> = {
+  software: 'IT·데이터', data: 'IT·데이터', design: '디자인·영상·콘텐츠', business: '사무·인사·기획',
 };
 
 export function ExampleField({name, label, placeholder, choices}: {
@@ -16,24 +20,27 @@ export function ExampleField({name, label, placeholder, choices}: {
 }) {
   const [value, setValue] = useState('');
   const entries = splitEntries(value);
-  const registered = new Set(choices?.flatMap(field => [field.label, ...(field.aliases ?? [])]));
-  const examples = name === 'interests' ? {'관심 분야 예시': interestExamples} : jobExamples;
+  const examples = name === 'interests' ? interestGroups : jobExamples;
+  const groups = new Map<string, Set<string>>(Object.entries(examples).map(([group, words]) => [group, new Set(words)]));
+  for (const field of choices ?? []) {
+    const words = [field.label, ...(field.aliases ?? [])];
+    const group = name === 'interests'
+      ? [...groups.values()].find(values => words.some(word => values.has(word)))
+      : groups.get(jobGroupsByField[field.code]);
+    if (group) words.forEach(word => group.add(word));
+    else groups.set(field.label, new Set([...(groups.get(field.label) ?? []), ...words]));
+  }
   return (
     <div className="choice-field">
       <label>{label}
         <input name={name} value={value} onChange={event => setValue(event.target.value)}
           placeholder={placeholder} aria-describedby="entry-hint" />
       </label>
-      <select aria-label={`${label} 등록 표현 선택`} aria-describedby="entry-hint"
+      <select aria-label={`${label} 추천 표현 선택`} aria-describedby="entry-hint"
         value="" onChange={event => setValue([...entries, event.target.value].join(', '))}>
-        <option value="" disabled>추천 표현·입력 예시 선택</option>
-        {choices?.map(field => <optgroup key={field.code} label={'등록 표현 · ' + field.label}>
-          {[...new Set([field.label, ...(field.aliases ?? [])])].map(choice =>
-            <option key={choice} value={choice} disabled={entries.includes(choice)}>{choice}</option>,
-          )}
-        </optgroup>)}
-        {Object.entries(examples).map(([group, words]) => <optgroup key={group} label={group}>
-          {words.filter(word => !registered.has(word)).map(word =>
+        <option value="" disabled>추천 표현 선택</option>
+        {[...groups].map(([group, words]) => <optgroup key={group} label={group}>
+          {[...words].map(word =>
             <option key={word} value={word} disabled={entries.includes(word)}>{word}</option>)}
         </optgroup>)}
       </select>

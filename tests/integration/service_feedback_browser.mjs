@@ -19,7 +19,7 @@ try {
   });
   await page.clock.install({time: new Date(fixedTime)});
   await page.goto(url);
-  await page.getByRole('combobox',{name:'관심 분야 등록 표현 선택'}).selectOption('사업');
+  await page.getByRole('combobox',{name:'관심 분야 추천 표현 선택'}).selectOption('사업');
   await page.getByRole('button',{name:'입력 확인',exact:true}).click();
   await rename(db,db+'.held');moved=true;
   const bad=page.waitForResponse(r=>r.url().endsWith('/recommendations'));
@@ -77,7 +77,7 @@ try {
    return route.continue();
  });
  await recoveryPage.goto(url);
- await recoveryPage.getByRole('combobox',{name:'관심 분야 등록 표현 선택'}).selectOption('사업');
+ await recoveryPage.getByRole('combobox',{name:'관심 분야 추천 표현 선택'}).selectOption('사업');
  await recoveryPage.getByRole('button',{name:'입력 확인',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'다음',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'공고 탐색',exact:true}).click();

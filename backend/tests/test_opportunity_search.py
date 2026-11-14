@@ -83,7 +83,7 @@ def test_match_beyond_default_first_page_and_filtered_total(search_catalog):
 
 
 @pytest.mark.parametrize('q,expected', [
-    ('  개발\t기관  ', [22]), ('기관 개발', [22]), ('연구원', [23]), ('대회 설명', [24]),
+    ('  프로젝트\t연구원  ', [23]), ('연구원 프로젝트', [23]), ('연구원', [23]), ('대회 설명', [24]),
     ('검색표식 SQLD', [31]), ('sqld', [31]), ('aI', [31, 45]), ('ＡＩ', [31, 45]),
     ('CAFÉ', [31]), ('strasse', [45]), ('C++', [45]), ('50%_literal', [45]),
     ('%', [45]), ('_', [45]), ("%' OR 1=1 --", []), ('null', []),
@@ -215,6 +215,15 @@ def test_pure_filter_does_not_mutate_or_merge_fields(search_catalog):
     assert [row.model_dump_json() for row in originals] == before
     split = originals[0].model_copy(update={'title': 'abc', 'organization': 'def', 'summary': 'x', 'tags': []})
     assert filter_opportunities([split], q='cde') == []
+
+
+def test_topic_prefix_finds_fields_and_related_activities(search_catalog):
+    _, _, originals = search_catalog
+    base = originals[0].model_copy(update={'fields': [], 'activities': []})
+    coded = base.model_copy(update={'id': 'coded', 'fields': ['software']})
+    activity = base.model_copy(update={'id': 'activity', 'activities': ['프로그래밍 실습']})
+    unrelated = base.model_copy(update={'title': '지역 개발 사업'})
+    assert filter_opportunities([coded, unrelated, activity], q='소프트') == [activity, coded]
 
 
 def test_disabled_search_does_not_read_database(search_catalog, monkeypatch):

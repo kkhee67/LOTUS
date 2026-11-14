@@ -24,7 +24,7 @@ try {
   await page.clock.install({time: new Date(fixedTime)});
   await page.goto(url);
   await page.locator('input[name="interests"]').waitFor({state: 'visible'});
-  await page.getByRole('combobox', {name: '관심 분야 등록 표현 선택'}).selectOption('사업');
+  await page.getByRole('combobox', {name: '관심 분야 추천 표현 선택'}).selectOption('사업');
   await page.getByRole('button', {name: '입력 확인', exact: true}).click();
   const responsePromise = recommendation();
   await page.getByRole('button', {name: '다음', exact: true}).click();

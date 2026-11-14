@@ -1,3 +1,4 @@
+import {opportunitySearch} from '../opportunities/search';
 import {useState, type ReactNode} from 'react';
 import type { components } from '../../generated/api';
 import type { Opportunity, RecommendationResponse } from '../../api';
@@ -201,12 +202,8 @@ export function RecommendationResults({response, query, saved, children}: {
   const [category, setCategory] = useState<RecommendationCategory>('all');
   const items = response?.items;
   const categories = Object.keys(recommendationCategories) as RecommendationCategory[];
-  const terms = query.normalize('NFKC').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  const matches = items?.filter(({opportunity}) => {
-    const text = [opportunity.title, opportunity.organization, ...(opportunity.tags ?? [])]
-      .join(' ').normalize('NFKC').toLocaleLowerCase();
-    return terms.every(term => text.includes(term));
-  });
+  const matchesQuery = opportunitySearch(query);
+  const matches = items?.filter(({opportunity}) => matchesQuery(opportunity));
   const visible = matches?.filter(item => inCategory(item.opportunity, category));
   return (
     <section className="results" aria-labelledby="results-heading">
@@ -222,7 +219,7 @@ export function RecommendationResults({response, query, saved, children}: {
       {category === 'languages' && <p>공고마다 어학 기준이 달라요. 공고에 명시된 시험과 기준을 확인할 수 있어요.</p>}
       {category === 'research' && <p>학부연구생·연구 인턴·대학원 모집과 학위·연구 조건이 적힌 공고를 모아 볼 수 있어요.</p>}
       {children}
-      {visible && <p role="status">{terms.length > 0 && !visible.length ? '검색어에 맞는 추천이 없어요.' : category === 'all' && !visible.length
+      {visible && <p role="status">{query.trim() && !visible.length ? '검색어에 맞는 추천이 없어요.' : category === 'all' && !visible.length
         ? '조건에 맞는 추천이 없어요. 관심 분야나 목표를 바꿔 다시 시도해 보세요.'
         : visible.length ? `추천 ${visible.length}건을 찾았어요.`
         : `${recommendationCategories[category]}에 해당하는 추천이 없어요.`}</p>}
