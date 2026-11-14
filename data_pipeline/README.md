@@ -69,10 +69,10 @@ $lotusCheck = Join-Path runtime ('verify-data-' + [guid]::NewGuid().ToString('N'
 
 ## 접수 중심 배치와 화면 분류
 
-`--current-as-of`는 확장 배치에서 지정한 시각에 접수 중·예정인 공고와 운영 중인 자격증을 뽑아 `data/normalized/current/`에 저장한다. 전체 배치와 같은 네 배열을 사용한다. 접수 종료·미확인 공고는 전체 이력에 보존한다.
+`--current-as-of`는 지정한 시각에 접수 중·예정인 공고, 운영 중인 자격 종목, 접수 상태가 미확인인 정책 안내와 종료일이 지나지 않은 미확인 행사를 `data/normalized/current/`에 저장한다. 전체 이력은 확장 배치에 보존한다.
 
 ```powershell
-.venv\Scripts\python.exe -m data_pipeline.normalize --current-as-of '2026-11-13T23:13:42+09:00'
+.venv\Scripts\python.exe -m data_pipeline.normalize --current-as-of '2026-11-14T12:00:00+09:00'
 .venv\Scripts\python.exe -m data_pipeline.normalize --output data/normalized/current --validate-only
 ```
 

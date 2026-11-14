@@ -125,8 +125,8 @@ export function ProfileForm() {
             </RecommendationResults>
           </div>
           <div hidden={screen !== 'explore' || !capabilities.data}>
-            <Explore capability={capabilities.data?.opportunities} types={options.data?.opportunity_types} saved={saved}
-              recommendations={recommendedItems} />
+            <Explore active={screen === 'explore'} capability={capabilities.data?.opportunities} types={options.data?.opportunity_types} saved={saved}
+              recommendations={submission?.kind === 'results' ? submission.response.items : undefined} />
           </div>
           <div hidden={screen !== 'guidance' || !capabilities.data}>
             <Guidance key={confirmed ? 'confirmed' : 'editing'} capabilities={capabilities.data} profile={confirmed?.profile}

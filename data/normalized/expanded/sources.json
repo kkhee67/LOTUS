@@ -558,5 +558,77 @@
     "kind": "official",
     "source_kind": "real",
     "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "k-softwave-organizer",
+    "name": "소프트웨이브 조직위원회",
+    "url": "https://k-softwave.com/about.cm",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:09:28+09:00"
+  },
+  {
+    "id": "public-aws",
+    "name": "AWS Certification",
+    "url": "https://aws.amazon.com/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-contestkorea",
+    "name": "콘테스트코리아",
+    "url": "https://www.contestkorea.com/",
+    "kind": "aggregator",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-googlecert",
+    "name": "Google Cloud",
+    "url": "https://cloud.google.com/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-kmooc",
+    "name": "K-MOOC",
+    "url": "https://www.kmooc.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-mslearn",
+    "name": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-seoul-culture",
+    "name": "서울문화포털",
+    "url": "https://culture.seoul.go.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-sy-policy",
+    "name": "서울시 청년몽땅정보통",
+    "url": "https://youth.seoul.go.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
+  },
+  {
+    "id": "public-vol1365",
+    "name": "1365 자원봉사포털",
+    "url": "https://www.1365.go.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00"
   }
 ]

@@ -40167,5 +40167,4397 @@
         "source_url": "https://job.alio.go.kr/recruitview.do?idx=307030"
       }
     ]
+  },
+  {
+    "id": "softwave-exhibition-2026",
+    "type": "event",
+    "subtype": "industry_fair",
+    "title": "대한민국 소프트웨어 대전 2026 관람 사전등록",
+    "organization": "소프트웨이브 조직위원회",
+    "summary": "소프트웨어 전시를 무료로 관람할 수 있다. 개인·단체 사전등록을 제공하며 첫날은 비즈니스 데이다.",
+    "fields": [
+      "software"
+    ],
+    "activities": [
+      "소프트웨어 산업 행사 참관"
+    ],
+    "requirements": [],
+    "requirements_coverage": "unknown",
+    "application": {
+      "status": "open"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-02",
+      "ends_on": "2026-12-04",
+      "note": "코엑스 A홀, 10:00~17:00. 입장 마감 16:30."
+    },
+    "source_ids": [
+      "k-softwave-organizer"
+    ],
+    "source_url": "https://k-softwave.com/reg.cm",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:09:28+09:00",
+    "evidence": [
+      {
+        "id": "schedule",
+        "field": "event_schedule",
+        "fact": "코엑스 A홀, 10:00~17:00. 입장 마감 16:30.",
+        "source_url": "https://k-softwave.com/visitor.cm"
+      },
+      {
+        "id": "registration",
+        "field": "application",
+        "fact": "공식 사전등록 안내 제공. 등록 마감 시각은 미확인.",
+        "source_url": "https://k-softwave.com/reg.cm"
+      },
+      {
+        "id": "area",
+        "field": "fields",
+        "fact": "소프트웨어 산업 행사",
+        "source_url": "https://k-softwave.com/about.cm"
+      }
+    ]
+  },
+  {
+    "id": "softwave-summit-2026",
+    "type": "event",
+    "subtype": "conference",
+    "title": "AI x SoftWave 서밋 2026 사전등록",
+    "organization": "소프트웨이브 조직위원회",
+    "summary": "AI·소프트웨어 기술과 산업 적용 사례를 다루는 컨퍼런스다. 전시 관람과 별도로 서밋 참가를 신청한다.",
+    "fields": [
+      "software"
+    ],
+    "activities": [
+      "소프트웨어 산업 행사 참관"
+    ],
+    "requirements": [
+      "업계 종사자 위주로 참관을 제한하며 좌석 상황에 따라 입장이 제한될 수 있다."
+    ],
+    "requirements_coverage": "partial",
+    "application": {
+      "status": "open"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-03",
+      "ends_on": "2026-12-03",
+      "note": "코엑스 전시장 메인무대, 10:00~16:00."
+    },
+    "source_ids": [
+      "k-softwave-organizer"
+    ],
+    "source_url": "https://k-softwave.com/summit_regi.cm",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:09:28+09:00",
+    "evidence": [
+      {
+        "id": "schedule",
+        "field": "event_schedule",
+        "fact": "코엑스 전시장 메인무대, 10:00~16:00.",
+        "source_url": "https://k-softwave.com/program.cm"
+      },
+      {
+        "id": "registration",
+        "field": "application",
+        "fact": "공식 사전등록 안내 제공. 등록 마감 시각은 미확인.",
+        "source_url": "https://k-softwave.com/summit_regi.cm"
+      },
+      {
+        "id": "area",
+        "field": "fields",
+        "fact": "소프트웨어 산업 행사",
+        "source_url": "https://k-softwave.com/about.cm"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-advanced-networking-specialty",
+    "type": "certification",
+    "title": "AWS Certified Advanced Networking - Specialty",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-advanced-networking-specialty/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Advanced Networking - Specialty",
+        "source_url": "https://aws.amazon.com/certification/certified-advanced-networking-specialty/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-ai-business-strategist",
+    "type": "certification",
+    "title": "AWS Certified AI Business Strategist",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-ai-business-strategist/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified AI Business Strategist",
+        "source_url": "https://aws.amazon.com/certification/certified-ai-business-strategist/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-ai-practitioner",
+    "type": "certification",
+    "title": "AWS Certified AI Practitioner",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified AI Practitioner",
+        "source_url": "https://aws.amazon.com/certification/certified-ai-practitioner/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-cloud-practitioner",
+    "type": "certification",
+    "title": "AWS Certified Cloud Practitioner",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Cloud Practitioner",
+        "source_url": "https://aws.amazon.com/certification/certified-cloud-practitioner/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-cloudops-engineer-associate",
+    "type": "certification",
+    "title": "AWS Certified CloudOps Engineer - Associate",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-cloudops-engineer-associate/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified CloudOps Engineer - Associate",
+        "source_url": "https://aws.amazon.com/certification/certified-cloudops-engineer-associate/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-data-engineer-associate",
+    "type": "certification",
+    "title": "AWS Certified Data Engineer - Associate",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-data-engineer-associate/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Data Engineer - Associate",
+        "source_url": "https://aws.amazon.com/certification/certified-data-engineer-associate/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-developer-associate",
+    "type": "certification",
+    "title": "AWS Certified Developer - Associate",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-developer-associate/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Developer - Associate",
+        "source_url": "https://aws.amazon.com/certification/certified-developer-associate/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-machine-learning-engineer-associate",
+    "type": "certification",
+    "title": "AWS Certified Machine Learning Engineer - Associate",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Machine Learning Engineer - Associate",
+        "source_url": "https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-security-specialty",
+    "type": "certification",
+    "title": "AWS Certified Security - Specialty",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-security-specialty/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Security - Specialty",
+        "source_url": "https://aws.amazon.com/certification/certified-security-specialty/"
+      }
+    ]
+  },
+  {
+    "id": "aws-certified-solutions-architect-associate",
+    "type": "certification",
+    "title": "AWS Certified Solutions Architect - Associate",
+    "organization": "Amazon Web Services",
+    "summary": "AWS가 운영하는 자격시험입니다. 출제 범위와 접수 방법은 공식 시험 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Amazon Web Services",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-aws"
+    ],
+    "source_url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: AWS Certified Solutions Architect - Associate",
+        "source_url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+      }
+    ]
+  },
+  {
+    "id": "ck-202608030043",
+    "type": "competition",
+    "title": "제14회 안중근 평화 마라톤 대회",
+    "organization": "안중근평화재단청년아카데미",
+    "summary": "안중근평화재단청년아카데미 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-03",
+      "closes_on": "2026-11-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030810001&str_no=202608030043",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "안중근평화재단청년아카데미 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030810001&str_no=202608030043"
+      }
+    ]
+  },
+  {
+    "id": "ck-202609040022",
+    "type": "competition",
+    "title": "2026 브릴리언트 뮤직 아카데미 콩쿠르",
+    "organization": "브릴리언트 뮤직 아카데미 콩쿠르",
+    "summary": "브릴리언트 뮤직 아카데미 콩쿠르 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-05",
+      "closes_on": "2026-12-19"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202609040022",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "브릴리언트 뮤직 아카데미 콩쿠르 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202609040022"
+      }
+    ]
+  },
+  {
+    "id": "ck-202609210004",
+    "type": "competition",
+    "title": "제 9 회 법학경시대회",
+    "organization": "선율 법학경시대회 위원회",
+    "summary": "선율 법학경시대회 위원회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-21",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202609210004",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "선율 법학경시대회 위원회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202609210004"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610010001",
+    "type": "competition",
+    "title": "[MORE VISION] Chord Banditz - Open Call: BAND MEMBERS (모어비전 밴드 오디션)",
+    "organization": "(주)모어비전",
+    "summary": "(주)모어비전 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-21",
+      "closes_on": "2026-11-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610010001",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "(주)모어비전 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610010001"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610010030",
+    "type": "competition",
+    "title": "제1회 중앙일보 어린이 미술대회",
+    "organization": "중앙일보",
+    "summary": "중앙일보 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610010030",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "중앙일보 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610010030"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610010096",
+    "type": "contest",
+    "title": "[NUR-CONNECT: 삶 전반을 잇는 간호] 공모전",
+    "organization": "대한간호대학학생협회",
+    "summary": "대한간호대학학생협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-01",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610010096",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대한간호대학학생협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610010096"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610060040",
+    "type": "contest",
+    "title": "[학술정보국_ 「NUR-CONNECT: 삶 전반을 잇는 간호」 공모전",
+    "organization": "대한간호대학학생협회 학술정보국",
+    "summary": "대한간호대학학생협회 학술정보국 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-01",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610060040",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대한간호대학학생협회 학술정보국 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610060040"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610070042",
+    "type": "competition",
+    "title": "2026, 2027 브릴리언트 인터내셔널 뮤직 콩쿠르",
+    "organization": "브릴리언트 인터내셔널 뮤직 콩쿠르",
+    "summary": "브릴리언트 인터내셔널 뮤직 콩쿠르 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-07",
+      "closes_on": "2027-05-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610070042",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "브릴리언트 인터내셔널 뮤직 콩쿠르 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610070042"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610080029",
+    "type": "competition",
+    "title": "2026 세계아동그림대회",
+    "organization": "키드잡아동문화협회",
+    "summary": "키드잡아동문화협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-10",
+      "closes_on": "2026-11-24"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610080029",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "키드잡아동문화협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610080029"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610140076",
+    "type": "competition",
+    "title": "제3회 생성형 AI 경진대회 (초·중·고 학생문화경진대회)",
+    "organization": "한국학원총연합회",
+    "summary": "한국학원총연합회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-05",
+      "closes_on": "2026-11-25"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610140076",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국학원총연합회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610140076"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610210008",
+    "type": "competition",
+    "title": "제10회 동아뮤지컬콩쿠르",
+    "organization": "동아일보",
+    "summary": "동아일보 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2026-11-27"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610210008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "동아일보 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610210008"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610230030",
+    "type": "competition",
+    "title": "제2회 코리아 프롬스(오케스트라 협연 콩쿠르)",
+    "organization": "코리아 프롬스 조직위원회",
+    "summary": "코리아 프롬스 조직위원회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-21",
+      "closes_on": "2026-11-23"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610230030",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "코리아 프롬스 조직위원회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610230030"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610260007",
+    "type": "competition",
+    "title": "제11회 벽파 국악대제전 전국 국악 경연대회",
+    "organization": "(사)국가무형유산선소리산타령보존회",
+    "summary": "(사)국가무형유산선소리산타령보존회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_on": "2026-11-26"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610260007",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "(사)국가무형유산선소리산타령보존회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610260007"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610260011",
+    "type": "competition",
+    "title": "2026-2027 서울영아티스트 전국 음악콩쿠르",
+    "organization": "서울영아티스트협회",
+    "summary": "서울영아티스트협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-26",
+      "closes_on": "2027-02-03"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610260011",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울영아티스트협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610260011"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610260029",
+    "type": "competition",
+    "title": "하나은행 『하나원픽 CUP AI 게임창작대회』",
+    "organization": "(주)하나은행",
+    "summary": "(주)하나은행 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-22",
+      "closes_on": "2026-11-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610260029",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "(주)하나은행 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202610260029"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610270031",
+    "type": "competition",
+    "title": "제7회 한국섬유.패션디자인 콘테스트",
+    "organization": "사)한국섬유패션산학협회",
+    "summary": "사)한국섬유패션산학협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-22",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610270031",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "사)한국섬유패션산학협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202610270031"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610280001",
+    "type": "competition",
+    "title": "The 6th NN Arts 전국 입시생 성악 콩쿠르",
+    "organization": "엔엔아츠(NN Arts)",
+    "summary": "엔엔아츠(NN Arts) 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-28",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610280001",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "엔엔아츠(NN Arts) 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610280001"
+      }
+    ]
+  },
+  {
+    "id": "ck-202610290008",
+    "type": "competition",
+    "title": "2026-2027 서울영아티스트 전국 음악콩쿠르(온라인)",
+    "organization": "서울영아티스트협회",
+    "summary": "서울영아티스트협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-29",
+      "closes_on": "2027-02-03"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610290008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울영아티스트협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202610290008"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611020032",
+    "type": "competition",
+    "title": "2026 제4회 전남광주 북구청장배 전국 아마추어 e스포츠 대회",
+    "organization": "전남광주통합특별시북구",
+    "summary": "전남광주통합특별시북구 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-19",
+      "closes_on": "2026-12-27"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611020032",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "전남광주통합특별시북구 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611020032"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611020040",
+    "type": "competition",
+    "title": "2027 동계 청소년 IT학술대회 및 대학생 IT논문경진대회",
+    "organization": "한국정보기술진흥원",
+    "summary": "한국정보기술진흥원 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_on": "2027-01-15"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611020040",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국정보기술진흥원 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611020040"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611030024",
+    "type": "competition",
+    "title": "에이블리 에블프 퀸 선발대회",
+    "organization": "에이블리",
+    "summary": "에이블리 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-28",
+      "closes_on": "2026-11-24"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611030024",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "에이블리 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611030024"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611040013",
+    "type": "competition",
+    "title": "2027-28 뮤지컬 <스쿨 오브 락> 최초 한국어 공연 아역 배우 오디션",
+    "organization": "에스앤코㈜",
+    "summary": "에스앤코㈜ 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-03",
+      "closes_on": "2026-11-25"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611040013",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "에스앤코㈜ 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611040013"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611040060",
+    "type": "contest",
+    "title": "대전지역 대학생과 함께하는 시민체감 교통 아이디어 공모",
+    "organization": "대전교통공사",
+    "summary": "대전교통공사 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_on": "2026-11-29"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031410001&str_no=202611040060",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대전교통공사 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031410001&str_no=202611040060"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611040064",
+    "type": "contest",
+    "title": "제1회 장기실종아동찾기 영상 공모전",
+    "organization": "실종아동찾기협회",
+    "summary": "실종아동찾기협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-10",
+      "closes_on": "2026-12-15"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611040064",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "실종아동찾기협회 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611040064"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611050019",
+    "type": "competition",
+    "title": "뮤지컬 '꽥' 전배역 오디션",
+    "organization": "마당플레이웍스",
+    "summary": "마당플레이웍스 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-04",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611050019",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "마당플레이웍스 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611050019"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611060011",
+    "type": "contest",
+    "title": "두찜 꿀조합 공모전",
+    "organization": "두찜",
+    "summary": "두찜 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-01",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611060011",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "두찜 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611060011"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611060015",
+    "type": "contest",
+    "title": "효성그룹과 함께 기록하는 『화포천습지 생물다양성』 사진 공모전",
+    "organization": "경상남도 김해시",
+    "summary": "경상남도 김해시 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-05",
+      "closes_on": "2026-12-04"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611060015",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "경상남도 김해시 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611060015"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611060017",
+    "type": "contest",
+    "title": "2026년 제12회 학교폭력예방 청소년 UCC 공모전",
+    "organization": "영동군청소년상담복지센터",
+    "summary": "영동군청소년상담복지센터 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-01",
+      "closes_on": "2026-11-27"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611060017",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "영동군청소년상담복지센터 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611060017"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611070014",
+    "type": "competition",
+    "title": "뚝닭 댄스 챌린지",
+    "organization": "BHC",
+    "summary": "BHC 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-25",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611070014",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "BHC 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611070014"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611090051",
+    "type": "contest",
+    "title": "광명역 미래비전 AI 영상 공모전",
+    "organization": "광명시/ 한국교육방송공사",
+    "summary": "광명시/ 한국교육방송공사 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-11",
+      "closes_on": "2026-11-24"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611090051",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "광명시/ 한국교육방송공사 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202611090051"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611090053",
+    "type": "contest",
+    "title": "2026 다짐공모전 (뮤지컬 페치카 장부가, 출정가 등 독립군가 부르기 UCC영상공모전)",
+    "organization": "K문화독립군",
+    "summary": "K문화독립군 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-01",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611090053",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "K문화독립군 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611090053"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611100010",
+    "type": "contest",
+    "title": "한국연구재단 창립 50주년 기념 대국민 엠블럼 디자인 공모전",
+    "organization": "한국연구재단",
+    "summary": "한국연구재단 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-11",
+      "closes_on": "2026-12-01"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202611100010",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국연구재단 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202611100010"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611100043",
+    "type": "contest",
+    "title": "(가칭)과천지식정보타운 도서관 명칭 시민 공모",
+    "organization": "과천시",
+    "summary": "과천시 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-09",
+      "closes_on": "2026-11-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202611100043",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "과천시 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202611100043"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611100057",
+    "type": "competition",
+    "title": "트로이컴퍼니 2027년 데뷔 1기 버추얼 싱어 오디션 모집 공고",
+    "organization": "트로이컴퍼니",
+    "summary": "트로이컴퍼니 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-10",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611100057",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "트로이컴퍼니 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031610001&str_no=202611100057"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611100066",
+    "type": "competition",
+    "title": "인천광역시교육청 후원 '2026 J.S. 바흐 국제 페스티벌 콩쿠르 실용음악 부문'",
+    "organization": "한국예술문화교류학회, J. S. BACH International Festival Competition",
+    "summary": "한국예술문화교류학회, J. S. BACH International Festival Competition 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-11",
+      "closes_on": "2026-12-17"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611100066",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국예술문화교류학회, J. S. BACH International Festival Competition 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202611100066"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611120022",
+    "type": "competition",
+    "title": "신한 스퀘어브릿지 청년 해커톤 4기 참가자 모집",
+    "organization": "신한금융희망재단",
+    "summary": "신한금융희망재단 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-11",
+      "closes_on": "2026-11-22"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611120022",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "신한금융희망재단 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611120022"
+      }
+    ]
+  },
+  {
+    "id": "ck-202611120042",
+    "type": "competition",
+    "title": "2026년 11월 KESEL 이퓨쳐 DISCOVERY 영어말하기대회",
+    "organization": "한국영어말하기평가연구소 KESEL",
+    "summary": "한국영어말하기평가연구소 KESEL 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-11-02",
+      "closes_on": "2026-11-29"
+    },
+    "source_ids": [
+      "public-contestkorea"
+    ],
+    "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611120042",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국영어말하기평가연구소 KESEL 주최 모집입니다. 참가 부문, 대상과 제출 방법은 상세 공고를 확인하세요.",
+        "source_url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202611120042"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-agentic-architect",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Agentic Architect",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/learn/certification/agentic-architect/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Agentic Architect",
+        "source_url": "https://cloud.google.com/learn/certification/agentic-architect/"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-associate-google-workspace-administrator",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Google Workspace Administrator",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/associate-google-workspace-administrator",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Google Workspace Administrator",
+        "source_url": "https://cloud.google.com/certification/associate-google-workspace-administrator"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-architect",
+    "type": "certification",
+    "title": "Google Cloud 인증 · 클라우드 설계자",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-architect",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · 클라우드 설계자",
+        "source_url": "https://cloud.google.com/certification/cloud-architect"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-database-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Database Engineer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-database-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Database Engineer",
+        "source_url": "https://cloud.google.com/certification/cloud-database-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-developer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Developer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-developer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Developer",
+        "source_url": "https://cloud.google.com/certification/cloud-developer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-devops-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud DevOps Engineer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-devops-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud DevOps Engineer",
+        "source_url": "https://cloud.google.com/certification/cloud-devops-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-digital-leader",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Digital Leader",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-digital-leader",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Digital Leader",
+        "source_url": "https://cloud.google.com/certification/cloud-digital-leader"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Engineer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Engineer",
+        "source_url": "https://cloud.google.com/certification/cloud-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-network-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Network Engineer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-network-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Network Engineer",
+        "source_url": "https://cloud.google.com/certification/cloud-network-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-cloud-security-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Cloud Security Engineer",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/cloud-security-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Cloud Security Engineer",
+        "source_url": "https://cloud.google.com/certification/cloud-security-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-data-engineer",
+    "type": "certification",
+    "title": "Google Cloud 인증 · 데이터 엔지니어",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/certification/data-engineer",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · 데이터 엔지니어",
+        "source_url": "https://cloud.google.com/certification/data-engineer"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-data-practitioner",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Data Practitioner",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/learn/certification/data-practitioner",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Data Practitioner",
+        "source_url": "https://cloud.google.com/learn/certification/data-practitioner"
+      }
+    ]
+  },
+  {
+    "id": "googlecert-generative-ai-leader",
+    "type": "certification",
+    "title": "Google Cloud 인증 · Generative AI Leader",
+    "organization": "Google Cloud",
+    "summary": "Google Cloud의 공식 자격시험 안내입니다. 시험 범위, 응시 조건과 예약 방법은 종목별 페이지를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "certification": {
+      "status": "active",
+      "issuer": "Google Cloud",
+      "exam_sessions": []
+    },
+    "source_ids": [
+      "public-googlecert"
+    ],
+    "source_url": "https://cloud.google.com/learn/certification/generative-ai-leader",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "공식 자격 목록에 수록된 종목: Google Cloud 인증 · Generative AI Leader",
+        "source_url": "https://cloud.google.com/learn/certification/generative-ai-leader"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-11495",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "(MOOC) 히든 히어로즈 : 1,635조 시장을 장악할 K-원전, 글로벌 영토를 넓히다!",
+    "organization": "JTBC",
+    "summary": "JTBC에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2024-01-21",
+      "closes_on": "2034-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/11495",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "JTBC에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/11495"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-14760",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "(MOOC) 거인의 어깨-박재근",
+    "organization": "TV조선",
+    "summary": "TV조선에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2024-12-16",
+      "closes_on": "2037-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/14760",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "TV조선에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/14760"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-15940",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "(mooc)tvN 놀라운 증명-AI 가정교사가 온다",
+    "organization": "tvN",
+    "summary": "tvN에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2025-03-10",
+      "closes_on": "2037-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/15940",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "tvN에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/15940"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-16143",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "(MOOC) 위대한 수업4(GREAT MINDS) - 일본은 왜 가난해졌나",
+    "organization": "EBS",
+    "summary": "EBS에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2025-03-07",
+      "closes_on": "2034-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/16143",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "EBS에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/16143"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20133",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "건강보험 보장성강화 제대로 알기",
+    "organization": "부산디지털대학교",
+    "summary": "부산디지털대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-10",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20133",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "부산디지털대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20133"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20221",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "외국인 학습자를 위한 대학생활 101 : 성공적인 대학생활을 위한 핵심정보",
+    "organization": "대구한의대학교",
+    "summary": "대구한의대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-07-17",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20221",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대구한의대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20221"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20261",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "이차전지이야기",
+    "organization": "건국대학교(글로컬)",
+    "summary": "건국대학교(글로컬)에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-24",
+      "closes_on": "2026-11-20"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20261",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "건국대학교(글로컬)에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20261"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20392",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "인공지능 시대의 언어학 입문",
+    "organization": "고려대학교",
+    "summary": "고려대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-04",
+      "closes_on": "2026-12-14"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20392",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "고려대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20392"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20402",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "심리학 START",
+    "organization": "충남대학교",
+    "summary": "충남대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-24",
+      "closes_on": "2026-11-30"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20402",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "충남대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20402"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20491",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "비정형 데이터 분석: 소셜 네트워크의 분석 심화",
+    "organization": "이화여자대학교",
+    "summary": "이화여자대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-10",
+      "closes_on": "2026-12-14"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20491",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "이화여자대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20491"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20552",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "재난과 정신건강(Disaster and Mental Health)",
+    "organization": "대구대학교",
+    "summary": "대구대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-01",
+      "closes_on": "2026-12-07"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20552",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대구대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20552"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20794",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "삶을 버티게 하는 가치들",
+    "organization": "동아대학교",
+    "summary": "동아대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-01",
+      "closes_on": "2026-12-03"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20794",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "동아대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20794"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20818",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "서양철학과 불교",
+    "organization": "동국대학교 K학술확산연구소",
+    "summary": "동국대학교 K학술확산연구소에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-15",
+      "closes_on": "2026-12-20"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20818",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "동국대학교 K학술확산연구소에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20818"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20826",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "3D 모션캡쳐와 관련 기술의 적용",
+    "organization": "인천대학교",
+    "summary": "인천대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-20",
+      "closes_on": "2026-12-14"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20826",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "인천대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20826"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-20956",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "공정사회로 가는 계약법",
+    "organization": "부산대학교",
+    "summary": "부산대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-25",
+      "closes_on": "2026-12-10"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/20956",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "부산대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/20956"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21179",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "일본 음식문화의 이해",
+    "organization": "조선대학교",
+    "summary": "조선대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-01",
+      "closes_on": "2026-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21179",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "조선대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21179"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21288",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "AI와의 첫 만남 : 생성형 인공지능으로 보는 미래",
+    "organization": "명지전문대학",
+    "summary": "명지전문대학에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-01",
+      "closes_on": "2026-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21288",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "명지전문대학에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21288"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21310",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "일반화학",
+    "organization": "대구한의대학교",
+    "summary": "대구한의대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-21",
+      "closes_on": "2026-12-06"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21310",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대구한의대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21310"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21313",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "게임컨셉디자인",
+    "organization": "계명대학교",
+    "summary": "계명대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-18",
+      "closes_on": "2026-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21313",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "계명대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21313"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21351",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "인공지능과 캐글분석",
+    "organization": "경북대학교",
+    "summary": "경북대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-01",
+      "closes_on": "2027-01-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21351",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "경북대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21351"
+      }
+    ]
+  },
+  {
+    "id": "kmooc-21387",
+    "type": "training",
+    "subtype": "online_course",
+    "title": "디지털텍스처링",
+    "organization": "대구대학교",
+    "summary": "대구대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-10-12",
+      "closes_on": "2026-12-31"
+    },
+    "source_ids": [
+      "public-kmooc"
+    ],
+    "source_url": "https://www.kmooc.kr/view/course/detail/21387",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대구대학교에서 제공하는 온라인 강좌입니다. 강좌 소개와 수강신청은 K-MOOC에서 확인하세요.",
+        "source_url": "https://www.kmooc.kr/view/course/detail/21387"
+      }
+    ]
+  },
+  {
+    "id": "mslearn-azure-well-architected-introduction",
+    "type": "training",
+    "subtype": "self_paced",
+    "title": "Microsoft Azure Well-Architected 프레임워크 소개",
+    "organization": "Microsoft",
+    "summary": "Microsoft Learn에서 자율 학습할 수 있는 온라인 모듈입니다.",
+    "application": {
+      "status": "open"
+    },
+    "source_ids": [
+      "public-mslearn"
+    ],
+    "source_url": "https://learn.microsoft.com/ko-kr/training/modules/azure-well-architected-introduction/",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "Microsoft Learn에서 자율 학습할 수 있는 온라인 모듈입니다.",
+        "source_url": "https://learn.microsoft.com/ko-kr/training/modules/azure-well-architected-introduction/"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-156277",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울시] 2026년 서울청년문화패스 신청자 모집",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 온라인 접수. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2025-12-22",
+      "ends_on": "2026-11-30",
+      "note": "온라인 접수"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156277&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 온라인 접수. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156277&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-156333",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[남산골한옥마을] 남산골 전통혼례",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 관훈동 민씨가옥 안채 마당 (야외 혼례). 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-03-28",
+      "ends_on": "2026-11-15",
+      "note": "관훈동 민씨가옥 안채 마당 (야외 혼례)"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156333&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 관훈동 민씨가옥 안채 마당 (야외 혼례). 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156333&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-157652",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 문화가 흐르는 서울광장",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울광장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-05-06",
+      "ends_on": "2026-12-31",
+      "note": "서울광장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157652&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울광장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157652&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-157655",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 서울거리공연 구석구석라이브",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 공연별 상이. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-05-01",
+      "ends_on": "2026-12-31",
+      "note": "공연별 상이"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157655&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 공연별 상이. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157655&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-158691",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 카즈미 타테이시 트리오 내한공연-지브리, 재즈를 만나다-(서울)",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 영등포아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-22",
+      "ends_on": "2026-12-22",
+      "note": "영등포아트홀"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158691&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 영등포아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158691&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-158731",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "파인캐릭터 2026 (FineCharacter 2026)",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 동대문디자인플라자(DDP) 쇼룸 1층 (서울 중구 을지로 281). 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-27",
+      "ends_on": "2026-11-29",
+      "note": "동대문디자인플라자(DDP) 쇼룸 1층 (서울 중구 을지로 281)"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 동대문디자인플라자(DDP) 쇼룸 1층 (서울 중구 을지로 281). 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-158770",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 카즈미 타테이시 트리오 내한공연-크리스마스, 재즈를 만나다-(서울)",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-24",
+      "ends_on": "2026-12-24",
+      "note": "강동아트센터 대극장 한강"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158770&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158770&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-158899",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울시청] 제3회 서울조각페스티벌",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 열린송현녹지광장, 뚝섬한강공원. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-08-29",
+      "ends_on": "2026-11-30",
+      "note": "열린송현녹지광장, 뚝섬한강공원"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158899&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 열린송현녹지광장, 뚝섬한강공원. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158899&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-158955",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[마포문화재단] 체홉 4대 장막 낭독극 [공놀이클럽의 사계절 체홉: 갈매기]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 마포아트센터 아트홀맥. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-29",
+      "ends_on": "2026-11-29",
+      "note": "마포아트센터 아트홀맥"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158955&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 마포아트센터 아트홀맥. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158955&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159120",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 서울어텀페스타",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울 전역의 실내외 공연장, 한강공원 일대, 서울문화재단 대학로센터 등. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-09-18",
+      "ends_on": "2026-11-29",
+      "note": "서울 전역의 실내외 공연장, 한강공원 일대, 서울문화재단 대학로센터 등"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159120&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울 전역의 실내외 공연장, 한강공원 일대, 서울문화재단 대학로센터 등. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159120&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159621",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[쿼드, 연극의 질문들] 서안화차",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울문화재단 대학로극장 쿼드. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-16",
+      "ends_on": "2026-12-27",
+      "note": "서울문화재단 대학로극장 쿼드"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159621&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울문화재단 대학로극장 쿼드. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159621&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159930",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서초문화재단] 2026서리풀 어울림 콘서트 [바이올리니스트 김지선의 Dia:logue-graph]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 반포심산아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-22",
+      "ends_on": "2026-12-22",
+      "note": "반포심산아트홀"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159930&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 반포심산아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159930&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159949",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[강동문화재단] 마티네 콘서트Ⅴ: 윈터 마티네(Winter Matinee) 송영훈의 4 첼리스트",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-16",
+      "ends_on": "2026-12-16",
+      "note": "강동아트센터 대극장 한강"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159949&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159949&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159950",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[강동문화재단] 이자람 판소리 갈라 시리즈 [바탕]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-19",
+      "ends_on": "2026-12-19",
+      "note": "강동아트센터 대극장 한강"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159950&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 강동아트센터 대극장 한강. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159950&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-159961",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울시청] 서울광장 스케이트장",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울광장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-18",
+      "ends_on": "2027-02-09",
+      "note": "서울광장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159961&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울광장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159961&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160056",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "2026 제11회 서화·공예 명장대전",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 한국미술관 3층. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-16",
+      "ends_on": "2026-12-21",
+      "note": "한국미술관 3층"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160056&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 한국미술관 3층. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160056&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160068",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "소프라노 이은미 리사이틀 : NONOSTANTE",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 거암아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-12-13",
+      "ends_on": "2026-12-13",
+      "note": "거암아트홀"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160068&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 거암아트홀. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160068&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160190",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울갤러리] 런치 스테이지 [하모니시스트 이한결]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-28",
+      "ends_on": "2026-11-28",
+      "note": "서울갤러리 지하 1층 공연장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160190&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160190&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160179",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "언폴드엑스 2026 [리얼리티체크(Reality Check)]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 문화역서울284. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-26",
+      "ends_on": "2026-12-09",
+      "note": "문화역서울284"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160179&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 문화역서울284. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160179&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160181",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "epic; 서사시",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 갤러리 지하. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-20",
+      "ends_on": "2026-11-26",
+      "note": "갤러리 지하"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160181&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 갤러리 지하. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160181&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160184",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[중랑문화재단] 2026 망우, 쓰다 성과 공유회 [중랑, 박인환을 읽고 쓰다]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 중랑장미카페 다목적공간. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-14",
+      "ends_on": "2026-11-14",
+      "note": "중랑장미카페 다목적공간"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160184&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 중랑장미카페 다목적공간. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160184&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160185",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "두 개의 숲, 하나의 기억_SPACE 302 2026 기획전",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 와이아트 갤러리. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-14",
+      "ends_on": "2026-11-23",
+      "note": "와이아트 갤러리"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160185&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 와이아트 갤러리. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160185&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160186",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울갤러리] 런치 스테이지 [기타리스트 HOOON]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-14",
+      "ends_on": "2026-11-14",
+      "note": "서울갤러리 지하 1층 공연장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160186&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160186&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160187",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울갤러리] 런치 스테이지 [첼리스트 빅바플]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-18",
+      "ends_on": "2026-11-18",
+      "note": "서울갤러리 지하 1층 공연장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160187&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160187&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "seoul-culture-160188",
+    "type": "event",
+    "subtype": "cultural_event",
+    "title": "[서울갤러리] 런치 스테이지 [싱어송라이터 사운드힐즈]",
+    "organization": "서울문화포털",
+    "summary": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "event_schedule": {
+      "starts_on": "2026-11-21",
+      "ends_on": "2026-11-21",
+      "note": "서울갤러리 지하 1층 공연장"
+    },
+    "source_ids": [
+      "public-seoul-culture"
+    ],
+    "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160188&menuNo=200008",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울문화포털에 게시된 문화행사입니다. 장소: 서울갤러리 지하 1층 공연장. 관람·예약 조건은 상세 안내를 확인하세요.",
+        "source_url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=160188&menuNo=200008"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100017",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "국민취업지원제도 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 국민취업지원제도의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100017",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 국민취업지원제도의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100017"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100018",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "여성취업지원서비스 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 여성취업지원서비스의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100018",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 여성취업지원서비스의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100018"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100019",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "장애인취업지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 장애인취업지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100019",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 장애인취업지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100019"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100024",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "서울시 창업지원시설 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 서울시 창업지원시설의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100024",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 서울시 창업지원시설의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100024"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100025",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "창업지원도우미 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 창업지원도우미의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100025",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 창업지원도우미의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100025"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100026",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "지역연계형 청년창업지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 지역연계형 청년창업지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100026",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 지역연계형 청년창업지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100026"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100027",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년후계농 선발 및 영농정착지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년후계농 선발 및 영농정착지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100027",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년후계농 선발 및 영농정착지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100027"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100029",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "서울형 강소기업 선정지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 서울형 강소기업 선정지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100029",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 서울형 강소기업 선정지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100029"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100031",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "노동(근로계약) 상담 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 노동(근로계약) 상담의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100031",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 노동(근로계약) 상담의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100031"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100032",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "문화예술인 및 프리랜서 계약상담 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 문화예술인 및 프리랜서 계약상담의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100032",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 문화예술인 및 프리랜서 계약상담의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100032"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100033",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년안심주택 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년안심주택의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100033",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년안심주택의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100033"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100034",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년전세임대주택 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년전세임대주택의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100034",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년전세임대주택의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100034"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100035",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "행복주택 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 행복주택의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100035",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 행복주택의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100035"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100037",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "매입임대주택 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 매입임대주택의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100037",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 매입임대주택의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100037"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100038",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "공동체ㆍ사회주택 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 공동체ㆍ사회주택의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100038",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 공동체ㆍ사회주택의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100038"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100041",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "전세가격 온라인 상담 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 전세가격 온라인 상담의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100041",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 전세가격 온라인 상담의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100041"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100046",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년월세 지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년월세 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100046",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년월세 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100046"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100047",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년 임차보증금 이자지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년 임차보증금 이자지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100047",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년 임차보증금 이자지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100047"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100049",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "신혼부부 임차보증금 이자지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 신혼부부 임차보증금 이자지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100049",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 신혼부부 임차보증금 이자지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100049"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100051",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "희망하우징 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 희망하우징의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100051",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 희망하우징의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100051"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100053",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "행복기숙사 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 행복기숙사의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100053",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 행복기숙사의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100053"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100063",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "자립준비청년 자립수당 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 자립준비청년 자립수당의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100063",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 자립준비청년 자립수당의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100063"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100064",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "출산육아 지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 출산육아 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100064",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 출산육아 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100064"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100067",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "서울형 긴급 복지 지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 서울형 긴급 복지 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100067",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 서울형 긴급 복지 지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100067"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100069",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "희망두배 청년통장 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 희망두배 청년통장의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100069",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 희망두배 청년통장의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100069"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100070",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "청년내일저축계좌 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 청년내일저축계좌의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100070",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 청년내일저축계좌의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100070"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100073",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "서울 금융복지 상담센터 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 서울 금융복지 상담센터의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100073",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 서울 금융복지 상담센터의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100073"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100081",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "여성안심 택배 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 여성안심 택배의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100081",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 여성안심 택배의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100081"
+      }
+    ]
+  },
+  {
+    "id": "sy-policy-2310100082",
+    "type": "notice",
+    "subtype": "policy_guide",
+    "title": "여성 폭력피해 긴급지원 안내",
+    "organization": "서울특별시",
+    "summary": "서울시 청년정책 안내입니다. 여성 폭력피해 긴급지원의 대상과 이용 절차를 원문에서 확인하세요.",
+    "application": {
+      "status": "unknown"
+    },
+    "source_ids": [
+      "public-sy-policy"
+    ],
+    "source_url": "https://youth.seoul.go.kr/content.do?key=2310100082",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "서울시 청년정책 안내입니다. 여성 폭력피해 긴급지원의 대상과 이용 절차를 원문에서 확인하세요.",
+        "source_url": "https://youth.seoul.go.kr/content.do?key=2310100082"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3491985",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "(오전) 어르신 식사 보조",
+    "organization": "늘편한 요양원",
+    "summary": "늘편한 요양원에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-07-19",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3491985",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "늘편한 요양원에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3491985"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3491986",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "(오후) 어르신 식사 보조",
+    "organization": "늘편한 요양원",
+    "summary": "늘편한 요양원에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-07-19",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3491986",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "늘편한 요양원에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3491986"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3497703",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "노인복지시설 어르신 프로그램 활동보조(이미용 봉사활동)",
+    "organization": "강남시니어타운",
+    "summary": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-14",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497703",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497703"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3497748",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "노인복지시설 어르신 프로그램 활동보조(어르신 나들이 활동)",
+    "organization": "강남시니어타운",
+    "summary": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-14",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497748",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497748"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3497750",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "노인복지시설 어르신 프로그램 활동보조",
+    "organization": "강남시니어타운",
+    "summary": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-14",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497750",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "강남시니어타운에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3497750"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3501353",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "어르신들의 일상생활 보조와 말벗 도움 자원봉사자 선생님을 모집합니다.",
+    "organization": "일산사랑데이케어센터",
+    "summary": "일산사랑데이케어센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-15",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3501353",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "일산사랑데이케어센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3501353"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3501449",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "2026년 세대교류&놀이활동 지도 및 멘토링(어르신 활동지 검수 및 말벗활동)",
+    "organization": "푸른소나무주야간보호센터 2호점",
+    "summary": "푸른소나무주야간보호센터 2호점에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-07",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3501449",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "푸른소나무주야간보호센터 2호점에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3501449"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3504661",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "한국민화뮤지엄 관람객 안내 및 환경미화 자원봉사자 모집",
+    "organization": "한국민화뮤지엄",
+    "summary": "한국민화뮤지엄에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-15",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3504661",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "한국민화뮤지엄에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3504661"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3508214",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "대구 신천 및 김광석길 쓰담 환경정화 봉사자 모집합니다 (문자신청)",
+    "organization": "희망을파는사람들",
+    "summary": "희망을파는사람들에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-23",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3508214",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "희망을파는사람들에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3508214"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3511313",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "재능 기부자 모집 - 홈패션 / 가죽공예 (취미나 기본 기능자 환영)",
+    "organization": "여성장학클럽 홀씨",
+    "summary": "여성장학클럽 홀씨에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-08-28",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3511313",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "여성장학클럽 홀씨에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3511313"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3513587",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "도담도담작은도서관 방과 후 교실 학습지도 교육봉사자 모집",
+    "organization": "도담도담우리마을아이돌봄센터",
+    "summary": "도담도담우리마을아이돌봄센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-03",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3513587",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "도담도담우리마을아이돌봄센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3513587"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3515555",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "어린이영어마을도서관 자료실 도서 정리 - 오전",
+    "organization": "어린이영어마을도서관",
+    "summary": "어린이영어마을도서관에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-04",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3515555",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "어린이영어마을도서관에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3515555"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3520515",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[CUK COMPANY/ 백혈병소아암협회광주전남지회]무등산 더블하트 트레일런 진행보조(5시)",
+    "organization": "광주광역시 동구",
+    "summary": "광주광역시 동구에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-20",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3520515",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "광주광역시 동구에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3520515"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3521065",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "(종일)재송사랑노인주간보호센터-어르신 프로그램 참여 보조 및 활동보조",
+    "organization": "재송사랑노인주간보호센터",
+    "summary": "재송사랑노인주간보호센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-15",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3521065",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "재송사랑노인주간보호센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3521065"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3521542",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "중고등학생 수학 학습 지도 (월, 수 / 18:00~21:00)",
+    "organization": "희망지역아동센터",
+    "summary": "희망지역아동센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-16",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3521542",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "희망지역아동센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3521542"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3525441",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[비대면]세상아이 키트봉사: 사회적 약자를 위한 그림책 업사이클 모스액자 만들기",
+    "organization": "사단법인 세상아이",
+    "summary": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-23",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525441",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525441"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3525487",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[비대면]세상아이 키트봉사: 해외아동을 위한 컬러링북 만들기",
+    "organization": "사단법인 세상아이",
+    "summary": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-23",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525487",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525487"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3525498",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[비대면]세상아이 키트봉사: 사회적 약자를 위한 그림책 업사이클 무드등 만들기",
+    "organization": "사단법인 세상아이",
+    "summary": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-23",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525498",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525498"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3525502",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[비대면]세상아이 키트봉사: 해외아동을 위한 그림책 업사이클 팝업북액자 만들기",
+    "organization": "사단법인 세상아이",
+    "summary": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-23",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525502",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "사단법인 세상아이에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525502"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3525844",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "(성인) 상계백병원 행정 지원 민원 봉사 (토 오전)",
+    "organization": "상계백병원캠프",
+    "summary": "상계백병원캠프에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-23",
+      "closes_on": "2026-11-14"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525844",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "상계백병원캠프에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3525844"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3528364",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[아동 요리활동 프로그램 자원봉사자 모집]",
+    "organization": "대산종합사회복지관",
+    "summary": "대산종합사회복지관에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-30",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3528364",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "대산종합사회복지관에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3528364"
+      }
+    ]
+  },
+  {
+    "id": "vol1365-3528416",
+    "type": "project",
+    "subtype": "volunteer",
+    "title": "[연천장애인자립생활센터]장애인 정책토론회 스텝지원 봉사자 모집",
+    "organization": "연천장애인자립생활센터",
+    "summary": "연천장애인자립생활센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+    "application": {
+      "status": "open",
+      "opens_on": "2026-09-30",
+      "closes_on": "2026-11-15"
+    },
+    "source_ids": [
+      "public-vol1365"
+    ],
+    "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3528416",
+    "source_kind": "real",
+    "checked_at": "2026-11-14T11:24:25+09:00",
+    "evidence": [
+      {
+        "id": "record",
+        "field": "summary",
+        "fact": "연천장애인자립생활센터에서 모집하는 자원봉사 활동입니다. 활동 시간과 대상은 원문에서 확인하세요.",
+        "source_url": "https://www.1365.go.kr/vols/P9210/partcptn/timeCptn.do?type=show&progrmRegistNo=3528416"
+      }
+    ]
   }
 ]

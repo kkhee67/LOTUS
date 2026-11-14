@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import type {Options} from '../../api';
-import {workRegions} from './choices';
+import {interestExamples, jobExamples, workRegions} from './choices';
 import {splitEntries, experiencePrefixes, type ExperienceInput} from './profile';
 
 const experienceLabels: Record<ExperienceInput['kind'], string> = {
@@ -16,21 +16,27 @@ export function ExampleField({name, label, placeholder, choices}: {
 }) {
   const [value, setValue] = useState('');
   const entries = splitEntries(value);
+  const registered = new Set(choices?.flatMap(field => [field.label, ...(field.aliases ?? [])]));
+  const examples = name === 'interests' ? {'관심 분야 예시': interestExamples} : jobExamples;
   return (
     <div className="choice-field">
       <label>{label}
         <input name={name} value={value} onChange={event => setValue(event.target.value)}
           placeholder={placeholder} aria-describedby="entry-hint" />
       </label>
-      {Boolean(choices?.length) && <select aria-label={`${label} 등록 표현 선택`} aria-describedby="entry-hint"
+      <select aria-label={`${label} 등록 표현 선택`} aria-describedby="entry-hint"
         value="" onChange={event => setValue([...entries, event.target.value].join(', '))}>
-        <option value="" disabled>등록된 추천 표현 선택</option>
-        {choices?.map(field => <optgroup key={field.code} label={field.label}>
+        <option value="" disabled>추천 표현·입력 예시 선택</option>
+        {choices?.map(field => <optgroup key={field.code} label={'등록 표현 · ' + field.label}>
           {[...new Set([field.label, ...(field.aliases ?? [])])].map(choice =>
             <option key={choice} value={choice} disabled={entries.includes(choice)}>{choice}</option>,
           )}
         </optgroup>)}
-      </select>}
+        {Object.entries(examples).map(([group, words]) => <optgroup key={group} label={group}>
+          {words.filter(word => !registered.has(word)).map(word =>
+            <option key={word} value={word} disabled={entries.includes(word)}>{word}</option>)}
+        </optgroup>)}
+      </select>
     </div>
   );
 }

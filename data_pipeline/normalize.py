@@ -12,7 +12,7 @@ from data_pipeline.dankook import load_dankook_batch
 from data_pipeline.json_input import read_unique_json
 from data_pipeline.public_opportunities import load_public_batch
 from shared.models import Opportunity, ResourceLink, RoleProfile, Source
-from shared.rules import application_state
+from shared.rules import SEOUL, application_state
 from shared.validation import validate_dataset
 
 
@@ -108,6 +108,11 @@ def normalize(capture: Path, output: Path, *, public_batch: tuple[Path, Path] | 
         public_sources, public_opportunities = load_public_batch(*public_batch)
         incoming["sources"].extend(public_sources)
         incoming["opportunities"].extend(public_opportunities)
+        supplement = public_batch[1].with_name("nonjob_snapshot.json")
+        if supplement.is_file():
+            rows = read_unique_json(supplement)
+            for table in ("opportunities", "sources"):
+                incoming[table].extend(TypeAdapter(list[MODELS[table]]).validate_python(rows[table]))
     validate_real_dataset(incoming)
     dataset = read_dataset(output, allow_missing=True)
 
@@ -135,13 +140,20 @@ def parse_as_of(value: str) -> datetime:
 
 
 def export_current(dataset, output: Path, *, now: datetime):
-    opportunities = [
-        item for item in dataset["opportunities"]
-        if (
-            item.certification.status == "active" if item.certification
-            else application_state(item.application, now=now).status in {"open", "upcoming"}
-        )
-    ]
+    today = now.astimezone(SEOUL).date()
+
+    def is_current(item):
+        if item.certification:
+            return item.certification.status == "active"
+        status = application_state(item.application, now=now).status
+        if status != "unknown":
+            return status in {"open", "upcoming"}
+        if item.type == "notice" and item.subtype == "policy_guide":
+            return True
+        schedule = item.event_schedule
+        return item.type == "event" and schedule and schedule.ends_on and schedule.ends_on >= today
+
+    opportunities = [item for item in dataset["opportunities"] if is_current(item)]
     source_ids = {
         source_id
         for item in (*opportunities, *dataset["roles"], *dataset["resource_links"])

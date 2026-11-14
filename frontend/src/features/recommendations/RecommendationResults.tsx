@@ -3,7 +3,7 @@ import type { components } from '../../generated/api';
 import type { Opportunity, RecommendationResponse } from '../../api';
 import type { SavedOpportunities } from '../opportunities/saved';
 import {showSource} from '../../preview';
-import {applicationStatus, closesToday, sourceHref} from './presentation';
+import {applicationStatus, closesToday, deadlineLabel, sourceHref} from './presentation';
 import {useApplicationClock} from './useApplicationClock';
 import {certificationRequirements, inCategory, languageRequirements, recommendationCategories, researchRequirements, type RecommendationCategory} from './categories';
 
@@ -58,11 +58,23 @@ export function opportunityType(opportunity: Opportunity): string {
   return opportunityLabels[opportunity.type];
 }
 
-export function SaveOpportunity({opportunity, saved}: {opportunity: Opportunity; saved: SavedOpportunities}) {
+export function SaveOpportunity({opportunity, saved, score}: {opportunity: Opportunity; saved: SavedOpportunities; score?: number}) {
+  const sessions = opportunity.certification?.exam_sessions;
+  const now = useApplicationClock(opportunity.application, sessions);
+  const nextSession = sessions?.map(session => session.application)
+    .filter((a): a is Application => !!a && applicationStatus(a, now) !== 'closed' && !!(a.closes_on || a.closes_at))
+    .sort((a, b) => Date.parse(a.closes_at ?? a.closes_on + 'T23:59:59.999+09:00')
+      - Date.parse(b.closes_at ?? b.closes_on + 'T23:59:59.999+09:00'))[0];
+  const countdown = opportunity.type === 'certification'
+    ? nextSession ? '회차 ' + deadlineLabel(nextSession, now) : '회차 마감일 미확인'
+    : deadlineLabel(opportunity.application, now);
   if (!showSource(opportunity)) return null;
   const selected = saved.ids.includes(opportunity.id);
-  return <button type="button" className="secondary" aria-pressed={selected}
-    onClick={() => saved.toggle(opportunity.id)}>관심 공고 저장</button>;
+  return <div className="save-metrics"><button type="button" className="bookmark-star" aria-label="관심 공고 저장" title={selected ? "관심 공고 저장 해제" : "관심 공고 저장"} aria-pressed={selected}
+    onClick={() => saved.toggle(opportunity.id)}>{selected ? '★' : '☆'}</button>
+    <span className="relevance-value">관련성 {score === undefined ? '점수 미제공' : score + '점'}</span>
+    <span className="deadline-value">{countdown}</span>
+  </div>;
 }
 
 function RecommendationCard({item, saved, category}: {
@@ -88,7 +100,6 @@ function RecommendationCard({item, saved, category}: {
         </dl>
       )}
       <dl className="result-facts">
-        <div><dt>관련성 점수</dt><dd>{recommendation.relevance_score} / 100</dd></div>
         <div><dt>지원 자격</dt><dd>{eligibilityLabels[recommendation.eligibility]}</dd></div>
       </dl>
       <h4>추천 이유</h4>
@@ -109,7 +120,7 @@ function RecommendationCard({item, saved, category}: {
         <h4>공고에 적힌 학위·연구 조건</h4>
         <TextList items={research} />
       </>}
-      <SaveOpportunity opportunity={opportunity} saved={saved} />
+      <SaveOpportunity opportunity={opportunity} saved={saved} score={recommendation.relevance_score} />
       <OpportunityDetails opportunity={opportunity} />
     </li>
   );

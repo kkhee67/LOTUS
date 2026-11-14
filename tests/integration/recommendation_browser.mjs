@@ -53,8 +53,7 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({path: `${output}/real-recommendations-${width}.png`, fullPage: true});
   await page.getByRole('button', {name: '공고 탐색', exact: true}).click();
-  await page.getByRole('button', {name: '공고 불러오기', exact: true}).click();
-  await page.getByText('불러온 공고 3 / 3건 · 표시 3건', {exact: true}).waitFor();
+  await page.getByText('검색 결과 3건', {exact: true}).waitFor();
   await page.getByRole('button', {name: '입력 수정', exact: true}).click();
   await page.locator('input[name="interests"]').fill('개발');
   await page.getByRole('button', {name: '입력 확인', exact: true}).click();

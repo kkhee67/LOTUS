@@ -43,3 +43,13 @@ export function sourceHref(value: string): string | undefined {
     return undefined;
   }
 }
+
+export function deadlineLabel(application: Application | undefined, now: Date): string {
+  if (!application) return '마감일 미정';
+  if (applicationStatus(application, now) === 'closed') return '접수 마감';
+  const end = application.closes_on ?? (application.closes_at
+    ? seoulDate.format(new Date(application.closes_at)) : undefined);
+  if (!end) return '마감일 미정';
+  const days = (Date.parse(end) - Date.parse(seoulDate.format(now))) / 86_400_000;
+  return days === 0 ? 'D-day' : `D-${days}`;
+}

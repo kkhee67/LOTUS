@@ -84,8 +84,7 @@ try {
  await recoveryPage.getByText(/기능 상태를 확인하지 못했어요/).filter({visible:true}).waitFor();
  rejectCapabilities=false;
  await recoveryPage.getByRole('button',{name:'연결 다시 확인',exact:true}).filter({visible:true}).click();
- await recoveryPage.getByRole('button',{name:'공고 불러오기',exact:true}).click();
- await recoveryPage.getByText('불러온 공고 3 / 3건 · 표시 3건',{exact:true}).waitFor();
+ await recoveryPage.getByText('검색 결과 3건',{exact:true}).waitFor();
  await recoveryPage.getByRole('button',{name:'맞춤 추천',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'추천 요청 보내기',exact:true}).click();
  await recoveryPage.getByText('추천 2건을 찾았어요.',{exact:true}).waitFor();
