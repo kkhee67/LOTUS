@@ -2,6 +2,7 @@ import {useState, type ReactNode} from 'react';
 import type { components } from '../../generated/api';
 import type { Opportunity, RecommendationResponse } from '../../api';
 import type { SavedOpportunities } from '../opportunities/saved';
+import {OpportunityPoster} from '../opportunities/OpportunityPoster';
 import {showSource} from '../../preview';
 import {applicationStatus, closesToday, deadlineLabel, sourceHref} from './presentation';
 import {useApplicationClock} from './useApplicationClock';
@@ -87,7 +88,8 @@ function RecommendationCard({item, saved, category}: {
   const qualifications = category === 'certifications' ? certificationRequirements(opportunity) : [];
   const research = category === 'research' ? researchRequirements(opportunity) : [];
   return (
-    <li className="result-card">
+    <li className="result-card recommendation-card">
+      <OpportunityPoster item={opportunity} label={opportunityType(opportunity)} />
       <p className="result-meta">{opportunityType(opportunity)} · {opportunity.organization}</p>
       <h3>{opportunity.title}</h3>
       {opportunity.source_kind === 'synthetic' && <p className="availability">연습용 자료</p>}
