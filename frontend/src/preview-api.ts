@@ -122,7 +122,13 @@ export function previewResponse(path: string, init: RequestInit): Response {
     }
     case '/opportunities':
     case '/resource-links': {
-      const list = url.pathname === '/opportunities' ? catalogue : resources;
+      const words = (url.searchParams.get('q') ?? '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const types = url.searchParams.getAll('types');
+      const list = url.pathname === '/opportunities' ? catalogue.filter(item => {
+        if (types.length && !types.includes(item.type)) return false;
+        const text = [item.title, item.organization, item.summary, ...(item.tags ?? [])].join(' ').toLowerCase();
+        return words.every(word => text.includes(word));
+      }).sort((a, b) => a.id.localeCompare(b.id)) : resources;
       const offset = Number(url.searchParams.get('offset') ?? 0);
       const limit = Number(url.searchParams.get('limit') ?? 20);
       return Response.json({items: list.slice(offset, offset + limit), total: list.length, offset, limit});

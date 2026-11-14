@@ -70,3 +70,17 @@ test('catalogue requests use pagination and saved details handle missing records
   await assert.rejects(getOpportunity('job:123', ready, signal), {kind: 'not-found'});
   assert.equal(fetch.mock.calls[1].arguments[0], 'http://localhost:8000/api/v1/opportunities/job%3A123');
 });
+
+test('opportunity search encodes Korean, reserved characters, and repeated types', async context => {
+  const fetch = context.mock.method(globalThis, 'fetch', async () =>
+    Response.json({items: [], total: 0, offset: 20, limit: 20}));
+  await getList('opportunities', ready, 20, signal, {q: ' 단국대 & 사업 ', types: ['job', 'event']});
+  const url = new URL(String(fetch.mock.calls[0].arguments[0]));
+  assert.equal(url.searchParams.get('q'), '단국대 & 사업');
+  assert.deepEqual(url.searchParams.getAll('types'), ['job', 'event']);
+  assert.equal(url.searchParams.get('offset'), '20');
+  await getList('opportunities', ready, 0, signal, {q: '   '});
+  assert.equal(new URL(String(fetch.mock.calls[1].arguments[0])).searchParams.has('q'), false);
+  await assert.rejects(getList('opportunities', ready, 0, signal, {q: '가'.repeat(201)}), {kind: 'validation'});
+  assert.equal(fetch.mock.callCount(), 2);
+});

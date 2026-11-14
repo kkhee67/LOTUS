@@ -6,5 +6,9 @@ export function usePaginatedList<T extends {id: string}>(fetchPage: (offset: num
   function load() {
     return task.run(async signal => appendPage(task.data, await fetchPage(task.data?.next ?? 0, signal)));
   }
-  return {...task, load};
+  function restart(fetchFirst: (offset: number, signal: AbortSignal) => Promise<Page<T>>) {
+    task.reset();
+    return task.run(async signal => appendPage(undefined, await fetchFirst(0, signal)));
+  }
+  return {...task, load, restart};
 }
