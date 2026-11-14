@@ -1,9 +1,8 @@
 import {OpportunityPoster} from './OpportunityPoster';
-import {usePaginatedList} from './usePaginatedList';
 import {useEffect, useRef, useState, type FormEvent} from 'react';
 import {canRecommend, getList, getOpportunity, maxOpportunityQueryLength, type Capability, type Opportunity, type RecommendationResponse, type OpportunitySearch, type Options} from '../../api';
-import {displayDate, OpportunityDetails, opportunityLabels, opportunityType, SaveOpportunity} from '../recommendations/RecommendationResults';
-import {applicationStatus, sourceHref} from '../recommendations/presentation';
+import {OpportunityDetails, opportunityLabels, opportunityType, SaveOpportunity} from '../recommendations/RecommendationResults';
+import {applicationStatus} from '../recommendations/presentation';
 import {useApiTask} from '../useApiTask';
 import {showSource} from '../../preview';
 import type {SavedOpportunities} from './saved';
@@ -218,35 +217,5 @@ export function Explore({active, capability, types, saved, recommendations}: {
         {pager('하단')}
       </>
     )}
-  </section>;
-}
-
-const resourceLabels = {official_site: '공식 사이트', job_board: '취업 게시판', mentoring_program: '멘토링 프로그램'};
-type Resource = Awaited<ReturnType<typeof getList<'resource-links'>>>['items'][number];
-
-export function Resources({capability}: {capability?: Capability}) {
-  const task = usePaginatedList<Resource>((offset, signal) => getList('resource-links', capability, offset, signal));
-  const pages = task.data;
-  const actual = pages?.items.filter(showSource) ?? [];
-  const available = canRecommend(capability);
-
-  return <section id="resources" className="feature-panel" aria-label="관련 사이트 목록">
-    {!available && <p className="availability">관련 사이트 조회 기능 준비 중이에요.</p>}
-    {task.error && <p className="error" role="alert">{task.error}</p>}
-    {pages && !actual.length && <p>확인된 관련 사이트가 없어요.</p>}
-    {actual.length > 0 && <ul className="result-list">{actual.map(item => {
-      const href = item.source_kind === 'real' ? sourceHref(item.url) : undefined;
-      return <li className="result-card" key={item.id}>
-        <p className="result-meta">{resourceLabels[item.kind]}</p>
-        <h3>{item.name}</h3><p>{item.description}</p>
-        <p>마지막 자료 확인 · {displayDate(null, item.checked_at) ?? '미확인'}</p>
-        {href ? <a href={href} target="_blank" rel="noopener noreferrer">사이트 열기 (새 탭)</a>
-          : item.source_kind === 'synthetic' && <p>테스트용 사이트 카드</p>}
-      </li>;
-    })}</ul>}
-    {available && (!pages || pages.next < pages.total || task.error) && <button className="secondary" type="button"
-      disabled={task.loading} onClick={() => void task.load()}>
-      {task.loading ? '불러오는 중…' : task.error ? '다시 시도' : pages ? '사이트 더 불러오기' : '사이트 불러오기'}
-    </button>}
   </section>;
 }

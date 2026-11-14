@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import {canRecommend, type RecommendationRequest} from '../../api';
 import {RecommendationResults} from '../recommendations/RecommendationResults';
 import {RecommendationProfile} from '../recommendations/RecommendationProfile';
-import {Explore, Resources} from '../opportunities/Explore';
+import {Explore} from '../opportunities/Explore';
 import {useSavedOpportunities} from '../opportunities/saved';
 import {Guidance} from '../guidance/Guidance';
 import {isPreview} from '../../preview';
@@ -10,7 +10,7 @@ import {ProfileEditor} from './ProfileEditor';
 import {useServiceConnection} from '../useServiceConnection';
 import {useRecommendationRequest} from '../recommendations/useRecommendationRequest';
 
-const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', guidance: '진로 준비', resources: '관련 사이트'} as const;
+const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', guidance: '진로 준비'} as const;
 type Screen = keyof typeof screens;
 const welcomeDuration = 4000;
 
@@ -145,9 +145,6 @@ export function ProfileForm() {
           <div hidden={screen !== 'guidance' || !capabilities.data}>
             <Guidance key={confirmed ? 'confirmed' : 'editing'} capabilities={capabilities.data} profile={confirmed?.profile}
               opportunities={recommendedItems} />
-          </div>
-          <div hidden={screen !== 'resources' || !capabilities.data}>
-            <Resources capability={capabilities.data?.['resource-links']} />
           </div>
       </main>
     </>
