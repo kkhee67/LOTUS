@@ -10,12 +10,16 @@ from pydantic import TypeAdapter
 
 from data_pipeline.dankook import load_dankook_batch
 from data_pipeline.json_input import read_unique_json
+from data_pipeline.public_opportunities import load_public_batch
 from shared.models import Opportunity, ResourceLink, RoleProfile, Source
 from shared.rules import application_state
 from shared.validation import validate_dataset
 
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT = ROOT / "data/normalized"
+EXPANDED_OUTPUT = DEFAULT_OUTPUT / "expanded"
+CURRENT_OUTPUT = DEFAULT_OUTPUT / "current"
 MODELS = {
     "sources": Source,
     "opportunities": Opportunity,
@@ -97,9 +101,13 @@ def write_dataset(dataset, output: Path) -> None:
             temporary.cleanup()
 
 
-def normalize(capture: Path, output: Path):
+def normalize(capture: Path, output: Path, *, public_batch: tuple[Path, Path] | None = None):
     source, opportunities = load_dankook_batch(capture)
     incoming = {"sources": [source], "opportunities": opportunities, "roles": [], "resource_links": []}
+    if public_batch is not None:
+        public_sources, public_opportunities = load_public_batch(*public_batch)
+        incoming["sources"].extend(public_sources)
+        incoming["opportunities"].extend(public_opportunities)
     validate_real_dataset(incoming)
     dataset = read_dataset(output, allow_missing=True)
 
@@ -107,7 +115,7 @@ def normalize(capture: Path, output: Path):
         by_id = {record.id: record for record in dataset[name]}
         for record in records:
             previous = by_id.get(record.id)
-            if previous is None or record.checked_at > previous.checked_at:
+            if previous is None or record.checked_at >= previous.checked_at:
                 by_id[record.id] = record
         dataset[name] = list(by_id.values())
 
@@ -124,6 +132,29 @@ def parse_as_of(value: str) -> datetime:
     if now.utcoffset() is None:
         raise argparse.ArgumentTypeError("use an explicit UTC offset, for example +09:00")
     return now
+
+
+def export_current(dataset, output: Path, *, now: datetime):
+    opportunities = [
+        item for item in dataset["opportunities"]
+        if (
+            item.certification.status == "active" if item.certification
+            else application_state(item.application, now=now).status in {"open", "upcoming"}
+        )
+    ]
+    source_ids = {
+        source_id
+        for item in (*opportunities, *dataset["roles"], *dataset["resource_links"])
+        for source_id in item.source_ids
+    }
+    current = {
+        **dataset,
+        "sources": [source for source in dataset["sources"] if source.id in source_ids],
+        "opportunities": opportunities,
+    }
+    validate_real_dataset(current)
+    write_dataset(current, output)
+    return current
 
 
 def print_job_statuses(opportunities: list[Opportunity], now: datetime) -> None:
@@ -146,15 +177,30 @@ def print_job_statuses(opportunities: list[Opportunity], now: datetime) -> None:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=ROOT / "data/raw/dankook_recruitment.json")
-    parser.add_argument("--output", type=Path, default=ROOT / "data/normalized")
-    parser.add_argument("--validate-only", action="store_true", help="Check all four arrays without writing.")
-    parser.add_argument("--as-of", type=parse_as_of, help="Check arrays and report job application states without writing.")
+    parser.add_argument("--output", type=Path, help="Override the default or expanded output directory.")
+    parser.add_argument("--include-public", action="store_true",
+                        help="Use the expanded batch with local Job-ALIO and organizer snapshots.")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--validate-only", action="store_true", help="Check all four arrays without writing.")
+    mode.add_argument("--as-of", type=parse_as_of, help="Check arrays and report job application states without writing.")
+    mode.add_argument("--current-as-of", type=parse_as_of,
+                      help="Export open and upcoming opportunities and active certifications from the expanded batch.")
     args = parser.parse_args()
+    default_output = CURRENT_OUTPUT if args.current_as_of else EXPANDED_OUTPUT if args.include_public else DEFAULT_OUTPUT
+    output = args.output if args.output is not None else default_output
     try:
         if args.validate_only or args.as_of is not None:
-            dataset = read_dataset(args.output)
+            dataset = read_dataset(output)
+        elif args.current_as_of is not None:
+            if output.resolve() in {DEFAULT_OUTPUT.resolve(), EXPANDED_OUTPUT.resolve()}:
+                parser.error("use an output directory separate from the full dataset")
+            dataset = export_current(read_dataset(EXPANDED_OUTPUT), output, now=args.current_as_of)
         else:
-            dataset = normalize(args.input, args.output)
+            public_batch = (
+                ROOT / "data/raw/job_alio.json",
+                ROOT / "data/raw/organizer_notices.json",
+            ) if args.include_public else None
+            dataset = normalize(args.input, output, public_batch=public_batch)
     except (OSError, ValueError) as error:
         parser.exit(1, f"Dataset validation or update failed: {error}\n")
     print("Real dataset validated:", {name: len(records) for name, records in dataset.items()})

@@ -1,0 +1,562 @@
+[
+  {
+    "id": "dankook-recruitment",
+    "name": "단국대학교 채용공지",
+    "url": "https://cms.dankook.ac.kr/ko/web/kor/apply_noti",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-12T21:00:39+09:00"
+  },
+  {
+    "id": "hana-finance-2026",
+    "name": "하나증권",
+    "url": "https://www.hanaw.com/contest/contest.html",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "kspo-regulation-64358",
+    "name": "국민체육진흥공단",
+    "url": "https://www.kspo.or.kr/kspo/bbs/B0000027/view.do?menuNo=200149&nttId=64358",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "ksponco-data-85684",
+    "name": "한국체육산업개발",
+    "url": "https://www.ksponco.or.kr/sports/board.es?act=view&bid=0001&list_no=85684&mid=a50301000000",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "tu-character-428766",
+    "name": "동명대학교",
+    "url": "https://pl.tu.ac.kr/tuhome/sub07_01_11.do?articleNo=428766&mode=view",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "hongcheon-shorts-220978",
+    "name": "한림성심대학교 앵커사업단",
+    "url": "https://anchor.hsc.ac.kr/rise/community/notice.do?articleNo=220978&mode=view",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "dge-shorts-2221085",
+    "name": "대구광역시교육청",
+    "url": "https://www.dge.go.kr/main/na/ntt/selectNttInfo.do?bbsId=1045&mi=5053&nttSn=2221085",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "kaeri-essay-13142",
+    "name": "한국원자력연구원",
+    "url": "https://kaeri.re.kr/board/view?linkId=13142&menuId=MENU00332",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "kdca-rare-310326",
+    "name": "질병관리청",
+    "url": "https://www.kdca.go.kr/bbs/kdca/42/310326/download.do",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "sesac-dobong-6498",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6498",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "itle-visit-15138",
+    "name": "인천인재평생교육진흥원",
+    "url": "https://itle.or.kr/user/board/view.do?bbs_id=bbs_1&sq=15138",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:04:04+09:00"
+  },
+  {
+    "id": "sesac-6623",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6623",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6547",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6547",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6546",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6546",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6521",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6521",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6507",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6507",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6494",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6494",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "sesac-6488",
+    "name": "청년취업사관학교 새싹",
+    "url": "https://sesac.seoul.kr/sesac/board/B000000016/postDetailFormLoad.do?pstSn=6488",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "cau-afpk-3667",
+    "name": "한국재무설계협회·한국FP학회",
+    "url": "https://ai.cau.ac.kr/sub07/sub0701.php?category=&keyword=&no=3667&search=title&view=detail",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "semyung-crepet-486052",
+    "name": "에이아이아트",
+    "url": "https://www.semyung.ac.kr/cop/bbs/BBSMSTR_000000001521/selectBoardArticle.do?nttId=486052",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:10:41+09:00"
+  },
+  {
+    "id": "samsung-galaxy-supporters-7",
+    "name": "삼성전자",
+    "url": "https://www.samsungebiz.com/event/galaxycampus/gcsPromotion/galaxysupporters7/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "chungcheong2027-uni-crew-3",
+    "name": "이화여자대학교",
+    "url": "https://teachers.ewha.ac.kr/teachers/board/notice.do?articleNo=768419&attachNo=494308&mode=download",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "coex-aw-2027-reporters-1",
+    "name": "연세대학교",
+    "url": "https://ycms.yonsei.ac.kr/eic/board/job_career.do?article.offset=0&articleLimit=10&articleNo=77207&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dge-science-volunteer-2216004",
+    "name": "대구창의융합교육원",
+    "url": "https://www.dge.go.kr/dicce/na/ntt/selectNttInfo.do?mi=3375&nttSn=2216004",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "skku-hafs-camp-140572",
+    "name": "성균관대학교",
+    "url": "https://www.skku.edu/skku/campus/skk_comm/notice01.do?article.offset=10&articleLimit=10&articleNo=140572&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "yapp-club-29",
+    "name": "YAPP",
+    "url": "https://yapp-web.vercel.app/recruit",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "chungnam-work-experience-782",
+    "name": "충남청년포털",
+    "url": "https://youth.chungnam.go.kr/web/main/bbs/cnyouth_notice/782?baCommSelec=false&baNotice=false&baOpenDay=false&baUse=true&bcId=cnyouth_notice&cp=1&sortDirection=DESC&sortOrder=BA_REGDATE&sv=2026",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "cheonan-job-mentoring-186345",
+    "name": "단국대학교",
+    "url": "https://summer.dankook.ac.kr/web/kor/-390?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186345&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fweb%2Fkor%2Fhome",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "seoul-global-job-fair-2026",
+    "name": "서울특별시",
+    "url": "https://news.seoul.go.kr/welfare/archives/584379?listPage=1",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kita-trade-job-fair-2026",
+    "name": "한국무역협회",
+    "url": "https://jobfair.kita.net/2026/sub/sub10_01_view.do?idx=18",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "blaybus-manufacturing-ax-1148",
+    "name": "중소벤처기업진흥공단·충청남도·천안시·아산시·충남테크노파크",
+    "url": "https://www.blaybus.com/program/1148/landing",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "skhynix-ai-hackathon-2026",
+    "name": "SK하이닉스",
+    "url": "https://skhynix-hackathon.com/ai-2026",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "block-ai-2026",
+    "name": "교육부·한국연구재단·COSS",
+    "url": "https://blockhack.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "inu-uniculture-makerthon-432046",
+    "name": "인천대학교 창업지원단",
+    "url": "https://www.inu.ac.kr/bbs/inu/2611/432046/artclView.do",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "pnu-ai-agent-1511804",
+    "name": "부산대학교",
+    "url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511804&mgr_seq=3&mode=view&page=1",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "pnu-lab-safety-1511763",
+    "name": "부산대학교",
+    "url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511763&mCode=MN095&mgr_seq=3&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "katis-fta-214974",
+    "name": "동국대학교",
+    "url": "https://globalcommerce.dongguk.edu/article/notice/detail/214974?pageIndex=1",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "loreal-korea-internship-2027-h1",
+    "name": "로레알코리아",
+    "url": "https://lo-recruit.com/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kcci-computer-literacy",
+    "name": "대한상공회의소",
+    "url": "https://license.korcham.net/co/examguide.do?cd=0103&mm=21",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "kcci-business-intelligence",
+    "name": "대한상공회의소",
+    "url": "https://license.korcham.net/co/examguide.do?cd=0108&mm=28",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "qnet-information-processing-1320",
+    "name": "한국산업인력공단",
+    "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dankook-coop-187766-winter",
+    "name": "단국대학교 SW중심대학사업단",
+    "url": "https://swcu.dankook.ac.kr/-26?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=187766&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fhome",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "dankook-sebang-internship-186376",
+    "name": "단국대학교",
+    "url": "https://labor.dankook.ac.kr/ko/web/kor/-390?_dku_bbs_web_BbsPortlet_action=view_message&_dku_bbs_web_BbsPortlet_bbsMessageId=186376&p_p_id=dku_bbs_web_BbsPortlet&p_p_lifecycle=0&redirect=%2Fko%2Fweb%2Fkor%2Fhome",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "work24-youth-work-experience-2110444",
+    "name": "고용24",
+    "url": "https://m.work24.go.kr/wk/n/a/0200/selectGvspJbHrplDtalInfo.do?rcitPbanId=2110444",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "gangseo-festival-volunteer-21803",
+    "name": "강서대학교",
+    "url": "https://www.gangseo.ac.kr/kcua/boardView?boardNum=21803&menuCode=BC0701&thisPage=1",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "seoul-employment-suit-service",
+    "name": "서울특별시",
+    "url": "https://job.seoul.go.kr/hmpg/spct/ewif/ewifInfo.do",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "syu-2026-nov-ncs-prep",
+    "name": "삼육대학교 대학일자리본부",
+    "url": "https://www.syu.ac.kr/blog/%EC%9D%BC%EC%A0%95%ED%91%9C2026%EB%85%84-11%EC%9B%94-%EC%A7%84%EB%A1%9C-%EB%B0%8F-%EC%B7%A8%EC%97%85%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%95%9C%EB%B2%88%EC%97%90-%EB%B3%B4%EA%B8%B0/?c=&k=%EC%B7%A8%EC%97%85&pageds=1&t=",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "gstar-cup-2026-overwatch",
+    "name": "지스타컵 2026 오버워치 운영사무국",
+    "url": "https://gstarcup2026.co.kr/",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T18:24:09+09:00"
+  },
+  {
+    "id": "wolkok-ttotoring-1588220",
+    "name": "고려대학교",
+    "url": "https://edu.korea.ac.kr/edu/board/notice.do?articleNo=1588220&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kiha-youth-work-experience-5",
+    "name": "건양대학교",
+    "url": "https://ot.konyang.ac.kr/cop/bbs/BBSMSTR_000000001381/selectBoardArticle.do?nttId=296040",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "donga-teaching-practice-8583761",
+    "name": "동아대학교",
+    "url": "https://donga.ac.kr/article/bbs-64/8583761?from=%2Fcommunity%2Fevents",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "seoul-forms-2000785",
+    "name": "서울특별시",
+    "url": "https://mediahub.seoul.go.kr/gongmo/2000785",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "gnu-human-rights-9051104",
+    "name": "경상국립대학교",
+    "url": "https://new.gnu.ac.kr/main/na/ntt/selectNttInfo.do?mi=1126&nttSn=9051104",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "knu-local-issues-11567",
+    "name": "강원대학교",
+    "url": "https://www.kangwon.ac.kr/ko/bbs/504/detail.do?pstSn=11567",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "cb-carbon-picture-book-428859",
+    "name": "동명대학교",
+    "url": "https://sns.tu.ac.kr/tuhome/sub07_01_11.do?articleNo=428859&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "sff-character-2026",
+    "name": "서울미래인재재단",
+    "url": "https://sffcharacter.kr/guide.html",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "seoul-jamsil-media-art-2",
+    "name": "성균관대학교",
+    "url": "https://sco.skku.edu/sco/community/notice.do?articleNo=228416&mode=view",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "nts-benefits-short-video-1355638",
+    "name": "국세청",
+    "url": "https://b.nts.go.kr/namdaegu/na/ntt/selectNttInfo.do?bbsId=1028&mi=2201&nttSn=1355638",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "bto-content-tourism-1274",
+    "name": "부산관광공사",
+    "url": "https://tourbiz.bto.or.kr/kor/CMS/Board/Board.do?board_seq=1274&mCode=MN032&mgr_seq=6&mode=view",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kto-souvenir-fair-2026",
+    "name": "문화체육관광부·한국관광공사",
+    "url": "https://kto.visitkorea.or.kr/kor/souvenir/exhb/exhbViewGuide.kto",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "qnet-social-worker-1",
+    "name": "한국산업인력공단",
+    "url": "https://www.q-net.or.kr/man004.do?ARTL_SEQ=5279324&BOARD_ID=Q001&gId=52&gSite=L&id=man00402",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "nijk-history-proficiency",
+    "name": "국사편찬위원회",
+    "url": "https://www.historyexam.go.kr/pst/view.do?bbs=noti&pst_sno=1000030163",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "ybm-toeic-lr",
+    "name": "한국TOEIC위원회",
+    "url": "https://exam.toeic.co.kr/receipt/examSchList.php",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kuksiwon-care-worker",
+    "name": "한국보건의료인국가시험원",
+    "url": "https://www.kuksiwon.or.kr/ss/subcnt/c_8015/1/view.do?itm_seq=35&seq=7",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kentech-winter-research-933",
+    "name": "한국에너지공과대학교",
+    "url": "https://gs.kentech.ac.kr/notice/view/933",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "geumjeong-urban-forum-983767",
+    "name": "부산광역시 금정구",
+    "url": "https://www.geumjeong.go.kr/gslib/board/view.geumj?boardId=BBS_0000004&dataSid=983767&paging=ok&startPage=1",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "incheon-dreamnarae-1256",
+    "name": "부평복지ON",
+    "url": "https://www.icbp.go.kr/bokjion/program/programInfoDetail.do?pgno=29&prgm_seq=1256",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "chungcheong2027-lumi-volunteers",
+    "name": "2027 충청권 하계세계대학경기대회 조직위원회",
+    "url": "https://volunteer.2027chungcheong.com/kor/contents/20",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "kookmin-kosaf-volunteer-12615",
+    "name": "국민대학교",
+    "url": "https://cieek.kookmin.ac.kr/community/kookmin/social_service/12615?pn=34rss",
+    "kind": "school",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  },
+  {
+    "id": "job-alio",
+    "name": "공공기관 채용정보시스템 잡알리오",
+    "url": "https://job.alio.go.kr/recruit.do",
+    "kind": "official",
+    "source_kind": "real",
+    "checked_at": "2026-11-13T23:13:42+09:00"
+  }
+]

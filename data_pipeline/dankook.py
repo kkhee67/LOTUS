@@ -5,17 +5,19 @@ from pathlib import Path
 from typing import Annotated
 from urllib.parse import urlencode
 
-from pydantic import AwareDatetime, BeforeValidator, Field, HttpUrl, StringConstraints, TypeAdapter, field_validator
+from pydantic import (
+    AwareDatetime, BeforeValidator, Field, HttpUrl, StringConstraints, TypeAdapter,
+    field_validator, model_validator,
+)
 
 from data_pipeline.json_input import read_unique_json
-from shared.models import ApplicationInfo, Evidence, LongText, Opportunity, Source, StrictModel, Text
+from shared.models import ApplicationInfo, DateOnly, Evidence, LongText, Opportunity, Source, StrictModel, Text
 
 
 BOARD_URL = "https://cms.dankook.ac.kr/ko/web/kor/apply_noti"
 SOURCE_ID = "dankook-recruitment"
 PostId = Annotated[str, StringConstraints(pattern=r"^[1-9][0-9]{0,19}$")]
 DATE_PATTERN = r"[0-9]{4}-[0-9]{2}-[0-9]{2}"
-CapturedDate = Annotated[str, StringConstraints(strict=True, pattern=f"^{DATE_PATTERN}$")]
 
 
 def require_timestamp_text(value: object) -> str:
@@ -35,12 +37,14 @@ class RecruitmentNotice(StrictModel):
     region: Text
     region_source_url: HttpUrl | None = None
     activities: list[Text] = Field(min_length=1, max_length=50)
-    requirements: list[Text] = Field(min_length=1, max_length=50)
+    requirements: list[Text] = Field(default_factory=list, max_length=50)
+    no_requirements_note: LongText | None = None
+    experience_required: Annotated[bool, Field(strict=True)] | None = None
     experience_note: Text | None = None
     application: ApplicationInfo
     application_note: LongText
-    # Keep the captured date string intact until the shared Opportunity validates it.
-    published_on: CapturedDate
+    published_on: DateOnly | None = None
+    published_at: CapturedTimestamp | None = None
     checked_at: CapturedTimestamp
 
     @field_validator("application", mode="before")
@@ -64,6 +68,18 @@ class RecruitmentNotice(StrictModel):
                     raise ValueError(f"{field}: {error}") from error
         return value
 
+    @model_validator(mode="after")
+    def check_evidence_fields(self):
+        if self.no_requirements_note is not None and (
+            self.requirements or self.experience_required is True
+        ):
+            raise ValueError("no_requirements_note conflicts with stated requirements")
+        if self.experience_required is not None and self.experience_note is None:
+            raise ValueError("experience_required needs an explicit experience_note")
+        if self.published_on is not None and self.published_at is not None:
+            raise ValueError("use published_on or published_at")
+        return self
+
     def to_opportunity(self) -> Opportunity:
         query = urlencode({
             "_dku_bbs_web_BbsPortlet_action": "view_message",
@@ -73,11 +89,26 @@ class RecruitmentNotice(StrictModel):
             "redirect": "/ko/web/kor/home",
         })
         url = f"{BOARD_URL}?{query}"
-        evidence = [
-            Evidence(id="duties", field="activities", fact=" / ".join(self.activities), source_url=url),
-            Evidence(id="conditions", field="requirements", fact=" / ".join(self.requirements), source_url=url),
-            Evidence(id="application", field="application", fact=self.application_note, source_url=url),
-        ]
+        evidence = [Evidence(id="duties", field="activities", fact=" / ".join(self.activities), source_url=url)]
+        # Free-text conditions are preserved for a person to verify.
+        requirements = list(self.requirements)
+        if self.experience_required is True and self.experience_note and self.experience_note not in requirements:
+            requirements.append(self.experience_note)
+        if self.requirements:
+            evidence.append(Evidence(
+                id="conditions", field="requirements", fact=" / ".join(self.requirements), source_url=url,
+            ))
+        elif self.no_requirements_note is not None:
+            evidence.append(Evidence(
+                id="conditions", field="requirements", fact=self.no_requirements_note, source_url=url,
+            ))
+        if requirements:
+            coverage = "partial"
+        elif self.no_requirements_note is not None:
+            coverage = "complete"
+        else:
+            coverage = "unknown"
+        evidence.append(Evidence(id="application", field="application", fact=self.application_note, source_url=url))
         if self.experience_note:
             evidence.append(Evidence(
                 id="experience", field="experience_required", fact=self.experience_note, source_url=url,
@@ -87,8 +118,7 @@ class RecruitmentNotice(StrictModel):
                 id="location", field="regions", fact=self.region, source_url=self.region_source_url,
             ))
 
-        # The captured degree, disqualification and military-service conditions
-        # have no equivalent in the shared rule expressions.
+        publication = self.model_dump(include={"published_on", "published_at"}, exclude_none=True)
         return Opportunity(
             id=f"{SOURCE_ID}-{self.post_id}",
             type="job",
@@ -99,15 +129,15 @@ class RecruitmentNotice(StrictModel):
             fields=[],
             regions=[self.region],
             activities=self.activities,
-            requirements=self.requirements,
-            requirements_coverage="partial",
-            unresolved_conditions=self.requirements,
-            experience_required=None,
+            requirements=requirements,
+            requirements_coverage=coverage,
+            unresolved_conditions=requirements,
+            experience_required=self.experience_required,
             application=self.application,
             source_ids=[SOURCE_ID],
             source_url=url,
             source_kind="real",
-            published_on=self.published_on,
+            **publication,
             checked_at=self.checked_at,
             evidence=evidence,
         )

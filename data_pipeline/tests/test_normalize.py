@@ -79,6 +79,88 @@ def test_newer_capture_updates_one_stable_id_and_preserves_other_arrays(tmp_path
     assert dataset["sources"][0].checked_at == item.checked_at
 
 
+def test_same_confirmation_time_can_correct_a_transcription(tmp_path, capture):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    write_json(input_file, [capture])
+    normalize(input_file, output)
+
+    # This UTC timestamp is the same instant as the original Seoul timestamp.
+    corrected = {**capture, "title": "오타를 정정한 제목", "checked_at": "2026-11-11T03:00:00Z"}
+    write_json(input_file, [corrected])
+    normalize(input_file, output)
+    item, = read_dataset(output)["opportunities"]
+    assert item.id == "dankook-recruitment-999999"
+    assert item.title == corrected["title"]
+    assert item.checked_at == datetime.fromisoformat(capture["checked_at"])
+
+    before = snapshot_outputs(output)
+    normalize(input_file, output)
+    assert snapshot_outputs(output) == before
+
+
+def test_unlisted_publication_and_requirements_remain_unknown(tmp_path, capture):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    del capture["published_on"]
+    del capture["requirements"]
+    write_json(input_file, [capture])
+
+    normalize(input_file, output)
+    item, = read_dataset(output)["opportunities"]
+    assert item.published_on is None and item.published_at is None
+    assert item.requirements_coverage == "unknown"
+    assert item.requirements == item.unresolved_conditions == []
+    assert item.experience_required is None
+    assert all(evidence.field != "requirements" for evidence in item.evidence)
+    record, = json.loads((output / "opportunities.json").read_text(encoding="utf-8"))
+    assert "published_on" not in record and "published_at" not in record
+
+
+def test_explicitly_unrestricted_notice_preserves_evidence_and_publication_time(tmp_path, capture):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    del capture["published_on"]
+    capture.update(
+        requirements=[],
+        no_requirements_note="공고에 지원 자격 제한이 없다고 명시됨",
+        experience_required=False,
+        experience_note="공고에 경력이 필요하지 않다고 명시됨",
+        published_at="2026-11-05T00:00:00+09:00",
+    )
+    write_json(input_file, [capture])
+
+    normalize(input_file, output)
+    item, = read_dataset(output)["opportunities"]
+    assert item.published_on is None
+    assert item.published_at.isoformat() == capture["published_at"]
+    assert item.requirements_coverage == "complete"
+    assert item.requirements == item.unresolved_conditions == []
+    assert item.experience_required is False
+    evidence = {entry.field: entry for entry in item.evidence}
+    assert evidence["requirements"].fact == capture["no_requirements_note"]
+    assert evidence["experience_required"].fact == capture["experience_note"]
+    assert evidence["requirements"].source_url == evidence["experience_required"].source_url == item.source_url
+
+
+@pytest.mark.parametrize("has_other_requirements", [False, True])
+def test_stated_experience_requirement_reaches_displayed_requirements(tmp_path, capture, has_other_requirements):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    conditions = capture["requirements"] if has_other_requirements else []
+    capture.update(requirements=conditions, experience_required=True,
+                   experience_note="공고에 행정 경력 2년 이상 필수로 명시됨")
+    write_json(input_file, [capture])
+
+    normalize(input_file, output)
+    item, = read_dataset(output)["opportunities"]
+    assert item.experience_required is True
+    assert item.requirements_coverage == "partial"
+    assert item.requirements == item.unresolved_conditions == [*conditions, capture["experience_note"]]
+    assert any(evidence.field == "experience_required" and evidence.fact == capture["experience_note"]
+               for evidence in item.evidence)
+
+
 @pytest.mark.parametrize("failure", ["missing", "duplicate", "invalid_date", "timestamp_date", "missing_title"])
 def test_invalid_capture_leaves_all_outputs_untouched(tmp_path, capture, failure):
     input_file = tmp_path / "capture.json"
@@ -196,6 +278,8 @@ def test_exact_deadline_survives_normalization(tmp_path, capture):
         ({"application": {"closes_at": 1795000000}}, "closes_at: use a timestamp"),
         ({"application": {"opens_at": "2026-11-18T09:00:00"}}, "opens_at: use a timestamp"),
         ({"checked_at": "1795000000"}, "use a timestamp with an explicit UTC offset"),
+        ({"published_on": None, "published_at": "2026-11-05T09:00:00"}, "explicit UTC offset"),
+        ({"published_at": "2026-11-05T09:00:00+09:00"}, "use published_on or published_at"),
     ],
 )
 def test_capture_rejects_dates_with_wrong_precision(tmp_path, capture, changes, message):
@@ -206,6 +290,26 @@ def test_capture_rejects_dates_with_wrong_precision(tmp_path, capture, changes, 
     with pytest.raises(ValueError, match=message):
         normalize(input_file, output)
 
+    assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    ("changes", "message"),
+    [
+        ({"no_requirements_note": "제한 없음"}, "conflicts with stated requirements"),
+        ({"requirements": [], "no_requirements_note": "제한 없음", "experience_required": True},
+         "conflicts with stated requirements"),
+        ({"experience_required": True, "experience_note": None}, "needs an explicit experience_note"),
+        ({"experience_required": "false"}, "valid boolean"),
+    ],
+)
+def test_capture_rejects_conflicting_or_unsupported_claims(tmp_path, capture, changes, message):
+    input_file = tmp_path / "capture.json"
+    output = tmp_path / "output"
+    write_json(input_file, [{**capture, **changes}])
+
+    with pytest.raises(ValueError, match=message):
+        normalize(input_file, output)
     assert not output.exists()
 
 
