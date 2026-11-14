@@ -114,11 +114,24 @@ export async function getGuidance<T extends GuidanceFeature>(
 type ListFeature = 'opportunities' | 'resource-links';
 type ListResponse<T extends ListFeature> = paths[`/api/v1/${T}`]['get']['responses'][200]['content']['application/json'];
 
+export type OpportunitySearch = Pick<
+  NonNullable<paths['/api/v1/opportunities']['get']['parameters']['query']>, 'q' | 'types'
+>;
+export const maxOpportunityQueryLength = 200;
+
 export async function getList<T extends ListFeature>(
   feature: T, capability: Capability | undefined, offset: number, signal: AbortSignal,
+  ...[search]: T extends 'opportunities' ? [search?: OpportunitySearch] : []
 ): Promise<ListResponse<T>> {
   if (!canRecommend(capability)) throw new ApiError('unavailable');
-  return request(`/${feature}?limit=20&offset=${offset}`, {signal});
+  const params = new URLSearchParams({limit: '20', offset: String(offset)});
+  if (feature === 'opportunities' && search) {
+    const query = search.q?.trim();
+    if (query && Array.from(query).length > maxOpportunityQueryLength) throw new ApiError('validation');
+    if (query) params.set('q', query);
+    for (const type of search.types ?? []) params.append('types', type);
+  }
+  return request(`/${feature}?${params}`, {signal});
 }
 
 export async function getOpportunity(id: string, capability: Capability | undefined, signal: AbortSignal): Promise<Opportunity> {

@@ -95,6 +95,23 @@ Edge 자동화에서 실제 로컬 FastAPI와 Vite로 1280px·390px 화면을 �
 
 ## PR 초안
 
+### 서버 검색 연결 검토
+
+#### 실제 API 연결 (2026-11-14)
+
+- 검색 API PR #17이 병합된 `main` `e80f9e2` 기준으로 프론트 검색 변경을 `codex/frontend/search-integration`에 적용했다. 검색 옵션 타입은 병합된 OpenAPI의 `q`, `types`에서 가져온다.
+- 검토 중인 데이터 PR #18 `22142d3`의 `data/normalized/current` 배치를 별도 SQLite에 넣었다. 공고·자격증 462건이며 원본 데이터는 이 브랜치에 추가하지 않았다.
+- 프론트 `http://127.0.0.1:5473/`와 API `http://127.0.0.1:8300`을 연결했다. 응답 대체 없이 Edge 390px·1280px에서 20→40건 페이지 추가, 40번째 이후 공고의 제목 검색, 상세 원문 주소, 학교·기관 공지 및 행사 쿼리를 확인했다. 타입 검사·테스트 28개·빌드도 통과했다.
+
+#### API 병합 전 검토 기록
+
+- 검토 기준은 PR #16 `bb02a916`과 `main` `714e87d`다. 미병합 #16 위에 별도 로컬 브랜치 `codex/frontend/server-search`에서 프론트 변경만 작성했다. #16 병합 후 최신 main 위에 이 변경만 적용한다.
+- `ProfileForm`, `ProfileEditor` 및 필드 분리 후 입력 보존, `useServiceConnection`의 재접속, `useRecommendationRequest`와 `useApiTask`의 이전 요청 취소, 503 후 복구를 #16의 `python -m scripts.check_browser`로 검사했다. Edge 390px·1280px 화면 검사는 통과했다. Windows에서는 화면 검사 완료 후 `scripts/check_browser.py:39`의 임시 디렉터리 정리에서 `servers.log` 잠금(WinError 32)으로 명령이 종료 코드 1을 반환했다. 원본 리팩터링에는 손대지 않았다.
+- #16의 `backend/opportunity_query.py` 목록 함수와 실제 OpenAPI에는 `limit`, `offset`만 있다. 실제 단국대 배치를 넣은 임시 DB의 HTTP 검사에서 기본 조회, `q=NO-RESULT-EXPECTED`, `types=event`가 모두 200·3건이었다. 서버 검색은 아직 연결 검증할 수 없다.
+- 프론트는 예정 계약에 따라 검색 버튼으로 입력을 확정하고, 한글 조합 중 Enter 요청을 막는다. 유형과 탭 전환은 즉시 새 목록을 요청한다. `usePaginatedList.restart`가 이전 요청을 취소하고 새 조건의 offset 0 응답으로 목록을 시작한다. 추가 요청과 재시도는 확정한 조건을 유지한다. 공고 요청에만 `q`와 반복 `types`를 보내며, 관심 공고 상세는 검색 결과 밖에서도 ID로 조회한다.
+- 응답 대체 Edge 검사(390px·1280px)에서 첫 페이지 밖 검색 결과 표시, 확정되지 않은 입력과 페이지 조건 분리, 추가 로드 오류 후 페이지 유지·재시도, ID 중복 제거, 늦은 이전 결과 배제, 탭 필터, 관심 ID 조회, 관련 사이트 요청에 검색 조건 미포함을 확인했다. 실제 서버 검색 성공은 미검증이다. 건희 구현이 공개되면 공백·AND/OR·정렬·전체 건수와 20건을 넘는 배치의 실 HTTP 흐름을 다시 확인한다.
+- 타입 검사, 프론트 테스트 28개, 빌드, `git diff --check` 통과. `check:generated`는 Windows CRLF 사본에서 실패했고 Git LF 원본의 동일 생성기 검사는 통과했다.
+
 **제목** — LOTUS 프론트엔드 입력·추천·공고 탐색 화면 구현
 
 **브랜치** — `codex/frontend/profile-form`에서 `main`으로 제출. 기준 `cd8c0ca`, 계약 `4.1-draft`.

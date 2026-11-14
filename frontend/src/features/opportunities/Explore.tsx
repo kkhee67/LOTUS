@@ -1,6 +1,6 @@
 import {usePaginatedList} from './usePaginatedList';
-import {useState} from 'react';
-import {canRecommend, getList, getOpportunity, type Capability, type Opportunity, type Options} from '../../api';
+import {useRef, useState, type FormEvent} from 'react';
+import {canRecommend, getList, getOpportunity, maxOpportunityQueryLength, type Capability, type Opportunity, type OpportunitySearch, type Options} from '../../api';
 import {displayDate, OpportunityDetails, opportunityLabels, opportunityType, SaveOpportunity} from '../recommendations/RecommendationResults';
 import {sourceHref} from '../recommendations/presentation';
 import {useApiTask} from '../useApiTask';
@@ -47,27 +47,50 @@ export function Explore({capability, types, saved, recommendations}: {
   recommendations?: Opportunity[];
 }) {
   const [view, setView] = useState<View>('all');
-  const [query, setQuery] = useState('');
+  const [draftQuery, setDraftQuery] = useState('');
+  const [queryError, setQueryError] = useState('');
   const [filter, setFilter] = useState<Opportunity['type'] | ''>('');
-  const task = usePaginatedList<Opportunity>((offset, signal) => getList('opportunities', capability, offset, signal));
+  const [search, setSearch] = useState<OpportunitySearch>({});
+  const composing = useRef(false);
+  const fetchPage = (criteria: OpportunitySearch) => (offset: number, signal: AbortSignal) =>
+    getList('opportunities', capability, offset, signal, criteria);
+  const task = usePaginatedList<Opportunity>(fetchPage(search));
   const available = canRecommend(capability);
   const pages = task.data;
   const actual = pages?.items.filter(showSource) ?? [];
-  const words = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  const visible = actual.filter(item => {
-    if (view === 'notices' && item.type !== 'notice') return false;
-    if (view === 'events' && item.type !== 'event') return false;
-    if (view === 'all' && filter && item.type !== filter) return false;
-    const searchable = [item.title, item.organization, item.summary, ...item.tags ?? []].join(' ').toLocaleLowerCase();
-    return words.every(word => searchable.includes(word));
-  });
   const cached = new Map([...actual, ...(recommendations ?? []).filter(showSource)].map(item => [item.id, item]));
   const typesToShow = types ?? Object.keys(opportunityLabels) as Opportunity['type'][];
+
+  function startSearch(criteria: OpportunitySearch, nextView = view) {
+    setSearch(criteria);
+    setQueryError('');
+    if (available && nextView !== 'saved') void task.restart(fetchPage(criteria));
+    else task.reset();
+  }
+
+  function changeView(nextView: View) {
+    if (nextView === view) return;
+    setView(nextView);
+    setDraftQuery('');
+    setFilter('');
+    startSearch({types: nextView === 'notices' ? ['notice'] : nextView === 'events' ? ['event'] : []}, nextView);
+  }
+
+  function submitSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (composing.current || !available) return;
+    const q = draftQuery.trim();
+    if (Array.from(q).length > maxOpportunityQueryLength) {
+      setQueryError('검색어를 200자 이내로 입력해 주세요.');
+      return;
+    }
+    startSearch({...search, q});
+  }
 
   return <section id="explore" className="feature-panel" aria-label="공고 목록">
     <div className="section-switch" aria-label="공고 화면">
       {(Object.keys(views) as View[]).map(value => <button type="button" key={value} className="secondary"
-        aria-pressed={view === value} onClick={() => {setView(value); setQuery('');}}>
+        aria-pressed={view === value} onClick={() => changeView(value)}>
         {views[value]}{value === 'saved' && saved.ids.length > 0 ? ` (${saved.ids.length})` : ''}
       </button>)}
     </div>
@@ -78,24 +101,43 @@ export function Explore({capability, types, saved, recommendations}: {
       )}</div> : <p>저장한 관심 공고가 없어요.</p>
     ) : (
       <>
-        <div className="fields">
-          <label>공고 검색<input type="search" value={query} onChange={event => setQuery(event.target.value)}
+        <form className="fields" onSubmit={submitSearch}>
+          <label>공고 검색<input type="search" value={draftQuery} onChange={event => {
+            setDraftQuery(event.target.value);
+            setQueryError('');
+          }} aria-describedby="opportunity-search-hint" aria-invalid={Boolean(queryError)}
+            onCompositionStart={() => {composing.current = true;}}
+            onCompositionEnd={() => {composing.current = false;}}
+            onKeyDown={event => {
+              if (event.key === 'Enter' && (event.nativeEvent.isComposing || composing.current)) event.preventDefault();
+            }}
             placeholder="제목, 기관, 키워드" /></label>
           {view === 'all' && <label htmlFor="opportunity-filter">공고 유형
-            <select id="opportunity-filter" value={filter} onChange={event => setFilter(event.target.value as typeof filter)}>
+            <select id="opportunity-filter" value={filter} onChange={event => {
+              const type = event.target.value as typeof filter;
+              setFilter(type);
+              startSearch({...search, types: type ? [type] : []});
+            }}>
               <option value="">전체 유형</option>
               {typesToShow.map(type => <option key={type} value={type}>{opportunityLabels[type]}</option>)}
             </select>
           </label>}
-        </div>
+          <p id="opportunity-search-hint" className="field-hint">검색어는 검색 버튼을 눌러 적용하세요. 공고 유형은 선택 즉시 적용돼요.</p>
+          <div className="actions">
+            <button type="submit" className="primary" disabled={!available}>검색</button>
+          </div>
+        </form>
+        {queryError && <p className="error" role="alert">{queryError}</p>}
         {!available && <p className="availability">공고 조회 기능 준비 중이에요.</p>}
         {task.error && <p className="error" role="alert">{task.error}</p>}
-        {pages && <p role="status">불러온 공고 {pages.items.length} / {pages.total}건 · 표시 {visible.length}건</p>}
-        {pages && !visible.length && <p>불러온 목록에서 조건에 맞는 공고가 없어요.</p>}
-        <div className="result-list">{visible.map(item => <OpportunityCard key={item.id} opportunity={item} saved={saved} />)}</div>
+        {pages && <p role="status">불러온 공고 {pages.items.length} / {pages.total}건 · 표시 {actual.length}건
+          {search.q && <> · 검색어: {search.q}</>}</p>}
+        {pages && !pages.total && <p>검색 조건에 맞는 공고가 없어요.</p>}
+        <div className="result-list">{actual.map(item => <OpportunityCard key={item.id} opportunity={item} saved={saved} />)}</div>
         {available && (!pages || pages.next < pages.total || task.error) &&
           <button type="button" className="secondary" onClick={() => void task.load()} disabled={task.loading}>
-            {task.loading ? '불러오는 중…' : task.error ? '다시 시도' : pages ? '공고 더 불러오기' : '공고 불러오기'}
+            {task.loading ? pages ? '공고 더 불러오는 중…' : '검색 결과 불러오는 중…'
+              : task.error ? '다시 시도' : pages ? '공고 더 불러오기' : '공고 불러오기'}
           </button>}
       </>
     )}
