@@ -1,3 +1,4 @@
+import {opportunitySearch} from './features/opportunities/search.ts';
 import type { Capabilities, GuidanceResponse, Opportunity, Options, RecommendationRequest, RecommendationResponse } from './api';
 import type { components } from './generated/api';
 
@@ -122,12 +123,14 @@ export function previewResponse(path: string, init: RequestInit): Response {
     }
     case '/opportunities':
     case '/resource-links': {
-      const words = (url.searchParams.get('q') ?? '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const matchesQuery = opportunitySearch(url.searchParams.get('q') ?? '');
       const types = url.searchParams.getAll('types');
       const list = url.pathname === '/opportunities' ? catalogue.filter(item => {
+        const publisher = url.searchParams.get('publisher');
+        const school = ['preview-notice', 'preview-research', 'preview-graduate'].includes(item.id);
+        if (publisher && publisher !== (school ? 'school' : 'official')) return false;
         if (types.length && !types.includes(item.type)) return false;
-        const text = [item.title, item.organization, item.summary, ...(item.tags ?? [])].join(' ').toLowerCase();
-        return words.every(word => text.includes(word));
+        return matchesQuery(item);
       }).sort((a, b) => a.id.localeCompare(b.id)) : resources;
       const offset = Number(url.searchParams.get('offset') ?? 0);
       const limit = Number(url.searchParams.get('limit') ?? 20);

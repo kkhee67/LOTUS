@@ -1,9 +1,11 @@
+import {opportunitySearch} from '../opportunities/search';
 import {useState, type ReactNode} from 'react';
 import type { components } from '../../generated/api';
 import type { Opportunity, RecommendationResponse } from '../../api';
 import type { SavedOpportunities } from '../opportunities/saved';
+import {OpportunityPoster} from '../opportunities/OpportunityPoster';
 import {showSource} from '../../preview';
-import {applicationStatus, closesToday, sourceHref} from './presentation';
+import {applicationStatus, closesToday, deadlineLabel, sourceHref} from './presentation';
 import {useApplicationClock} from './useApplicationClock';
 import {certificationRequirements, inCategory, languageRequirements, recommendationCategories, researchRequirements, type RecommendationCategory} from './categories';
 
@@ -58,26 +60,44 @@ export function opportunityType(opportunity: Opportunity): string {
   return opportunityLabels[opportunity.type];
 }
 
-export function SaveOpportunity({opportunity, saved}: {opportunity: Opportunity; saved: SavedOpportunities}) {
+export function SaveOpportunity({opportunity, saved, score}: {opportunity: Opportunity; saved: SavedOpportunities; score?: number}) {
+  const sessions = opportunity.certification?.exam_sessions;
+  const now = useApplicationClock(opportunity.application, sessions);
+  const nextSession = sessions?.map(session => session.application)
+    .filter((a): a is Application => !!a && applicationStatus(a, now) !== 'closed' && !!(a.closes_on || a.closes_at))
+    .sort((a, b) => Date.parse(a.closes_at ?? a.closes_on + 'T23:59:59.999+09:00')
+      - Date.parse(b.closes_at ?? b.closes_on + 'T23:59:59.999+09:00'))[0];
+  const countdown = opportunity.type === 'certification'
+    ? nextSession ? '회차 ' + deadlineLabel(nextSession, now) : '회차 마감일 미확인'
+    : deadlineLabel(opportunity.application, now);
   if (!showSource(opportunity)) return null;
   const selected = saved.ids.includes(opportunity.id);
-  return <button type="button" className="secondary" aria-pressed={selected}
-    onClick={() => saved.toggle(opportunity.id)}>관심 공고 저장</button>;
+  return <div className="save-metrics"><button type="button" className="bookmark-star" aria-label="관심 공고 저장" title={selected ? "관심 공고 저장 해제" : "관심 공고 저장"} aria-pressed={selected}
+    onClick={() => saved.toggle(opportunity.id)}>{selected ? '★' : '☆'}</button>
+    <span className="relevance-value">관련성 {score === undefined ? '점수 미제공' : score + '점'}</span>
+    <span className="deadline-value">{countdown}</span>
+  </div>;
 }
 
 function RecommendationCard({item, saved, category}: {
   item: Item; saved: SavedOpportunities; category: RecommendationCategory;
 }) {
   const {recommendation, opportunity} = item;
+  const now = useApplicationClock(opportunity.application);
   const cautions = [...new Set([...(recommendation.cautions ?? []), ...(opportunity.unresolved_conditions ?? [])])];
   const published = displayDate(opportunity.published_on, opportunity.published_at);
   const deadline = displayDate(opportunity.application?.closes_on, opportunity.application?.closes_at);
   const qualifications = category === 'certifications' ? certificationRequirements(opportunity) : [];
   const research = category === 'research' ? researchRequirements(opportunity) : [];
   return (
-    <li className="result-card">
-      <p className="result-meta">{opportunityType(opportunity)} · {opportunity.organization}</p>
+    <li className="result-card recommendation-card">
+      <OpportunityPoster item={opportunity} label={opportunityType(opportunity)} />
+      <p className="result-meta"><strong className="type-label">{opportunityType(opportunity)}</strong> {opportunity.organization}</p>
       <h3>{opportunity.title}</h3>
+      <p className="application-line">
+        {opportunity.certification ? certificationLabels[opportunity.certification.status]
+          : opportunity.application ? applicationLabels[applicationStatus(opportunity.application, now)] : '접수 상태 미확인'}
+      </p>
       {opportunity.source_kind === 'synthetic' && <p className="availability">연습용 자료</p>}
       {(opportunity.type === 'notice' || opportunity.type === 'event') && (
         <dl className="result-facts">
@@ -88,28 +108,33 @@ function RecommendationCard({item, saved, category}: {
         </dl>
       )}
       <dl className="result-facts">
-        <div><dt>관련성 점수</dt><dd>{recommendation.relevance_score} / 100</dd></div>
         <div><dt>지원 자격</dt><dd>{eligibilityLabels[recommendation.eligibility]}</dd></div>
       </dl>
-      <h4>추천 이유</h4>
-      {recommendation.reasons.length > 0
-        ? <TextList items={recommendation.reasons.map(reason => reason.text)} />
-        : <p>제공된 추천 이유가 없어요.</p>}
-      <h4>지원 전 확인 사항</h4>
-      {cautions.length > 0 ? <TextList items={cautions} /> : <p>지원 조건과 일정을 원문에서 확인하세요.</p>}
-      {category === 'languages' && <>
-        <h4>공고에 적힌 어학 조건</h4>
-        <TextList items={languageRequirements(opportunity)} />
-      </>}
-      {qualifications.length > 0 && <>
-        <h4>공고에 적힌 자격증 조건</h4>
-        <TextList items={qualifications} />
-      </>}
-      {research.length > 0 && <>
-        <h4>공고에 적힌 학위·연구 조건</h4>
-        <TextList items={research} />
-      </>}
-      <SaveOpportunity opportunity={opportunity} saved={saved} />
+      {recommendation.reasons[0] && <p className="reason-highlight">{recommendation.reasons[0].text}</p>}
+      {!!opportunity.tags?.length && <ul className="opportunity-tags" aria-label="공고 태그">
+        {opportunity.tags.map(tag => <li key={tag}>{tag}</li>)}
+      </ul>}
+      <SaveOpportunity opportunity={opportunity} saved={saved} score={recommendation.relevance_score} />
+      <details className="reason-details">
+        <summary>추천 이유·확인 사항</summary>
+        <h4>추천 이유</h4>
+        {recommendation.reasons.length ? <TextList items={recommendation.reasons.map(reason => reason.text)} />
+          : <p>제공된 추천 이유가 없어요.</p>}
+        <h4>지원 전 확인 사항</h4>
+        {cautions.length > 0 ? <TextList items={cautions} /> : <p>지원 조건과 일정을 원문에서 확인하세요.</p>}
+        {category === 'languages' && <>
+          <h4>공고에 적힌 어학 조건</h4>
+          <TextList items={languageRequirements(opportunity)} />
+        </>}
+        {qualifications.length > 0 && <>
+          <h4>공고에 적힌 자격증 조건</h4>
+          <TextList items={qualifications} />
+        </>}
+        {research.length > 0 && <>
+          <h4>공고에 적힌 학위·연구 조건</h4>
+          <TextList items={research} />
+        </>}
+      </details>
       <OpportunityDetails opportunity={opportunity} />
     </li>
   );
@@ -168,15 +193,18 @@ export function OpportunityDetails({opportunity}: {opportunity: Opportunity}) {
   );
 }
 
-export function RecommendationResults({response, saved, children}: {
+export function RecommendationResults({response, query, saved, children}: {
   response?: RecommendationResponse;
+  query: string;
   saved: SavedOpportunities;
   children: ReactNode;
 }) {
   const [category, setCategory] = useState<RecommendationCategory>('all');
   const items = response?.items;
   const categories = Object.keys(recommendationCategories) as RecommendationCategory[];
-  const visible = items?.filter(item => inCategory(item.opportunity, category));
+  const matchesQuery = opportunitySearch(query);
+  const matches = items?.filter(({opportunity}) => matchesQuery(opportunity));
+  const visible = matches?.filter(item => inCategory(item.opportunity, category));
   return (
     <section className="results" aria-labelledby="results-heading">
       <h2 id="results-heading">추천 결과</h2>
@@ -184,14 +212,14 @@ export function RecommendationResults({response, saved, children}: {
         {categories.map(value => <button type="button" className="secondary" key={value}
           aria-pressed={category === value} onClick={() => setCategory(value)}>
           {recommendationCategories[value]}{items && (
-            <span className="category-count">{items.filter(item => inCategory(item.opportunity, value)).length}</span>
+            <span className="category-count">{matches?.filter(item => inCategory(item.opportunity, value)).length}</span>
           )}
         </button>)}
       </div>
       {category === 'languages' && <p>공고마다 어학 기준이 달라요. 공고에 명시된 시험과 기준을 확인할 수 있어요.</p>}
       {category === 'research' && <p>학부연구생·연구 인턴·대학원 모집과 학위·연구 조건이 적힌 공고를 모아 볼 수 있어요.</p>}
       {children}
-      {visible && <p role="status">{category === 'all' && !visible.length
+      {visible && <p role="status">{query.trim() && !visible.length ? '검색어에 맞는 추천이 없어요.' : category === 'all' && !visible.length
         ? '조건에 맞는 추천이 없어요. 관심 분야나 목표를 바꿔 다시 시도해 보세요.'
         : visible.length ? `추천 ${visible.length}건을 찾았어요.`
         : `${recommendationCategories[category]}에 해당하는 추천이 없어요.`}</p>}

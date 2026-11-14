@@ -40,7 +40,7 @@ class AlioListing(StrictModel):
         deadline = self.closes_at or self.closes_on
         deadline_label = "공식 상세 공고의 접수 마감 시각" if self.closes_at else "공식 목록의 접수 마감일"
         evidence = [
-            Evidence(id="listing", field="summary", fact=f"공식 채용 목록의 고용형태: {self.employment}", source_url=url),
+            Evidence(id="listing", field="summary", fact=f"공식 채용 목록 제목: {self.title} / 고용형태: {self.employment}", source_url=url),
             Evidence(id="deadline", field="application", fact=f"{deadline_label}: {deadline.isoformat()}", source_url=url),
         ]
         if self.details_summary:

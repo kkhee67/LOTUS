@@ -1,3 +1,4 @@
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
@@ -49,16 +50,23 @@ def test_expanded_batch_can_be_rebuilt_with_verified_links(tmp_path):
 
 def test_current_export_rebuilds_without_expired_opportunities(tmp_path):
     normalized = ROOT / "data/normalized"
-    now = datetime.fromisoformat("2026-11-13T23:13:42+09:00")
+    now = datetime.fromisoformat("2026-11-14T12:00:00+09:00")
     expanded = read_dataset(normalized / "expanded")
     result = export_current(expanded, tmp_path, now=now)
     ids = {item.id for item in result["opportunities"]}
+    counts = Counter(item.type for item in result["opportunities"])
+    assert all(counts[kind] >= 30 for kind in (
+        "contest", "competition", "training", "event", "project", "certification", "notice"
+    ))
     assert "sff-character-2026" in ids
     assert "dankook-recruitment-186322" not in ids
     assert "blaybus-manufacturing-ax-1148" in ids
     assert all(
         item.certification.status == "active" if item.certification
-        else application_state(item.application, now=now).status in {"open", "upcoming"}
+        else (application_state(item.application, now=now).status in {"open", "upcoming"}
+              or (item.application.status == "unknown" and
+                  (item.subtype == "policy_guide" or
+                   (item.type == "event" and item.event_schedule.ends_on >= now.date()))))
         for item in result["opportunities"]
     )
     assert {source.id for source in result["sources"]} == {

@@ -69,8 +69,8 @@ export function ProfileEditor({visible, headingRef, options, confirmed, onConfir
               <ExampleField name="interests" label="관심 분야" placeholder="예: 디자인, 데이터" choices={options.data?.fields} />
               <ExampleField name="preferred_job_fields" label="희망 직무·취업 분야" placeholder="직접 입력 예: 웹 개발자" choices={options.data?.fields} />
               <p id="entry-hint" className="field-hint">
-                목록에는 추천 서버에 등록된 분야 이름과 별칭이 나와요. 목록에 없는 직무명도 직접 입력할 수 있지만,
-                현재 추천에서 인식하지 못할 수 있어요. 여러 항목은 쉼표로 나눠 주세요.
+                추천 표현을 선택하거나 직접 입력하세요. 여러 항목은 쉼표로 나눠 주세요.
+                관심 분야나 희망 직무와 관련된 내용이 공고에서 확인되면 추천에 반영해요.
               </p>
               <label className="wide">
                 자유 목표

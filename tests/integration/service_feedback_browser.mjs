@@ -19,7 +19,7 @@ try {
   });
   await page.clock.install({time: new Date(fixedTime)});
   await page.goto(url);
-  await page.getByRole('combobox',{name:'관심 분야 등록 표현 선택'}).selectOption('사업');
+  await page.getByRole('combobox',{name:'관심 분야 추천 표현 선택'}).selectOption('사업');
   await page.getByRole('button',{name:'입력 확인',exact:true}).click();
   await rename(db,db+'.held');moved=true;
   const bad=page.waitForResponse(r=>r.url().endsWith('/recommendations'));
@@ -77,15 +77,14 @@ try {
    return route.continue();
  });
  await recoveryPage.goto(url);
- await recoveryPage.getByRole('combobox',{name:'관심 분야 등록 표현 선택'}).selectOption('사업');
+ await recoveryPage.getByRole('combobox',{name:'관심 분야 추천 표현 선택'}).selectOption('사업');
  await recoveryPage.getByRole('button',{name:'입력 확인',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'다음',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'공고 탐색',exact:true}).click();
  await recoveryPage.getByText(/기능 상태를 확인하지 못했어요/).filter({visible:true}).waitFor();
  rejectCapabilities=false;
  await recoveryPage.getByRole('button',{name:'연결 다시 확인',exact:true}).filter({visible:true}).click();
- await recoveryPage.getByRole('button',{name:'공고 불러오기',exact:true}).click();
- await recoveryPage.getByText('불러온 공고 3 / 3건 · 표시 3건',{exact:true}).waitFor();
+ await recoveryPage.getByText('검색 결과 3건',{exact:true}).waitFor();
  await recoveryPage.getByRole('button',{name:'맞춤 추천',exact:true}).click();
  await recoveryPage.getByRole('button',{name:'추천 요청 보내기',exact:true}).click();
  await recoveryPage.getByText('추천 2건을 찾았어요.',{exact:true}).waitFor();

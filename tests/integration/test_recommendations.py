@@ -202,11 +202,43 @@ def test_v2_role_aliases_are_explicit(entry, expected):
     assert (result.items[0].relevance_score if result.items else 0) == expected
 
 
+def test_game_development_and_ai_profiles_score_only_supported_topics():
+    ai = opportunity(id='ai', fields=[], title='AI 실무 교육', summary='인공지능 실습',
+        evidence=[{'id': 'syllabus', 'field': 'summary', 'fact': 'AI 실습 과정',
+                   'source_url': 'https://example.org'}], experience_required=None)
+    unrelated = ai.model_copy(update={'id': 'unrelated', 'summary': '일반 교육', 'title': '일반 교육'})
+    result = run([ai, unrelated, opportunity()], interests=['게임 개발', 'ai관련 직무'],
+                 preferred_job_fields=['게임 개발자', 'AI 엔지니어'], goal='ai 관련 직무를 희망합니다.')
+    assert [item.relevance_score for item in result.items] == [100, 80]
+    assert result.items[0].opportunity_id == 'ai'
+    assert all(reason.evidence_ids == ['syllabus'] for reason in result.items[0].reasons)
+    assert not run([ai], goal='AI 관련 직무는 제외').items
+
+
 def test_v2_negative_goal_does_not_override_separate_interest_and_is_explained():
     result = run(interests=['개발'], goal='개발은 원하지 않음')
     assert result.items[0].relevance_score == 40
     assert any('부정·제외' in caution for caution in result.items[0].cautions)
     assert not any('목표와' in reason.text for reason in result.items[0].reasons)
+
+
+@pytest.mark.parametrize('entry,fact,unrelated', [
+    ('법무사무원', '법률 사무', '재무 회계'),
+    ('간호사 관련 직무', '간호직', '물리 치료'),
+    ('채용 담당자', '채용 운영', '간호사 채용'),
+    ('디지털 마케터', '디지털 마케팅', '해외영업'),
+    ('반려동물 미용사', '애견 미용', '헤어 디자인'),
+    ('문화재 보존', '문화재 보존', '문서 보존'),
+])
+def test_job_expressions_require_specific_evidence(entry, fact, unrelated):
+    def listing(key, text):
+        return opportunity(id=key, fields=[], summary=text, title=text, experience_required=None,
+            evidence=[{'id': 'listing', 'field': 'summary', 'fact': text, 'source_url': 'https://example.org'}])
+    postings = [listing('match', fact), listing('other', unrelated)]
+    assert [i.opportunity_id for i in run(postings, preferred_job_fields=[entry]).items] == ['match']
+    assert not run(postings, preferred_job_fields=[entry + ' 제외']).items
+    if entry != '문화재 보존':
+        assert [i.opportunity_id for i in run(postings, goal=entry + ' 희망').items] == ['match']
 
 
 def test_v2_mixed_goal_keeps_positive_field_only():

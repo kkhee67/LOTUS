@@ -24,7 +24,7 @@ try {
   await page.clock.install({time: new Date(fixedTime)});
   await page.goto(url);
   await page.locator('input[name="interests"]').waitFor({state: 'visible'});
-  await page.getByRole('combobox', {name: '관심 분야 등록 표현 선택'}).selectOption('사업');
+  await page.getByRole('combobox', {name: '관심 분야 추천 표현 선택'}).selectOption('사업');
   await page.getByRole('button', {name: '입력 확인', exact: true}).click();
   const responsePromise = recommendation();
   await page.getByRole('button', {name: '다음', exact: true}).click();
@@ -53,8 +53,7 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({path: `${output}/real-recommendations-${width}.png`, fullPage: true});
   await page.getByRole('button', {name: '공고 탐색', exact: true}).click();
-  await page.getByRole('button', {name: '공고 불러오기', exact: true}).click();
-  await page.getByText('불러온 공고 3 / 3건 · 표시 3건', {exact: true}).waitFor();
+  await page.getByText('검색 결과 3건', {exact: true}).waitFor();
   await page.getByRole('button', {name: '입력 수정', exact: true}).click();
   await page.locator('input[name="interests"]').fill('개발');
   await page.getByRole('button', {name: '입력 확인', exact: true}).click();

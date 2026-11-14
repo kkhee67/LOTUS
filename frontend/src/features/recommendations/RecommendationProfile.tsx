@@ -13,8 +13,7 @@ export function RecommendationProfile({profile}: {profile: RecommendationRequest
       ? `${activity.title} · ${activity.description}`
       : activity.title,
   ) ?? [];
-  return <section className="recommendation-profile" aria-labelledby="recommendation-profile-heading">
-    <h2 id="recommendation-profile-heading">내 진로와 준비 경험</h2>
+  return <div className="recommendation-profile">
     <dl className="recommendation-profile-facts">
       {Boolean(roles?.length) && <div><dt>희망 직무</dt><dd>{roles?.join(' · ')}</dd></div>}
       {study && <div><dt>학교·학적</dt><dd>{study}</dd></div>}
@@ -26,5 +25,5 @@ export function RecommendationProfile({profile}: {profile: RecommendationRequest
         {experience.map((name, index) => <li key={index}>{name}</li>)}
       </ul> : profile.experience_status === 'none' ? '활동 없음' : '아직 입력하지 않음'}</dd></div>
     </dl>
-  </section>;
+  </div>;
 }

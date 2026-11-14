@@ -256,6 +256,28 @@
               ],
               "title": "Types"
             }
+          },
+          {
+            "name": "publisher",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "school",
+                    "official",
+                    "aggregator",
+                    "other"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Publisher"
+            }
           }
         ],
         "responses": {

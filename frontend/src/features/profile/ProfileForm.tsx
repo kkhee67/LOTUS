@@ -2,7 +2,8 @@ import {useEffect, useRef, useState} from 'react';
 import {canRecommend, type RecommendationRequest} from '../../api';
 import {RecommendationResults} from '../recommendations/RecommendationResults';
 import {RecommendationProfile} from '../recommendations/RecommendationProfile';
-import {Explore, Resources} from '../opportunities/Explore';
+import {Explore} from '../opportunities/Explore';
+import {SavedCalendar} from '../opportunities/SavedCalendar';
 import {useSavedOpportunities} from '../opportunities/saved';
 import {Guidance} from '../guidance/Guidance';
 import {isPreview} from '../../preview';
@@ -10,13 +11,14 @@ import {ProfileEditor} from './ProfileEditor';
 import {useServiceConnection} from '../useServiceConnection';
 import {useRecommendationRequest} from '../recommendations/useRecommendationRequest';
 
-const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', guidance: '진로 준비', resources: '관련 사이트'} as const;
+const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', calendar: '내 일정', guidance: '진로 준비'} as const;
 type Screen = keyof typeof screens;
-const welcomeDuration = 4000;
+const welcomeDuration = 2000;
 
 export function ProfileForm() {
   const [stage, setStage] = useState<'welcome' | 'profile' | 'workspace'>('welcome');
   const [screen, setScreen] = useState<Screen>('recommendations');
+  const [recommendationQuery, setRecommendationQuery] = useState('');
   const {options, capabilities, reconnect} = useServiceConnection();
   const {submission, clearSubmission, loadRecommendations} = useRecommendationRequest(capabilities.data?.recommendations);
   const [confirmed, setConfirmed] = useState<RecommendationRequest>();
@@ -38,6 +40,7 @@ export function ProfileForm() {
   const ready = canRecommend(capability);
   const loading = submission?.kind === 'loading';
   function changeProfile() {
+    setRecommendationQuery('');
     clearSubmission();
     setConfirmed(undefined);
   }
@@ -75,30 +78,40 @@ export function ProfileForm() {
 
   return (
     <>
+      {isPreview && <aside className="preview-banner" aria-label="테스트 모드">
+        <span>디자인 검토용 · 합성 데이터 · API 미연결</span>
+        <a href="/">일반 화면으로 돌아가기</a>
+      </aside>}
       <header className="site-header">
         <div className="header-inner">
           <span className="wordmark">LOTUS</span>
-          <span className="site-description">청년 진로·취업 안내</span>
           {stage === 'workspace' && <nav aria-label="주요 메뉴">
             {(Object.keys(screens) as Screen[]).map(value => (
               <button key={value} type="button" aria-current={screen === value ? 'page' : undefined}
                 onClick={() => setScreen(value)}>{screens[value]}</button>
             ))}
           </nav>}
+          <span className="site-description">청년 진로·취업 안내</span>
+          {stage === 'workspace' && <button className="secondary" type="button"
+            onClick={() => setStage('profile')}>입력 수정</button>}
         </div>
       </header>
-      {isPreview && <aside className="preview-banner" aria-label="테스트 모드">
-        <strong>테스트 모드</strong>
-        <span>고정된 임시 데이터예요. 입력은 서버로 전송되지 않아요.</span>
-        <a href="/">일반 화면으로 돌아가기</a>
-      </aside>}
       <ProfileEditor visible={stage === 'profile'} headingRef={profileHeading} options={options}
         confirmed={confirmed} onConfirm={request => {clearSubmission(); setConfirmed(request);}}
         onChange={changeProfile} onNext={next} retryConnection={retryConnection} />
       <main className="page" hidden={stage !== 'workspace'}>
           <div className="workspace-heading">
-            <h1 ref={screenHeading} tabIndex={-1}>{screens[screen]}</h1>
-            <button className="secondary" type="button" onClick={() => setStage('profile')}>입력 수정</button>
+            <div>
+              {screen === 'recommendations' && !!confirmed?.profile.interests?.length &&
+                <p className="interest-line">관심 분야 · {confirmed.profile.interests.join(' / ')}</p>}
+              <h1 ref={screenHeading} tabIndex={-1}>{screen === 'recommendations' ? '나에게 맞는 기회' : screens[screen]}</h1>
+              {screen === 'recommendations' && <p className="hero-description">공고를 비교하고, 나의 다음 경험을 찾아보세요.</p>}
+              {screen === 'calendar' && <p className="hero-description">별표로 저장한 공고의 접수·행사·시험 일정을 확인하세요.</p>}
+            </div>
+            {screen === 'recommendations' && <label className="recommendation-search">추천 목록에서 찾기
+              <input type="search" value={recommendationQuery} placeholder="제목·기관·관련 분야 검색"
+                onChange={event => setRecommendationQuery(event.target.value)} />
+            </label>}
           </div>
           {screen !== 'recommendations' && !capabilities.data && (
             capabilities.error ? <div className="feature-panel">
@@ -107,8 +120,11 @@ export function ProfileForm() {
             </div> : <p className="availability" role="status">기능 상태를 확인하고 있어요.</p>
           )}
           <div hidden={screen !== 'recommendations'}>
-            {confirmed && <RecommendationProfile profile={confirmed.profile} />}
-            <RecommendationResults response={submission?.kind === 'results' ? submission.response : undefined} saved={saved}>
+            {confirmed && <details className="profile-disclosure"><summary>내 진로와 준비 경험</summary>
+              <RecommendationProfile profile={confirmed.profile} />
+            </details>}
+            <RecommendationResults response={submission?.kind === 'results' ? submission.response : undefined}
+              query={recommendationQuery} saved={saved}>
             {capabilities.error && <div className="feature-panel">
               <p className="error" role="alert">추천 기능 상태를 확인하지 못했어요. {capabilities.error}</p>
               <button type="button" className="secondary" onClick={retryConnection}>연결 다시 확인</button>
@@ -125,16 +141,16 @@ export function ProfileForm() {
             </RecommendationResults>
           </div>
           <div hidden={screen !== 'explore' || !capabilities.data}>
-            <Explore capability={capabilities.data?.opportunities} types={options.data?.opportunity_types} saved={saved}
-              recommendations={recommendedItems} />
+            <Explore active={screen === 'explore'} capability={capabilities.data?.opportunities} types={options.data?.opportunity_types} saved={saved}
+              recommendations={submission?.kind === 'results' ? submission.response.items : undefined} />
           </div>
           <div hidden={screen !== 'guidance' || !capabilities.data}>
             <Guidance key={confirmed ? 'confirmed' : 'editing'} capabilities={capabilities.data} profile={confirmed?.profile}
               opportunities={recommendedItems} />
           </div>
-          <div hidden={screen !== 'resources' || !capabilities.data}>
-            <Resources capability={capabilities.data?.['resource-links']} />
-          </div>
+          {stage === 'workspace' && screen === 'calendar' && capabilities.data &&
+            <SavedCalendar saved={saved} capability={capabilities.data.opportunities}
+              fields={options.data?.fields} profileInterests={confirmed?.profile.interests} />}
       </main>
     </>
   );

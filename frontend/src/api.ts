@@ -115,7 +115,7 @@ type ListFeature = 'opportunities' | 'resource-links';
 type ListResponse<T extends ListFeature> = paths[`/api/v1/${T}`]['get']['responses'][200]['content']['application/json'];
 
 export type OpportunitySearch = Pick<
-  NonNullable<paths['/api/v1/opportunities']['get']['parameters']['query']>, 'q' | 'types'
+  NonNullable<paths['/api/v1/opportunities']['get']['parameters']['query']>, 'q' | 'types' | 'limit' | 'publisher'
 >;
 export const maxOpportunityQueryLength = 200;
 
@@ -124,8 +124,9 @@ export async function getList<T extends ListFeature>(
   ...[search]: T extends 'opportunities' ? [search?: OpportunitySearch] : []
 ): Promise<ListResponse<T>> {
   if (!canRecommend(capability)) throw new ApiError('unavailable');
-  const params = new URLSearchParams({limit: '20', offset: String(offset)});
+  const params = new URLSearchParams({limit: String(search?.limit ?? 20), offset: String(offset)});
   if (feature === 'opportunities' && search) {
+    if (search.publisher) params.set('publisher', search.publisher);
     const query = search.q?.trim();
     if (query && Array.from(query).length > maxOpportunityQueryLength) throw new ApiError('validation');
     if (query) params.set('q', query);

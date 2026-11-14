@@ -947,6 +947,7 @@ export interface operations {
                 offset?: number;
                 q?: string | null;
                 types?: ("contest" | "competition" | "job" | "certification" | "event" | "training" | "project" | "notice")[] | null;
+                publisher?: ("school" | "official" | "aggregator" | "other") | null;
             };
             header?: never;
             path?: never;

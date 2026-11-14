@@ -1,5 +1,6 @@
 """Opportunity HTTP routes; storage and error formatting live independently."""
 from collections.abc import Callable
+from typing import Literal
 from fastapi import APIRouter, Query
 from backend.settings import Settings
 from backend.catalog_store import CatalogUnavailable, read_catalog, read_opportunities
@@ -18,14 +19,19 @@ def create_opportunity_router(
     def opportunities(limit: int = Query(default=20, ge=1, le=100),
                       offset: int = Query(default=0, ge=0),
                       q: str | None = Query(default=None, max_length=200),
-                      types: list[OpportunityType] | None = Query(default=None)):
+                      types: list[OpportunityType] | None = Query(default=None),
+                      publisher: Literal['school', 'official', 'aggregator', 'other'] | None = Query(default=None)):
         if not enabled():
             return query_error(503, 'FEATURE_UNAVAILABLE', '공고 조회 기능이 비활성 상태입니다.')
         try:
             snapshot = read_catalog(settings)
         except CatalogUnavailable:
             return query_error(503, 'FEATURE_UNAVAILABLE', '공고 자료를 조회할 수 없습니다.')
-        items = filter_opportunities(snapshot['opportunities'], q=q, types=types)
+        candidates = snapshot['opportunities']
+        if publisher is not None:
+            source_ids = {source.id for source in snapshot['sources'] if source.kind == publisher}
+            candidates = [item for item in candidates if source_ids.intersection(item.source_ids)]
+        items = filter_opportunities(candidates, q=q, types=types)
         return Page[Opportunity](items=items[offset:offset + limit], total=len(items),
                                  limit=limit, offset=offset)
 
