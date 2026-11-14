@@ -25,34 +25,34 @@ def normalized(value: str) -> str:
     return ' '.join(unicodedata.normalize('NFKC', value).casefold().split())
 
 
-@lru_cache(maxsize=256)
-def phrase_pattern(phrase: str) -> re.Pattern:
+def phrases_pattern(phrases) -> re.Pattern:
     suffix = '|'.join(map(re.escape, PARTICLES))
-    return re.compile(r'(?<!\w)' + re.escape(normalized(phrase)) + r'(?:' + suffix + r')?(?!\w)')
+    alternatives = [r'\s*'.join(map(re.escape, phrase.split())) for phrase in
+                    sorted({normalized(p) for p in phrases}, key=lambda p: (-len(p.replace(' ', '')), p))]
+    return re.compile(r'(?<!\w)(' + '|'.join(alternatives) + r')(?:' + suffix + r')?(?!\w)')
 
 
-def contains_phrase(text: str, phrase: str) -> bool:
-    return phrase_pattern(phrase).search(normalized(text)) is not None
+@lru_cache(maxsize=2048)
+def phrase_pattern(phrase: str) -> re.Pattern:
+    return phrases_pattern([phrase])
+
+
+def positive_clauses(text: str):
+    # Keep exclusion markers on the left so “개발 말고 디자인” cannot score software.
+    text = normalized(text)
+    offset = 0
+    for match in CLAUSES.finditer(text):
+        chunk = text[offset:match.end()]
+        if not NEGATIVE.search(chunk):
+            yield chunk
+        offset = match.end()
+    if not NEGATIVE.search(text[offset:]):
+        yield text[offset:]
 
 
 def positive_mentions(text: str, aliases: list[str]) -> bool:
-    # Keep exclusion markers on the left so “개발 말고 디자인” cannot score software.
-    chunks = []
-    offset = 0
-    for match in CLAUSES.finditer(text):
-        chunks.append(text[offset:match.end()])
-        offset = match.end()
-    chunks.append(text[offset:])
-    return any(not NEGATIVE.search(normalized(chunk))
-               and any(contains_phrase(chunk, alias) for alias in aliases)
-               for chunk in chunks)
+    return any(phrase_pattern(alias).search(chunk) for chunk in positive_clauses(text) for alias in aliases)
 
 
-def field_matches(entries: list[str], code: str, aliases: list[str], *, free_text: bool) -> bool:
-    names = [*aliases, *ROLE_ALIASES.get(code, ())]
-    # The profile form accepts both “AI 관련 직무” and “ai관련 직무”.
-    entries = [re.sub(r'(?<=\w)\s*관련(?=\s|$)', ' 관련', normalized(entry)) for entry in entries]
-    if free_text:
-        return any(positive_mentions(entry, names) for entry in entries)
-    return any(re.sub(r'\s+관련(?:\s+(?:직무|분야))?$', '', entry) == normalized(name)
-               for entry in entries for name in names)
+def profile_expression(value: str) -> str:
+    return re.sub(r'\s*관련\s*(?:직무|분야)?$', '', normalized(value)).strip()
