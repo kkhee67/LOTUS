@@ -16,10 +16,10 @@ export function OpportunityPoster({item, label}: {item: Opportunity; label: stri
   const poster = verified[item.id];
   if (poster && item.source_kind === 'real' && poster.source === item.source_url && !failed) {
     return <a className="op-poster official" href={poster.original} target="_blank" rel="noopener noreferrer"
-      aria-label={item.title + ' 원본 포스터 열기 (새 창)'}>
+      aria-label={item.title + ' 원본 이미지 열기 (새 창)'}>
       <img src={import.meta.env.BASE_URL + 'posters/' + item.id + '.webp'} alt="" loading="lazy"
         onError={() => setFailed(true)} />
-      <span>원본 포스터 보기 ↗</span>
+      <span>원본 이미지 보기 ↗</span>
     </a>;
   }
   if (source && Object.hasOwn(banners, bannerHost) && !bannerFailed) {
