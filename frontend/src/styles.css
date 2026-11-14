@@ -397,6 +397,8 @@ button:disabled { cursor: default; opacity: .65; }
 }
 
 .calendar-panel { padding: clamp(12px, 2.5vw, 28px); border: 1px solid var(--border); border-radius: 16px; background: white; }
+.calendar-interest-filter { display: flex; align-items: end; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 18px; }
+.calendar-interest-filter label { width: min(100%, 270px); }
 .calendar-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .calendar-toolbar > div { display: flex; gap: 5px; }
 .calendar-toolbar button { padding: 6px 10px; }

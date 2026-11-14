@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import {canRecommend, getOpportunity, type Capability, type Opportunity} from '../../api';
+import {canRecommend, getOpportunity, type Capability, type Opportunity, type Options} from '../../api';
+import {interestExamples} from '../profile/choices';
 import {showSource} from '../../preview';
 import {useApiTask} from '../useApiTask';
 import {OpportunityDetails} from '../recommendations/RecommendationResults';
@@ -31,10 +32,30 @@ function calendarEntries(item: Opportunity) {
   return entries;
 }
 
-export function SavedCalendar({saved, capability}: {saved: SavedOpportunities; capability?: Capability}) {
+function normalizeTerm(text: string) {
+  return text.normalize('NFKC').trim().toLowerCase();
+}
+
+function matchesInterest(item: Opportunity, interest: string, fields: Options['fields']) {
+  const field = fields.find(option => [option.code, option.label, ...(option.aliases ?? [])]
+    .some(alias => normalizeTerm(alias) === normalizeTerm(interest)));
+  if (field && item.fields?.includes(field.code)) return true;
+  const terms = (field ? [field.label, ...(field.aliases ?? [])] : [interest])
+    .flatMap(term => term.split('·')).map(normalizeTerm).filter(Boolean);
+  const text = normalizeTerm([item.title, item.summary, ...(item.tags ?? []), ...(item.activities ?? []),
+    ...(item.related_majors ?? [])].join(' '));
+  return terms.some(term => text.includes(term));
+}
+
+export function SavedCalendar({saved, capability, fields = [], profileInterests = []}: {
+  saved: SavedOpportunities; capability?: Capability; fields?: Options['fields']; profileInterests?: string[];
+}) {
   const today = seoulDate.format(new Date());
   const [month, setMonth] = useState(today.slice(0, 7));
   const [selected, setSelected] = useState('');
+  const [interests, setInterests] = useState<string[]>([]);
+  const choices = [...new Set([...profileInterests,
+    ...fields.flatMap(field => [field.label, ...(field.aliases ?? [])]), ...interestExamples])];
   const [retry, setRetry] = useState(0);
   const {ids} = saved;
   const {run, data, loading, error} = useApiTask<{items: Opportunity[]; missing: string[]}>();
@@ -61,8 +82,9 @@ export function SavedCalendar({saved, capability}: {saved: SavedOpportunities; c
   const days = new Date(Date.UTC(year, monthNumber, 0)).getUTCDate();
   const entries: Entry[] = [];
   const undated: Opportunity[] = [];
-  for (const item of data?.items ?? []) {
-    if (!ids.includes(item.id)) continue;
+  const matchingItems = (data?.items ?? []).filter(item => ids.includes(item.id) &&
+    (!interests.length || interests.some(interest => matchesInterest(item, interest, fields))));
+  for (const item of matchingItems) {
     const dates = calendarEntries(item);
     if (dates.length) entries.push(...dates);
     else undated.push(item);
@@ -79,6 +101,21 @@ export function SavedCalendar({saved, capability}: {saved: SavedOpportunities; c
     navigate(new Date(Date.UTC(year, monthNumber - 1 + offset, 1)).toISOString().slice(0, 7));
   }
   return <section className="calendar-panel" aria-label="북마크 일정 캘린더">
+    <div className="calendar-interest-filter">
+      <label>관심 분야 추가
+        <select value="" onChange={event => setInterests([...interests, event.target.value])}>
+          <option value="" disabled>{interests.length ? '관심 분야 더 선택' : '전체 관심 분야'}</option>
+          {choices.map(choice => <option key={choice} value={choice} disabled={interests.includes(choice)}>{choice}</option>)}
+        </select>
+      </label>
+      <div className="section-switch" role="group" aria-label="선택한 관심 분야">
+        <button type="button" className="secondary" aria-pressed={!interests.length} onClick={() => setInterests([])}>전체</button>
+        {interests.map(interest => <button type="button" key={interest} className="secondary"
+          aria-label={interest + ' 선택 해제'} onClick={() => setInterests(interests.filter(value => value !== interest))}>
+          {interest} ×</button>)}
+      </div>
+    </div>
+    {interests.length > 0 && data && !loading && <p role="status">선택한 분야와 관련된 북마크 {matchingItems.length}건</p>}
     <div className="calendar-toolbar">
       <h2 aria-live="polite">{year}년 {monthNumber}월</h2>
       <div><button type="button" className="secondary" onClick={() => shift(-1)}>이전 달</button>

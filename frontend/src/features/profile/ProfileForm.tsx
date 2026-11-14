@@ -149,7 +149,8 @@ export function ProfileForm() {
               opportunities={recommendedItems} />
           </div>
           {stage === 'workspace' && screen === 'calendar' && capabilities.data &&
-            <SavedCalendar saved={saved} capability={capabilities.data.opportunities} />}
+            <SavedCalendar saved={saved} capability={capabilities.data.opportunities}
+              fields={options.data?.fields} profileInterests={confirmed?.profile.interests} />}
       </main>
     </>
   );
