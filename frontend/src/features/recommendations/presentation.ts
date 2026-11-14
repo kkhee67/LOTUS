@@ -1,7 +1,7 @@
 import type { components } from '../../generated/api';
 
 type Application = components['schemas']['ApplicationInfo'];
-const seoulDate = new Intl.DateTimeFormat('sv-SE', {
+export const seoulDate = new Intl.DateTimeFormat('sv-SE', {
   timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
 });
 

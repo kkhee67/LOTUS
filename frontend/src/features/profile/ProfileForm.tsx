@@ -3,6 +3,7 @@ import {canRecommend, type RecommendationRequest} from '../../api';
 import {RecommendationResults} from '../recommendations/RecommendationResults';
 import {RecommendationProfile} from '../recommendations/RecommendationProfile';
 import {Explore} from '../opportunities/Explore';
+import {SavedCalendar} from '../opportunities/SavedCalendar';
 import {useSavedOpportunities} from '../opportunities/saved';
 import {Guidance} from '../guidance/Guidance';
 import {isPreview} from '../../preview';
@@ -10,7 +11,7 @@ import {ProfileEditor} from './ProfileEditor';
 import {useServiceConnection} from '../useServiceConnection';
 import {useRecommendationRequest} from '../recommendations/useRecommendationRequest';
 
-const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', guidance: '진로 준비'} as const;
+const screens = {recommendations: '맞춤 추천', explore: '공고 탐색', calendar: '내 일정', guidance: '진로 준비'} as const;
 type Screen = keyof typeof screens;
 const welcomeDuration = 4000;
 
@@ -105,6 +106,7 @@ export function ProfileForm() {
                 <p className="interest-line">관심 분야 · {confirmed.profile.interests.join(' / ')}</p>}
               <h1 ref={screenHeading} tabIndex={-1}>{screen === 'recommendations' ? '나에게 맞는 기회' : screens[screen]}</h1>
               {screen === 'recommendations' && <p className="hero-description">공고를 비교하고, 나의 다음 경험을 찾아보세요.</p>}
+              {screen === 'calendar' && <p className="hero-description">별표로 저장한 공고의 접수·행사·시험 일정을 확인하세요.</p>}
             </div>
             {screen === 'recommendations' && <label className="recommendation-search">추천 목록에서 찾기
               <input type="search" value={recommendationQuery} placeholder="제목·기관·태그 검색"
@@ -146,6 +148,8 @@ export function ProfileForm() {
             <Guidance key={confirmed ? 'confirmed' : 'editing'} capabilities={capabilities.data} profile={confirmed?.profile}
               opportunities={recommendedItems} />
           </div>
+          {stage === 'workspace' && screen === 'calendar' && capabilities.data &&
+            <SavedCalendar saved={saved} capability={capabilities.data.opportunities} />}
       </main>
     </>
   );
